@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bh8hgh0ot1xyj"]
+
+[node name="PlayerSwordArea" type="Area2D"]

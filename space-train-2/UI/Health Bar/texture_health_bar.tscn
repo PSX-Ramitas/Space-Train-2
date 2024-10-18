@@ -8,8 +8,11 @@
 [node name="HealthBar" type="TextureProgressBar"]
 z_index = 1
 texture_filter = 1
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 64.0
+offset_bottom = 10.0
+scale = Vector2(1.65, 1.65)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 value = 69.0
 texture_progress = ExtResource("2_ecxhe")
 script = ExtResource("3_ggja5")

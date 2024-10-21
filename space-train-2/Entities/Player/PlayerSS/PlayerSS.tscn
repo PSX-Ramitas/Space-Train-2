@@ -1,7 +1,7 @@
 [gd_scene load_steps=79 format=3 uid="uid://drr6wuktpctex"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
-[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://ui/Health Bar/texture_health_bar.tscn" id="2_1dplu"]
+[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_1dplu"]
 [ext_resource type="PackedScene" uid="uid://bh8hgh0ot1xyj" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.tscn" id="2_cmx2h"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FSM.gd" id="3_15oje"]

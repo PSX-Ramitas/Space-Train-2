@@ -46,3 +46,18 @@ func test_move_down():
 	await(_sender.idle)
 	#gut.p(_player.position)
 	assert_true(playerStartPos.y < _player.position.y, "player moved down")
+
+func test_left-right_pressed():
+	var playerStartPos = _player.position
+	#gut.p(playerStartPos)
+	_sender.action_down("right").action_down("left").hold_for(1)
+	await(_sender.idle)
+	#gut.p(_player.position)
+	assert_true(playerStartPos.x == _player.position.x, "player did not move after pressing left and right")
+func test_up-down_pressed():
+	var playerStartPos = _player.position
+	#gut.p(playerStartPos)
+	_sender.action_down("up").action_down("down").hold_for(1)
+	await(_sender.idle)
+	#gut.p(_player.position)
+	assert_true(playerStartPos.y == _player.position.y, "player did not move after pressing up and down")

@@ -35,7 +35,7 @@ func test_jump():
 	#gut.p(playerStartPos)
 	_sender.action_down("jump").wait_frames(10)
 	await(_sender.idle)
-  assert_true(!_player.is_on_floor(), "player should not be on ground after jump input")
+	assert_true(!_player.is_on_floor(), "player should not be on ground after jump input")
 	#gut.p(_player.position)
 
 func test_fall():

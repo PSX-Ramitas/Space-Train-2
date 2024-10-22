@@ -35,7 +35,7 @@ func test_jump():
 	#gut.p(playerStartPos)
 	_sender.action_down("jump").hold_for(0.5)
 	await(_sender.idle)
-  assert_true(!_player.is_on_floor(), "player jumped successfully)
+  assert_true(!_player.is_on_floor(), "player jumped successfully")
 	#gut.p(_player.position)
 
 func test_fall():

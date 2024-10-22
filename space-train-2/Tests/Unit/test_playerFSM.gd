@@ -25,7 +25,7 @@ func test_verify_setup():
 func test_move_state():
 	var playerStartPos = _player.position
 	#gut.p(playerStartPos)
-	_sender.action_down("right").hold_for(1)
+	_sender.action_down("right").wait_frames(1)
 	await(_sender.idle)
 	#gut.p(_player.position)
 	assert_true(_playerFSM.currState == _states[1], "player can move")

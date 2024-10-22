@@ -1,29 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://bs01fiiy1fbeh"]
 
-[ext_resource type="PackedScene" uid="uid://d0cu0cu5qc4iu" path="res://Entities/Player/PlayerTD/player_td.tscn" id="2_31aj6"]
-[ext_resource type="Texture2D" uid="uid://bohap2fdm71jb" path="res://Main_Areas/Spaceship/SpaceTrain.webp" id="2_ala4i"]
-[ext_resource type="PackedScene" uid="uid://crmrjbkdg4irm" path="res://Main_Areas/Spaceship/Scenes/tileset.tscn" id="2_clrxy"]
+[ext_resource type="PackedScene" uid="uid://crmrjbkdg4irm" path="res://Main_Areas/Spaceship/Scenes/tileset.tscn" id="1_kxdlo"]
+[ext_resource type="Texture2D" uid="uid://bohap2fdm71jb" path="res://Main_Areas/Spaceship/SpaceTrain.webp" id="2_k1hdw"]
+[ext_resource type="PackedScene" uid="uid://d0cu0cu5qc4iu" path="res://Entities/Player/PlayerTD/player_td.tscn" id="3_gahup"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxaog"]
 size = Vector2(166, 176)
 
-[node name="Spaceship (hub)" type="Node2D"]
+[node name="Spaceship" type="Node2D"]
 
-[node name="Tileset" parent="." instance=ExtResource("2_clrxy")]
+[node name="Tileset" parent="." instance=ExtResource("1_kxdlo")]
 
 [node name="SpaceTrain" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(773, 244)
 scale = Vector2(0.18457, 0.18457)
-texture = ExtResource("2_ala4i")
+texture = ExtResource("2_k1hdw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 11)
 zoom = Vector2(0.75, 0.75)
-
-[node name="PlayerTD" parent="." instance=ExtResource("2_31aj6")]
-position = Vector2(64, 58)
-script = null
 
 [node name="TeleporterArea" type="Area2D" parent="."]
 position = Vector2(698, 163)
@@ -31,5 +27,8 @@ position = Vector2(698, 163)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeleporterArea"]
 position = Vector2(73, 78)
 shape = SubResource("RectangleShape2D_kxaog")
+
+[node name="PlayerTD" parent="." instance=ExtResource("3_gahup")]
+position = Vector2(136, 114)
 
 [connection signal="body_entered" from="TeleporterArea" to="." method="TeleporterAreaBodyEntered"]

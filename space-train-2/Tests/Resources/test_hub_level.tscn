@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfncfq1u8vf4q"]
+
+[ext_resource type="PackedScene" uid="uid://crmrjbkdg4irm" path="res://Main_Areas/Spaceship (hub)/Scenes/tileset.tscn" id="1_q86v3"]
+[ext_resource type="PackedScene" uid="uid://bp7ygyt24qlwv" path="res://Entities/Player/PlayerTD/player_td.tscn" id="2_lc86o"]
+
+[node name="TestHubLevel" type="Node2D"]
+
+[node name="Tileset" parent="." instance=ExtResource("1_q86v3")]
+
+[node name="PlayerTD" parent="." instance=ExtResource("2_lc86o")]
+position = Vector2(85, 101)

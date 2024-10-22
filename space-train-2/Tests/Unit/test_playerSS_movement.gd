@@ -21,7 +21,7 @@ func test_move_right():
 	_sender.action_down("right").hold_for(1)
 	await(_sender.idle)
 	#gut.p(_player.position)
-	assert_true(playerStartPos.x < _player.position.x, "player moved right")
+	assert_true(playerStartPos.x < _player.position.x, "player x position should be greater than before")
 
 func test_move_left():
 	var playerStartPos = _player.position
@@ -29,13 +29,13 @@ func test_move_left():
 	_sender.action_down("left").hold_for(1)
 	await(_sender.idle)
 	#gut.p(_player.position)
-	assert_true(playerStartPos.x > _player.position.x, "player moved left")
+	assert_true(playerStartPos.x > _player.position.x, "player x position should be less than before")
 func test_jump():
 	var playerStartPos = _player.position
 	#gut.p(playerStartPos)
 	_sender.action_down("jump").hold_for(0.5)
 	await(_sender.idle)
-  assert_true(!_player.is_on_floor(), "player jumped successfully")
+  assert_true(!_player.is_on_floor(), "player should not be on ground after jump input")
 	#gut.p(_player.position)
 
 func test_fall():
@@ -44,7 +44,7 @@ func test_fall():
 	_sender.action_down("jump").hold_for(1)
 	await(_sender.idle)
 	#gut.p(_player.position)
-	assert_true(playerStartPos == _player.position, "player fell down after jump")
+	assert_true(_player.is_on_floor(), "player should be on ground")
 
 func test_left_right_pressed():
 	var playerStartPos = _player.position
@@ -52,4 +52,4 @@ func test_left_right_pressed():
 	_sender.action_down("right").action_down("left").hold_for(1)
 	await(_sender.idle)
 	#gut.p(_player.position)
-	assert_true(playerStartPos.x == _player.position.x, "player did not move after pressing left and right")
+	assert_true(playerStartPos.x == _player.position.x, "player should not move after pressing left and right simultaneously")

@@ -33,7 +33,7 @@ func test_move_left():
 func test_jump():
 	var playerStartPos = _player.position
 	#gut.p(playerStartPos)
-	_sender.action_down("jump").hold_for(0.5)
+	_sender.action_down("jump").wait_frames(10)
 	await(_sender.idle)
   assert_true(!_player.is_on_floor(), "player should not be on ground after jump input")
 	#gut.p(_player.position)
@@ -41,7 +41,7 @@ func test_jump():
 func test_fall():
 	var playerStartPos = _player.position
 	#gut.p(playerStartPos)
-	_sender.action_down("jump").hold_for(1)
+	_sender.action_down("jump").wait_frames(100)
 	await(_sender.idle)
 	#gut.p(_player.position)
 	assert_true(_player.is_on_floor(), "player should be on ground")

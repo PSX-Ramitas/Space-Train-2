@@ -21,7 +21,6 @@ func test_verify_setup():
 	assert_not_null(_player, 'player exists')
 	assert_not_null(_playerFSM, "fsm exists")
 	assert_not_null(_states, "states exist")
-	gut.p(_states)
 
 
 func test_move_state():
@@ -31,4 +30,4 @@ func test_move_state():
 	await(_sender.idle)
 	#gut.p(_player.position)
 	#might need to be currState.name or currState.to_str()
-	assert_true(_playerFSM.currState == _states[RunState], "player can move")
+	assert_true(_playerFSM.currState == _states['Run'], "player can move")

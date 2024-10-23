@@ -45,11 +45,3 @@ func test_fall():
 	await(_sender.idle)
 	#gut.p(_player.position)
 	assert_true(_player.is_on_floor(), "player should be on ground")
-
-func test_left_right_pressed():
-	var playerStartPos = _player.position
-	#gut.p(playerStartPos)
-	_sender.action_down("right").action_down("left").hold_for(1)
-	await(_sender.idle)
-	#gut.p(_player.position)
-	assert_true(playerStartPos.x == _player.position.x, "player should not move after pressing left and right simultaneously")

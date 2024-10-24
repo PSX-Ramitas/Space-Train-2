@@ -31,3 +31,32 @@ func test_move_state():
 	gut.p(_playerFSM.currState)
 	#might need to be currState.name or currState.to_str()
 	assert_true(_playerFSM.currState == _states['Run'], "player can move")
+
+
+func test_jump_state():
+	var playerStartPos = _player.position
+	gut.p("Current STATE: ")
+	_sender.action_down("jump").wait_frames(1)
+	await(_sender.idle)
+	gut.p(_playerFSM.currState)
+	#might need to be currState.name or currState.to_str()
+	assert_true(_playerFSM.currState == _states['Jump'], "player can jump")
+
+func test_fall_state():
+	var playerStartPos = _player.position
+	gut.p("Current STATE: ")
+	_sender.action_down("jump").wait_frames(20)
+	await(_sender.idle)
+	gut.p(_playerFSM.currState)
+	#might need to be currState.name or currState.to_str()
+	assert_true(_playerFSM.currState == _states['Fall'], "player can fall")
+
+
+func test_attack_state():
+	var playerStartPos = _player.position
+	gut.p("Current STATE: ")
+	_sender.action_down("attack_melee").wait_frames(1)
+	await(_sender.idle)
+	gut.p(_playerFSM.currState)
+	#might need to be currState.name or currState.to_str()
+	assert_true(_playerFSM.currState == _states['Attack1'], "player can attack")

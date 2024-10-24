@@ -21,6 +21,7 @@ offset_bottom = -123.333
 text = "HUB"
 
 [node name="MultUI" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -95.0
 offset_top = -106.667

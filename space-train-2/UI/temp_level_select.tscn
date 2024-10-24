@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://pmqkwyfmea3m"]
+
+[ext_resource type="Script" path="res://temp_level_select.gd" id="1_gvo34"]
+
+[node name="TempLevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 243.0
+offset_top = 306.0
+offset_right = 243.0
+offset_bottom = 306.0
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_gvo34")
+
+[node name="Hub" type="Button" parent="."]
+layout_mode = 0
+offset_left = -95.0
+offset_top = -203.333
+offset_right = 113.0
+offset_bottom = -123.333
+text = "HUB"
+
+[node name="MultUI" type="Button" parent="."]
+layout_mode = 0
+offset_left = -95.0
+offset_top = -106.667
+offset_right = 113.0
+offset_bottom = -26.667
+text = "Multiplayer UI"
+
+[node name="Forest1" type="Button" parent="."]
+layout_mode = 0
+offset_left = -95.0
+offset_top = -4.167
+offset_right = 113.0
+offset_bottom = 75.833
+text = "Forest1
+"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = -95.0
+offset_top = 105.833
+offset_right = 113.0
+offset_bottom = 185.833
+text = "Back"
+
+[connection signal="pressed" from="Hub" to="." method="_on_hub_pressed"]
+[connection signal="pressed" from="MultUI" to="." method="_on_mult_ui_pressed"]
+[connection signal="pressed" from="Forest1" to="." method="_on_forest_1_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

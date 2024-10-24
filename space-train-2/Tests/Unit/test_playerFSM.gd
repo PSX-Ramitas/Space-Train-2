@@ -51,6 +51,22 @@ func test_fall_state():
 	#might need to be currState.name or currState.to_str()
 	assert_true(_playerFSM.currState == _states['Fall'], "player can fall")
 
+func test_dash_state():
+	var playerStartPos = _player.position
+	gut.p("Current STATE: ")
+	_sender.action_down("dash").wait_frames(5)
+	await(_sender.idle)
+	gut.p(_playerFSM.currState)
+	#might need to be currState.name or currState.to_str()
+	assert_true(_playerFSM.currState == _states['Dash'], "player can dash")
+
+func test_die_state():
+	gut.p("Current STATE: ")
+	_player.health = 0
+	wait_frames(5)
+	gut.p(_playerFSM.currState)
+	#might need to be currState.name or currState.to_str()
+	assert_true(_playerFSM.currState == _states['Die'], "player can die")
 
 func test_attack_state():
 	var playerStartPos = _player.position

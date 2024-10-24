@@ -7,7 +7,7 @@ var _droid1 = null
 var _droid2 = null
 var _sender = InputSender.new(Input)
 func before_each():
-  _level = add_child_autofree(Level.instantiate())
+	_level = add_child_autofree(Level.instantiate())
 	_player = _level.get_node('PlayerSS')
 	_droid1 = _player.get_node('Droid1')
 	_droid2 = _player.get_node('Droid2')
@@ -22,13 +22,13 @@ func test_verify_setup():
 
 
 func test_chase():
-  pass
+	pass
 
 func test_attack():
-  pass
+	pass
 
 func test_hurt():
-  pass
+	pass
 
 func test_killed():
-  pass
+	pass

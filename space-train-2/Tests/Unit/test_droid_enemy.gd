@@ -3,8 +3,9 @@ extends GutTest
 var Level = ResourceLoader.load('res://tests/resources/test_droid_level.tscn')
 var _level = null
 var _player = null
-var _droid1 = null
-var _droid2 = null
+
+var _droid1 = null #separated
+var _droid2 = null #gets hurt
 var _sender = InputSender.new(Input)
 func before_each():
 	_level = add_child_autofree(Level.instantiate())
@@ -23,15 +24,30 @@ func test_verify_setup():
 
 
 func test_chase():
-	#get difference between droid and player x positions, wait 3 seconds, then assert that it is smaller than before
-	pass
+	var startDistance = _player.position.x - _droid2.position.x
+	wait_seconds(3)
+	var currDistance = _player.position.x - _droid2.position.x
+	assert_true(startDistance > currDistance, "Droid moved towards player")
+
+func test_no_attack():
+	assert_true(_droid2.state != "Attack", "Droid can't attack player out of range")
 
 func test_attack():
-	#move the player into the droid's attacking range and assert that the droid is attacking
-	pass
+	startHealth = _player.health
+	_sender.action_down("right").hold_for(1)
+	await(_sender.idle)
+	wait_seconds(1.5)
+	assert_true(_droid2.state == "Attack" and _player.health < startHealth, "Droid can attack")
 
 func test_hurt():
 	#make the player attack the droid and assert that it's health is now lower (similar to chase but with health)
+	var startHealth = _droid2.health
+	_sender.action_down("right").hold_for(1)
+	_sender.action_down("left").wait_frames(9)
+	_sender.action_down("attack_melee").wait_frames(5)
+	await(_sender.idle)
+	wait_seconds(1)
+	assert_true(start_health > _droid2.health, "Droid can take damage")
 	pass
 
 func test_killed():

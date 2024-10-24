@@ -24,7 +24,6 @@ func test_verify_setup():
 
 
 func test_move_state():
-	var playerStartPos = _player.position
 	gut.p("Current STATE: ")
 	_sender.action_down("right").wait_frames(1)
 	await(_sender.idle)
@@ -34,7 +33,6 @@ func test_move_state():
 
 
 func test_jump_state():
-	var playerStartPos = _player.position
 	gut.p("Current STATE: ")
 	_sender.action_down("jump").wait_frames(1)
 	await(_sender.idle)
@@ -43,7 +41,6 @@ func test_jump_state():
 	assert_true(_playerFSM.currState == _states['Jump'], "player can jump")
 
 func test_fall_state():
-	var playerStartPos = _player.position
 	gut.p("Current STATE: ")
 	_sender.action_down("jump").wait_frames(20)
 	await(_sender.idle)
@@ -52,7 +49,6 @@ func test_fall_state():
 	assert_true(_playerFSM.currState == _states['Fall'], "player can fall")
 
 func test_dash_state():
-	var playerStartPos = _player.position
 	gut.p("Current STATE: ")
 	_sender.action_down("dash").wait_frames(5)
 	await(_sender.idle)
@@ -69,7 +65,6 @@ func test_die_state():
 	assert_true(_playerFSM.currState == _states['Die'], "player can die")
 
 func test_attack_state():
-	var playerStartPos = _player.position
 	gut.p("Current STATE: ")
 	_sender.action_down("attack_melee").wait_frames(1)
 	await(_sender.idle)

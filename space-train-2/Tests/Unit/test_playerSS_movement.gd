@@ -1,6 +1,6 @@
 extends GutTest
 
-var Level = ResourceLoader.load('res://tests/resources/test_dungeon_level.tscn')
+var Level = ResourceLoader.load('res://tests/resources/test_player_level.tscn')
 var _level = null
 var _player = null
 var _sender = InputSender.new(Input)

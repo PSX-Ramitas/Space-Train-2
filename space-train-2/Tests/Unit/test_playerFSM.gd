@@ -34,7 +34,8 @@ func test_move_state():
 
 func test_jump_state():
 	gut.p("Current STATE: ")
-	_sender.action_down("jump").wait_frames(1)
+	wait_seconds(1.5)
+	_sender.action_down("jump").wait_frames(5)
 	await(_sender.idle)
 	gut.p(_playerFSM.currState)
 	#might need to be currState.name or currState.to_str()
@@ -59,7 +60,7 @@ func test_dash_state():
 func test_die_state():
 	gut.p("Current STATE: ")
 	_player.health = 0
-	wait_frames(5)
+	wait_frames(3)
 	gut.p(_playerFSM.currState)
 	#might need to be currState.name or currState.to_str()
 	assert_true(_playerFSM.currState == _states['Die'], "player can die")

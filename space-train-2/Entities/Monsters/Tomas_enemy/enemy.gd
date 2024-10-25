@@ -62,8 +62,9 @@ func AttackState(delta):
 	pass
 
 func HurtState():
+	attackArea.monitoring = false;
 	animations.play("hurt")
-	pass
+
 
 func DeathState(delta):
 	animations.play("death")

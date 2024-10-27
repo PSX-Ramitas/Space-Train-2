@@ -43,7 +43,7 @@ func process_physics(delta: float) -> State:
 		return fallState
 	parent.move_and_slide()
 	if attackFinished == true:
-		if Input.is_action_just_pressed("attack_melee"):
+		if Input.is_action_just_pressed("attack"):
 			nextState = attack2State
 			return nextState
 		elif Input.is_action_just_pressed("jump"):

@@ -150,6 +150,7 @@ _data = {
 }
 
 [node name="AnimateSpikes" type="Area2D" groups=["Traps"]]
+monitorable = false
 script = ExtResource("1_v0l2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

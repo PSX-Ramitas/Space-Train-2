@@ -499,6 +499,7 @@ offset_bottom = -143.0
 
 [node name="PlayerHitbox" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_rlyqj")]
 scale = Vector2(0.5, 0.5)
+monitorable = true
 parent = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]

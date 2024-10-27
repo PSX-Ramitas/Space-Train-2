@@ -42,12 +42,6 @@ func _process(_delta):
 #END OF GENERAL ANIMATION FUNCTIONS-------------------------------------------------------------
 
 
-# Triggered when the player enters the spikes' area
-#func _on_animated_Spikes_entered(area: Area2D) -> void:
-#	if area.get_parent() is Player:
-#		#area.take_damage(spike_damage)
-#		print(area.name)
-
 # Transition to active spikes (plays the animation and halts at a specific frame)
 func transition_To_active():     
 	#only animate if there is no transition yet

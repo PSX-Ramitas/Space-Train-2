@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://ccfic4x8n7kb0"]
+[gd_scene load_steps=10 format=4 uid="uid://ccfic4x8n7kb0"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_w4ks8"]
 [ext_resource type="Texture2D" uid="uid://cinnmbjlmokyb" path="res://Main_Areas/Planets/Forest/Assets/BG_1.png" id="2_eylef"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="4_dgi62"]
 [ext_resource type="PackedScene" uid="uid://b5qebaxc55f4r" path="res://Entities/LevelObstacles/animate_spikes.tscn" id="5_5ota0"]
 [ext_resource type="PackedScene" uid="uid://bahjx67ee1f3n" path="res://Entities/LevelObstacles/spikes.tscn" id="6_w6c7q"]
+[ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="7_cf1wb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("3_1vhc8")
@@ -472,7 +473,7 @@ repeat_times = 2
 
 [node name="Furthest" type="Sprite2D" parent="Parallax2D2"]
 texture_filter = 1
-position = Vector2(1468, 323)
+position = Vector2(1472, 323)
 scale = Vector2(1.615, 1.615)
 texture = ExtResource("1_w4ks8")
 
@@ -503,7 +504,35 @@ tile_set = SubResource("TileSet_88hoh")
 position = Vector2(581, 92)
 
 [node name="AnimateSpikes" parent="." instance=ExtResource("5_5ota0")]
-position = Vector2(764, 224)
+position = Vector2(854, 272)
+
+[node name="AnimateSpikes2" parent="." instance=ExtResource("5_5ota0")]
+position = Vector2(872, 272)
+
+[node name="AnimateSpikes3" parent="." instance=ExtResource("5_5ota0")]
+position = Vector2(890, 272)
+
+[node name="AnimateSpikes4" parent="." instance=ExtResource("5_5ota0")]
+position = Vector2(607, 468)
 
 [node name="Spikes" parent="." instance=ExtResource("6_w6c7q")]
-position = Vector2(810, 231)
+position = Vector2(1566, 334)
+scale = Vector2(-1, 1)
+
+[node name="AnimateSpikes5" parent="." instance=ExtResource("5_5ota0")]
+position = Vector2(908, 272)
+
+[node name="TriggeredSpikes" parent="." instance=ExtResource("7_cf1wb")]
+position = Vector2(1132, 286)
+
+[node name="TriggeredSpikes2" parent="." instance=ExtResource("7_cf1wb")]
+position = Vector2(1911, 477)
+
+[node name="TriggeredSpikes3" parent="." instance=ExtResource("7_cf1wb")]
+position = Vector2(2148, 480)
+
+[node name="TriggeredSpikes4" parent="." instance=ExtResource("7_cf1wb")]
+position = Vector2(2607, 476)
+
+[node name="TriggeredSpikes5" parent="." instance=ExtResource("7_cf1wb")]
+position = Vector2(2679, 476)

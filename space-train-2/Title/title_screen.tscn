@@ -1,10 +1,10 @@
 [gd_scene load_steps=57 format=3 uid="uid://v68rubr571l"]
 
-[ext_resource type="Texture2D" uid="uid://bntaopptrds6i" path="res://Main_Areas/Title/Space Background(1).png" id="1_uu0sr"]
-[ext_resource type="Texture2D" uid="uid://cw6d4uhbfttth" path="res://Main_Areas/Title/Space Background(2).png" id="2_fki7b"]
-[ext_resource type="Texture2D" uid="uid://c77osvw1ckdqw" path="res://Main_Areas/Title/Space Background(4).png" id="2_rrrvo"]
-[ext_resource type="Texture2D" uid="uid://cw8kpxsf6f801" path="res://Main_Areas/Title/53721020.png" id="2_x7ev4"]
-[ext_resource type="Script" path="res://Main_Areas/Title/title.gd" id="3_a787a"]
+[ext_resource type="Texture2D" uid="uid://bntaopptrds6i" path="res://Title/Space Background(1).png" id="1_uu0sr"]
+[ext_resource type="Texture2D" uid="uid://cw6d4uhbfttth" path="res://Title/Space Background(2).png" id="2_fki7b"]
+[ext_resource type="Texture2D" uid="uid://c77osvw1ckdqw" path="res://Title/Space Background(4).png" id="2_rrrvo"]
+[ext_resource type="Texture2D" uid="uid://cw8kpxsf6f801" path="res://Title/53721020.png" id="2_x7ev4"]
+[ext_resource type="Script" path="res://Title/title.gd" id="3_a787a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkuu2"]
 atlas = ExtResource("2_x7ev4")

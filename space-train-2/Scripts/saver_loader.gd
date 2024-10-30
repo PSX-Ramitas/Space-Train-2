@@ -12,6 +12,7 @@ func save_game():
 	
 	saved_data["player_global_position:x"] = player.global_position.x
 	saved_data["player_global_position:y"] = player.global_position.y
+	saved_data["player_health"] = player.health
 	
 	# Convert Dictionary to JSON
 	var json = JSON.stringify(saved_data)
@@ -29,6 +30,7 @@ func load_game():
 	
 	player.global_position.x =  saved_data["player_global_position:x"]
 	player.global_position.y =  saved_data["player_global_position:y"]
+	player.health =  saved_data["player_health"]
 	file.close()
 
 # Example of saving the game when pressing a specific key (e.g., "S" for save)

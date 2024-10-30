@@ -1,7 +1,9 @@
-[gd_scene load_steps=79 format=3 uid="uid://qdsqap23j4ie"]
+
+[gd_scene load_steps=79 format=3 uid="uid://drr6wuktpctex"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
-[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_1dplu"]
+[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://ui/Health Bar/texture_health_bar.tscn" id="2_1dplu"]
+
 [ext_resource type="PackedScene" uid="uid://bh8hgh0ot1xyj" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.tscn" id="2_cmx2h"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FSM.gd" id="3_15oje"]
@@ -505,7 +507,9 @@ monitorable = false
 script = ExtResource("3_ot7y0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSwordArea"]
-rotation = -0.523599
+
+rotation = -0.541655
+
 shape = SubResource("CircleShape2D_4tbcm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -635,4 +639,7 @@ animationName = "Death"
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack1" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack2" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack3" method="FinishedAttack"]
+
+[connection signal="area_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_danger_area_entered"]
+
 [connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
-[ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="2_rlyqj"]
-[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_s31bq"]
+[ext_resource type="PackedScene" path="res://Entities/entity_hitbox.tscn" id="2_rlyqj"]
+[ext_resource type="PackedScene" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_s31bq"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FSM.gd" id="3_15oje"]
 [ext_resource type="PackedScene" uid="uid://bh8hgh0ot1xyj" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.tscn" id="3_d10ch"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.gd" id="4_4cvk8"]

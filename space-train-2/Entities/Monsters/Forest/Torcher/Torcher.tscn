@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://n3k8lig0rawx"]
+
+[ext_resource type="Script" path="res://Entities/Monsters/Forest/Torcher/torcher.gd" id="1_yom5b"]
+[ext_resource type="Texture2D" uid="uid://cs712dbp4g2b5" path="res://Entities/Monsters/Forest/Torcher/small monster.png" id="2_2ergt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5wob"]
+atlas = ExtResource("2_2ergt")
+region = Rect2(0, 81, 192, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3ygt"]
+atlas = ExtResource("2_2ergt")
+region = Rect2(192, 81, 192, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ibjl"]
+atlas = ExtResource("2_2ergt")
+region = Rect2(384, 81, 192, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dexbl"]
+atlas = ExtResource("2_2ergt")
+region = Rect2(576, 81, 192, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dael"]
+atlas = ExtResource("2_2ergt")
+region = Rect2(768, 81, 192, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwlpa"]
+atlas = ExtResource("2_2ergt")
+region = Rect2(960, 81, 192, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc3co"]
+atlas = ExtResource("2_2ergt")
+region = Rect2(1152, 81, 192, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_goyod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5wob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3ygt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ibjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dexbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dael")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwlpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc3co")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qaqj"]
+size = Vector2(18, 28)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eu8um"]
+radius = 14.0
+height = 42.0
+
+[node name="Torcher" type="CharacterBody2D"]
+script = ExtResource("1_yom5b")
+health = 10
+movespeed = 100
+attack = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -21)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_goyod")
+animation = &"Idle"
+frame_progress = 0.411778
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_3qaqj")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_eu8um")

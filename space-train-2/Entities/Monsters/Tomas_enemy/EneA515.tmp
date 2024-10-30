@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://c07t1k3q6u62"]
+
+[ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/enemy.gd" id="1_qnemb"]
+[ext_resource type="Texture2D" uid="uid://msgxfykr82lo" path="res://Entities/Monsters/Tomas_enemy/Neela-removebg-preview.png" id="2_q4uto"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rjgvh"]
+radius = 63.3335
+height = 126.667
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3aq0"]
+radius = 4026.16
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wlsqd"]
+radius = 101.134
+
+[node name="enemy" type="CharacterBody2D"]
+position = Vector2(968, 612)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+slide_on_ceiling = false
+script = ExtResource("1_qnemb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_q4uto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.33333, 40)
+shape = SubResource("CapsuleShape2D_rjgvh")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+light_mask = 3
+position = Vector2(0, 20)
+
+[node name="DetectionAreaBody" type="CollisionShape2D" parent="DetectionArea"]
+light_mask = 3
+position = Vector2(0, 1.99994)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CircleShape2D_p3aq0")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="hitbox_shape" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-12, -30)
+shape = SubResource("CircleShape2D_wlsqd")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

@@ -19,7 +19,9 @@ func process_input(event: InputEvent) -> State:
 		return jumpState
 	if Input.is_action_just_pressed("dash") and !parent.usedDash:
 		return dashState
-	if(Input.is_action_just_pressed("attack")):
+
+	if(Input.is_action_just_pressed("attack_melee")):
+
 		if parent.queuedAttack == 1:
 			return attack1State
 		elif parent.queuedAttack == 2:

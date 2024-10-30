@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://b24nbiwf8hg4f"]
+
+[ext_resource type="Script" path="res://Main_Areas/Multiplayer/MultiplayerController.gd" id="1_lkmvt"]
+
+[node name="Multiplayer UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lkmvt")
+
+[node name="NameInput" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 22.0
+offset_right = 337.0
+offset_bottom = 53.0
+placeholder_text = "name"
+
+[node name="IpInput" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 59.0
+offset_right = 337.0
+offset_bottom = 90.0
+placeholder_text = "Ip address"
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 26.0
+offset_right = 194.0
+offset_bottom = 60.0
+text = "Name:"
+
+[node name="AddressLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 60.0
+offset_right = 228.0
+offset_bottom = 94.0
+text = "IP Address:"
+
+[node name="Join" type="Button" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 188.0
+offset_right = 218.0
+offset_bottom = 226.0
+text = "Join"
+
+[node name="Host" type="Button" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 142.0
+offset_right = 218.0
+offset_bottom = 180.0
+text = "Host"
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 233.0
+offset_right = 218.0
+offset_bottom = 271.0
+text = "Start"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 277.0
+offset_right = 219.0
+offset_bottom = 315.0
+text = " Back
+"
+
+[connection signal="pressed" from="Join" to="." method="_on_join_button_down"]
+[connection signal="pressed" from="Host" to="." method="_on_host_button_down"]
+[connection signal="pressed" from="Start" to="." method="_on_start_button_down"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

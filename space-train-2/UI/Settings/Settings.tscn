@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://db6nsiuqoytme"]
+
+[ext_resource type="Script" path="res://UI/Settings/settings.gd" id="1_qps2c"]
+[ext_resource type="PackedScene" uid="uid://c42l0q6o71v4j" path="res://UI/Settings/Input_Settings.tscn" id="2_cexpp"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qps2c")
+
+[node name="MainSettings" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainSettings"]
+layout_mode = 2
+
+[node name="Volume" type="Label" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume
+"
+
+[node name="MasterVolume" type="HSlider" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 2.0
+step = 0.5
+value = 2.0
+
+[node name="Volume2" type="Label" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume
+"
+
+[node name="MusicVolume" type="HSlider" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 2.0
+step = 0.5
+value = 2.0
+
+[node name="Volume3" type="Label" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume
+"
+
+[node name="SFXVolume" type="HSlider" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 2.0
+step = 0.5
+value = 2.0
+
+[node name="Res" type="Label" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="Resolution" type="OptionButton" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "1280 x 720"
+popup/item_1/text = "1600 x 900"
+popup/item_1/id = 1
+popup/item_2/text = "1920 x 1080"
+popup/item_2/id = 2
+
+[node name="Space" type="Label" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+
+[node name="InputControls" type="Button" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+text = "Input Controls
+"
+
+[node name="Space2" type="Label" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+
+[node name="Back" type="Button" parent="MainSettings/VBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="InputSettings" parent="." instance=ExtResource("2_cexpp")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+scale = Vector2(0.710718, 0.772528)
+
+[connection signal="value_changed" from="MainSettings/VBoxContainer/MasterVolume" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="MainSettings/VBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="MainSettings/VBoxContainer/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="item_selected" from="MainSettings/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="pressed" from="MainSettings/VBoxContainer/InputControls" to="." method="_on_input_controls_pressed"]
+[connection signal="pressed" from="MainSettings/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="backPressed" from="InputSettings" to="." method="_on_input_settings_back_pressed"]

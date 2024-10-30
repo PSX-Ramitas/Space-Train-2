@@ -1,6 +1,5 @@
-class_name SpikesClass
 extends Area2D
-
+class_name SpikesClass
 # Spikes common properties  
 @export var spike_damage: int = 3  # Default damage dealt by trap
 

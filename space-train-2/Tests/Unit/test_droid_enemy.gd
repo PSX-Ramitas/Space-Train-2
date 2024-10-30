@@ -33,7 +33,7 @@ func test_no_attack():
 	assert_true(_droid2.state != "Attack", "Droid can't attack player out of range")
 
 func test_attack():
-	startHealth = _player.health
+	var startHealth = _player.health
 	_sender.action_down("right").hold_for(1)
 	await(_sender.idle)
 	wait_seconds(1.5)
@@ -47,7 +47,7 @@ func test_hurt():
 	_sender.action_down("attack_melee").wait_frames(5)
 	await(_sender.idle)
 	wait_seconds(1)
-	assert_true(start_health > _droid1.health, "Droid can take damage")
+	assert_true(startHealth > _droid1.health, "Droid can take damage")
 	pass
 
 func test_killed():

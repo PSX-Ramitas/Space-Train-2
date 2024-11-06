@@ -1,9 +1,9 @@
-[gd_scene load_steps=79 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=80 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
-[ext_resource type="PackedScene" path="res://Entities/entity_hitbox.tscn" id="2_rlyqj"]
-[ext_resource type="PackedScene" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_s31bq"]
+[ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="2_rlyqj"]
+[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_s31bq"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FSM.gd" id="3_15oje"]
 [ext_resource type="PackedScene" uid="uid://bh8hgh0ot1xyj" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.tscn" id="3_d10ch"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.gd" id="4_4cvk8"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DieState.gd" id="10_cg6rn"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack2State.gd" id="10_g4e6d"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack3State.gd" id="11_nv6s7"]
+[ext_resource type="Script" path="res://Scripts/saver_loader.gd" id="17_6cwph"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epcnk"]
 radius = 5.5
@@ -496,6 +497,7 @@ offset_left = -274.0
 offset_top = -153.0
 offset_right = -210.0
 offset_bottom = -143.0
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerHitbox" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_rlyqj")]
 scale = Vector2(0.5, 0.5)
@@ -626,6 +628,12 @@ animationName = "Death"
 [node name="Item" type="Node" parent="States to be implemented later"]
 
 [node name="Cast" type="Node" parent="States to be implemented later"]
+
+[node name="Utilities" type="Node" parent="."]
+
+[node name="SaveLoader" type="Node" parent="Utilities"]
+unique_name_in_owner = true
+script = ExtResource("17_6cwph")
 
 [connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_area_entered"]

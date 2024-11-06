@@ -3,7 +3,7 @@ extends Node
 # On windows can be found at %APPDATA%\Godot\app_userdata\[project_name]
 const SAVE_GAME_PATH = "user://savegame.json" #user folder is guaranteed to be writable when the game is exported
 
-@onready var player: Player = $"../../PlayerSS"
+@onready var player: Player = $"../.."
 
 func save_game():
 	var file = FileAccess.open(SAVE_GAME_PATH, FileAccess.WRITE)

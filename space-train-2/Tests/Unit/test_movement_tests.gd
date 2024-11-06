@@ -1,6 +1,6 @@
 extends GutTest
 
-var test_scene = ResourceLoader.load("res://Mechanics_Tests/movementTests.tscn").instance()
+var test_scene = ResourceLoader.load("res://Tests/movementTests.tscn").instance()
 var _level = null
 var _player = null
 var _playerFSM = null

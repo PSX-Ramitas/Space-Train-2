@@ -10,6 +10,7 @@ var nextState: State
 var attackFinished: bool
 
 func enter() -> void:
+	print("Attack3")
 	parent.sword.monitoring = true
 	if !parent.is_on_floor():
 		parent.usedAirAttack = true

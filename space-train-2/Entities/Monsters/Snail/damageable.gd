@@ -2,7 +2,7 @@ extends Node
 
 class_name Damageable
 
-@export var health : float = 2000
+@export var health : float = 20
 
 func hit(damage: int):
 	health -= damage

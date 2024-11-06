@@ -21,7 +21,8 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epcnk"]
 radius = 5.5
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nevb6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tafla"]
+size = Vector2(20, 25.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmg1m"]
 atlas = ExtResource("2_qrcop")
@@ -510,16 +511,18 @@ shape = SubResource("CapsuleShape2D_epcnk")
 
 [node name="PlayerSwordArea" parent="." instance=ExtResource("3_d10ch")]
 position = Vector2(17.5, -10)
+monitoring = false
 script = ExtResource("4_4cvk8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSwordArea"]
-shape = SubResource("CircleShape2D_nevb6")
+position = Vector2(0, -2.75)
+shape = SubResource("RectangleShape2D_tafla")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_c6t2i")
-animation = &"Attack3"
+animation = &"Attack1"
 flip_h = true
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
@@ -637,6 +640,7 @@ script = ExtResource("17_6cwph")
 
 [connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_area_entered"]
+[connection signal="body_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack1" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack2" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack3" method="FinishedAttack"]

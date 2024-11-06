@@ -28,16 +28,6 @@ func enter() -> void:
 	super() #call the enter function of the class we inherit from
 
 func process_input(event: InputEvent) -> State:
-	#if Input.is_action_just_pressed("attack"):
-		#nextState = attack3State
-	#elif Input.is_action_just_pressed("jump"):
-		#nextState = jumpState
-	#elif Input.is_action_just_pressed("dash"):
-		#nextState = dashState
-	#else:
-		#nextState = idleState
-	#print("input entered")
-	
 	return null
 
 func process_physics(delta: float) -> State:
@@ -53,10 +43,24 @@ func process_physics(delta: float) -> State:
 		return fallState
 	parent.move_and_slide()
 	if attackFinished == true:
-		return nextState
+		if Input.is_action_just_pressed("attack_melee"):
+			nextState = attack3State
+			parent.sword.monitoring = false
+			return nextState
+		elif Input.is_action_just_pressed("jump"):
+			nextState = jumpState
+			return nextState
+		elif Input.is_action_just_pressed("dash"):
+			nextState = dashState
+			return nextState
+		else:
+			nextState = idleState
+			return nextState
 	return null
 
 
 @rpc("any_peer", "call_local")
 func FinishedAttack():
 	attackFinished = true
+	parent.sword.monitoring = false
+	

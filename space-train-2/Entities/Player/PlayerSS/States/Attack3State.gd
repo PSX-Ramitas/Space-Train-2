@@ -54,3 +54,4 @@ func process_physics(delta: float) -> State:
 @rpc("any_peer", "call_local")
 func FinishedAttack():
 	attackFinished = true
+	parent.sword.monitoring = false

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cinnmbjlmokyb" path="res://Main_Areas/Planets/Forest/Assets/BG_1.png" id="2_5fq3w"]
 [ext_resource type="Texture2D" uid="uid://v7tmj80lj7oo" path="res://Main_Areas/Planets/Forest/Assets/Terrain_and_Props.png" id="3_4ys02"]
 [ext_resource type="PackedScene" uid="uid://n3k8lig0rawx" path="res://Entities/Monsters/Forest/Torcher/Torcher.tscn" id="4_0p38w"]
-[ext_resource type="PackedScene" uid="uid://drr6wuktpctex" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="5_e546o"]
+[ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="5_e546o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("3_4ys02")
@@ -415,7 +415,7 @@ texture = ExtResource("3_4ys02")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1xhn7")
 
-[node name="ForestRoom1" type="Node2D"]
+[node name="Forest_room_2" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 autoscroll = Vector2(5, 0)

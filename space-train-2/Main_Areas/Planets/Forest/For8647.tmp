@@ -454,7 +454,7 @@ sources/0 = SubResource("TileSetAtlasSource_1xhn7")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kt2ji"]
 distance = -59.0
 
-[node name="Forest_room_1" type="Node2D"]
+[node name="ForestRoom1" type="Node2D"]
 position = Vector2(-36, 101)
 
 [node name="Parallax2D" type="Parallax2D" parent="."]

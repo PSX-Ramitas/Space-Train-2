@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bohap2fdm71jb"
-path="res://.godot/imported/SpaceTrain.webp-f82bfb82af26ba1a94377588bcd75a70.ctex"
+path="res://.godot/imported/SpaceTrain.webp-ec9aca93248e4a3ebb252d9c01d46ac6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Areas/Spaceship (hub)/SpaceTrain.webp"
-dest_files=["res://.godot/imported/SpaceTrain.webp-f82bfb82af26ba1a94377588bcd75a70.ctex"]
+source_file="res://Main_Areas/Spaceship/SpaceTrain.webp"
+dest_files=["res://.godot/imported/SpaceTrain.webp-ec9aca93248e4a3ebb252d9c01d46ac6.ctex"]
 
 [params]
 

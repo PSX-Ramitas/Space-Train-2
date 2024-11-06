@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3f5jbfk200xa"
-path="res://.godot/imported/tileset x1.png-54782093b78a08d0f3bbadb74cf7fe12.ctex"
+uid="uid://cs3gb2w7o12jo"
+path="res://.godot/imported/animatedSpriteSpikes.png-433241173f902dd2617dd9ee0585e5a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Areas/Spaceship (hub)/Tilemap Assets/tileset x1.png"
-dest_files=["res://.godot/imported/tileset x1.png-54782093b78a08d0f3bbadb74cf7fe12.ctex"]
+source_file="res://Entities/LevelObstacles/Obstacle_Assets/animatedSpriteSpikes.png"
+dest_files=["res://.godot/imported/animatedSpriteSpikes.png-433241173f902dd2617dd9ee0585e5a1.ctex"]
 
 [params]
 

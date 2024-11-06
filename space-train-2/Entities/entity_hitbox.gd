@@ -1,4 +1,5 @@
 extends Area2D
+class_name Hitbox
 
 @export var parent: Node
 @onready var health_bar: TextureProgressBar = $"../HealthBar"
@@ -12,10 +13,6 @@ func _ready() -> void:
 	health_bar.init_health(parent.health)
 	health_bar._set_health(parent.health)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func take_damage(damageAmount: int):
 	if parent.health > 0:
 		parent.health -= damageAmount
@@ -27,7 +24,6 @@ func _on_health_changed(isHeal: bool, amount: int) -> void:
 	else:
 		parent.health -= amount
 	health_bar._set_health(parent.health)
-
 
 #func _on_danger_area_entered(area: Area2D) -> void:
 #	healthChanged.emit(false, area.damage)

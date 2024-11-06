@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://43f6hi6bj81h"
-path="res://.godot/imported/tileset x2.png-80ffa736fd16314fc375601270b26abd.ctex"
+uid="uid://cj5yb8uhjkkdw"
+path="res://.godot/imported/16-bit-spike-Sheet.png-9a91c752bd9e8d7ef3920478f92621b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Areas/Spaceship (hub)/Tilemap Assets/tileset x2.png"
-dest_files=["res://.godot/imported/tileset x2.png-80ffa736fd16314fc375601270b26abd.ctex"]
+source_file="res://Entities/LevelObstacles/Obstacle_Assets/16-bit-spike-Sheet.png"
+dest_files=["res://.godot/imported/16-bit-spike-Sheet.png-9a91c752bd9e8d7ef3920478f92621b7.ctex"]
 
 [params]
 

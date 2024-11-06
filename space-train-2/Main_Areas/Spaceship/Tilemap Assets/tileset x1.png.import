@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgwkjg8io210m"
-path="res://.godot/imported/tileset x3.png-4eeb7f39eadfbd18813136bfca0d1fe4.ctex"
+uid="uid://c3f5jbfk200xa"
+path="res://.godot/imported/tileset x1.png-5cd39e0c7462e973c932c665d6eae5e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Areas/Spaceship (hub)/Tilemap Assets/tileset x3.png"
-dest_files=["res://.godot/imported/tileset x3.png-4eeb7f39eadfbd18813136bfca0d1fe4.ctex"]
+source_file="res://Main_Areas/Spaceship/Tilemap Assets/tileset x1.png"
+dest_files=["res://.godot/imported/tileset x1.png-5cd39e0c7462e973c932c665d6eae5e4.ctex"]
 
 [params]
 

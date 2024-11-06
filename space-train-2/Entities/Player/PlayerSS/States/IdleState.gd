@@ -10,7 +10,6 @@ extends State
 @export var dieState: State
 
 func enter() -> void:
-	parent.sword.monitoring = false
 	if parent.is_on_floor():
 		parent.usedAirAttack = false
 	super() #call the enter function of the class we inherit from
@@ -23,7 +22,7 @@ func process_input(event: InputEvent) -> State:
 		return jumpState
 	if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('right'):
 		return moveState
-	if(Input.is_action_just_pressed("attack")):
+	if(Input.is_action_just_pressed("attack_melee")):
 		if parent.queuedAttack == 1:
 			return attack1State
 		elif parent.queuedAttack == 2:

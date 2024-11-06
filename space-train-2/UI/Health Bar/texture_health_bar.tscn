@@ -1,15 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj8xfose28o1"]
+[gd_scene load_steps=5 format=3 uid="uid://cj8xfose28o1"]
 
-[ext_resource type="Texture2D" uid="uid://jou0quv5qmw3" path="res://UI/Health Bar/healthbarUnder.png" id="1_koobl"]
-[ext_resource type="Script" path="res://UI/Health Bar/health_bar.gd" id="3_ggja5"]
-[ext_resource type="Texture2D" uid="uid://otff2gsksmln" path="res://UI/Health Bar/damagebarProgress.png" id="4_hc6ta"]
+[ext_resource type="Texture2D" uid="uid://cltbndybsb48e" path="res://ui/Health Bar/healthbarUnder.png" id="1_koobl"]
+[ext_resource type="Texture2D" uid="uid://d3ney5d6ufxhq" path="res://ui/Health Bar/healthbarProgress.png" id="2_ecxhe"]
+[ext_resource type="Script" path="res://ui/Health Bar/health_bar.gd" id="3_ggja5"]
+[ext_resource type="Texture2D" uid="uid://iqor1emd46re" path="res://ui/Health Bar/damagebarProgress.png" id="4_hc6ta"]
 
 [node name="HealthBar" type="TextureProgressBar"]
 z_index = 1
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 40.0
-texture_progress = ExtResource("4_hc6ta")
+texture_progress = ExtResource("2_ecxhe")
 script = ExtResource("3_ggja5")
 
 [node name="DamageBar" type="TextureProgressBar" parent="."]

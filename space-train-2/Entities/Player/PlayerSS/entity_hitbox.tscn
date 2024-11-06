@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhsc1c1ccq0q3"]
-
-[ext_resource type="Script" path="res://Entities/entity_hitbox.gd" id="1_2ytkd"]
-
-[node name="EntityHitbox" type="Area2D"]
-monitorable = false
-script = ExtResource("1_2ytkd")

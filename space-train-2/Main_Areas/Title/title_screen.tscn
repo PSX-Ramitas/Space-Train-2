@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://v68rubr571l"]
+[gd_scene load_steps=60 format=3 uid="uid://v68rubr571l"]
 
 [ext_resource type="Texture2D" uid="uid://bntaopptrds6i" path="res://Main_Areas/Title/Space Background(1).png" id="1_uu0sr"]
 [ext_resource type="Texture2D" uid="uid://cw6d4uhbfttth" path="res://Main_Areas/Title/Space Background(2).png" id="2_fki7b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Main_Areas/Title/title.gd" id="3_a787a"]
 [ext_resource type="PackedScene" uid="uid://pmqkwyfmea3m" path="res://UI/temp_level_select.tscn" id="6_pk7ou"]
 [ext_resource type="PackedScene" uid="uid://db6nsiuqoytme" path="res://UI/Settings/Settings.tscn" id="8_fnm3i"]
+[ext_resource type="AudioStream" uid="uid://buqtfso35mpsm" path="res://UI/Music/Lament Of The Ancients - Asher Fulero.mp3" id="8_r3n1r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkuu2"]
 atlas = ExtResource("2_x7ev4")
@@ -467,6 +468,11 @@ offset_right = 211.0
 offset_bottom = -19.0
 scale = Vector2(1.7, 1.7)
 text = "Load Game"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_r3n1r")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Options" to="Control" method="_on_options_pressed"]

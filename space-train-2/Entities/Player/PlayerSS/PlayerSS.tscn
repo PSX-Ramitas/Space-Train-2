@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=79 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DieState.gd" id="10_cg6rn"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack2State.gd" id="10_g4e6d"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack3State.gd" id="11_nv6s7"]
-[ext_resource type="Script" path="res://Scripts/saver_loader.gd" id="17_6cwph"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epcnk"]
 radius = 5.5
@@ -487,7 +486,9 @@ animations = [{
 size = Vector2(10.5, 29)
 
 [node name="PlayerSS" type="CharacterBody2D"]
+z_index = 5
 scale = Vector2(2, 2)
+collision_layer = 3
 script = ExtResource("1_jaw55")
 health = 30
 movespeed = 325
@@ -631,12 +632,6 @@ animationName = "Death"
 [node name="Item" type="Node" parent="States to be implemented later"]
 
 [node name="Cast" type="Node" parent="States to be implemented later"]
-
-[node name="Utilities" type="Node" parent="."]
-
-[node name="SaveLoader" type="Node" parent="Utilities"]
-unique_name_in_owner = true
-script = ExtResource("17_6cwph")
 
 [connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_area_entered"]

@@ -4,7 +4,7 @@ extends Node
 const SAVE_GAME_PATH = "user://savegame.json" #user folder is guaranteed to be writable when the game is exported
 var current_scene_path = "res://Main_Areas/Planets/Forest/"  # Set a default scene path
 
-@onready var player: Player = $"../.."
+@onready var player: Player = $"../../PlayerSS"
 
 func save_game():
 	var file = FileAccess.open(SAVE_GAME_PATH, FileAccess.WRITE)

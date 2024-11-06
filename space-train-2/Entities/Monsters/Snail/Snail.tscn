@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dd67h2umvkaaf"]
+[gd_scene load_steps=8 format=3 uid="uid://dd67h2umvkaaf"]
 
+[ext_resource type="Script" path="res://Entities/Monsters/Snail/snail.gd" id="1_l7n31"]
 [ext_resource type="Texture2D" uid="uid://bpnqj3mgy7vpo" path="res://Entities/Monsters/Snail/Assets/walk-Sheet.png" id="1_w3td2"]
 [ext_resource type="Script" path="res://Entities/Monsters/Snail/damageable.gd" id="2_s5skt"]
 
@@ -94,6 +95,7 @@ _data = {
 }
 
 [node name="Snail" type="CharacterBody2D"]
+script = ExtResource("1_l7n31")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 2)
@@ -110,3 +112,9 @@ texture = ExtResource("1_w3td2")
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("2_s5skt")
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-19, 8)
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+target_position = Vector2(18, 8)

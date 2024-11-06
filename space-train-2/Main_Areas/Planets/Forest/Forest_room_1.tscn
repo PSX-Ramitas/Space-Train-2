@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://ccfic4x8n7kb0"]
+[gd_scene load_steps=14 format=4 uid="uid://ccfic4x8n7kb0"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_w4ks8"]
 [ext_resource type="Texture2D" uid="uid://cinnmbjlmokyb" path="res://Main_Areas/Planets/Forest/Assets/BG_1.png" id="2_eylef"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="7_cf1wb"]
 [ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="8_5mv0j"]
 [ext_resource type="PackedScene" uid="uid://bv8krd46t8dww" path="res://Entities/Killzones/killzone.tscn" id="9_ric8w"]
+[ext_resource type="Script" path="res://Scripts/saver_loader.gd" id="10_iwtqm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("3_1vhc8")
@@ -549,9 +550,14 @@ position = Vector2(1291, 486)
 
 [node name="killzone" parent="." instance=ExtResource("9_ric8w")]
 position = Vector2(426, 698)
-collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 position = Vector2(-41.5, 92)
 shape = SubResource("WorldBoundaryShape2D_kt2ji")
+
+[node name="Utilities" type="Node" parent="."]
+
+[node name="SaverLoader" type="Node" parent="Utilities"]
+unique_name_in_owner = true
+script = ExtResource("10_iwtqm")

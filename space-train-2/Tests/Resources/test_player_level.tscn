@@ -843,7 +843,7 @@ distance = -42.0
 
 [node name="PlayerSS" parent="." instance=ExtResource("1_rserg")]
 unique_name_in_owner = true
-position = Vector2(556, 329)
+position = Vector2(39, 513)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

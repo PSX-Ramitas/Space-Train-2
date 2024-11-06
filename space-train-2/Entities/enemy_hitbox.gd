@@ -1,7 +1,7 @@
 extends Area2D
 class_name EnemyHitbox
 
-@export var parent: Node
+@onready var enemy: droidEnemy = $".."
 @onready var enemy_health_bar: TextureProgressBar = $"../HealthBar"
 
 
@@ -10,10 +10,10 @@ class_name EnemyHitbox
 signal healthChanged(isHeal : bool, amount : int) 
 
 func _ready() -> void:
-	if parent != null:
-		enemy_health_bar.init_health(parent.Health)
-		enemy_health_bar._set_health(parent.Health)
-	
+	var initial_health = enemy.get_health()
+	print("Enemy Health: ", enemy.health)
+	enemy_health_bar.init_health(initial_health)
+	enemy_health_bar._set_health(initial_health)
 
 func take_damage(damageAmount: int):
 	#if (grandparent.get_class() == "Player") or (grandparent.get_class() == "droidEnemy"):
@@ -21,17 +21,17 @@ func take_damage(damageAmount: int):
 	#		parent.parent.health -= damageAmount
 	#		health_bar._set_health(grandparent.health)
 	var tempHealth
-	if parent.health > 0:
-		tempHealth = parent.Health - damageAmount
-		parent.Health = max(tempHealth, 0)
-		enemy_health_bar._set_health(parent.Health)
+	if enemy.health > 0:
+		tempHealth = enemy.health - damageAmount
+		enemy.health = max(tempHealth, 0)
+		enemy_health_bar._set_health(enemy.health)
 		
 func heal_health(healAmount: int):
 	var tempHealth
-	if parent.Health < 100:
-		tempHealth = parent.Health + healAmount
-		parent.Health = min(tempHealth, 100)
-		enemy_health_bar._set_health(parent.Health)
+	if enemy.health <= enemy.maxHealth:
+		tempHealth = enemy.health + healAmount
+		enemy.health = min(tempHealth, enemy.maxHealth)
+		enemy_health_bar._set_health(enemy.health)
 
 func _on_health_changed(isHeal: bool, amount: int) -> void:
 	#if (grandparent.get_class() == "Player") or (grandparent.get_class() == "droidEnemy"):
@@ -41,13 +41,11 @@ func _on_health_changed(isHeal: bool, amount: int) -> void:
 	#		grandparent.health -= amount
 	#	health_bar._set_health(grandparent.health)
 	if isHeal:
-		if parent!=null and parent.is_class("droidEnemy"):
-			parent.Health += amount
-			enemy_health_bar._set_health(parent.Health)
+		enemy.health += amount
+		enemy_health_bar._set_health(enemy.health)
 	else:
-		if parent!=null and parent.is_class("droidEnemy"):
-			parent.Health -= amount
-			enemy_health_bar._set_health(parent.Health)
+		enemy.health -= amount
+		enemy_health_bar._set_health(enemy.health)
 	
 
 #func _on_danger_area_entered(area: Area2D) -> void:

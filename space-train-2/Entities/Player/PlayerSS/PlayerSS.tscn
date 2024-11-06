@@ -528,6 +528,7 @@ position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_fiavj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("startState")]
 script = ExtResource("3_15oje")

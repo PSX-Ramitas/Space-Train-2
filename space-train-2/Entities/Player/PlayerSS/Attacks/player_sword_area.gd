@@ -14,5 +14,5 @@ func _on_area_entered(area: Area2D) -> void:
 		print("YES SPIKES",area.name)
 		return
 	elif area.get_parent() is not Player and area.get:
-		#area.take_damage(attack)
+		area.take_damage(attack)
 		print(area.name)

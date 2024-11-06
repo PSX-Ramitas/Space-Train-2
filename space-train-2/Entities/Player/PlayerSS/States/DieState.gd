@@ -12,5 +12,5 @@ func process_input(event: InputEvent) -> State:
 func process_physics(delta: float) -> State:
 	timer -= delta
 	if timer <= 0:
-		get_tree().change_scene_to_file("res://ui/temp_level_select.tscn")
+		get_tree().change_scene_to_file("res://Main_Areas/Title/title_screen.tscn")
 	return null

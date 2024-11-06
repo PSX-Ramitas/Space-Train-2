@@ -19,6 +19,9 @@ var currentState = State.Roam
 func _ready() -> void:
 	currentState = State.Roam
 
+func get_health():
+	return health
+
 func _process(delta):
 	if !is_on_floor():
 		velocity.y += gravity * delta

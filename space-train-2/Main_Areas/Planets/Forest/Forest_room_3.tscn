@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfwlhs8wn1yw1"]
+[gd_scene load_steps=16 format=3 uid="uid://cfwlhs8wn1yw1"]
 
 [ext_resource type="Texture2D" uid="uid://v7tmj80lj7oo" path="res://Main_Areas/Planets/Forest/Assets/Terrain_and_Props.png" id="1_mxdqu"]
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="2_mq157"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/saver_loader.gd" id="5_v0ewa"]
 [ext_resource type="PackedScene" uid="uid://by5q7676qapyn" path="res://Main_Areas/Planets/Forest/moving_platform.tscn" id="6_08fm0"]
 [ext_resource type="PackedScene" uid="uid://di1xem8nlo0xw" path="res://Main_Areas/Planets/Forest/hearts.tscn" id="7_fjf7o"]
+[ext_resource type="AudioStream" uid="uid://buqtfso35mpsm" path="res://UI/Music/Lament Of The Ancients - Asher Fulero.mp3" id="8_hkbek"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5x8ui"]
 texture = ExtResource("1_mxdqu")
@@ -605,3 +606,8 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Utilities/Killzones/killzone"]
 position = Vector2(245, 324)
 shape = SubResource("WorldBoundaryShape2D_dbxcp")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hkbek")
+autoplay = true
+bus = &"Music"

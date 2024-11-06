@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c77osvw1ckdqw" path="res://Main_Areas/Title/Space Background(4).png" id="2_rrrvo"]
 [ext_resource type="Texture2D" uid="uid://cw8kpxsf6f801" path="res://Main_Areas/Title/53721020.png" id="2_x7ev4"]
 [ext_resource type="Script" path="res://Main_Areas/Title/title.gd" id="3_a787a"]
-[ext_resource type="PackedScene" path="res://UI/temp_level_select.tscn" id="6_pk7ou"]
+[ext_resource type="PackedScene" uid="uid://pmqkwyfmea3m" path="res://UI/temp_level_select.tscn" id="6_pk7ou"]
 [ext_resource type="PackedScene" uid="uid://db6nsiuqoytme" path="res://UI/Settings/Settings.tscn" id="8_fnm3i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkuu2"]

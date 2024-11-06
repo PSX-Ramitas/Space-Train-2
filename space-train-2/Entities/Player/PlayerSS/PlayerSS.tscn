@@ -1,11 +1,12 @@
-[gd_scene load_steps=79 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=80 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
-[ext_resource type="PackedScene" path="res://Entities/entity_hitbox.tscn" id="2_rlyqj"]
-[ext_resource type="PackedScene" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_s31bq"]
+[ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="2_rlyqj"]
+[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_s31bq"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FSM.gd" id="3_15oje"]
 [ext_resource type="PackedScene" uid="uid://bh8hgh0ot1xyj" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.tscn" id="3_d10ch"]
+[ext_resource type="Script" path="res://Entities/player_hitbox.gd" id="4_0m58k"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.gd" id="4_4cvk8"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/IdleState.gd" id="4_k6y6q"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DashState.gd" id="5_lobj3"]
@@ -491,16 +492,18 @@ health = 30
 movespeed = 325
 attack = 10
 
-[node name="HealthBar" parent="." instance=ExtResource("2_s31bq")]
-offset_left = -274.0
-offset_top = -153.0
-offset_right = -210.0
-offset_bottom = -143.0
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="PlayerHitbox" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_rlyqj")]
+[node name="HealthBar" parent="HUD" instance=ExtResource("2_s31bq")]
+offset_right = 64.0
+offset_bottom = 10.0
+scale = Vector2(2.3, 2.3)
+pivot_offset = Vector2(-18, -15)
+
+[node name="PlayerHitbox" parent="." instance=ExtResource("2_rlyqj")]
 scale = Vector2(0.5, 0.5)
 monitorable = true
-parent = NodePath("..")
+script = ExtResource("4_0m58k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
 position = Vector2(0, -15)

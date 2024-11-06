@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c07t1k3q6u62"]
+[gd_scene load_steps=50 format=3 uid="uid://c07t1k3q6u62"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/enemy.gd" id="1_qnemb"]
 [ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="2_6ml1h"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_kqiiu"]
 [ext_resource type="Texture2D" uid="uid://cgr2jk62pyqwl" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/static idle.png" id="2_q7100"]
 [ext_resource type="Texture2D" uid="uid://bkgeq3v4et2w5" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/hit and death.png" id="3_06cwn"]
-[ext_resource type="Script" path="res://Entities/enemy_hitbox.gd" id="4_e74ss"]
 [ext_resource type="Texture2D" uid="uid://1kde6qds4n2n" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/walk.png" id="5_vvcw1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ja33c"]
@@ -302,20 +301,13 @@ animations = [{
 }]
 
 [node name="enemy" type="CharacterBody2D"]
-position = Vector2(541, 512)
+position = Vector2(-1.19209e-07, -2.38419e-07)
 scale = Vector2(2.5, 2.5)
 slide_on_ceiling = false
 script = ExtResource("1_qnemb")
 health = 30
 movespeed = 50
 attack = 5
-
-[node name="HealthBar" parent="." instance=ExtResource("2_kqiiu")]
-offset_left = -15.2
-offset_top = -1.19998
-offset_right = 48.8
-offset_bottom = 38.8
-scale = Vector2(0.448872, 0.363552)
 
 [node name="AttackArea" parent="." instance=ExtResource("2_88hk7")]
 monitoring = false
@@ -326,10 +318,10 @@ position = Vector2(0, -9.6)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ja33c")
 
-[node name="DroidHitbox" parent="." instance=ExtResource("2_6ml1h")]
+[node name="DroidHitbox" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_6ml1h")]
 position = Vector2(0, -22.4)
 monitorable = true
-script = ExtResource("4_e74ss")
+parent = NodePath("..")
 
 [node name="Node" type="CollisionShape2D" parent="DroidHitbox"]
 position = Vector2(-2.19, 9.7)
@@ -366,6 +358,12 @@ position = Vector2(0, -16)
 scale = Vector2(0.902, 1)
 sprite_frames = SubResource("SpriteFrames_lijxw")
 animation = &"hurt"
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="HUD" instance=ExtResource("2_kqiiu")]
+offset_left = -34.0
+offset_right = 30.0
 
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]
 [connection signal="healthChanged" from="DroidHitbox" to="DroidHitbox" method="_on_health_changed"]

@@ -20,6 +20,9 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	stateMachine.process_input(event)
 
+func _get_health():
+	return health
+
 func _physics_process(delta: float) -> void:
 	if usedDash == true:
 		dashCD -= delta

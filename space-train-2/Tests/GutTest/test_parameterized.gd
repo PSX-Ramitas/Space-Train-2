@@ -18,6 +18,10 @@ func test_with_parameters(parameter=use_parameters(test_params)):
 	
 func test_nothing():
 	print("**----------------**")
+	# You can use await in your tests to allow time to pass before making assertions.
+	await wait_seconds(10)
+	# can also do await wait_frames(5)
+	pass_test('nothing tested, passing')
 
 # The first array contains the name of the parameters, the 2nd array contains the values.
 var named_params = ParameterFactory.named_parameters(['a', 'b'], [[1, 2], ['one', 'two']])

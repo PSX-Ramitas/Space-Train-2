@@ -1,4 +1,4 @@
-class_name SaverLoader
+class_name TestSaverLoader
 extends Node
 # On windows can be found at %APPDATA%\Godot\app_userdata\[project_name]
 const SAVE_GAME_PATH = "res://Tests/Resources/savegame.json" #user folder is guaranteed to be writable when the game is exported

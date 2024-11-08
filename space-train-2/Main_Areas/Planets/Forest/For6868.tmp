@@ -1,16 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://cfwlhs8wn1yw1"]
+[gd_scene load_steps=16 format=3 uid="uid://cfwlhs8wn1yw1"]
 
 [ext_resource type="Texture2D" uid="uid://v7tmj80lj7oo" path="res://Main_Areas/Planets/Forest/Assets/Terrain_and_Props.png" id="1_mxdqu"]
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="2_mq157"]
-[ext_resource type="PackedScene" uid="uid://dd67h2umvkaaf" path="res://Entities/Monsters/Forest/Snail/Snail.tscn" id="3_k8oll"]
+[ext_resource type="PackedScene" uid="uid://dd67h2umvkaaf" path="res://Entities/Monsters/Snail/Snail.tscn" id="3_k8oll"]
 [ext_resource type="PackedScene" uid="uid://bv8krd46t8dww" path="res://Entities/Killzones/killzone.tscn" id="4_bwcan"]
 [ext_resource type="Script" path="res://Scripts/saver_loader.gd" id="5_v0ewa"]
 [ext_resource type="PackedScene" uid="uid://by5q7676qapyn" path="res://Main_Areas/Planets/Forest/moving_platform.tscn" id="6_08fm0"]
 [ext_resource type="PackedScene" uid="uid://di1xem8nlo0xw" path="res://Main_Areas/Planets/Forest/hearts.tscn" id="7_fjf7o"]
 [ext_resource type="AudioStream" uid="uid://buqtfso35mpsm" path="res://UI/Music/Lament Of The Ancients - Asher Fulero.mp3" id="8_hkbek"]
-[ext_resource type="Script" path="res://Main_Areas/Planets/Forest/scene_transition.gd" id="9_3yqu5"]
-[ext_resource type="PackedScene" uid="uid://hb82744trdpu" path="res://Entities/Monsters/Forest/Boar/Boar.tscn" id="10_buw83"]
-[ext_resource type="PackedScene" uid="uid://cmxi04qi3alj0" path="res://Entities/Monsters/Forest/health_changed_manager.tscn" id="11_iwgb5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5x8ui"]
 texture = ExtResource("1_mxdqu")
@@ -551,9 +548,6 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dbxcp"]
 distance = -70.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dm0qu"]
-size = Vector2(188, 57)
-
 [node name="Forest_room_3" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
@@ -582,16 +576,10 @@ script = ExtResource("5_v0ewa")
 [node name="Enemies" type="Node" parent="Utilities"]
 
 [node name="Snail" parent="Utilities/Enemies" instance=ExtResource("3_k8oll")]
-position = Vector2(491, 63)
+position = Vector2(404, 64)
 
 [node name="Snail2" parent="Utilities/Enemies" instance=ExtResource("3_k8oll")]
-position = Vector2(1217, 61)
-
-[node name="Boar" parent="Utilities/Enemies" instance=ExtResource("10_buw83")]
-position = Vector2(-19, 125)
-
-[node name="Boar2" parent="Utilities/Enemies" instance=ExtResource("10_buw83")]
-position = Vector2(601, 112)
+position = Vector2(1003, 63)
 
 [node name="Hearts" type="Node" parent="Utilities"]
 
@@ -623,15 +611,3 @@ shape = SubResource("WorldBoundaryShape2D_dbxcp")
 stream = ExtResource("8_hkbek")
 autoplay = true
 bus = &"Music"
-
-[node name="SceneTransition" type="Area2D" parent="."]
-script = ExtResource("9_3yqu5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTransition"]
-visibility_layer = 2
-position = Vector2(680, -216.5)
-shape = SubResource("RectangleShape2D_dm0qu")
-
-[node name="HealthChangedManager" parent="." instance=ExtResource("11_iwgb5")]
-
-[connection signal="area_entered" from="SceneTransition" to="SceneTransition" method="_on_area_entered"]

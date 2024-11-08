@@ -6,7 +6,7 @@ extends Control
 @onready var options: Button = $Options
 @onready var settings: Control = $Settings
 @onready var load_game: Button = $LoadGame
-
+@onready var saver_loader: SaverLoader = %SaverLoader
 
 func _on_start_pressed() -> void:
 	start.visible = false
@@ -47,8 +47,4 @@ func _on_settings_back_button() -> void:
 
 
 func _on_load_game_pressed() -> void:
-	start.visible = false
-	options.visible = false
-	quit.visible = false
-	load_game.visible = false
-	temp_level_select.visible = true
+	saver_loader.load_game()

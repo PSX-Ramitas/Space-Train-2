@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cfwlhs8wn1yw1"]
+[gd_scene load_steps=19 format=3 uid="uid://cfwlhs8wn1yw1"]
 
 [ext_resource type="Texture2D" uid="uid://v7tmj80lj7oo" path="res://Main_Areas/Planets/Forest/Assets/Terrain_and_Props.png" id="1_mxdqu"]
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="2_mq157"]
@@ -10,7 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://buqtfso35mpsm" path="res://UI/Music/Lament Of The Ancients - Asher Fulero.mp3" id="8_hkbek"]
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/scene_transition.gd" id="9_3yqu5"]
 [ext_resource type="PackedScene" uid="uid://hb82744trdpu" path="res://Entities/Monsters/Forest/Boar/Boar.tscn" id="10_buw83"]
-[ext_resource type="PackedScene" uid="uid://cmxi04qi3alj0" path="res://Entities/Monsters/Forest/health_changed_manager.tscn" id="11_iwgb5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5x8ui"]
 texture = ExtResource("1_mxdqu")
@@ -587,12 +586,6 @@ position = Vector2(491, 63)
 [node name="Snail2" parent="Utilities/Enemies" instance=ExtResource("3_k8oll")]
 position = Vector2(1217, 61)
 
-[node name="Boar" parent="Utilities/Enemies" instance=ExtResource("10_buw83")]
-position = Vector2(-19, 125)
-
-[node name="Boar2" parent="Utilities/Enemies" instance=ExtResource("10_buw83")]
-position = Vector2(601, 112)
-
 [node name="Hearts" type="Node" parent="Utilities"]
 
 [node name="heart" parent="Utilities/Hearts" instance=ExtResource("7_fjf7o")]
@@ -632,6 +625,7 @@ visibility_layer = 2
 position = Vector2(680, -216.5)
 shape = SubResource("RectangleShape2D_dm0qu")
 
-[node name="HealthChangedManager" parent="." instance=ExtResource("11_iwgb5")]
+[node name="Boar" parent="." instance=ExtResource("10_buw83")]
+position = Vector2(-19, 125)
 
 [connection signal="area_entered" from="SceneTransition" to="SceneTransition" method="_on_area_entered"]

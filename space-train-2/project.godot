@@ -15,6 +15,10 @@ run/main_scene="res://Main_Areas/Title/title_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalBusMonster="*res://Scripts/signal_bus_monster.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"

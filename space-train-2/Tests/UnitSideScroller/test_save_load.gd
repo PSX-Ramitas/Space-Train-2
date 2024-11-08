@@ -1,6 +1,6 @@
 extends GutTest
 
-var Level = ResourceLoader.load('res://tests/resources/test_player_level.tscn')
+var Level = ResourceLoader.load("res://Tests/Resources/PlayerTests/test_player_level.tscn")
 
 var _level = null
 var _player = null
@@ -22,8 +22,8 @@ func after_each():
 
 
 func test_verify_setup():
-	assert_not_null(_player, 'player exists')
-	assert_not_null(_saverloader, 'saverloader exists')
+	assert_not_null(_player, 'player does not exists')
+	assert_not_null(_saverloader, 'saverloader does not exists')
 
 
 func test_save_file_exists():

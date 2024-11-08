@@ -1,6 +1,6 @@
 extends GutTest
 
-var Level = ResourceLoader.load('res://tests/resources/test_player_level.tscn')
+var Level = ResourceLoader.load("res://Tests/Resources/PlayerTests/test_player_level.tscn")
 var _level = null
 var _player = null
 var _sender = InputSender.new(Input)
@@ -30,6 +30,7 @@ func test_move_left():
 	await(_sender.idle)
 	#gut.p(_player.position)
 	assert_true(playerStartPos.x > _player.position.x, "player x position should be less than before")
+
 func test_jump():
 	var playerStartPos = _player.position
 	#gut.p(playerStartPos)

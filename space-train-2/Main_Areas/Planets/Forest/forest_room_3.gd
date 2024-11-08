@@ -9,7 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event) -> void:
-	if Input.is_action_just_pressed("up"):
+	if Input.is_action_just_pressed("transform"):
 		var temp_state = player_ss_2.active
 		player_ss_2.active = player_ss.active
 		player_ss.active = temp_state

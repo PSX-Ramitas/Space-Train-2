@@ -1,11 +1,19 @@
 class_name TestSaverLoader
 extends Node
 # On windows can be found at %APPDATA%\Godot\app_userdata\[project_name]
-const SAVE_GAME_PATH = "res://Tests/Resources/savegame.json" #user folder is guaranteed to be writable when the game is exported
-var current_scene_path = "res://Tests/Resources/"  # Set a default scene path
+const SAVE_GAME_PATH = "res://Tests/Resources/PlayerTests/savegame.json" #user folder is guaranteed to be writable when the game is exported
+var current_scene_path = "res://Tests/Resources/PlayerTests/"  # Set a default scene path
 
-@onready var player: Player = $"../../PlayerSS"
+@export var player: Player
+@export var player2: Player2
+
 var loaded_data = {}
+
+func _ready():
+	if(player):
+		pass
+	elif(player2):
+		pass
 
 func save_game():
 	var file = FileAccess.open(SAVE_GAME_PATH, FileAccess.WRITE)

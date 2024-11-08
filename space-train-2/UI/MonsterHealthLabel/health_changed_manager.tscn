@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmxi04qi3alj0"]
 
-[ext_resource type="Script" path="res://Entities/Monsters/Forest/health_changed_manager.gd" id="1_a008v"]
+[ext_resource type="Script" path="res://UI/MonsterHealthLabel/health_changed_manager.gd" id="1_a008v"]
 [ext_resource type="PackedScene" uid="uid://bndvi2u6hycu3" path="res://UI/MonsterHealthLabel/health_changed_label.tscn" id="2_avmke"]
 
 [node name="HealthChangedManager" type="Control"]

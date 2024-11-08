@@ -12,7 +12,7 @@ func enter() -> void:
 	parent.sword.monitoring = false
 	super() #call the enter function of the class we inherit from
 	parent.fallFromPlatform = false
-	parent.velocity.y = 2*jumpVelocity
+	parent.velocity.y = jumpVelocity
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("dash") and !parent.usedDash:

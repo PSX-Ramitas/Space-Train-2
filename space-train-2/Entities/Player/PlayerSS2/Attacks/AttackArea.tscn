@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dkkxtdou8juqn"]
+
+[node name="AttackArea" type="Area2D"]

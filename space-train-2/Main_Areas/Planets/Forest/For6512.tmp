@@ -588,22 +588,6 @@ visibility_layer = 2
 position = Vector2(672, -99)
 shape = SubResource("RectangleShape2D_dm0qu")
 
-[node name="Camera2D2" type="Camera2D" parent="."]
-position = Vector2(614, 14)
-scale = Vector2(2, 2)
-
-[node name="PlayerSS" parent="." instance=ExtResource("15_ubefm")]
-position = Vector2(614, 14)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerSS"]
-remote_path = NodePath("../../Camera2D2")
-
-[node name="PlayerSs2" parent="." instance=ExtResource("12_63lec")]
-position = Vector2(616, 21)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerSs2"]
-remote_path = NodePath("../../Camera2D2")
-
 [node name="Utilities" type="Node" parent="."]
 
 [node name="HealthChangedManager" parent="Utilities" instance=ExtResource("11_iwgb5")]
@@ -658,6 +642,21 @@ shape = SubResource("WorldBoundaryShape2D_dbxcp")
 stream = ExtResource("8_hkbek")
 autoplay = true
 bus = &"Music"
+
+[node name="PlayerSS" parent="." instance=ExtResource("15_ubefm")]
+position = Vector2(614, 14)
+
+[node name="Camera1" type="Camera2D" parent="PlayerSS"]
+
+[node name="PlayerSs2" parent="." instance=ExtResource("12_63lec")]
+position = Vector2(616, 21)
+
+[node name="Camera2" type="Camera2D" parent="PlayerSs2"]
+position = Vector2(72, -27)
+process_callback = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

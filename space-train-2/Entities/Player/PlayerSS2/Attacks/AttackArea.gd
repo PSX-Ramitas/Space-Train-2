@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var damage : int = 10
+@export var damage : int
 @export var player : Player2
 @export var facing_shape : FacingCollisionShape2D
 @onready var attack_area: Area2D = $"."
@@ -8,6 +8,7 @@ extends Area2D
 func _ready():
 	attack_area.monitoring = false
 	monitoring = false
+	damage = player.attack
 	player.connect("facing_direction_changed", _on_player_facing_direction_changed)
 
 func _on_body_entered(body) -> void:

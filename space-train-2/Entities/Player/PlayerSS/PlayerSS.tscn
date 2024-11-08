@@ -488,7 +488,8 @@ size = Vector2(10.5, 29)
 [node name="PlayerSS" type="CharacterBody2D"]
 z_index = 5
 scale = Vector2(2, 2)
-collision_layer = 3
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_jaw55")
 health = 30
 movespeed = 325

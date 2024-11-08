@@ -468,12 +468,12 @@ transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(0, 36.459)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1mvp"]
-size = Vector2(44, 59)
+size = Vector2(83, 61.5)
 
 [node name="PlayerSs2" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
-collision_mask = 7
+collision_mask = 5
 script = ExtResource("1_m120f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -504,7 +504,7 @@ player = NodePath("..")
 facing_shape = NodePath("CollisionShape2D2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(40, -35)
+position = Vector2(56.5, -33.75)
 shape = SubResource("RectangleShape2D_f1mvp")
 script = ExtResource("7_ixl1q")
 facing_left_position = Vector2(-40, -35)

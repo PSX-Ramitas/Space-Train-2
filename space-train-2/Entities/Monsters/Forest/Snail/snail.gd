@@ -27,7 +27,6 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	# Control wheter to move or not to move
 	if direction && state_machine.check_if_can_move():
-		print(direction.x)
 		velocity.x = direction.x * speed
 	elif state_machine.current_state != hit_state:
 		velocity.x = move_toward(velocity.x, 0, speed)

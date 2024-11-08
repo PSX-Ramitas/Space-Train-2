@@ -550,7 +550,6 @@ position = Vector2(1291, 486)
 
 [node name="killzone" parent="." instance=ExtResource("9_ric8w")]
 position = Vector2(426, 698)
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 position = Vector2(-41.5, 92)

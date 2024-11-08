@@ -512,6 +512,8 @@ shape = SubResource("CapsuleShape2D_epcnk")
 
 [node name="PlayerSwordArea" parent="." instance=ExtResource("3_d10ch")]
 position = Vector2(17.5, -10)
+collision_layer = 0
+collision_mask = 4
 monitoring = false
 script = ExtResource("4_4cvk8")
 

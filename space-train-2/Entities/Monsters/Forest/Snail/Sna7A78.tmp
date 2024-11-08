@@ -158,19 +158,16 @@ states/walk/node = SubResource("AnimationNodeAnimation_fp6td")
 states/walk/position = Vector2(385, 100)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_wnq0b"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_topvq")]
 
-[node name="Snail" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
+[node name="Snail" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_l7n31")
-hit_state = NodePath("CharacterStateMachine/Hit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_0p84d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.5, 0)
-scale = Vector2(0.979167, 1)
 texture = ExtResource("1_w3td2")
 hframes = 8
 
@@ -187,36 +184,27 @@ anim_player = NodePath("../AnimationPlayer")
 script = ExtResource("2_s5skt")
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-19, 5)
+target_position = Vector2(-19, 8)
 collision_mask = 3
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
-target_position = Vector2(19, 5)
+target_position = Vector2(18, 8)
 collision_mask = 3
 
-[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "animation_tree")]
+[node name="CharacterStateMachine" type="Node" parent="."]
 script = ExtResource("5_3fav8")
-character = NodePath("..")
-current_state = NodePath("Walk")
-animation_tree = NodePath("../AnimationTree")
 
 [node name="Walk" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("6_nl0tj")
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("6_nl0tj")
-can_move = false
 
-[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "return_state")]
+[node name="Hit" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("7_yq725")
-damageable = NodePath("../../Damageable")
-dead_state = NodePath("../Dead")
-return_state = NodePath("../Walk")
-can_move = false
 
 [node name="Timer" type="Timer" parent="CharacterStateMachine/Hit"]
 wait_time = 0.25
 one_shot = true
 
-[connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]

@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func on_signal_health_changed(node : Node, amount_changed : int):
 	var label_instance : Label = health_changed_label.instantiate()
-	node.add_child(label_instance)
+	node.add_child.call_deferred(label_instance)
 	label_instance.text = str(amount_changed)
 	
 	if(amount_changed > 0):

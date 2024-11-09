@@ -1,10 +1,6 @@
 extends Node
 
-func is_something_cool():
-	return true
-func foo():
-	return "bar"
-
+signal on_swap_player(player : Player, player2 : Player2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

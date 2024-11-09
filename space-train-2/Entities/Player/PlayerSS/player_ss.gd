@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			attackResetTimer -= delta
 		stateMachine.process_physics(delta)
+	
 
 func _process(delta: float) -> void:
 	stateMachine.process_frame(delta)

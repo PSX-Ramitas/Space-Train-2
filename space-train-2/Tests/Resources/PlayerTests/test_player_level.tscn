@@ -874,4 +874,4 @@ script = ExtResource("5_jfh3v")
 player = NodePath("../../PlayerSS")
 
 [node name="Snail" parent="." instance=ExtResource("6_uxciv")]
-position = Vector2(373, 255)
+position = Vector2(334, 258)

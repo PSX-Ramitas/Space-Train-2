@@ -33,6 +33,8 @@ func test_move_left():
 
 func test_jump():
 	var playerStartPos = _player.position
+	_sender.action_down("right").hold_for(0.5)
+	wait_seconds(0.5)
 	#gut.p(playerStartPos)
 	_sender.action_down("jump").wait_frames(10)
 	await(_sender.idle)
@@ -41,6 +43,8 @@ func test_jump():
 
 func test_fall():
 	var playerStartPos = _player.position
+	_sender.action_down("right").hold_for(0.5)
+	wait_seconds(0.5)
 	#gut.p(playerStartPos)
 	_sender.action_down("jump").wait_frames(100)
 	await(_sender.idle)

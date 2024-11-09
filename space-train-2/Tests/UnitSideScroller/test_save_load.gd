@@ -29,9 +29,11 @@ func test_verify_setup():
 func test_save_file_exists():
 	pause_before_teardown()
 	var path = _saverloader.SAVE_GAME_PATH
+	var file = FileAccess.open(path, FileAccess.READ)
 	gut.p(path)
-	gut.p(gut.is_file_empty(path))
-	assert_true(gut.is_file_empty(path), "Save file does not exists")
+	gut.p(file.file_exists(path))
+	assert_true(file.file_exists(path), "Save file does not exists")
+	file.close()
 
 func test_saved_data():
 	var saved_data = {}

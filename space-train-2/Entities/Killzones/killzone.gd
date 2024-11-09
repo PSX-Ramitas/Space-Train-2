@@ -7,7 +7,14 @@ func _on_timer_timeout() -> void:
 	get_tree().reload_current_scene()
 
 func _on_area_entered(area: Area2D) -> void:
-	print("You died!")
+	print("YOU ARE DEAD!")
 	Engine.time_scale = 0.5
 	area.get_node("CollisionShape2D").queue_free()
+	timer.start()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	print(str(body.name) + " DIED TO AN UNMOVABLE OBJECT!")
+	Engine.time_scale = 0.5
+	body.get_node("CollisionShape2D").queue_free()
 	timer.start()

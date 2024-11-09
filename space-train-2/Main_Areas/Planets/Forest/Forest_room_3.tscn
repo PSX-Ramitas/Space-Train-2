@@ -1,6 +1,5 @@
 [gd_scene load_steps=24 format=3 uid="uid://cfwlhs8wn1yw1"]
 
-[ext_resource type="Script" path="res://Main_Areas/Planets/Forest/forest_room_3.gd" id="1_mtcb0"]
 [ext_resource type="Texture2D" uid="uid://v7tmj80lj7oo" path="res://Main_Areas/Planets/Forest/Assets/Terrain_and_Props.png" id="1_mxdqu"]
 [ext_resource type="PackedScene" uid="uid://dd67h2umvkaaf" path="res://Entities/Monsters/Forest/Snail/Snail.tscn" id="3_k8oll"]
 [ext_resource type="PackedScene" uid="uid://bv8krd46t8dww" path="res://Entities/Killzones/killzone.tscn" id="4_bwcan"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cja2emr7q7rtu" path="res://Main_Areas/Planets/Forest/Forest_room_2.tscn" id="13_axltg"]
 [ext_resource type="Script" path="res://UI/Transition/transition_debbuger.gd" id="13_hcbuo"]
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="15_ubefm"]
+[ext_resource type="PackedScene" uid="uid://dm02r6aj02ifx" path="res://UI/PlayerTransformation/player_swapping.tscn" id="17_xh7jf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5x8ui"]
 texture = ExtResource("1_mxdqu")
@@ -568,7 +568,6 @@ _data = {
 distance = -70.0
 
 [node name="Forest_room_3" type="Node2D"]
-script = ExtResource("1_mtcb0")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 
@@ -605,6 +604,10 @@ position = Vector2(616, 21)
 remote_path = NodePath("../../Camera2D2")
 
 [node name="Utilities" type="Node" parent="."]
+
+[node name="PlayerSwapping" parent="Utilities" node_paths=PackedStringArray("player_ss", "player_ss_2") instance=ExtResource("17_xh7jf")]
+player_ss = NodePath("../../PlayerSS")
+player_ss_2 = NodePath("../../PlayerSs2")
 
 [node name="HealthChangedManager" parent="Utilities" instance=ExtResource("11_iwgb5")]
 
@@ -677,4 +680,5 @@ transitioner = NodePath("../Transitioner")
 
 [connection signal="area_entered" from="SceneTransition" to="SceneTransition" method="_on_area_entered"]
 [connection signal="body_entered" from="SceneTransition" to="SceneTransition" method="_on_body_entered"]
+[connection signal="body_entered" from="Utilities/Killzones/killzone" to="Utilities/Killzones/killzone" method="_on_body_entered"]
 [connection signal="toggled" from="CanvasLayer/TransitionDebbuger" to="CanvasLayer/TransitionDebbuger" method="_on_toggled"]

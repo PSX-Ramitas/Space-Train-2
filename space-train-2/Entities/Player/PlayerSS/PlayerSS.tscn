@@ -529,7 +529,7 @@ sprite_frames = SubResource("SpriteFrames_c6t2i")
 animation = &"Attack1"
 flip_h = true
 
-[node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_fiavj")
 

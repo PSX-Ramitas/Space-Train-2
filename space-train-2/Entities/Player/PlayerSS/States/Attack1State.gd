@@ -11,6 +11,7 @@ var nextState: State
 var attackFinished: bool
 
 func enter() -> void:
+	print("Attack1")
 	parent.sword.monitoring = true
 	if !parent.is_on_floor():
 		parent.usedAirAttack = true
@@ -47,6 +48,7 @@ func process_physics(delta: float) -> State:
 		if Input.is_action_just_pressed("attack_melee"):
 
 			nextState = attack2State
+			##parent.sword.monitoring = false
 			return nextState
 		elif Input.is_action_just_pressed("jump"):
 			nextState = jumpState
@@ -63,3 +65,4 @@ func process_physics(delta: float) -> State:
 @rpc("any_peer", "call_local")
 func FinishedAttack():
 	attackFinished = true
+	parent.sword.monitoring = false

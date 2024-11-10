@@ -9,7 +9,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if teleportable:
 		if Input.is_action_just_pressed("interact"):
-			get_tree().change_scene_to_file("res://Main_Areas/Multiplayer/multiplayer_ui.tscn")
+			get_tree().change_scene_to_file("res://UI/temp_level_select.tscn")
 
 
 func TeleporterAreaBodyEntered(body: Node2D) -> void:

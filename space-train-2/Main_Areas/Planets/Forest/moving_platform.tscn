@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://by5q7676qapyn"]
+
+[ext_resource type="Texture2D" uid="uid://v7tmj80lj7oo" path="res://Main_Areas/Planets/Forest/Assets/Terrain_and_Props.png" id="1_gyphe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcg6g"]
+size = Vector2(58, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0tpl"]
+size = Vector2(39, 15)
+
+[node name="moving_platform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gyphe")
+region_enabled = true
+region_rect = Rect2(188, 137, 101, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-19, 7)
+shape = SubResource("RectangleShape2D_qcg6g")
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(29.5, -7.5)
+shape = SubResource("RectangleShape2D_e0tpl")
+one_way_collision = true

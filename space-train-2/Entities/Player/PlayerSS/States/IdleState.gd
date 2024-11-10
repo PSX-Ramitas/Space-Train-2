@@ -10,9 +10,6 @@ extends State
 @export var dieState: State
 
 func enter() -> void:
-
-	parent.sword.monitoring = false
-
 	if parent.is_on_floor():
 		parent.usedAirAttack = false
 	super() #call the enter function of the class we inherit from

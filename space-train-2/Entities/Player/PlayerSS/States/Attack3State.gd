@@ -10,6 +10,7 @@ var nextState: State
 var attackFinished: bool
 
 func enter() -> void:
+	print("Attack3")
 	parent.sword.monitoring = true
 	if !parent.is_on_floor():
 		parent.usedAirAttack = true
@@ -54,3 +55,4 @@ func process_physics(delta: float) -> State:
 @rpc("any_peer", "call_local")
 func FinishedAttack():
 	attackFinished = true
+	parent.sword.monitoring = false

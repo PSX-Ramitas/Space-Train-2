@@ -1,15 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://dd67h2umvkaaf"]
+[gd_scene load_steps=22 format=3 uid="uid://dd67h2umvkaaf"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Snail/snail.gd" id="1_l7n31"]
 [ext_resource type="Texture2D" uid="uid://bpnqj3mgy7vpo" path="res://Entities/Monsters/Forest/Snail/Assets/walk-Sheet.png" id="1_w3td2"]
-[ext_resource type="Script" path="res://Entities/Monsters/Forest/damageable.gd" id="2_s5skt"]
 [ext_resource type="Texture2D" uid="uid://3h64kys7a5v4" path="res://Entities/Monsters/Forest/Snail/Assets/Dead-Sheet.png" id="3_6lt2u"]
+[ext_resource type="PackedScene" uid="uid://b403m60sq8cnl" path="res://Entities/Player/PlayerSS2/Attacks/damageable.tscn" id="4_ekmhb"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS2/States/character_state_machine.gd" id="5_3fav8"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS2/States/State.gd" id="6_nl0tj"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/HitState.gd" id="7_yq725"]
+[ext_resource type="PackedScene" uid="uid://btmktjs3nvoqp" path="res://Entities/Monsters/Forest/Snail/Attacks/attack_area.tscn" id="8_q6pym"]
+[ext_resource type="Script" path="res://Entities/Monsters/Forest/Snail/Attacks/attack_area.gd" id="9_vcayd"]
+[ext_resource type="Script" path="res://Entities/Monsters/Forest/Snail/Attacks/facing_collision_shape_2d.gd" id="10_2kbkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p84d"]
-size = Vector2(33, 28)
+size = Vector2(26, 21)
 
 [sub_resource type="Animation" id="Animation_opyjq"]
 length = 0.001
@@ -158,6 +161,9 @@ states/walk/node = SubResource("AnimationNodeAnimation_fp6td")
 states/walk/position = Vector2(385, 100)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_wnq0b"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_topvq")]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isn7c"]
+size = Vector2(16, 22)
+
 [node name="Snail" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
 collision_layer = 4
 collision_mask = 3
@@ -165,7 +171,7 @@ script = ExtResource("1_l7n31")
 hit_state = NodePath("CharacterStateMachine/Hit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 2)
+position = Vector2(1, 5.5)
 shape = SubResource("RectangleShape2D_0p84d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -183,16 +189,16 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_vyqcy")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Damageable" type="Node" parent="."]
-script = ExtResource("2_s5skt")
-
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-19, 5)
+target_position = Vector2(-15, 5)
 collision_mask = 3
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
-target_position = Vector2(19, 5)
+target_position = Vector2(15, 5)
 collision_mask = 3
+
+[node name="Damageable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_ekmhb")]
+parent = NodePath("..")
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "animation_tree")]
 script = ExtResource("5_3fav8")
@@ -218,5 +224,17 @@ can_move = false
 wait_time = 0.25
 one_shot = true
 
+[node name="AttackArea" parent="." node_paths=PackedStringArray("monster", "facing_shape") instance=ExtResource("8_q6pym")]
+script = ExtResource("9_vcayd")
+monster = NodePath("..")
+facing_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("RectangleShape2D_isn7c")
+script = ExtResource("10_2kbkt")
+facing_left_position = Vector2(-10, 5)
+facing_right_position = Vector2(10, 5)
+
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]
+[connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]

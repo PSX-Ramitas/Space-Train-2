@@ -20,6 +20,7 @@ func state_input(event : InputEvent):
 		attack()
 
 func jump():
+	print(character.health)
 	character.velocity.y = jump_velocity
 	next_state = air_state
 	playback.travel(jump_animation)

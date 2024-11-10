@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Player2
 
 @export var active = false
+@export var layer = get_collision_layer()
 
 @export var maxHealth = 120
 @export var health: int = 120
@@ -12,6 +13,7 @@ class_name Player2
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
+@export var hit_state : State2
 
 var direction : Vector2 = Vector2.ZERO
 
@@ -40,8 +42,10 @@ func _physics_process(delta: float) -> void:
 		update_facing_direction()
 	if active:
 		self.visible = true
+		set_collision_layer_value(2, true)
 	else:
 		self.visible = false
+		set_collision_layer_value(2, false)
 	
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position", direction.x)

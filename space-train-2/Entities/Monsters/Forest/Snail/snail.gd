@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var health = 20
 @export var speed = 60
+@export var attack = 5
 
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
@@ -9,6 +10,8 @@ extends CharacterBody2D
 
 @export var starting_move_direction : Vector2 = Vector2.LEFT
 var direction : Vector2 = Vector2.ZERO
+
+signal facing_direction_changed(facing_right : bool)
 
 @onready var ray_cast_2d_right: RayCast2D = $RayCast2DRight
 @onready var ray_cast_2d_left: RayCast2D = $RayCast2DLeft
@@ -40,3 +43,4 @@ func _process(delta: float) -> void:
 	if ray_cast_2d_left.is_colliding():
 		direction = Vector2.RIGHT
 		sprite_2d.flip_h = true
+	emit_signal("facing_direction_changed", sprite_2d.flip_h)

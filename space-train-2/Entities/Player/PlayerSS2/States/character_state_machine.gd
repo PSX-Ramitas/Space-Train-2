@@ -37,7 +37,6 @@ func switch_states(new_state : State2):
 		current_state.next_state = null
 	
 	current_state = new_state
-	
 	current_state.on_enter()
 
 func _input(event : InputEvent):

@@ -2,7 +2,7 @@ extends State2
 
 class_name HitState
 
-@onready var boar: CharacterBody2D = $"../.."
+@onready var monster: CharacterBody2D = $"../.."
 @export var damageable : Damageable
 @export var dead_state : State2
 @export var dead_animation_node : String = "dead"
@@ -18,14 +18,14 @@ func on_enter():
 
 func on_damageable_hit(node : Node, damage_amount : int, knockback_direction : Vector2):
 	if(damageable.health > 0):
-		boar.velocity = knocback_speed * knockback_direction
+		monster.velocity = knocback_speed * knockback_direction
 		emit_signal("interrupt_state", self)
 	else:
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation_node)
 
 func on_exit():
-	boar.velocity = Vector2.ZERO
+	monster.velocity = Vector2.ZERO
 
 func _on_timer_timeout() -> void:
 	next_state = return_state

@@ -28,9 +28,7 @@ func process_input(event: InputEvent) -> State:
 			return jumpState
 	if Input.is_action_just_pressed('jump'):
 		jumpBufferTimer = jumpBufferTime
-
 	if Input.is_action_just_pressed("attack_melee") and parent.usedAirAttack == false:
-
 		if parent.queuedAttack == 1:
 			return attack1State
 		elif parent.queuedAttack == 2:

@@ -14,12 +14,12 @@ func _process(delta: float) -> void:
 
 
 func _on_hub_pressed() -> void:
-	get_tree().change_scene_to_file("res://Main_Areas/Spaceship/Scenes/spaceship.tscn")
+	get_tree().change_scene_to_file("res://Main_Areas/Spaceship (hub)/Scenes/spaceship_(hub).tscn")
 
 
 func _on_forest_1_pressed() -> void:
-	print("changing scene to forest room 1")
-	get_tree().change_scene_to_file("res://Main_Areas/Planets/Forest/Forest_room_1.tscn")
+	#get_tree().change_scene_to_file("res://Main_Areas/Planets/Forest/Forest_room_1.tscn")
+	LevelManager.loadLevel()
 
 
 func _on_mult_ui_pressed() -> void:

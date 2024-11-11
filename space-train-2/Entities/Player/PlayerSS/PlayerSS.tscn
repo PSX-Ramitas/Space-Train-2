@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=80 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/RunState.gd" id="5_sn4mp"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FallState.gd" id="6_d8ypo"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/JumpState.gd" id="7_bufn4"]
-[ext_resource type="PackedScene" uid="uid://b403m60sq8cnl" path="res://Entities/Player/PlayerSS2/Attacks/damageable.tscn" id="8_dce7g"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack1State.gd" id="8_kiy5g"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DieState.gd" id="10_cg6rn"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack2State.gd" id="10_g4e6d"]
@@ -488,10 +487,8 @@ size = Vector2(10.5, 29)
 
 [node name="PlayerSS" type="CharacterBody2D"]
 scale = Vector2(2, 2)
-collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_jaw55")
-health = 30
+health = 40
 movespeed = 325
 attack = 10
 
@@ -514,7 +511,6 @@ shape = SubResource("CapsuleShape2D_epcnk")
 
 [node name="PlayerSwordArea" parent="." instance=ExtResource("3_d10ch")]
 position = Vector2(17.5, -10)
-collision_mask = 4
 script = ExtResource("4_4cvk8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSwordArea"]
@@ -532,10 +528,7 @@ position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_fiavj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-
-[node name="Damageable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("8_dce7g")]
-parent = NodePath("..")
+position = Vector2(1.5, -68.5)
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("startState")]
 script = ExtResource("3_15oje")
@@ -640,7 +633,6 @@ animationName = "Death"
 
 [connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_area_entered"]
-[connection signal="body_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack1" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack2" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack3" method="FinishedAttack"]

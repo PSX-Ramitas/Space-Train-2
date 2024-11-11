@@ -11,6 +11,8 @@ func _ready() -> void:
 	else:
 		print("No parent found.")
 
+
+
 func _on_area_entered(area: Area2D) -> void:
 	if area is PlayerHitbox:
 		area.take_damage(attack)

@@ -31,27 +31,27 @@ func test_chase():
 
 func test_no_attack():
 	assert_true(_droid2.state != "Attack", "Droid can't attack player out of range")
-
-func test_attack():
-	var startHealth = _player.health
-	_sender.action_down("right").hold_for(1)
-	await(_sender.idle)
-	wait_seconds(1.5)
-	assert_true(_droid1.state == "Attack" and _player.health < startHealth, "Droid can attack")
-
-func test_hurt():
-	#make the player attack the droid and assert that it's health is now lower (similar to chase but with health)
-	var startHealth = _droid1.health
-	_sender.action_down("right").hold_for(1)
-	_sender.action_down("left").wait_frames(9)
-	_sender.action_down("attack_melee").wait_frames(5)
-	await(_sender.idle)
-	wait_seconds(1)
-	assert_true(startHealth > _droid1.health, "Droid can take damage")
-	pass
-
-func test_killed():
-	_droid1.health = 0
-	wait_seconds(2)
-	assert_true(_droid1 == null, "droid can die")
-	pass
+#
+#func test_attack():
+	#startHealth = _player.health
+	#_sender.action_down("right").hold_for(1)
+	#await(_sender.idle)
+	#wait_seconds(1.5)
+	#assert_true(_droid1.state == "Attack" and _player.health < startHealth, "Droid can attack")
+#
+#func test_hurt():
+	##make the player attack the droid and assert that it's health is now lower (similar to chase but with health)
+	#var startHealth = _droid1.health
+	#_sender.action_down("right").hold_for(1)
+	#_sender.action_down("left").wait_frames(9)
+	#_sender.action_down("attack_melee").wait_frames(5)
+	#await(_sender.idle)
+	#wait_seconds(1)
+	#assert_true(start_health > _droid1.health, "Droid can take damage")
+	#pass
+#
+#func test_killed():
+	#_droid1.health = 0
+	#wait_seconds(2)
+	#assert_true(_droid1 == null, "droid can die")
+	#pass

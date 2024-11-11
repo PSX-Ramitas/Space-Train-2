@@ -1,8 +1,8 @@
 class_name Entity
 extends CharacterBody2D
 
-@export var maxHealth = 80
-@export var health: int = 80
+@export var maxHealth= 80
+@export var health: int
 @export var movespeed: int
 @export var attack: int
 

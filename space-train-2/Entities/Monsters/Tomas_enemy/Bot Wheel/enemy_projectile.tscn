@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://uihhmjuyubgw"]
+
+[ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.gd" id="1_j7ihe"]
+[ext_resource type="PackedScene" uid="uid://bx5w1c6jc4as7" path="res://Entities/Monsters/danger_area.tscn" id="2_emtm3"]
+[ext_resource type="Texture2D" uid="uid://f6aj0liui2im" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/flying-bullets-with-fire-smoke-traces/Pi7_cropper.png" id="2_n8m5j"]
+[ext_resource type="Script" path="res://Entities/Monsters/danger_area_projectile.gd" id="3_n7bx4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3nj8"]
+radius = 100.0
+height = 600.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssbh2"]
+radius = 100.0
+height = 600.0
+
+[node name="projectile" type="CharacterBody2D"]
+rotation = 3.14159
+scale = Vector2(0.01, 0.01)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_j7ihe")
+
+[node name="BulletArea" parent="." instance=ExtResource("2_emtm3")]
+position = Vector2(-7.62939e-06, -5.82077e-11)
+script = ExtResource("3_n7bx4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
+position = Vector2(1.52588e-05, 8.73115e-11)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_p3nj8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-100, -0.000255585)
+scale = Vector2(0.8054, 1.02185)
+texture = ExtResource("2_n8m5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.8147e-06)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ssbh2")
+
+[node name="queueFreeTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="BulletArea" to="BulletArea" method="_on_area_entered"]
+[connection signal="timeout" from="queueFreeTimer" to="." method="_on_queue_free_timer_timeout"]

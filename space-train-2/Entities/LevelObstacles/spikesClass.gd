@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Triggered when the player enters the spikes' area
 func _on_area_spikes_entered(area: Area2D) -> void:
-	if area is Hitbox: # might need to check if parent is player if we want to only damage player and not monsters
+	if area is PlayerHitbox: # might need to check if parent is player if we want to only damage player and not monsters
 		# Assume the Player class has a `take_damage` function
 		area.take_damage(spike_damage)
 		print("Player entered Classspikes:", area.name)

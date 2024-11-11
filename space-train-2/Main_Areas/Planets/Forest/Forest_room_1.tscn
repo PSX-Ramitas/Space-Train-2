@@ -504,39 +504,51 @@ tile_set = SubResource("TileSet_88hoh")
 [node name="PlayerSS" parent="." instance=ExtResource("4_dgi62")]
 position = Vector2(581, 92)
 
-[node name="AnimateSpikes" parent="." instance=ExtResource("5_5ota0")]
-position = Vector2(854, 272)
-
-[node name="AnimateSpikes2" parent="." instance=ExtResource("5_5ota0")]
-position = Vector2(872, 272)
-
-[node name="AnimateSpikes3" parent="." instance=ExtResource("5_5ota0")]
-position = Vector2(890, 272)
-
-[node name="AnimateSpikes4" parent="." instance=ExtResource("5_5ota0")]
-position = Vector2(607, 468)
-
-[node name="Spikes" parent="." instance=ExtResource("6_w6c7q")]
-position = Vector2(1566, 334)
-scale = Vector2(-1, 1)
-
-[node name="AnimateSpikes5" parent="." instance=ExtResource("5_5ota0")]
-position = Vector2(908, 272)
-
-[node name="TriggeredSpikes" parent="." instance=ExtResource("7_cf1wb")]
-position = Vector2(1132, 286)
-
-[node name="TriggeredSpikes2" parent="." instance=ExtResource("7_cf1wb")]
-position = Vector2(1911, 477)
-
-[node name="TriggeredSpikes3" parent="." instance=ExtResource("7_cf1wb")]
-position = Vector2(2148, 480)
-
-[node name="TriggeredSpikes4" parent="." instance=ExtResource("7_cf1wb")]
-position = Vector2(2607, 476)
-
-[node name="TriggeredSpikes5" parent="." instance=ExtResource("7_cf1wb")]
-position = Vector2(2679, 476)
-
 [node name="enemy" parent="." instance=ExtResource("8_5mv0j")]
 position = Vector2(1291, 486)
+
+[node name="enemy2" parent="." instance=ExtResource("8_5mv0j")]
+position = Vector2(1671, 255)
+
+[node name="enemy3" parent="." instance=ExtResource("8_5mv0j")]
+position = Vector2(2524, 475)
+
+[node name="enemy4" parent="." instance=ExtResource("8_5mv0j")]
+position = Vector2(2270, 155)
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="AnimateSpikes" parent="Spikes" instance=ExtResource("5_5ota0")]
+position = Vector2(854, 272)
+
+[node name="AnimateSpikes2" parent="Spikes" instance=ExtResource("5_5ota0")]
+position = Vector2(872, 272)
+
+[node name="AnimateSpikes3" parent="Spikes" instance=ExtResource("5_5ota0")]
+position = Vector2(890, 272)
+
+[node name="AnimateSpikes4" parent="Spikes" instance=ExtResource("5_5ota0")]
+position = Vector2(607, 468)
+
+[node name="Spikes" parent="Spikes" instance=ExtResource("6_w6c7q")]
+position = Vector2(1566, 334)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="AnimateSpikes5" parent="Spikes" instance=ExtResource("5_5ota0")]
+position = Vector2(908, 272)
+
+[node name="TriggeredSpikes" parent="Spikes" instance=ExtResource("7_cf1wb")]
+position = Vector2(1132, 286)
+
+[node name="TriggeredSpikes2" parent="Spikes" instance=ExtResource("7_cf1wb")]
+position = Vector2(1911, 477)
+
+[node name="TriggeredSpikes3" parent="Spikes" instance=ExtResource("7_cf1wb")]
+position = Vector2(2148, 480)
+
+[node name="TriggeredSpikes4" parent="Spikes" instance=ExtResource("7_cf1wb")]
+position = Vector2(2607, 476)
+
+[node name="TriggeredSpikes5" parent="Spikes" instance=ExtResource("7_cf1wb")]
+position = Vector2(2679, 476)

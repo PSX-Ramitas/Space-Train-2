@@ -26,5 +26,5 @@ func _on_health_changed(isHeal: bool, amount: int) -> void:
 	health_bar._set_health(parent.health)
 
 #func _on_danger_area_entered(area: Area2D) -> void:
-#	healthChanged.emit(false, area.damage)
-#	pass # Replace with function body.
+	#healthChanged.emit(false, area.damage)
+	#pass # Replace with function body.

@@ -368,6 +368,7 @@ sprite_frames = SubResource("SpriteFrames_lijxw")
 animation = &"hurt"
 
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]
+[connection signal="area_entered" from="DroidHitbox" to="DroidHitbox" method="_on_area_entered"]
 [connection signal="healthChanged" from="DroidHitbox" to="DroidHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]

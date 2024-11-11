@@ -13,6 +13,6 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent() is SpikesClass:
 		print("YES SPIKES",area.name)
 		return
-	elif area.get_parent() is not Player and area.get:
+	elif area.get_parent() is not Player and area.get_parent() is Entity:
 		area.take_damage(attack)
 		print(area.name)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.gd" id="1_j7ihe"]
 [ext_resource type="PackedScene" uid="uid://bx5w1c6jc4as7" path="res://Entities/Monsters/danger_area.tscn" id="2_emtm3"]
 [ext_resource type="Texture2D" uid="uid://f6aj0liui2im" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/flying-bullets-with-fire-smoke-traces/Pi7_cropper.png" id="2_n8m5j"]
-[ext_resource type="Script" path="res://Entities/Monsters/danger_area_projectile.gd" id="3_n7bx4"]
+[ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/danger_area_projectile.gd" id="3_n7bx4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3nj8"]
 radius = 100.0

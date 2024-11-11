@@ -6,6 +6,7 @@ extends State
 @export var dashState: State
 @export var dieState: State
 @export var attack3State: State
+@onready var player_sword_area: Area2D = $"../../PlayerSwordArea"
 
 var nextState: State
 var attackFinished: bool
@@ -21,7 +22,7 @@ func enter() -> void:
 		parent.velocity.x = dashVelocity * 0.2
 	else:
 		parent.velocity.x = -dashVelocity * 0.2
-		
+	player_sword_area.apply_attack()
 	parent.queuedAttack = 3
 	attackFinished = false
 	nextState = idleState

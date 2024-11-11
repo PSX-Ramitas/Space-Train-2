@@ -6,12 +6,14 @@ extends State
 @export var dashState: State
 @export var dieState: State
 @export var attack2State: State
+@onready var player_sword_area: Area2D = $"../../PlayerSwordArea"
 
 var nextState: State
 var attackFinished: bool
 
 func enter() -> void:
 	parent.sword.monitoring = true
+	player_sword_area.apply_attack()
 	if !parent.is_on_floor():
 		parent.usedAirAttack = true
 	#kill y movement so that it can not be abused to jump higher
@@ -21,7 +23,6 @@ func enter() -> void:
 		parent.velocity.x = dashVelocity * 0.2
 	else:
 		parent.velocity.x = -dashVelocity * 0.2
-		
 	parent.queuedAttack = 2
 	attackFinished = false
 	nextState = idleState

@@ -5,6 +5,7 @@ extends State
 @export var fallState: State
 @export var dashState: State
 @export var dieState: State
+@onready var player_sword_area: Area2D = $"../../PlayerSwordArea"
 
 var nextState: State
 var attackFinished: bool
@@ -20,7 +21,7 @@ func enter() -> void:
 		parent.velocity.x = dashVelocity * 0.2
 	else:
 		parent.velocity.x = -dashVelocity * 0.2
-		
+	player_sword_area.apply_attack()
 	attackFinished = false
 	nextState = idleState
 	super() #call the enter function of the class we inherit from

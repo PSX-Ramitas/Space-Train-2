@@ -1,6 +1,7 @@
 class_name Player
 extends Entity
 
+@export var active = true
 @onready var animations = $AnimatedSprite2D
 @onready var stateMachine = $FSM
 @onready var sword = $PlayerSwordArea
@@ -24,20 +25,27 @@ func get_health():
 	return health
 
 func _physics_process(delta: float) -> void:
-	if usedDash == true:
-		dashCD -= delta
-	if dashCD <= 0:
-		print("reset dash")
-		dashCD = 2
-		usedDash = false
-	if attackResetTimer < 0:
-		#print("reset atttack")
-		attackResetTimer = 1.5
-		queuedAttack = 1
-	else:
-		attackResetTimer -= delta
-	stateMachine.process_physics(delta)
+	if active:
+		if usedDash == true:
+			dashCD -= delta
+		if dashCD <= 0:
+			print("reset dash")
+			dashCD = 2
+			usedDash = false
+		if attackResetTimer < 0:
+			#print("reset atttack")
+			attackResetTimer = 1.5
+			queuedAttack = 1
+		else:
+			attackResetTimer -= delta
+		stateMachine.process_physics(delta)
+	
 
 func _process(delta: float) -> void:
 	stateMachine.process_frame(delta)
-	pass # Replace with function body.
+	if active:
+		self.visible = true
+		set_collision_layer_value(2, true)
+	else:
+		self.visible = false
+		set_collision_layer_value(2, false)

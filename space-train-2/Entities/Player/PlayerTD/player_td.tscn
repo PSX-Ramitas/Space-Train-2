@@ -1,6 +1,8 @@
+
 [gd_scene load_steps=22 format=3 uid="uid://d0cu0cu5qc4iu"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerTD/player_td.gd" id="1_4451l"]
+
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_v2qt5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vktni"]
@@ -141,7 +143,9 @@ size = Vector2(11, 26.5)
 [node name="PlayerTD" type="CharacterBody2D"]
 position = Vector2(0, -21)
 scale = Vector2(2, 2)
+
 script = ExtResource("1_4451l")
+
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

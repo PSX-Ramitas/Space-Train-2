@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://uihhmjuyubgw"]
+
+[ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.gd" id="1_j7ihe"]
+[ext_resource type="Texture2D" uid="uid://f6aj0liui2im" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/flying-bullets-with-fire-smoke-traces/Pi7_cropper.png" id="2_n8m5j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssbh2"]
+radius = 112.0
+height = 822.0
+
+[node name="projectile" type="Area2D"]
+rotation = 3.14159
+scale = Vector2(0.01, 0.01)
+collision_layer = 2
+script = ExtResource("1_j7ihe")
+SPEED = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-103, -48)
+scale = Vector2(0.8054, 1.02185)
+texture = ExtResource("2_n8m5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-94, -44)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ssbh2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

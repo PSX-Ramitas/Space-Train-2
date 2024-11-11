@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 
 
 func _on_hub_pressed() -> void:
-	get_tree().change_scene_to_file("res://Main_Areas/Spaceship (hub)/Scenes/spaceship_(hub).tscn")
+	get_tree().change_scene_to_file("res://Main_Areas/Spaceship/Scenes/spaceship.tscn")
 
 
 func _on_forest_1_pressed() -> void:

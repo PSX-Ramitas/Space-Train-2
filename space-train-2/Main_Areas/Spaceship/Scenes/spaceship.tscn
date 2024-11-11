@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs01fiiy1fbeh"]
+[gd_scene load_steps=6 format=3 uid="uid://bs01fiiy1fbeh"]
 
+[ext_resource type="Script" path="res://Main_Areas/Spaceship/Scenes/spaceship.gd" id="1_jm4xw"]
 [ext_resource type="PackedScene" uid="uid://crmrjbkdg4irm" path="res://Main_Areas/Spaceship/Scenes/tileset.tscn" id="1_kxdlo"]
 [ext_resource type="Texture2D" uid="uid://bohap2fdm71jb" path="res://Main_Areas/Spaceship/SpaceTrain.webp" id="2_k1hdw"]
 [ext_resource type="PackedScene" uid="uid://d0cu0cu5qc4iu" path="res://Entities/Player/PlayerTD/player_td.tscn" id="3_gahup"]
@@ -8,6 +9,7 @@
 size = Vector2(166, 176)
 
 [node name="Spaceship" type="Node2D"]
+script = ExtResource("1_jm4xw")
 
 [node name="Tileset" parent="." instance=ExtResource("1_kxdlo")]
 
@@ -16,10 +18,6 @@ texture_filter = 1
 position = Vector2(773, 244)
 scale = Vector2(0.18457, 0.18457)
 texture = ExtResource("2_k1hdw")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 11)
-zoom = Vector2(0.75, 0.75)
 
 [node name="TeleporterArea" type="Area2D" parent="."]
 position = Vector2(698, 163)
@@ -31,4 +29,10 @@ shape = SubResource("RectangleShape2D_kxaog")
 [node name="PlayerTD" parent="." instance=ExtResource("3_gahup")]
 position = Vector2(136, 114)
 
+[node name="Camera2D" type="Camera2D" parent="PlayerTD"]
+position = Vector2(-68, -51.5)
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(0.75, 0.75)
+
 [connection signal="body_entered" from="TeleporterArea" to="." method="TeleporterAreaBodyEntered"]
+[connection signal="body_exited" from="TeleporterArea" to="." method="TeleporterAreaBodyExited"]

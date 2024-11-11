@@ -1,10 +1,9 @@
 extends SpikesClass
-
-
+@onready var player_hitbox: PlayerHitbox = $PlayerHitbox
 
 # This function will be triggered when the player enters the spikes' area
 func _on_Triggered_area_entered(area: Area2D) -> void:
-	if area is Hitbox:
+	if area is PlayerHitbox:
 		# Create an array of all animated spikes, cast to Area2D to avoid type errors
 		var spikes_array = [
 			$AnimateSpikes as Area2D, 
@@ -23,7 +22,7 @@ func _on_Triggered_area_entered(area: Area2D) -> void:
 
 
 func _on_Triggered_area_exited(area: Area2D) -> void:
-	if area.get_parent() is Player:
+	if area is PlayerHitbox:
 		# Create an array of all animated spikes, cast to Area2D to avoid type errors
 		var spikes_array = [
 			$AnimateSpikes as Area2D, 

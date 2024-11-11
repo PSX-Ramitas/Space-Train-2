@@ -4,7 +4,7 @@ extends State2
 @export var attack_animation : String = "run"
 
 func on_enter():
-	print("ENTERED WALK STATE")
+	pass
 	
 func state_process(delta: float) -> void:
 	if character.detection_right.is_colliding():
@@ -19,6 +19,5 @@ func state_process(delta: float) -> void:
 
 func attack():
 	#character.speed = 2 * character.speed
-	print("aloha:" + str(attack_state))
 	next_state = attack_state
 	playback.travel(attack_animation)

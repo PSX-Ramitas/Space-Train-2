@@ -33,10 +33,6 @@ project/assembly_name="Space-Train-2"
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/gut/plugin.cfg")
-
 [input]
 
 up={

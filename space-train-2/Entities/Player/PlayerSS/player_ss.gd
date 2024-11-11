@@ -9,7 +9,7 @@ var queuedAttack = 1
 var usedAirAttack = false
 var dashCD = 2
 var usedDash = false
-var attackResetTimer = 3.5
+var attackResetTimer = 1.5
 var fallFromPlatform = false #used to determine if coyote jump is allowed, as player can enter fall state from jump
 var lbp = "r" #last button pressed, used to correct which way the player sprite faces
 
@@ -20,6 +20,9 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	stateMachine.process_input(event)
+
+func get_health():
+	return health
 
 func _physics_process(delta: float) -> void:
 	if active:

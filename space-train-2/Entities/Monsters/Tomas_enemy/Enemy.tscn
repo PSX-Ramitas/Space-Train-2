@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_kqiiu"]
 [ext_resource type="Texture2D" uid="uid://cgr2jk62pyqwl" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/static idle.png" id="2_q7100"]
 [ext_resource type="Texture2D" uid="uid://bkgeq3v4et2w5" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/hit and death.png" id="3_06cwn"]
-[ext_resource type="Script" path="res://Entities/enemy_hitbox.gd" id="5_2po8s"]
+[ext_resource type="Script" path="res://Entities/enemy_hitbox.gd" id="4_e74ss"]
 [ext_resource type="Texture2D" uid="uid://1kde6qds4n2n" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/walk.png" id="5_vvcw1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ja33c"]
@@ -302,7 +302,7 @@ animations = [{
 }]
 
 [node name="enemy" type="CharacterBody2D"]
-position = Vector2(-1.19209e-07, -2.38419e-07)
+position = Vector2(541, 512)
 scale = Vector2(2.5, 2.5)
 slide_on_ceiling = false
 script = ExtResource("1_qnemb")
@@ -311,8 +311,11 @@ movespeed = 50
 attack = 5
 
 [node name="HealthBar" parent="." instance=ExtResource("2_kqiiu")]
-offset_left = -32.0
-offset_right = 32.0
+offset_left = -15.2
+offset_top = -1.19998
+offset_right = 48.8
+offset_bottom = 38.8
+scale = Vector2(0.448872, 0.363552)
 
 [node name="AttackArea" parent="." instance=ExtResource("2_88hk7")]
 monitoring = false
@@ -325,9 +328,8 @@ shape = SubResource("CapsuleShape2D_ja33c")
 
 [node name="DroidHitbox" parent="." instance=ExtResource("2_6ml1h")]
 position = Vector2(0, -22.4)
-collision_layer = 4
 monitorable = true
-script = ExtResource("5_2po8s")
+script = ExtResource("4_e74ss")
 
 [node name="Node" type="CollisionShape2D" parent="DroidHitbox"]
 position = Vector2(-2.19, 9.7)
@@ -338,7 +340,6 @@ position = Vector2(-1.6, -11.2)
 shape = SubResource("RectangleShape2D_g5uan")
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 position = Vector2(4.76837e-08, 1.90735e-06)
 collision_layer = 0
 monitorable = false
@@ -367,6 +368,7 @@ sprite_frames = SubResource("SpriteFrames_lijxw")
 animation = &"hurt"
 
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]
+[connection signal="healthChanged" from="DroidHitbox" to="DroidHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

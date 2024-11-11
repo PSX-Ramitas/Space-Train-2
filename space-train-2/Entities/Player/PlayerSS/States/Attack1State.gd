@@ -6,15 +6,12 @@ extends State
 @export var dashState: State
 @export var dieState: State
 @export var attack2State: State
-@onready var player_sword_area: Area2D = $"../../PlayerSwordArea"
 
 var nextState: State
 var attackFinished: bool
 
 func enter() -> void:
-	print("Attack1")
 	parent.sword.monitoring = true
-	player_sword_area.apply_attack()
 	if !parent.is_on_floor():
 		parent.usedAirAttack = true
 	#kill y movement so that it can not be abused to jump higher
@@ -24,6 +21,7 @@ func enter() -> void:
 		parent.velocity.x = dashVelocity * 0.2
 	else:
 		parent.velocity.x = -dashVelocity * 0.2
+		
 	parent.queuedAttack = 2
 	attackFinished = false
 	nextState = idleState
@@ -45,11 +43,8 @@ func process_physics(delta: float) -> State:
 		return fallState
 	parent.move_and_slide()
 	if attackFinished == true:
-
 		if Input.is_action_just_pressed("attack_melee"):
-
 			nextState = attack2State
-			##parent.sword.monitoring = false
 			return nextState
 		elif Input.is_action_just_pressed("jump"):
 			nextState = jumpState
@@ -66,4 +61,3 @@ func process_physics(delta: float) -> State:
 @rpc("any_peer", "call_local")
 func FinishedAttack():
 	attackFinished = true
-	parent.sword.monitoring = false

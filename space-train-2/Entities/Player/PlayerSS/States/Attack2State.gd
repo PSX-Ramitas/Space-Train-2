@@ -6,13 +6,11 @@ extends State
 @export var dashState: State
 @export var dieState: State
 @export var attack3State: State
-@onready var player_sword_area: Area2D = $"../../PlayerSwordArea"
 
 var nextState: State
 var attackFinished: bool
 
 func enter() -> void:
-	print("Attack2")
 	parent.sword.monitoring = true
 	if !parent.is_on_floor():
 		parent.usedAirAttack = true
@@ -23,13 +21,23 @@ func enter() -> void:
 		parent.velocity.x = dashVelocity * 0.2
 	else:
 		parent.velocity.x = -dashVelocity * 0.2
-	player_sword_area.apply_attack()
+		
 	parent.queuedAttack = 3
 	attackFinished = false
 	nextState = idleState
 	super() #call the enter function of the class we inherit from
 
 func process_input(event: InputEvent) -> State:
+	#if Input.is_action_just_pressed("attack"):
+		#nextState = attack3State
+	#elif Input.is_action_just_pressed("jump"):
+		#nextState = jumpState
+	#elif Input.is_action_just_pressed("dash"):
+		#nextState = dashState
+	#else:
+		#nextState = idleState
+	#print("input entered")
+	
 	return null
 
 func process_physics(delta: float) -> State:
@@ -45,24 +53,10 @@ func process_physics(delta: float) -> State:
 		return fallState
 	parent.move_and_slide()
 	if attackFinished == true:
-		if Input.is_action_just_pressed("attack_melee"):
-			nextState = attack3State
-			parent.sword.monitoring = false
-			return nextState
-		elif Input.is_action_just_pressed("jump"):
-			nextState = jumpState
-			return nextState
-		elif Input.is_action_just_pressed("dash"):
-			nextState = dashState
-			return nextState
-		else:
-			nextState = idleState
-			return nextState
+		return nextState
 	return null
 
 
 @rpc("any_peer", "call_local")
 func FinishedAttack():
 	attackFinished = true
-	parent.sword.monitoring = false
-	

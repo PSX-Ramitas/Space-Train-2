@@ -1,12 +1,10 @@
 extends Entity
 class_name droidEnemy
 
-const gravity = 900 #custom gravity
+const gravity =900 #custom gravity
 var windupTimer = .3
 var direction = Vector2.RIGHT
 var player 
-var playerInChaseRange = false
-var playerInAttackRange = false
 @onready var attackArea = $AttackArea
 @onready var animations = $AnimatedSprite2D
 var prevHealth = health
@@ -64,21 +62,21 @@ func AttackState(delta):
 	animations.play("attack")
 	windupTimer -= delta
 	if windupTimer <= 0:
-		attackArea.monitoring = true
+		attackArea.monitoring = true;
 	pass
-
 func HurtState():
+	attackArea.monitoring = false;
 	animations.play("hurt")
 	pass
-
 func DeathState(delta):
 	animations.play("death")
-	attackArea.monitoring = false
+	attackArea.monitoring = false;
 	pass
 
 func choose(array):
 	array.shuffle()
 	return array.front()
+
 
 func _on_direction_timer_timeout() -> void:
 	$DirectionTimer.wait_time= choose([1.5,2.0,2.5])
@@ -89,31 +87,23 @@ func _on_direction_timer_timeout() -> void:
 func _on_detection_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player:
 		player = area.get_parent()
-		playerInChaseRange = false
 		currentState = State.Chase
 	pass # Replace with function body.
 
 func _on_detection_area_area_exited(area: Area2D) -> void:
 	if area.get_parent() is Player:
-		playerInChaseRange = false
 		currentState = State.Roam
 
 func _on_attack_range_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player:
-		playerInAttackRange = true
 		currentState = State.Attack
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	match currentState:
 		State.Attack:
-			attackArea.monitoring = false
 			windupTimer = .5
 			currentState = State.Roam
-			if playerInAttackRange:
-				currentState = State.Attack
 		State.Hurt:
 			currentState = State.Roam
-			if playerInAttackRange:
-				currentState = State.Attack
 		State.Death:
 			queue_free()

@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://d0cu0cu5qc4iu" path="res://Entities/Player/PlayerTD/player_td.tscn" id="2_lc86o"]
 
 [node name="TestHubLevel" type="Node2D"]
-position = Vector2(182, 124)
 
 [node name="Tileset" parent="." instance=ExtResource("1_q86v3")]
 

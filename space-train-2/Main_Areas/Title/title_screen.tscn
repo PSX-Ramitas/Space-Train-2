@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://v68rubr571l"]
+[gd_scene load_steps=59 format=3 uid="uid://v68rubr571l"]
 
 [ext_resource type="Texture2D" uid="uid://bntaopptrds6i" path="res://Main_Areas/Title/Space Background(1).png" id="1_uu0sr"]
 [ext_resource type="Texture2D" uid="uid://cw6d4uhbfttth" path="res://Main_Areas/Title/Space Background(2).png" id="2_fki7b"]
@@ -6,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cw8kpxsf6f801" path="res://Main_Areas/Title/53721020.png" id="2_x7ev4"]
 [ext_resource type="Script" path="res://Main_Areas/Title/title.gd" id="3_a787a"]
 [ext_resource type="PackedScene" uid="uid://pmqkwyfmea3m" path="res://UI/temp_level_select.tscn" id="6_pk7ou"]
-[ext_resource type="AudioStream" uid="uid://kx8lr636i5dx" path="res://UI/Music/Chasing Shadows in Space.mp3" id="8_704li"]
 [ext_resource type="PackedScene" uid="uid://db6nsiuqoytme" path="res://UI/Settings/Settings.tscn" id="8_fnm3i"]
-[ext_resource type="Script" path="res://Scripts/saver_loader.gd" id="9_dcftg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkuu2"]
 atlas = ExtResource("2_x7ev4")
@@ -413,10 +411,10 @@ script = ExtResource("3_a787a")
 z_index = 10
 texture_filter = 1
 layout_mode = 0
-offset_left = 115.0
-offset_top = -115.0
-offset_right = 211.0
-offset_bottom = -84.0
+offset_left = 113.0
+offset_top = -65.0
+offset_right = 209.0
+offset_bottom = -34.0
 scale = Vector2(1.7, 1.7)
 text = "Start Game"
 
@@ -424,10 +422,10 @@ text = "Start Game"
 z_index = 10
 texture_filter = 1
 layout_mode = 0
-offset_left = 115.0
-offset_top = 20.0
-offset_right = 211.0
-offset_bottom = 51.0
+offset_left = 113.0
+offset_top = 23.0
+offset_right = 209.0
+offset_bottom = 54.0
 scale = Vector2(1.7, 1.7)
 text = "Options
 "
@@ -460,31 +458,9 @@ offset_top = -184.0
 offset_right = -383.0
 offset_bottom = -184.0
 
-[node name="LoadGame" type="Button" parent="Control"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 115.0
-offset_top = -50.0
-offset_right = 211.0
-offset_bottom = -19.0
-scale = Vector2(1.7, 1.7)
-text = "Load Game"
-
-[node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_704li")
-autoplay = true
-bus = &"Music"
-
-[node name="Utilities" type="Node" parent="."]
-
-[node name="SaverLoader" type="Node" parent="Utilities"]
-unique_name_in_owner = true
-script = ExtResource("9_dcftg")
-
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Options" to="Control" method="_on_options_pressed"]
 [connection signal="pressed" from="Control/Quit" to="Control" method="_on_quit_pressed"]
 [connection signal="back_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_back_pressed"]
 [connection signal="multUI_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_mult_ui_pressed"]
 [connection signal="backButton" from="Control/Settings" to="Control" method="_on_settings_back_button"]
-[connection signal="pressed" from="Control/LoadGame" to="Control" method="_on_load_game_pressed"]

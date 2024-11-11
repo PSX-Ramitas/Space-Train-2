@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name SnailMonster
+
 @export var health = 20
 @export var speed = 60
 @export var attack = 5

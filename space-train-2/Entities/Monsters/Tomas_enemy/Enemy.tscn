@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="2_6ml1h"]
 [ext_resource type="Texture2D" uid="uid://dpp0s8ntfa3kj" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/shock attack.png" id="2_6p04v"]
 [ext_resource type="PackedScene" uid="uid://bx5w1c6jc4as7" path="res://Entities/Monsters/danger_area.tscn" id="2_88hk7"]
-[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://ui/Health Bar/texture_health_bar.tscn" id="2_kqiiu"]
+[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_kqiiu"]
 [ext_resource type="Texture2D" uid="uid://cgr2jk62pyqwl" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/static idle.png" id="2_q7100"]
 [ext_resource type="Texture2D" uid="uid://bkgeq3v4et2w5" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/hit and death.png" id="3_06cwn"]
 [ext_resource type="Script" path="res://Entities/enemy_hitbox.gd" id="5_2po8s"]
@@ -325,6 +325,7 @@ shape = SubResource("CapsuleShape2D_ja33c")
 
 [node name="DroidHitbox" parent="." instance=ExtResource("2_6ml1h")]
 position = Vector2(0, -22.4)
+collision_layer = 4
 monitorable = true
 script = ExtResource("5_2po8s")
 

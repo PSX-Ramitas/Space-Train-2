@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://b435rpsitgkek"]
+[gd_scene load_steps=6 format=4 uid="uid://l4r8f153slmv"]
 
-[ext_resource type="Texture2D" path="res://Main_Areas/Planets/Forest/Assets/Terrain_and_Props.png" id="1_p01o7"]
+[ext_resource type="Texture2D" uid="uid://v7tmj80lj7oo" path="res://Main_Areas/Planets/Forest/Assets/Terrain_and_Props.png" id="1_p01o7"]
 [ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="2_j321t"]
-[ext_resource type="PackedScene" uid="uid://25g8re015bm2" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="3_kb0j4"]
+[ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="3_kb0j4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sgrt0"]
 texture = ExtResource("1_p01o7")

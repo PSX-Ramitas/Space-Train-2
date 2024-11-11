@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 LevelManager="*res://Scripts/LevelManager.gd"
 PlayerData="*res://Scripts/PlayerData.gd"
+SignalBusMonster="*res://Scripts/signal_bus_monster.gd"
 
 [display]
 

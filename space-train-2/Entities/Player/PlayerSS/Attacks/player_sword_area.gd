@@ -16,10 +16,15 @@ func _on_area_entered(area: Area2D) -> void:
 			if area.get_parent() is SpikesClass:
 				print("YES SPIKES",area.name)
 				return
+			elif area.get_parent() is Projectile:
+				print("projectile in sword area")
+				pass	
 			elif area.get_parent() is not Player and area.get:
 				area.take_damage(attack)
 				print(area.name)
-	else:
+			
+	else:	
+		print("area.get_parent().name: ", area.get_parent().name)
 		for child in area.get_parent().get_children():
 			if (child is Damageable):
 				var direction_to_damageable = (area.global_position - get_parent().global_position)

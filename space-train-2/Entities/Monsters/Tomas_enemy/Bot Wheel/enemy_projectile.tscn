@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://uihhmjuyubgw"]
+[gd_scene load_steps=7 format=3 uid="uid://cf6a5c0u5l2jb"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.gd" id="1_j7ihe"]
 [ext_resource type="PackedScene" uid="uid://bx5w1c6jc4as7" path="res://Entities/Monsters/danger_area.tscn" id="2_emtm3"]

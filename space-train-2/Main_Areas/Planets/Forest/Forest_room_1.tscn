@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://b4u8btqaiklaf" path="res://Entities/Player/PlayerSS2/PlayerSS2.tscn" id="5_fi446"]
 [ext_resource type="PackedScene" uid="uid://bahjx67ee1f3n" path="res://Entities/LevelObstacles/spikes.tscn" id="6_w6c7q"]
 [ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="7_cf1wb"]
-[ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="8_5mv0j"]
 [ext_resource type="PackedScene" uid="uid://bv8krd46t8dww" path="res://Entities/Killzones/killzone.tscn" id="9_ric8w"]
 [ext_resource type="Script" path="res://Scripts/saver_loader.gd" id="10_iwtqm"]
 [ext_resource type="PackedScene" uid="uid://dm02r6aj02ifx" path="res://UI/PlayerTransformation/player_swapping.tscn" id="12_173k4"]
+[ext_resource type="PackedScene" uid="uid://d1gbrlw0d6k6b" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.tscn" id="13_83q3y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("3_1vhc8")
@@ -583,9 +583,7 @@ position = Vector2(2643, 577)
 
 [node name="Enemies" type="Node" parent="Utilities"]
 
-[node name="enemy" parent="Utilities/Enemies" instance=ExtResource("8_5mv0j")]
-position = Vector2(1255, 587)
-collision_layer = 4
-collision_mask = 3
+[node name="botWheel" parent="." instance=ExtResource("13_83q3y")]
+position = Vector2(1476, 451)
 
 [connection signal="body_entered" from="Utilities/Killzones/killzone" to="Utilities/Killzones/killzone" method="_on_body_entered"]

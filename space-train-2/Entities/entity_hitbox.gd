@@ -10,8 +10,9 @@ class_name Hitbox
 signal healthChanged(isHeal : bool, amount : int) 
 
 func _ready() -> void:
-	health_bar.init_health(parent.health)
-	health_bar._set_health(parent.health)
+	if parent != null:
+		health_bar.init_health(parent.health)
+		health_bar._set_health(parent.health)
 
 func take_damage(damageAmount: int):
 	if parent.health > 0:

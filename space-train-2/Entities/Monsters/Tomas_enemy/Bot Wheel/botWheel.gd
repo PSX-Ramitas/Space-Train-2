@@ -2,6 +2,7 @@ extends Entity
 class_name botWheel
 
 @onready var botWheelIns = get_node(".")
+
 @onready var projectile = load("res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn")
 var can_shoot = true
 var dead = false
@@ -13,12 +14,20 @@ var playerInChaseRange = false
 var playerInAttackRange = false
 @onready var attackArea = $AttackArea
 @onready var animations = $AnimatedSprite2D
+
 var prevHealth = health
 enum State {Roam,Chase,Attack,Hurt,Death,}
 var currentState = State.Roam
 
 
+	
+func get_health(): 
+	return health
+
+
 func _ready() -> void:
+	if botWheelIns != null:
+		print ("node doesnt exist")
 	currentState = State.Roam
 func _sprite_orientation(direction):
 	if direction.x < 0 :

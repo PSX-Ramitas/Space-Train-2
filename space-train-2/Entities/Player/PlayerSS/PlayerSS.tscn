@@ -1,23 +1,28 @@
-[gd_scene load_steps=79 format=3 uid="uid://drr6wuktpctex"]
+[gd_scene load_steps=80 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
-[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://ui/Health Bar/texture_health_bar.tscn" id="2_1dplu"]
-[ext_resource type="PackedScene" uid="uid://bh8hgh0ot1xyj" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.tscn" id="2_cmx2h"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
+[ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="2_rlyqj"]
+[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_s31bq"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FSM.gd" id="3_15oje"]
-[ext_resource type="Script" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.gd" id="3_ot7y0"]
+[ext_resource type="PackedScene" uid="uid://bh8hgh0ot1xyj" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.tscn" id="3_d10ch"]
+[ext_resource type="Script" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.gd" id="4_4cvk8"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/IdleState.gd" id="4_k6y6q"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DashState.gd" id="5_lobj3"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/RunState.gd" id="5_sn4mp"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FallState.gd" id="6_d8ypo"]
+[ext_resource type="PackedScene" uid="uid://b403m60sq8cnl" path="res://Entities/Player/PlayerSS2/Attacks/damageable.tscn" id="7_2htrk"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/JumpState.gd" id="7_bufn4"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack1State.gd" id="8_kiy5g"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DieState.gd" id="10_cg6rn"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack2State.gd" id="10_g4e6d"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack3State.gd" id="11_nv6s7"]
-[ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="13_3dtro"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4tbcm"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epcnk"]
+radius = 5.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tafla"]
+size = Vector2(20, 25.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmg1m"]
 atlas = ExtResource("2_qrcop")
@@ -481,54 +486,58 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fiavj"]
 size = Vector2(10.5, 29)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_85ix6"]
-height = 48.0
-
 [node name="PlayerSS" type="CharacterBody2D"]
+z_index = 5
 scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_jaw55")
 health = 30
 movespeed = 325
 attack = 10
 
-[node name="HealthBar" parent="." instance=ExtResource("2_1dplu")]
+[node name="HealthBar" parent="." instance=ExtResource("2_s31bq")]
 offset_left = -274.0
 offset_top = -153.0
 offset_right = -210.0
 offset_bottom = -143.0
-scale = Vector2(3, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="PlayerSwordArea" parent="." instance=ExtResource("2_cmx2h")]
-position = Vector2(17.5, -10)
-rotation = -1.48882
-monitorable = false
-script = ExtResource("3_ot7y0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSwordArea"]
-rotation = -0.541655
-shape = SubResource("CircleShape2D_4tbcm")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_c6t2i")
-animation = &"Attack3"
-flip_h = true
-
-[node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
-shape = SubResource("RectangleShape2D_fiavj")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="PlayerHitbox" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("13_3dtro")]
+[node name="PlayerHitbox" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_rlyqj")]
 scale = Vector2(0.5, 0.5)
 monitorable = true
 parent = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(0, -24)
-shape = SubResource("CapsuleShape2D_85ix6")
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_epcnk")
+
+[node name="PlayerSwordArea" parent="." instance=ExtResource("3_d10ch")]
+position = Vector2(17.5, -10)
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+script = ExtResource("4_4cvk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSwordArea"]
+position = Vector2(0, -2.75)
+shape = SubResource("RectangleShape2D_tafla")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_c6t2i")
+animation = &"Dash"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_fiavj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Damageable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("7_2htrk")]
+parent = NodePath("..")
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("startState")]
 script = ExtResource("3_15oje")
@@ -631,9 +640,9 @@ animationName = "Death"
 
 [node name="Cast" type="Node" parent="States to be implemented later"]
 
+[connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_area_entered"]
+[connection signal="body_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack1" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack2" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack3" method="FinishedAttack"]
-[connection signal="area_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_danger_area_entered"]
-[connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]

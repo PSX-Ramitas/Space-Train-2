@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bahjx67ee1f3n"]
+
+[ext_resource type="Script" path="res://Entities/LevelObstacles/spikes.gd" id="1_tpkkr"]
+[ext_resource type="Texture2D" uid="uid://cj5yb8uhjkkdw" path="res://Entities/LevelObstacles/Obstacle_Assets/16-bit-spike-Sheet.png" id="2_1hh6i"]
+
+[node name="Spikes" type="Area2D" groups=["Traps"]]
+monitorable = false
+script = ExtResource("1_tpkkr")
+
+[node name="16-bit-spike-sheet" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1)
+texture = ExtResource("2_1hh6i")
+hframes = 4
+frame = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1.8, -0.0572119)
+scale = Vector2(1.125, 1.00481)
+polygon = PackedVector2Array(-10.4889, -7.90478, 3.73333, 0.0569381, -9.6, 7.02345)
+
+[connection signal="area_entered" from="." to="." method="_on_area_spikes_entered"]

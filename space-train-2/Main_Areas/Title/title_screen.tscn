@@ -1,10 +1,14 @@
-[gd_scene load_steps=57 format=3 uid="uid://v68rubr571l"]
+[gd_scene load_steps=61 format=3 uid="uid://v68rubr571l"]
 
 [ext_resource type="Texture2D" uid="uid://bntaopptrds6i" path="res://Main_Areas/Title/Space Background(1).png" id="1_uu0sr"]
 [ext_resource type="Texture2D" uid="uid://cw6d4uhbfttth" path="res://Main_Areas/Title/Space Background(2).png" id="2_fki7b"]
 [ext_resource type="Texture2D" uid="uid://c77osvw1ckdqw" path="res://Main_Areas/Title/Space Background(4).png" id="2_rrrvo"]
 [ext_resource type="Texture2D" uid="uid://cw8kpxsf6f801" path="res://Main_Areas/Title/53721020.png" id="2_x7ev4"]
 [ext_resource type="Script" path="res://Main_Areas/Title/title.gd" id="3_a787a"]
+[ext_resource type="PackedScene" uid="uid://pmqkwyfmea3m" path="res://UI/temp_level_select.tscn" id="6_pk7ou"]
+[ext_resource type="AudioStream" uid="uid://kx8lr636i5dx" path="res://UI/Music/Chasing Shadows in Space.mp3" id="8_704li"]
+[ext_resource type="PackedScene" uid="uid://db6nsiuqoytme" path="res://UI/Settings/Settings.tscn" id="8_fnm3i"]
+[ext_resource type="Script" path="res://Scripts/saver_loader.gd" id="9_dcftg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkuu2"]
 atlas = ExtResource("2_x7ev4")
@@ -387,19 +391,21 @@ texture = ExtResource("2_rrrvo")
 
 [node name="Stars" type="Sprite2D" parent="Sprites"]
 z_index = 1
-position = Vector2(563, 318)
+position = Vector2(644, 256)
+scale = Vector2(1.01714, 1.01805)
 texture = ExtResource("2_fki7b")
 
 [node name="BG" type="Sprite2D" parent="Sprites"]
-position = Vector2(549, 398)
+position = Vector2(586, 361)
+scale = Vector2(1.11385, 1.03135)
 texture = ExtResource("1_uu0sr")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 824.0
+offset_left = 848.0
 offset_top = 413.0
-offset_right = 1147.0
+offset_right = 1171.0
 offset_bottom = 662.0
 script = ExtResource("3_a787a")
 
@@ -407,12 +413,24 @@ script = ExtResource("3_a787a")
 z_index = 10
 texture_filter = 1
 layout_mode = 0
-offset_left = 113.0
-offset_top = 9.99999
-offset_right = 209.0
-offset_bottom = 41.0
+offset_left = 115.0
+offset_top = -115.0
+offset_right = 211.0
+offset_bottom = -84.0
 scale = Vector2(1.7, 1.7)
 text = "Start Game"
+
+[node name="Options" type="Button" parent="Control"]
+z_index = 10
+texture_filter = 1
+layout_mode = 0
+offset_left = 115.0
+offset_top = 20.0
+offset_right = 211.0
+offset_bottom = 51.0
+scale = Vector2(1.7, 1.7)
+text = "Options
+"
 
 [node name="Quit" type="Button" parent="Control"]
 z_index = 10
@@ -425,5 +443,48 @@ offset_bottom = 151.0
 scale = Vector2(1.7, 1.7)
 text = "Exit Game"
 
+[node name="TempLevelSelect" parent="Control" instance=ExtResource("6_pk7ou")]
+visible = false
+z_index = 10
+offset_left = 189.0
+offset_top = -33.0
+offset_right = 189.0
+offset_bottom = -33.0
+
+[node name="Settings" parent="Control" instance=ExtResource("8_fnm3i")]
+visible = false
+z_index = 10
+layout_mode = 1
+offset_left = -383.0
+offset_top = -184.0
+offset_right = -383.0
+offset_bottom = -184.0
+
+[node name="LoadGame" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 115.0
+offset_top = -50.0
+offset_right = 211.0
+offset_bottom = -19.0
+scale = Vector2(1.7, 1.7)
+text = "Load Game"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_704li")
+autoplay = true
+bus = &"Music"
+
+[node name="Utilities" type="Node" parent="."]
+
+[node name="SaverLoader" type="Node" parent="Utilities"]
+unique_name_in_owner = true
+script = ExtResource("9_dcftg")
+
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
+[connection signal="pressed" from="Control/Options" to="Control" method="_on_options_pressed"]
 [connection signal="pressed" from="Control/Quit" to="Control" method="_on_quit_pressed"]
+[connection signal="back_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_back_pressed"]
+[connection signal="multUI_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_mult_ui_pressed"]
+[connection signal="backButton" from="Control/Settings" to="Control" method="_on_settings_back_button"]
+[connection signal="pressed" from="Control/LoadGame" to="Control" method="_on_load_game_pressed"]

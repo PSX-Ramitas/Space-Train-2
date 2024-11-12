@@ -2,7 +2,7 @@ extends Area2D
 
 var sword_area
 var attack = 3
-@onready var player_hitbox = $PlayerHitbox
+#@onready var player_hitbox = $PlayerHitbox
 
 func _on_area_entered(area: Area2D) -> void:
 	if area == null:

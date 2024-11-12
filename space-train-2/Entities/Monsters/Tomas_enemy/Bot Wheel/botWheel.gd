@@ -144,22 +144,23 @@ func _on_attack_range_area_area_exited(area: Area2D) -> void:
 		currentState = State.Chase
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	match currentState:
-		State.Attack:
-			attackArea.monitoring = false
-			windupTimer = .5
-			currentState = State.Roam
-			if playerInAttackRange:
-				currentState = State.Attack
-				shoot()
-		State.Hurt:
-			currentState = State.Roam
-			if playerInAttackRange:
-				currentState = State.Attack
-				shoot()
-		State.Death:
-			dead =true
-			queue_free()
+	if botWheelIns:
+		match currentState:
+			State.Attack:
+				attackArea.monitoring = false
+				windupTimer = .5
+				currentState = State.Roam
+				if playerInAttackRange:
+					currentState = State.Attack
+					shoot()
+			State.Hurt:
+				currentState = State.Roam
+				if playerInAttackRange:
+					currentState = State.Attack
+					shoot()
+			State.Death:
+				dead =true
+				queue_free()
 
 
 func _on_shooting_timer_timeout() -> void:

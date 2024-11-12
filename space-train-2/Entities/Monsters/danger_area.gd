@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.get_parent() is Player:
+	if area.get_parent() is PlayerHitbox:
 		area.take_damage(attack)
 		print(area.name)
 		print(area.get_parent().health)

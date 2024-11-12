@@ -224,7 +224,6 @@ size = Vector2(20, 26)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_q3jh0")
-attack = 0
 hit_state = NodePath("CharacterStateMachine/Hit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -3,8 +3,10 @@ extends Control
 @export var player_ss: Player
 @export var player_ss_2: Player2
 
+var PlayerTransformer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	PlayerTransformer = get_node("/Scripts/PlayerTransformer")  # Ensure this path is correct
 	PlayerTransformer.connect("on_swap_player", player_to_monster)
 
 func _input(event) -> void:

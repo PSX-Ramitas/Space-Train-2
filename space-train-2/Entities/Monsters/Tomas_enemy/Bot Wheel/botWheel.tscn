@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://cyeymgx33i0eh"]
+[gd_scene load_steps=80 format=3 uid="uid://d1gbrlw0d6k6b"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.gd" id="1_t6rrs"]
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_7iy6m"]

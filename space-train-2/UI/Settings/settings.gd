@@ -12,7 +12,6 @@ func _on_music_volume_value_changed(value: float) -> void:
 
 func _on_sfx_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(2, value)
-	test_sfx.play()
 
 func _on_resolution_item_selected(index: int) -> void:
 	match index:

@@ -9,9 +9,10 @@ signal healthChanged(isHeal: bool, amount: int)
 var is_alive
 func _ready() -> void:
 	is_alive = true
-	var initial_health = PlayerData.health
+	if PlayerData.health == null or PlayerData.health == 0:
+		PlayerData.health = PlayerData.maxHealth
 	print("Player Health: ", PlayerData.health)
-	player_health_bar.init_health(initial_health)
+	player_health_bar.init_health(PlayerData.health)
 
 func take_damage(damageAmount: int):
 	if is_alive: 

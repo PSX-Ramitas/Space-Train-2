@@ -18,10 +18,6 @@ func _ready():
 	
 func _physics_process(delta): 
 	velocity = dir * SPEED
-	#if dir.x > 0 :
-	#	$Sprite2D.flip_h = true
-	#else:
-	#	$Sprite2D.flip_h = false
 	$Sprite2D.flip_h = dir.x > 0 
 	position += dir * SPEED *delta 
 

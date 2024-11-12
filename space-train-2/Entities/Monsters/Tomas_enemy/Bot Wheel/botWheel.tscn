@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ctev5wkp8nqkk" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/shoot with FX.png" id="13_4koie"]
 [ext_resource type="Texture2D" uid="uid://b5onmny6w10ji" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/static idle.png" id="14_otm6x"]
 [ext_resource type="Texture2D" uid="uid://bakf00de1p0fl" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/wake.png" id="15_fli2n"]
-[ext_resource type="PackedScene" uid="uid://cf6a5c0u5l2jb" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn" id="16_70gbj"]
+[ext_resource type="PackedScene" uid="uid://c58t3k1w873be" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn" id="16_70gbj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4uma"]
 radius = 4.4
@@ -506,6 +506,8 @@ offset_bottom = 38.8
 
 [node name="CloseAttackArea" parent="." instance=ExtResource("3_48m00")]
 position = Vector2(-18, -10)
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CloseAttackArea"]
 position = Vector2(-0.8, 2)
@@ -522,6 +524,7 @@ shape = SubResource("CapsuleShape2D_wc2l1")
 [node name="ShootingDetectionArea" type="Area2D" parent="."]
 position = Vector2(-18.8, -10.4)
 collision_layer = 0
+monitorable = false
 
 [node name="DetectionAreaBody" type="CollisionShape2D" parent="ShootingDetectionArea"]
 position = Vector2(0, 1.99994)
@@ -532,6 +535,7 @@ shape = SubResource("SegmentShape2D_5mw7j")
 autostart = true
 
 [node name="AttackRangeArea" type="Area2D" parent="."]
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea"]
 position = Vector2(-14.8, -7.99999)
@@ -546,8 +550,6 @@ animation = &"move"
 
 [node name="projectile" parent="." instance=ExtResource("16_70gbj")]
 position = Vector2(-14.8, -8.4)
-collision_layer = 1
-collision_mask = 1
 
 [node name="Shooting_Timer" type="Timer" parent="."]
 wait_time = 0.5

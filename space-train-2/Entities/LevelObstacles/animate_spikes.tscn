@@ -167,7 +167,6 @@ disabled = true
 libraries = {
 "": SubResource("AnimationLibrary_7romn")
 }
-autoplay = "Spikes_Animation"
 
 [connection signal="area_entered" from="." to="." method="_on_animated_Spikes_entered"]
 [connection signal="animation_finished" from="AnimatedSpikes" to="." method="_on_animated_spikes_animation_finished"]

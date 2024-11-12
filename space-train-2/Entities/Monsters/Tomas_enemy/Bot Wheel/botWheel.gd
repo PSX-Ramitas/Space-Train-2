@@ -144,7 +144,6 @@ func _on_attack_range_area_area_exited(area: Area2D) -> void:
 		currentState = State.Chase
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if botWheelIns:
 		match currentState:
 			State.Attack:
 				attackArea.monitoring = false

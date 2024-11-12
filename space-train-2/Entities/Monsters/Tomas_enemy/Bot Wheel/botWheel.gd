@@ -26,9 +26,8 @@ func get_health():
 
 
 func _ready() -> void:
-	if botWheelIns != null:
-		print ("node doesnt exist")
 	currentState = State.Roam
+
 func _sprite_orientation(direction):
 	if direction.x < 0 :
 		$AnimatedSprite2D.flip_h = true

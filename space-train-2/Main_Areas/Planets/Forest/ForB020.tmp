@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ccfic4x8n7kb0"]
+[gd_scene load_steps=11 format=4 uid="uid://ccfic4x8n7kb0"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_w4ks8"]
 [ext_resource type="Texture2D" uid="uid://cinnmbjlmokyb" path="res://Main_Areas/Planets/Forest/Assets/BG_1.png" id="2_eylef"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b5qebaxc55f4r" path="res://Entities/LevelObstacles/animate_spikes.tscn" id="5_5ota0"]
 [ext_resource type="PackedScene" uid="uid://bahjx67ee1f3n" path="res://Entities/LevelObstacles/spikes.tscn" id="6_w6c7q"]
 [ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="7_cf1wb"]
-[ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="8_5mv0j"]
 [ext_resource type="PackedScene" uid="uid://d1gbrlw0d6k6b" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.tscn" id="9_ocw00"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
@@ -544,6 +543,3 @@ position = Vector2(2679, 476)
 
 [node name="botWheel" parent="." instance=ExtResource("9_ocw00")]
 position = Vector2(1082, 220)
-
-[node name="enemy" parent="." instance=ExtResource("8_5mv0j")]
-position = Vector2(1346, 472)

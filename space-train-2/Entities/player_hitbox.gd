@@ -14,10 +14,11 @@ func _ready() -> void:
 	player_health_bar._set_health(initial_health)
 
 func take_damage(damageAmount: int):
-	var new_health = max(0, player_ss.get_health() - damageAmount)
-	player_ss.health = new_health
-	player_health_bar._set_health(new_health)
-	# healthChanged.emit( false, damageAmount)
+	if player_health_bar != null: # added this so game wouldnt crash when player dies -tg
+		var new_health = max(0, player_ss.get_health() - damageAmount)
+		player_ss.health = new_health
+		player_health_bar._set_health(new_health)
+		# healthChanged.emit( false, damageAmount)
 
 func heal_health(healAmount: int):
 	var new_health = min(player_ss.maxHealth, player_ss.get_health() + healAmount)

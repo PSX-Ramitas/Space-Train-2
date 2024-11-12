@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_7iy6m"]
 [ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="3_8drpg"]
 [ext_resource type="PackedScene" uid="uid://bx5w1c6jc4as7" path="res://Entities/Monsters/danger_area.tscn" id="3_48m00"]
-[ext_resource type="Script" path="res://Entities/entity_hitbox.gd" id="4_86r28"]
 [ext_resource type="Texture2D" uid="uid://cskxqtimarqiq" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/charge.png" id="5_b8xyt"]
+[ext_resource type="Script" path="res://Entities/enemy_hitbox.gd" id="5_qstnc"]
 [ext_resource type="Texture2D" uid="uid://cksjhf320agex" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/damaged.png" id="6_g73v7"]
 [ext_resource type="Texture2D" uid="uid://cj17vvdtd2hlv" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/GAS dash FX.png" id="7_lpnxg"]
 [ext_resource type="Texture2D" uid="uid://tfoilpji181k" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/death.png" id="8_036ed"]
@@ -17,10 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://b5onmny6w10ji" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/static idle.png" id="14_otm6x"]
 [ext_resource type="Texture2D" uid="uid://bakf00de1p0fl" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/wake.png" id="15_fli2n"]
 [ext_resource type="PackedScene" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn" id="16_70gbj"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vicpv"]
-radius = 6.0
-height = 19.2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4uma"]
 radius = 4.4
@@ -488,25 +484,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vicpv"]
+radius = 6.0
+height = 19.2
+
 [node name="botWheel" type="CharacterBody2D"]
 position = Vector2(-1.19209e-07, -2.38419e-07)
 scale = Vector2(2.5, 2.5)
 slide_on_ceiling = false
 script = ExtResource("1_t6rrs")
-maxHealth = 40
+maxHealth = 50
 health = 40
 movespeed = 125
 attack = 5
 
 [node name="HealthBar" parent="." instance=ExtResource("2_7iy6m")]
-offset_left = 402.693
-offset_top = 107.921
-offset_right = 466.693
-offset_bottom = 147.921
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-19.2, -8.8)
-shape = SubResource("CapsuleShape2D_vicpv")
+offset_left = -50.4
+offset_top = -1.2
+offset_right = 13.6
+offset_bottom = 38.8
 
 [node name="CloseAttackArea" parent="." instance=ExtResource("3_48m00")]
 position = Vector2(-18, -10)
@@ -518,7 +514,7 @@ position = Vector2(-0.8, 2)
 shape = SubResource("CapsuleShape2D_w4uma")
 
 [node name="botWheelHitbox" parent="." instance=ExtResource("3_8drpg")]
-script = ExtResource("4_86r28")
+script = ExtResource("5_qstnc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="botWheelHitbox"]
 position = Vector2(-19.6, -8.8)
@@ -557,6 +553,11 @@ position = Vector2(-14.8, -8.4)
 [node name="Shooting_Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-19.2, -8.8)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_vicpv")
 
 [connection signal="area_entered" from="CloseAttackArea" to="CloseAttackArea" method="_on_area_entered"]
 [connection signal="area_entered" from="ShootingDetectionArea" to="." method="_on_detection_area_area_entered"]

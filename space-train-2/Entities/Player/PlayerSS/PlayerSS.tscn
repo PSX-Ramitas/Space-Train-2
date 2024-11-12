@@ -19,7 +19,8 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack3State.gd" id="11_nv6s7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epcnk"]
-radius = 5.5
+radius = 13.0
+height = 38.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nevb6"]
 
@@ -487,6 +488,7 @@ size = Vector2(10.5, 29)
 
 [node name="PlayerSS" type="CharacterBody2D"]
 scale = Vector2(2, 2)
+collision_mask = 3
 script = ExtResource("1_jaw55")
 health = 40
 movespeed = 325
@@ -506,7 +508,7 @@ monitorable = true
 script = ExtResource("4_0m58k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(0, -15)
+position = Vector2(6, -24)
 shape = SubResource("CapsuleShape2D_epcnk")
 
 [node name="PlayerSwordArea" parent="." instance=ExtResource("3_d10ch")]

@@ -1,5 +1,4 @@
 extends Area2D
-class_name Hitbox
 
 @export var parent: Node
 @onready var health_bar: TextureProgressBar = $"../HealthBar"

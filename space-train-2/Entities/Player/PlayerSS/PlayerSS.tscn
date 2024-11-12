@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=81 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/RunState.gd" id="5_sn4mp"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FallState.gd" id="6_d8ypo"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/JumpState.gd" id="7_bufn4"]
-[ext_resource type="PackedScene" uid="uid://b403m60sq8cnl" path="res://Entities/Player/PlayerSS2/Attacks/damageable.tscn" id="8_dce7g"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack1State.gd" id="8_kiy5g"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DieState.gd" id="10_cg6rn"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack2State.gd" id="10_g4e6d"]
@@ -504,6 +503,7 @@ offset_right = 64.0
 offset_bottom = 10.0
 scale = Vector2(2.3, 2.3)
 pivot_offset = Vector2(-18, -15)
+step = 0.5
 
 [node name="PauseMenu" parent="HUD" instance=ExtResource("3_ak4tc")]
 
@@ -536,9 +536,6 @@ shape = SubResource("RectangleShape2D_fiavj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
-
-[node name="Damageable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("8_dce7g")]
-parent = NodePath("..")
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("startState")]
 script = ExtResource("3_15oje")

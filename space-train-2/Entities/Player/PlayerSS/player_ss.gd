@@ -25,7 +25,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	stateMachine.process_input(event)
 
 func get_health():
-	return health
+	return PlayerData.health
 
 func _physics_process(delta: float) -> void:
 	updatePlayerData()

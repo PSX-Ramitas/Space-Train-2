@@ -1,6 +1,5 @@
 extends Node
 
-
 # Called when the node enters the scene tree for the first time.
 var levels = [
 	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_1.tscn",

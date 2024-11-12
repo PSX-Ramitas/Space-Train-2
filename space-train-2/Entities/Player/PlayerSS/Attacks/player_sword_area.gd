@@ -17,7 +17,7 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 	elif attacker is Projectile:
 		pass
-	elif attacker is not Player and attacker is Entity:
+	elif attacker is not Player and area is EnemyHitbox:
 			area.take_damage(attack)
 			print("area.name that took damage: ", area.name)
 	else: 

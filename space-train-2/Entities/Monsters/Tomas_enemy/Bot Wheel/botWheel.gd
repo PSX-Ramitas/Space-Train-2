@@ -12,7 +12,7 @@ var direction = Vector2.RIGHT
 var player 
 var playerInChaseRange = false
 var playerInAttackRange = false
-@onready var attackArea = $AttackArea
+@onready var attackArea = $CloseAttackArea
 @onready var animations = $AnimatedSprite2D
 
 var prevHealth = health

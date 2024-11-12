@@ -30,17 +30,19 @@ func _tween_health_and_damage(health_value: float):
 	if fill_tween == null or not fill_tween.is_valid():
 		fill_tween = create_tween()
 	else:
-		fill_tween.kill()
+		fill_tween.stop()
+		fill_tween = create_tween()
 
 	if damage_tween == null or not damage_tween.is_valid():
 		damage_tween = create_tween()
 	else:
-		damage_tween.kill()
+		damage_tween.stop()
+		damage_tween = create_tween()
 
-	fill_tween.tween_property(self, "value", health_value, 0.15).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	fill_tween.tween_property(self, "value", health_value, 0.3).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 
 	if health_value < health:
-		damage_tween.tween_property(damage_bar, "value", health_value, 0.15).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		damage_tween.tween_property(damage_bar, "value", health_value, 0.3).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	else:
 		damage_bar.value = health_value
 
@@ -55,9 +57,10 @@ func _on_timer_timeout():
 	if damage_tween == null or not damage_tween.is_valid():
 		damage_tween = create_tween()
 	else:
-		damage_tween.kill()
+		damage_tween.stop()
+		damage_tween = create_tween()
 
-	damage_tween.tween_property(damage_bar, "value", health, 0.15).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	damage_tween.tween_property(damage_bar, "value", health, 0.3).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 
 	if health <= 0:
 		queue_free()

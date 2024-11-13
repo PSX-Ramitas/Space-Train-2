@@ -12,5 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is PlayerHitbox:
-		area.take_damage(999999999)
+	if area is PlayerHitbox or area is EnemyHitbox:
+		area.take_damage(9999999999)
+	if area.get_parent().get_child(4) == Damageable:
+		var victim = area.get_parent().get_child(4)
+		victim.hit(9999999, Vector2(0,0))

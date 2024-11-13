@@ -525,7 +525,7 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_5x8ui")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dm0qu"]
-size = Vector2(188, 57)
+size = Vector2(176, 55.5)
 
 [sub_resource type="Animation" id="Animation_pyxbu"]
 length = 0.001
@@ -585,7 +585,7 @@ transitioner = NodePath("../CanvasLayer/Transitioner")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTransition"]
 visibility_layer = 2
-position = Vector2(672, -99)
+position = Vector2(681, -114)
 shape = SubResource("RectangleShape2D_dm0qu")
 
 [node name="Camera2D2" type="Camera2D" parent="."]

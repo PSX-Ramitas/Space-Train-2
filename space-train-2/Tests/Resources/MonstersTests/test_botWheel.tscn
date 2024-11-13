@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqvfnx51eiylg"]
+[gd_scene load_steps=13 format=3 uid="uid://cwgof50ububk1"]
 
 [ext_resource type="Texture2D" uid="uid://co32ofmdf04vb" path="res://Tests/Resources/TileSets/tile map.png" id="1_dx7ht"]
 [ext_resource type="Texture2D" uid="uid://deatdv3sr4gym" path="res://Tests/Resources/TileSets/world_tileset.png" id="2_scnlt"]

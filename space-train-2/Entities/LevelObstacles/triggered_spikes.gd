@@ -1,5 +1,4 @@
 extends SpikesClass
-@onready var player_hitbox: PlayerHitbox = $PlayerHitbox
 
 # This function will be triggered when the player enters the spikes' area
 func _on_Triggered_area_entered(area: Area2D) -> void:

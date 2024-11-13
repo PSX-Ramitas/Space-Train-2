@@ -10,12 +10,13 @@ var is_alive
 func _ready() -> void:
 	is_alive = true
 	var curHealth = PlayerData.health
-	if curHealth == 0 or curHealth == null:
+	if PlayerData.health == 0 or PlayerData.health == null:
 		PlayerData.health = PlayerData.maxHealth
 	else:
 		PlayerData.health = curHealth
 	print("Player Health: ", PlayerData.health)
-	player_health_bar.init_health(PlayerData.health)
+	player_health_bar.init_health(PlayerData.maxHealth)
+	player_health_bar._set_health(PlayerData.health)
 
 func take_damage(damageAmount: int):
 	if is_alive: 
@@ -24,7 +25,7 @@ func take_damage(damageAmount: int):
 		player_health_bar._set_health(new_health)
 		if new_health == 0:
 			is_alive = false
-			self.queue_free()
+			self.PROCESS_MODE_DISABLED
 		# healthChanged.emit( false, damageAmount)
 
 func heal_health(healAmount: int):

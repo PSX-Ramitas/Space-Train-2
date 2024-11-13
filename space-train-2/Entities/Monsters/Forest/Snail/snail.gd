@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-class_name SnailMonster
-
 @export var health = 20
 @export var speed = 60
 @export var attack = 5
@@ -22,6 +20,9 @@ signal facing_direction_changed(facing_right : bool)
 func _ready() -> void:
 	animation_tree.active = true
 	direction = starting_move_direction
+
+func get_health():
+	return health
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

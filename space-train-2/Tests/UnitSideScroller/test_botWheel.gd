@@ -35,7 +35,7 @@ class TestBotWheel:
 		await wait_seconds(1)
 		for child in _botWheel.get_children():
 			if (child is EnemyHitbox):
-				child.take_damage(45)
+				child.take_damage(55)
 				
 		await wait_seconds(1)
 		assert_null(_botWheel, 'botWheel did not die')

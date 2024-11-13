@@ -33,6 +33,7 @@ func _on_forfeit_pressed() -> void: #Will change this so that it switches you ba
 	print("lol loser")
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Main_Areas/Title/title_screen.tscn")
+	LevelManager.resetLevelState()
 	
 func _on_exit_pressed() -> void:
 	get_tree().quit()

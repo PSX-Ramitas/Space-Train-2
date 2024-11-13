@@ -13,6 +13,7 @@ class_name Player2
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
+@onready var health_bar: TextureProgressBar = $HUD/HealthBar
 @export var hit_state : State2
 
 var direction : Vector2 = Vector2.ZERO
@@ -46,9 +47,13 @@ func _physics_process(delta: float) -> void:
 	if active:
 		self.visible = true
 		set_collision_layer_value(2, true)
+		if health_bar != null:
+			health_bar.visible = true
 	else:
 		self.visible = false
 		set_collision_layer_value(2, false)
+		if health_bar != null:
+			health_bar.visible = false
 	
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position", direction.x)

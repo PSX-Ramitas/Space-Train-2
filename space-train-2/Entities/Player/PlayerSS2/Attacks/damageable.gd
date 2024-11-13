@@ -5,7 +5,7 @@ class_name Damageable
 @export var parent: CharacterBody2D
 @onready var timer: Timer = $Timer
 @onready var enemy: = $".."
-@onready var enemy_health_bar: TextureProgressBar = $"../HealthBar"
+@export var enemy_health_bar: TextureProgressBar
 
 signal on_hit(node : Node, damage_take : int, knockback_direction : Vector2)
 

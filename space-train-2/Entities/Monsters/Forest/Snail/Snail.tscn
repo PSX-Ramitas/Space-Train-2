@@ -204,8 +204,9 @@ collision_mask = 3
 target_position = Vector2(15, 5)
 collision_mask = 3
 
-[node name="Damageable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_ekmhb")]
+[node name="Damageable" parent="." node_paths=PackedStringArray("parent", "enemy_health_bar") instance=ExtResource("4_ekmhb")]
 parent = NodePath("..")
+enemy_health_bar = NodePath("../HealthBar")
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "animation_tree")]
 script = ExtResource("5_3fav8")

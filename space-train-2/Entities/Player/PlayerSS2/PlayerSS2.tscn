@@ -528,15 +528,16 @@ z_index = 5
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_m120f")
+health = 50
 hit_state = NodePath("CharacterStateMachine/Hit")
 
-[node name="HealthBar" parent="." instance=ExtResource("2_1jtg6")]
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="HUD" instance=ExtResource("2_1jtg6")]
 offset_right = 64.0
 offset_bottom = 10.0
 scale = Vector2(2.3, 2.3)
 pivot_offset = Vector2(-18, -15)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7, -42)
@@ -627,8 +628,9 @@ script = ExtResource("8_v3nte")
 state_machine = NodePath("../CharacterStateMachine")
 player_ss_2 = NodePath("..")
 
-[node name="Damageable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_2nd4x")]
+[node name="Damageable" parent="." node_paths=PackedStringArray("parent", "enemy_health_bar") instance=ExtResource("17_2nd4x")]
 parent = NodePath("..")
+enemy_health_bar = NodePath("../HUD/HealthBar")
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]

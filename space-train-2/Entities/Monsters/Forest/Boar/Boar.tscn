@@ -250,8 +250,9 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_iaq5i")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Damageable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_oc6uk")]
+[node name="Damageable" parent="." node_paths=PackedStringArray("parent", "enemy_health_bar") instance=ExtResource("4_oc6uk")]
 parent = NodePath("..")
+enemy_health_bar = NodePath("../HealthBar")
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "animation_tree")]
 script = ExtResource("5_myluo")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ccfic4x8n7kb0"]
+[gd_scene load_steps=14 format=4 uid="uid://ccfic4x8n7kb0"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scripts/Room1.gd" id="1_wxv3x"]
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="2_wghdo"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="8_nme8t"]
 [ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="9_hd147"]
 [ext_resource type="PackedScene" uid="uid://cyhs8teinbtt1" path="res://Main_Areas/Planets/transition_area.tscn" id="10_d5hcj"]
+[ext_resource type="PackedScene" uid="uid://cf675ehvborw" path="res://Main_Areas/killzone.tscn" id="10_f1gjy"]
+[ext_resource type="PackedScene" uid="uid://hb82744trdpu" path="res://Entities/Monsters/Forest/Boar/Boar.tscn" id="12_4ovt0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("4_f6a5w")
@@ -547,5 +549,12 @@ position = Vector2(2317, 382)
 
 [node name="transitionScreen" parent="." instance=ExtResource("10_d5hcj")]
 position = Vector2(2999, 393)
+
+[node name="Killzone" parent="." instance=ExtResource("10_f1gjy")]
+position = Vector2(414, 609)
+scale = Vector2(34.1532, -3.89449)
+
+[node name="Boar" parent="." instance=ExtResource("12_4ovt0")]
+position = Vector2(796, 216)
 
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]

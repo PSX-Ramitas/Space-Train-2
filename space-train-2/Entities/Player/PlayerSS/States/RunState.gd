@@ -29,7 +29,8 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	
+	if parent.health <= 0:
+		return dieState
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		parent.velocity.x = direction * moveSpeed

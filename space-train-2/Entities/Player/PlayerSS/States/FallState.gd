@@ -19,8 +19,6 @@ func enter() -> void:
 	jumpBufferTimer = 0
 
 func process_input(event: InputEvent) -> State:
-	if parent.health <= 0:
-		return dieState
 	if Input.is_action_just_pressed("dash") and !parent.usedDash:
 		return dashState
 	if Input.is_action_just_pressed('jump') && parent.fallFromPlatform:
@@ -38,13 +36,14 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
+	if parent.health <= 0:
+		return dieState
 	coyoteTimer -= delta
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		parent.velocity.x = direction * moveSpeed
 	else:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, 100)
-	
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	

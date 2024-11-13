@@ -4,6 +4,8 @@ extends Entity
 @onready var animations = $AnimatedSprite2D
 @onready var stateMachine = $FSM
 @onready var sword = $PlayerSwordArea
+@onready var playerHB: TextureProgressBar = $HUD/HealthBar
+
 var queuedAttack = 1
 var usedAirAttack = false
 var dashCD = 2

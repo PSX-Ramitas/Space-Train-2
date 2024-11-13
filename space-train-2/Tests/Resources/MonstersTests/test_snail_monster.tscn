@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://co32ofmdf04vb" path="res://Tests/Resources/TileSets/tile map.png" id="1_jy253"]
 [ext_resource type="Texture2D" uid="uid://deatdv3sr4gym" path="res://Tests/Resources/TileSets/world_tileset.png" id="2_qqfdt"]
 [ext_resource type="PackedScene" uid="uid://bv8krd46t8dww" path="res://Entities/Killzones/killzone.tscn" id="3_kuyrd"]
-[ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="4_vha13"]
+[ext_resource type="PackedScene" uid="uid://drr6wuktpctex" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="4_vha13"]
 [ext_resource type="Script" path="res://Tests/Resources/PlayerTests/saver_loader.gd" id="5_fn57f"]
 [ext_resource type="PackedScene" uid="uid://cmxi04qi3alj0" path="res://UI/MonsterHealthLabel/health_changed_manager.tscn" id="5_rffbi"]
 [ext_resource type="PackedScene" uid="uid://dd67h2umvkaaf" path="res://Entities/Monsters/Forest/Snail/Snail.tscn" id="6_aw24e"]

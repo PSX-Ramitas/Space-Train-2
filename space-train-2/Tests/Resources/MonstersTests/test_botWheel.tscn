@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqvfnx51eiylg"]
+[gd_scene load_steps=13 format=3 uid="uid://jlcdeu267d4"]
 
 [ext_resource type="Texture2D" uid="uid://co32ofmdf04vb" path="res://Tests/Resources/TileSets/tile map.png" id="1_dx7ht"]
 [ext_resource type="Texture2D" uid="uid://deatdv3sr4gym" path="res://Tests/Resources/TileSets/world_tileset.png" id="2_scnlt"]
 [ext_resource type="PackedScene" uid="uid://bv8krd46t8dww" path="res://Entities/Killzones/killzone.tscn" id="3_xqp1k"]
-[ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="4_3q3qn"]
+[ext_resource type="PackedScene" uid="uid://drr6wuktpctex" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="4_3q3qn"]
 [ext_resource type="PackedScene" uid="uid://cmxi04qi3alj0" path="res://UI/MonsterHealthLabel/health_changed_manager.tscn" id="5_xacyr"]
 [ext_resource type="Script" path="res://Tests/Resources/PlayerTests/saver_loader.gd" id="6_w6bu2"]
-[ext_resource type="PackedScene" uid="uid://d1gbrlw0d6k6b" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.tscn" id="7_w61fh"]
+[ext_resource type="PackedScene" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.tscn" id="7_w61fh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gmn40"]
 normal = Vector2(1, 0)

@@ -1,7 +1,7 @@
 extends Area2D
 class_name EnemyHitbox
 
-@onready var enemy: droidEnemy = $".."
+@onready var enemy: = $".."
 @onready var enemy_health_bar: TextureProgressBar = $"../HealthBar"
 
 

@@ -9,6 +9,10 @@ func _ready():
 	damage = monster.attack
 	monster.connect("facing_direction_changed", _on_player_facing_direction_changed)
 
+func _on_area_entered(area: Area2D) -> void:
+	if area is PlayerHitbox:
+		area.take_damage(damage)
+
 func _on_body_entered(body: Node2D) -> void:
 	for child in body.get_children():
 		if (child is Damageable):

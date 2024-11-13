@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://dd67h2umvkaaf"]
+[gd_scene load_steps=23 format=3 uid="uid://dd67h2umvkaaf"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Snail/snail.gd" id="1_l7n31"]
 [ext_resource type="Texture2D" uid="uid://bpnqj3mgy7vpo" path="res://Entities/Monsters/Forest/Snail/Assets/walk-Sheet.png" id="1_w3td2"]
+[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_uasju"]
 [ext_resource type="Texture2D" uid="uid://3h64kys7a5v4" path="res://Entities/Monsters/Forest/Snail/Assets/Dead-Sheet.png" id="3_6lt2u"]
 [ext_resource type="PackedScene" uid="uid://b403m60sq8cnl" path="res://Entities/Player/PlayerSS2/Attacks/damageable.tscn" id="4_ekmhb"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS2/States/character_state_machine.gd" id="5_3fav8"]
@@ -170,6 +171,12 @@ collision_mask = 3
 script = ExtResource("1_l7n31")
 hit_state = NodePath("CharacterStateMachine/Hit")
 
+[node name="HealthBar" parent="." instance=ExtResource("2_uasju")]
+offset_left = -32.0
+offset_top = 17.0
+offset_right = 32.0
+offset_bottom = 27.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 5.5)
 shape = SubResource("RectangleShape2D_0p84d")
@@ -211,7 +218,6 @@ script = ExtResource("6_nl0tj")
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("6_nl0tj")
-can_move = false
 
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "return_state")]
 script = ExtResource("7_yq725")
@@ -225,6 +231,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="AttackArea" parent="." node_paths=PackedStringArray("monster", "facing_shape") instance=ExtResource("8_q6pym")]
+collision_layer = 4
 script = ExtResource("9_vcayd")
 monster = NodePath("..")
 facing_shape = NodePath("CollisionShape2D")
@@ -232,9 +239,10 @@ facing_shape = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("RectangleShape2D_isn7c")
 script = ExtResource("10_2kbkt")
-facing_left_position = Vector2(-10, 5)
-facing_right_position = Vector2(10, 5)
+facing_left_position = Vector2(-15, 5)
+facing_right_position = Vector2(15, 5)
 
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]
+[connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]
 [connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]

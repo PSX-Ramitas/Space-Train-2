@@ -22,6 +22,9 @@ signal facing_direction_changed(facing_right : bool)
 func _ready() -> void:
 	animation_tree.active = true
 
+func get_health():
+	return health
+
 func _physics_process(delta: float) -> void:
 	if active:
 		# Add the gravity.

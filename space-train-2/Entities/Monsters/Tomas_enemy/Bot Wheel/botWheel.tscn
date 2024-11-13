@@ -493,16 +493,17 @@ position = Vector2(-1.19209e-07, -2.38419e-07)
 scale = Vector2(2.5, 2.5)
 slide_on_ceiling = false
 script = ExtResource("1_t6rrs")
-maxHealth = 50
-health = 40
+maxHealth = 30
+health = 50
 movespeed = 125
 attack = 5
 
 [node name="HealthBar" parent="." instance=ExtResource("2_7iy6m")]
-offset_left = -50.4
-offset_top = -1.2
-offset_right = 13.6
-offset_bottom = 38.8
+offset_left = -32.4
+offset_top = 1.6
+offset_right = 31.6
+offset_bottom = 41.6
+scale = Vector2(0.416386, 0.521012)
 
 [node name="CloseAttackArea" parent="." instance=ExtResource("3_48m00")]
 position = Vector2(-18, -10)

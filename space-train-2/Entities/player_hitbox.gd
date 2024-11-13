@@ -9,8 +9,11 @@ signal healthChanged(isHeal: bool, amount: int)
 var is_alive
 func _ready() -> void:
 	is_alive = true
-	if PlayerData.health == null or PlayerData.health == 0:
+	var curHealth = PlayerData.health
+	if curHealth == 0 or curHealth == null:
 		PlayerData.health = PlayerData.maxHealth
+	else:
+		PlayerData.health = curHealth
 	print("Player Health: ", PlayerData.health)
 	player_health_bar.init_health(PlayerData.health)
 
@@ -21,6 +24,7 @@ func take_damage(damageAmount: int):
 		player_health_bar._set_health(new_health)
 		if new_health == 0:
 			is_alive = false
+			self.queue_free()
 		# healthChanged.emit( false, damageAmount)
 
 func heal_health(healAmount: int):

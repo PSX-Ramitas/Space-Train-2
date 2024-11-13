@@ -221,8 +221,8 @@ transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(20, 26)
 
 [node name="Boar" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
-collision_layer = 4
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_q3jh0")
 hit_state = NodePath("CharacterStateMachine/Hit")
 
@@ -285,6 +285,7 @@ target_position = Vector2(-20, 10)
 target_position = Vector2(15, 10)
 
 [node name="AttackArea" parent="." node_paths=PackedStringArray("monster", "facing_shape") instance=ExtResource("8_ksjpw")]
+collision_mask = 7
 script = ExtResource("9_hask7")
 monster = NodePath("..")
 facing_shape = NodePath("CollisionShape2D")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=81 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]

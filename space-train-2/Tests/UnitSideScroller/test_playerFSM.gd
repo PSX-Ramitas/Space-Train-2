@@ -14,15 +14,16 @@ var _sender = InputSender.new(Input)
 func before_each():
 	_level = add_child_autofree(Level.instantiate())
 	_player = _level.get_node('PlayerSS')
+	_snail = _level.get_node('Snail')
 	_playerFSM = _player.get_node('FSM')
 	for state in _playerFSM.get_children():
 		_states[state.name] = state
+	await wait_frames(1)
 
 
 func after_each():
 	_sender.release_all()
 	_sender.clear()
-	pause_before_teardown()
 
 
 func test_verify_setup():
@@ -67,47 +68,36 @@ func test_dash_state():
 	assert_eq("Dash", _playerFSM.currState.name, "player can't dash")
 
 func test_attack_state():
-	_sender.action_down("attack").hold_for(1.5)
-	await wait_seconds(1.1)
-	_sender.action_down("attack").hold_for(0.5)
-	_player.position = Vector2(359,193)
 	_sender.action_down("left").hold_for(0.5)
 	await(_sender.idle)
 	gut.p("Current STATE: " + _playerFSM.currState.name)
-	await wait_seconds(1)
+	
+
 	gut.p("Current STATE: " + _playerFSM.currState.name)
-	_sender.action_down("attack").hold_for(0.5)
-	await(_sender.idle)
+	_sender.action_down("attack_melee").hold_for(0.5)
+	await wait_seconds(0.2)
+	gut.p("********Current STATE: " + _playerFSM.currState.name)
 	assert_eq("Attack1", _playerFSM.currState.name, "player can't attack")
+	await wait_frames(10)
 	
-	_sender.action_down("left").hold_for(0.5)
-	await(_sender.idle)
 	gut.p("Current STATE: " + _playerFSM.currState.name)
-	_sender.action_down("attack").wait_frames(10)
-	await(_sender.idle)
+	_sender.action_down("attack_melee").hold_for(0.5)
+	await wait_seconds(0.2)
+	gut.p("********Current STATE: " + _playerFSM.currState.name)
 	assert_eq("Attack2", _playerFSM.currState.name, "player can't attack2")
+	await wait_frames(20)
 	
-	_sender.action_down("left").hold_for(0.5)
-	await(_sender.idle)
 	gut.p("Current STATE: " + _playerFSM.currState.name)
-	_sender.action_down("attack").wait_frames(10)
-	await(_sender.idle)
+	_sender.action_down("attack_melee").hold_for(0.5)
+	await wait_seconds(0.2)
+	gut.p("********Current STATE: " + _playerFSM.currState.name)
 	assert_eq("Attack3", _playerFSM.currState.name, "player can't attack3")
 
-func a():
-	await wait_seconds(1)
-	_player.position = Vector2(359,193)
-	_sender.action_down("left").hold_for(0.5)
-	await(_sender.idle)
-	_sender.action_down("attack").hold_for(0.5)
-	await(_sender.idle)
-	await wait_seconds(1)
-	assert_null(_snail, 'snail did not die')
 func test_die_state():
 	_sender.action_down("right").hold_for(0.5)
 	gut.p("Current STATE: " + _playerFSM.currState.name)
 	await wait_seconds(0.5)
 	_player.health = 0
-	wait_frames(3)
+	await wait_seconds(0.1)
 	gut.p("Current STATE: " + _playerFSM.currState.name)
 	assert_eq("Die", _playerFSM.currState.name, "player can't die")

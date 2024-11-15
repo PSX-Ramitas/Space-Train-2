@@ -509,6 +509,7 @@ step = 0.5
 
 [node name="PlayerHitbox" parent="." instance=ExtResource("2_rlyqj")]
 scale = Vector2(0.5, 0.5)
+collision_layer = 3
 monitorable = true
 script = ExtResource("4_0m58k")
 
@@ -518,6 +519,7 @@ shape = SubResource("CapsuleShape2D_epcnk")
 
 [node name="PlayerSwordArea" parent="." instance=ExtResource("3_d10ch")]
 position = Vector2(17.5, -10)
+collision_mask = 5
 script = ExtResource("4_4cvk8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSwordArea"]
@@ -640,7 +642,6 @@ animationName = "Death"
 
 [connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_area_entered"]
-[connection signal="body_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack1" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack2" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack3" method="FinishedAttack"]

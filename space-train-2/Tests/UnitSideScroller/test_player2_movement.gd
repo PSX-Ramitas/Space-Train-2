@@ -71,7 +71,7 @@ func test_attack():
 	_player.position = Vector2(359,193)
 	_sender.action_down("left").hold_for(0.5)
 	await(_sender.idle)
-	_sender.action_down("attack").hold_for(0.5)
+	_sender.action_down("attack_melee").hold_for(0.5)
 	await(_sender.idle)
 	await wait_seconds(1)
 	assert_null(_snail, 'snail did not die')

@@ -16,6 +16,10 @@ enum State {
 	Death,
 }
 var currentState = State.Roam
+
+func get_state():
+	return currentState
+
 func _ready() -> void:
 	currentState = State.Roam
 

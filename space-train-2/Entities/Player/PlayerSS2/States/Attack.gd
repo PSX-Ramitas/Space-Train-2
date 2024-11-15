@@ -8,7 +8,7 @@ extends State2
 @onready var timer : Timer = $Timer
 
 func state_input(event : InputEvent):
-	if(event.is_action_pressed("attack")):
+	if(event.is_action_pressed("attack_melee")):
 		timer.start()
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:

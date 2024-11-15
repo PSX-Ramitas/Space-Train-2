@@ -504,6 +504,7 @@ tile_set = SubResource("TileSet_88hoh")
 
 [node name="PlayerSS" parent="." instance=ExtResource("4_dgi62")]
 position = Vector2(217, 399)
+collision_layer = 2
 
 [node name="Spikes" type="Node2D" parent="."]
 
@@ -544,12 +545,18 @@ position = Vector2(2679, 476)
 
 [node name="botWheel" parent="." instance=ExtResource("9_ocw00")]
 position = Vector2(2559, 308)
+maxHealth = 50
+health = 40
 
 [node name="enemy" parent="." instance=ExtResource("8_5mv0j")]
 position = Vector2(1346, 472)
 
 [node name="botWheel2" parent="." instance=ExtResource("9_ocw00")]
 position = Vector2(1543, 467)
+maxHealth = 50
+health = 40
 
 [node name="botWheel3" parent="." instance=ExtResource("9_ocw00")]
 position = Vector2(834, 234)
+maxHealth = 50
+health = 40

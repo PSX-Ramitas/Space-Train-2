@@ -45,6 +45,18 @@ class TestBoar:
 		await wait_seconds(0.5)
 		assert_lt(_boar.position.x,initialPosition, 'boar did not move to the left')
 
+	func test_boar_changes_direction_right():
+		var direction = _boar.direction
+		gut.p(direction)
+		await wait_seconds(4)
+		assert_ne(direction,_boar.direction, 'boar did not change direction')
+
+	func test_boar_changes_direction_left():
+		var direction = _boar.direction
+		gut.p(direction)
+		await wait_seconds(10)
+		assert_eq(direction,_boar.direction, 'boar did not change direction')
+
 class TestSnail:
 	extends GutTest
 

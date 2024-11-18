@@ -4,6 +4,7 @@ extends Control
 var game_paused = false #Flag to detect if game is paused
 @onready var pause_buttons: GridContainer = $ColorRect/GridContainer
 @onready var settings: Control = $ColorRect/Settings
+@onready var transition: TransitionScreen = $CanvasLayer/TransitionAnim
 
 
 # Called when the node enters the scene tree for the first time.
@@ -32,8 +33,7 @@ func _on_options_pressed() -> void:
 func _on_forfeit_pressed() -> void: #Will change this so that it switches you back to the hub
 	print("lol loser")
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Main_Areas/Title/title_screen.tscn")
-	LevelManager.resetLevelState()
+	transition.play_transition("FadeOut")
 	
 func _on_exit_pressed() -> void:
 	get_tree().quit()
@@ -41,3 +41,7 @@ func _on_exit_pressed() -> void:
 func _on_settings_back_button() -> void:
 	pause_buttons.show()
 	settings.hide()
+
+func _on_transition_finished() -> void:
+	get_tree().change_scene_to_file("res://Main_Areas/Title/title_screen.tscn")
+	LevelManager.resetLevelState()

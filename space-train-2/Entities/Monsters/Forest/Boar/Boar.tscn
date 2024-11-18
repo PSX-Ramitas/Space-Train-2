@@ -222,7 +222,7 @@ transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(20, 26)
 
 [node name="Boar" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
-collision_layer = 4
+collision_layer = 5
 collision_mask = 3
 script = ExtResource("1_q3jh0")
 hit_state = NodePath("CharacterStateMachine/Hit")

@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl7wej5k1tlc4"]
+[gd_scene load_steps=4 format=3 uid="uid://cl7wej5k1tlc4"]
 
 [ext_resource type="Script" path="res://UI/Pause/pause_menu.gd" id="1_bqthm"]
 [ext_resource type="PackedScene" uid="uid://db6nsiuqoytme" path="res://UI/Settings/Settings.tscn" id="2_0mehi"]
+[ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="3_xxvbq"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
+process_priority = 35
+process_physics_priority = 35
 visible = false
+top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +19,7 @@ grow_vertical = 2
 script = ExtResource("1_bqthm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -44,18 +49,22 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Resume" type="Button" parent="ColorRect/GridContainer"]
+process_mode = 3
 layout_mode = 2
 text = "Resume"
 
 [node name="Options" type="Button" parent="ColorRect/GridContainer"]
+process_mode = 3
 layout_mode = 2
 text = "Options"
 
 [node name="Forfeit" type="Button" parent="ColorRect/GridContainer"]
+process_mode = 3
 layout_mode = 2
 text = "Forfeit Run"
 
 [node name="Exit" type="Button" parent="ColorRect/GridContainer"]
+process_mode = 3
 layout_mode = 2
 text = "Quit Game"
 
@@ -67,8 +76,13 @@ offset_top = 43.0
 offset_right = -82.0
 offset_bottom = 18.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionAnim" parent="CanvasLayer" instance=ExtResource("3_xxvbq")]
+
 [connection signal="pressed" from="ColorRect/GridContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="ColorRect/GridContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="ColorRect/GridContainer/Forfeit" to="." method="_on_forfeit_pressed"]
 [connection signal="pressed" from="ColorRect/GridContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="backButton" from="ColorRect/Settings" to="." method="_on_settings_back_button"]
+[connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

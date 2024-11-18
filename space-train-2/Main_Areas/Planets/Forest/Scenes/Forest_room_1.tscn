@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://ccfic4x8n7kb0"]
+[gd_scene load_steps=15 format=4 uid="uid://ccfic4x8n7kb0"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scripts/Room1.gd" id="1_wxv3x"]
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="2_wghdo"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="5_otfyo"]
 [ext_resource type="PackedScene" uid="uid://b5qebaxc55f4r" path="res://Entities/LevelObstacles/animate_spikes.tscn" id="6_c8bsh"]
 [ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="8_nme8t"]
+[ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="9_5uaqh"]
 [ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="9_hd147"]
 [ext_resource type="PackedScene" uid="uid://cyhs8teinbtt1" path="res://Main_Areas/Planets/transition_area.tscn" id="10_d5hcj"]
 [ext_resource type="PackedScene" uid="uid://cf675ehvborw" path="res://Main_Areas/killzone.tscn" id="10_f1gjy"]
@@ -508,7 +509,7 @@ tile_map_data = PackedByteArray("AAALABkAAAAPAAEAAAAKABkAAAAOAAEAAAAKABoAAAAPAAI
 tile_set = SubResource("TileSet_88hoh")
 
 [node name="PlayerSS" parent="." instance=ExtResource("5_otfyo")]
-position = Vector2(156, 191)
+position = Vector2(216, 398)
 
 [node name="Spikes" type="Node2D" parent="."]
 
@@ -557,4 +558,12 @@ scale = Vector2(34.1532, -3.89449)
 [node name="Boar" parent="." instance=ExtResource("12_4ovt0")]
 position = Vector2(796, 216)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionAnim" parent="CanvasLayer" instance=ExtResource("9_5uaqh")]
+z_index = 15
+position = Vector2(-1, 4)
+scale = Vector2(1, 1.32)
+
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
+[connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

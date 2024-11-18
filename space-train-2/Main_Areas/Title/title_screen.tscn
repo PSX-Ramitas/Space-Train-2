@@ -1,12 +1,14 @@
-[gd_scene load_steps=59 format=3 uid="uid://v68rubr571l"]
+[gd_scene load_steps=61 format=3 uid="uid://v68rubr571l"]
 
+[ext_resource type="Script" path="res://Main_Areas/Title/title_screen.gd" id="1_qy4ah"]
 [ext_resource type="Texture2D" uid="uid://bntaopptrds6i" path="res://Main_Areas/Title/Space Background(1).png" id="1_uu0sr"]
 [ext_resource type="Texture2D" uid="uid://cw6d4uhbfttth" path="res://Main_Areas/Title/Space Background(2).png" id="2_fki7b"]
 [ext_resource type="Texture2D" uid="uid://c77osvw1ckdqw" path="res://Main_Areas/Title/Space Background(4).png" id="2_rrrvo"]
 [ext_resource type="Texture2D" uid="uid://cw8kpxsf6f801" path="res://Main_Areas/Title/53721020.png" id="2_x7ev4"]
 [ext_resource type="Script" path="res://Main_Areas/Title/title.gd" id="3_a787a"]
-[ext_resource type="PackedScene" path="res://UI/temp_level_select.tscn" id="6_pk7ou"]
+[ext_resource type="PackedScene" uid="uid://pmqkwyfmea3m" path="res://UI/temp_level_select.tscn" id="6_pk7ou"]
 [ext_resource type="PackedScene" uid="uid://db6nsiuqoytme" path="res://UI/Settings/Settings.tscn" id="8_fnm3i"]
+[ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="8_yigv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkuu2"]
 atlas = ExtResource("2_x7ev4")
@@ -367,6 +369,7 @@ animations = [{
 }]
 
 [node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_qy4ah")
 
 [node name="Sprites" type="CanvasGroup" parent="."]
 
@@ -458,9 +461,17 @@ offset_top = -184.0
 offset_right = -383.0
 offset_bottom = -184.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionAnim" parent="CanvasLayer" instance=ExtResource("8_yigv6")]
+top_level = true
+z_index = 30
+position = Vector2(-3, 1)
+
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Options" to="Control" method="_on_options_pressed"]
 [connection signal="pressed" from="Control/Quit" to="Control" method="_on_quit_pressed"]
 [connection signal="back_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_back_pressed"]
 [connection signal="multUI_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_mult_ui_pressed"]
 [connection signal="backButton" from="Control/Settings" to="Control" method="_on_settings_back_button"]
+[connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="Control/TempLevelSelect" method="_on_transition_finished"]

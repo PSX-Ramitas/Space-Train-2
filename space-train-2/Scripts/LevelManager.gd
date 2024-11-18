@@ -11,7 +11,7 @@ var levels = [
 var levelCount = levels.size()
 var currLevel
 var visited = { }
-
+var worldClear = false
 func resetLevelState():
 	levelCount = levels.size()  # Reset the level count back to the full set
 	visited.clear()  # Clear the visited levels
@@ -32,6 +32,7 @@ func loadLevel():
 			#if visited.get(currLevel) != true:
 				#found = true
 		if levelCount == 0:
+			worldClear = true
 			print("World Cleared")
 			resetLevelState()
 			get_tree().change_scene_to_file("res://Main_Areas/Title/title_screen.tscn")

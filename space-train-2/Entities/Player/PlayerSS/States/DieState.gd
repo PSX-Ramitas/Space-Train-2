@@ -1,6 +1,7 @@
 extends State
 
 var timer = 1.75
+
 func enter() -> void:
 	parent.sword.monitoring = false
 	print("you died, loser")

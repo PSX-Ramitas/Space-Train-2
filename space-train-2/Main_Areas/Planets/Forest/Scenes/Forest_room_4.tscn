@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://doh85ymgcyiob"]
+[gd_scene load_steps=14 format=4 uid="uid://doh85ymgcyiob"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_885h2"]
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scenes/forest_room_4.gd" id="1_djfim"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="8_ltoqw"]
 [ext_resource type="PackedScene" uid="uid://hb82744trdpu" path="res://Entities/Monsters/Forest/Boar/Boar.tscn" id="9_ey624"]
 [ext_resource type="PackedScene" uid="uid://dd67h2umvkaaf" path="res://Entities/Monsters/Forest/Snail/Snail.tscn" id="10_8gxvi"]
+[ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="11_e4n46"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("3_a55yr")
@@ -505,7 +506,7 @@ tile_map_data = PackedByteArray("AAALABkAAAAPAAEAAAAKABkAAAAOAAEAAAAKABoAAAAPAAI
 tile_set = SubResource("TileSet_88hoh")
 
 [node name="PlayerSS" parent="." instance=ExtResource("4_7ustn")]
-position = Vector2(191, 86)
+position = Vector2(215, 399)
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -592,4 +593,10 @@ position = Vector2(591, 245)
 [node name="Snail" parent="." instance=ExtResource("10_8gxvi")]
 position = Vector2(940, 246)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionAnim" parent="CanvasLayer" instance=ExtResource("11_e4n46")]
+scale = Vector2(1, 1.27447)
+
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
+[connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

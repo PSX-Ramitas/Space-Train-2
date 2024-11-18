@@ -5,6 +5,7 @@ extends Node2D
 
 signal anim_finished
 func play_transition(name: String) -> void:
+	PlayerData.pausable == false
 	animation_player.play(name)
 	color_rect.visible = true
 	
@@ -21,3 +22,4 @@ func _process(delta: float) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	anim_finished.emit()
 	color_rect.visible = false
+	PlayerData.pausable == true

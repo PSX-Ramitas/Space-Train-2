@@ -498,6 +498,7 @@ attack = 10
 
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
+process_priority = 1
 
 [node name="HealthBar" parent="HUD" instance=ExtResource("2_s31bq")]
 process_mode = 1

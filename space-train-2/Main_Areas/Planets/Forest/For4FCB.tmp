@@ -544,3 +544,7 @@ position = Vector2(2679, 476)
 
 [node name="Boss" parent="." instance=ExtResource("10_l5p4g")]
 position = Vector2(1383, 336)
+maxHealth = 80
+health = 0
+movespeed = 0
+attack = 0

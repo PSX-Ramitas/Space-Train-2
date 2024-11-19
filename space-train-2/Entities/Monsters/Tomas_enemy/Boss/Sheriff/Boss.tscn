@@ -1,3 +1,242 @@
-[gd_scene format=3 uid="uid://citu8occwl0xr"]
+[gd_scene load_steps=34 format=3 uid="uid://citu8occwl0xr"]
 
-[node name="Boss" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="1_k3w4u"]
+[ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/boss.gd" id="1_way5i"]
+[ext_resource type="PackedScene" path="res://Entities/entity_hitbox.tscn" id="3_1xwtl"]
+[ext_resource type="Script" path="res://Entities/enemy_hitbox.gd" id="4_vopp6"]
+[ext_resource type="Texture2D" uid="uid://cfdg508xktekp" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/elephant_rifle_fire_strip.png" id="5_tf4of"]
+[ext_resource type="Texture2D" uid="uid://cgl66fa5vd1uk" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/sheriff_idle_strip.png" id="6_jqait"]
+[ext_resource type="Texture2D" uid="uid://ccfxts03cvs1o" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/sheriff_ move_strip.png" id="7_5leb6"]
+[ext_resource type="Texture2D" uid="uid://dn12j4txca8hg" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/repeater_riflefire_strip.png" id="8_r8tle"]
+[ext_resource type="Texture2D" uid="uid://d0mh621c8c1h6" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/repeater_rifle_strip.png" id="9_r628n"]
+[ext_resource type="Texture2D" uid="uid://fd3rfsyjxj3g" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/elephant_rifle_strip.png" id="10_ndjdt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_743fi"]
+height = 64.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3w0o"]
+atlas = ExtResource("6_jqait")
+region = Rect2(0, 0, 18, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjn3i"]
+atlas = ExtResource("6_jqait")
+region = Rect2(18, 0, 18, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odki3"]
+atlas = ExtResource("7_5leb6")
+region = Rect2(0, 0, 20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjvv8"]
+atlas = ExtResource("7_5leb6")
+region = Rect2(20, 0, 20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg7xb"]
+atlas = ExtResource("7_5leb6")
+region = Rect2(40, 0, 20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nndhb"]
+atlas = ExtResource("7_5leb6")
+region = Rect2(60, 0, 20, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_socaq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3w0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjn3i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odki3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjvv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg7xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nndhb")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8vd8"]
+radius = 11.0
+height = 70.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hd8vq"]
+a = Vector2(1380, 8.00029)
+b = Vector2(-1062, 14.0003)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apb8y"]
+atlas = ExtResource("8_r8tle")
+region = Rect2(0, 0, 38, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e47p6"]
+atlas = ExtResource("8_r8tle")
+region = Rect2(38, 0, 38, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5et13"]
+atlas = ExtResource("8_r8tle")
+region = Rect2(76, 0, 38, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70mg2"]
+atlas = ExtResource("8_r8tle")
+region = Rect2(114, 0, 38, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw0hu"]
+atlas = ExtResource("9_r628n")
+region = Rect2(0, 0, 31, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxujm"]
+atlas = ExtResource("9_r628n")
+region = Rect2(31, 0, 31, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jry3j"]
+atlas = ExtResource("5_tf4of")
+region = Rect2(0, 0, 50, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anlfq"]
+atlas = ExtResource("5_tf4of")
+region = Rect2(50, 0, 50, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eefi"]
+atlas = ExtResource("5_tf4of")
+region = Rect2(100, 0, 50, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8l0w"]
+atlas = ExtResource("5_tf4of")
+region = Rect2(150, 0, 50, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onkb0"]
+atlas = ExtResource("10_ndjdt")
+region = Rect2(0, 0, 41, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me0ya"]
+atlas = ExtResource("10_ndjdt")
+region = Rect2(41, 0, 41, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqern"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apb8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e47p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5et13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70mg2")
+}],
+"loop": true,
+"name": &"Repeater_fire",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw0hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxujm")
+}],
+"loop": true,
+"name": &"Repeater_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jry3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anlfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eefi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8l0w")
+}],
+"loop": true,
+"name": &"elephant_fire",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onkb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me0ya")
+}],
+"loop": true,
+"name": &"elephant_idle",
+"speed": 5.0
+}]
+
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_way5i")
+maxHealth = 200
+health = 200
+movespeed = 50
+attack = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-17, -8)
+shape = SubResource("CapsuleShape2D_743fi")
+
+[node name="HealthBar" parent="." instance=ExtResource("1_k3w4u")]
+offset_left = -32.4
+offset_top = 1.6
+offset_right = 31.6
+offset_bottom = 41.6
+scale = Vector2(0.416386, 0.521012)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-16.4, -8.8)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_socaq")
+animation = &"move"
+frame_progress = 0.80942
+
+[node name="BossHitBox" parent="." instance=ExtResource("3_1xwtl")]
+monitorable = true
+script = ExtResource("4_vopp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHitBox"]
+position = Vector2(-17, -6)
+shape = SubResource("CapsuleShape2D_h8vd8")
+
+[node name="ShootingDetectionArea" type="Area2D" parent="."]
+position = Vector2(-18.8, -10.4)
+collision_layer = 0
+monitorable = false
+
+[node name="DetectionAreaBody" type="CollisionShape2D" parent="ShootingDetectionArea"]
+position = Vector2(0, 1.99994)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("SegmentShape2D_hd8vq")
+
+[node name="DirectionTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Shooting_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="weapons" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pqern")
+animation = &"elephant_fire"
+frame_progress = 0.00173087

@@ -307,18 +307,12 @@ process_mode = 3
 script = ExtResource("1_g34pw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_gggbk")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -19.5
 offset_top = -20.0
 offset_right = 19.5
 offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(30.8124, 18.5635)
 color = Color(0, 0, 0, 1)
 

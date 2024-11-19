@@ -309,11 +309,13 @@ script = ExtResource("1_g34pw")
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_gggbk")
-offset_left = -19.5
+offset_left = -45.0
 offset_top = -20.0
-offset_right = 19.5
 offset_bottom = 20.0
 scale = Vector2(30.8124, 18.5635)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

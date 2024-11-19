@@ -6,6 +6,8 @@ extends State
 @export var dieState: State
 
 func enter() -> void:
+	var sfx = parent.find_child("DashSound")
+	sfx.play()
 	parent.sword.monitoring = false
 	super() #call the enter function of the class we inherit from
 	parent.usedDash = true

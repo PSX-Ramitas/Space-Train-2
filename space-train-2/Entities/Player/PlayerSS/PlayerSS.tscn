@@ -562,33 +562,33 @@ bus = &"SFX"
 
 [node name="Sword1" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("11_2xbu7")
-volume_db = -20.0
+volume_db = -17.0
 bus = &"SFX"
 
 [node name="Sword2" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("12_hu1i7")
-volume_db = -20.0
+volume_db = -17.0
 pitch_scale = 2.2
 bus = &"SFX"
 
 [node name="Sword3" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("13_667j2")
-volume_db = -20.0
+volume_db = -17.0
 bus = &"SFX"
 
 [node name="DashSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("14_waqik")
-volume_db = -20.0
+volume_db = -17.0
 bus = &"SFX"
 
 [node name="LandSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("15_l1kjy")
-volume_db = -25.0
+volume_db = -22.0
 bus = &"SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("16_31vkk")
-volume_db = -20.0
+volume_db = -17.0
 bus = &"SFX"
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("startState")]

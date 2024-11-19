@@ -57,7 +57,7 @@ func _on_timer_timeout() -> void:
 
 func _process(delta: float) -> void:
 	if NPC_dialogue:
-		if Input.is_action_just_pressed("interact"):
+		if Input.is_action_just_pressed("conversation_start"):
 			dialogue.text = "Do you want to explore new planets?"
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:

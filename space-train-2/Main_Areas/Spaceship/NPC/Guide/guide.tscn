@@ -284,6 +284,7 @@ transitions = ["Start", "facing", SubResource("AnimationNodeStateMachineTransiti
 size = Vector2(16, 20)
 
 [node name="Guide" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_4bine")
 
 [node name="Dialogue" parent="." instance=ExtResource("2_pns82")]
@@ -297,6 +298,9 @@ frame_progress = 0.522423
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_o7pb2")]
 position = Vector2(0, 27)
+
+[node name="DialogueTimer" type="Timer" parent="InteractionArea"]
+one_shot = true
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -326,4 +330,5 @@ offset_bottom = -24.0
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="timeout" from="InteractionArea/DialogueTimer" to="." method="_on_dialogue_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

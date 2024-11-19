@@ -1,0 +1,11 @@
+~ start
+Nevana: [[Hi|Hello|Howdy]], I'm your guide.
+Nevana: Here's how you can.
+- Movement
+	Nevana: You can move using "awsd" and jump using space.
+- Attack
+	Nevana: You can attack and interact using "j".
+- Start again => start
+- End the conversation => END
+Nevana: Let me know if you need anything else.
+=> END

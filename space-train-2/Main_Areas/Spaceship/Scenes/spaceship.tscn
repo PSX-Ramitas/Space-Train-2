@@ -1,9 +1,10 @@
-[gd_scene load_steps=60 format=3 uid="uid://bs01fiiy1fbeh"]
+[gd_scene load_steps=61 format=3 uid="uid://bs01fiiy1fbeh"]
 
 [ext_resource type="PackedScene" uid="uid://crmrjbkdg4irm" path="res://Main_Areas/Spaceship/Scenes/tileset.tscn" id="1_kxdlo"]
 [ext_resource type="Texture2D" uid="uid://bohap2fdm71jb" path="res://Main_Areas/Spaceship/SpaceTrain.webp" id="2_k1hdw"]
 [ext_resource type="PackedScene" uid="uid://d0cu0cu5qc4iu" path="res://Entities/Player/PlayerTD/player_td.tscn" id="3_gahup"]
 [ext_resource type="PackedScene" uid="uid://b6en2ww83au5c" path="res://Main_Areas/Spaceship/NPC/CatDroid/catDroid.tscn" id="5_a36jr"]
+[ext_resource type="PackedScene" uid="uid://cp5de08wucg0g" path="res://Main_Areas/Spaceship/NPC/Guide/guide.tscn" id="5_qngpa"]
 [ext_resource type="PackedScene" uid="uid://2d3g1hndk8yp" path="res://Main_Areas/Spaceship/Scenes/parallax_background.tscn" id="6_d3lqe"]
 [ext_resource type="Texture2D" uid="uid://cw8kpxsf6f801" path="res://Main_Areas/Title/53721020.png" id="7_1vkrk"]
 
@@ -392,6 +393,9 @@ texture_filter = 1
 position = Vector2(822, 307)
 scale = Vector2(0.18457, 0.18457)
 texture = ExtResource("2_k1hdw")
+
+[node name="Guide" parent="Wagons" instance=ExtResource("5_qngpa")]
+position = Vector2(506, 405)
 
 [node name="PlayerTD" parent="." instance=ExtResource("3_gahup")]
 z_index = 1

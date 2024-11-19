@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum CAT_STATE { IDLE, WALK, TALK}
+enum GUIDE_STATE { IDLE, WALK, TALK}
 
 @export var speed = 100
 @export var idle_time : float = 5
@@ -16,7 +16,7 @@ enum CAT_STATE { IDLE, WALK, TALK}
 
 var NPC_dialogue = false
 var move_direction : Vector2 = Vector2.ZERO
-var current_state : CAT_STATE = CAT_STATE.IDLE
+var current_state : GUIDE_STATE = GUIDE_STATE.IDLE
 
 func _ready() -> void:
 	interactable_label_component.hide()
@@ -25,7 +25,7 @@ func _ready() -> void:
 	pick_new_state()
 
 func _physics_process(delta):
-	if(current_state == CAT_STATE.WALK):
+	if(current_state == GUIDE_STATE.WALK):
 		velocity = move_direction * speed
 		move_and_slide()
 
@@ -42,14 +42,14 @@ func update_animation_parameters(move_input):
 		animation_tree.set('parameters/facing/blend_position', move_input)
 
 func pick_new_state():
-	if(current_state == CAT_STATE.IDLE):
+	if(current_state == GUIDE_STATE.IDLE):
 		animation_state_machine.travel('facing')
-		current_state = CAT_STATE.WALK
+		current_state = GUIDE_STATE.WALK
 		select_new_direction()
 		timer.start(walk_time)
-	elif(current_state == CAT_STATE.WALK):
+	elif(current_state == GUIDE_STATE.WALK):
 		animation_state_machine.travel('facing')
-		current_state = CAT_STATE.IDLE
+		current_state = GUIDE_STATE.IDLE
 		timer.start(idle_time)
 
 func _on_timer_timeout() -> void:
@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	interactable_label_component.show()
-	current_state = CAT_STATE.IDLE
+	current_state = GUIDE_STATE.IDLE
 	timer.stop()
 	dialogue.visible = true
 	dialogue.text = "Hello"

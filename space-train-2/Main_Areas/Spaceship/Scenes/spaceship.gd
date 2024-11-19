@@ -14,7 +14,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	animated_sprite_2d.offset.x = radius * cos(omega)
 	animated_sprite_2d.offset.y = radius * sin(omega)
-	print(animated_sprite_2d.offset.y)
 	if teleportable:
 		if Input.is_action_just_pressed("interact"):
 			get_tree().change_scene_to_file("res://UI/temp_level_select.tscn")

@@ -376,21 +376,23 @@ script = ExtResource("1_jm4xw")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("6_d3lqe")]
 
-[node name="Tileset" parent="." instance=ExtResource("1_kxdlo")]
-position = Vector2(75, 145)
+[node name="Wagons" type="Node" parent="."]
 
-[node name="SpaceTrain" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(827, 380)
-scale = Vector2(0.18457, 0.18457)
-texture = ExtResource("2_k1hdw")
+[node name="BackWagon" parent="Wagons" instance=ExtResource("1_kxdlo")]
+position = Vector2(70, 72)
 
-[node name="TeleporterArea" type="Area2D" parent="."]
-position = Vector2(698, 163)
+[node name="TeleporterArea" type="Area2D" parent="Wagons"]
+position = Vector2(693, 90)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleporterArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wagons/TeleporterArea"]
 position = Vector2(127, 214)
 shape = SubResource("RectangleShape2D_kxaog")
+
+[node name="SpaceTrain" type="Sprite2D" parent="Wagons"]
+texture_filter = 1
+position = Vector2(822, 307)
+scale = Vector2(0.18457, 0.18457)
+texture = ExtResource("2_k1hdw")
 
 [node name="PlayerTD" parent="." instance=ExtResource("3_gahup")]
 z_index = 1
@@ -407,7 +409,7 @@ z_index = 1
 position = Vector2(507, 213)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = -1
+z_index = -2
 position = Vector2(576, 348)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_54t0d")
@@ -417,6 +419,6 @@ autoplay = "default"
 wait_time = 0.05
 autostart = true
 
-[connection signal="body_entered" from="TeleporterArea" to="." method="TeleporterAreaBodyEntered"]
-[connection signal="body_exited" from="TeleporterArea" to="." method="TeleporterAreaBodyExited"]
+[connection signal="body_entered" from="Wagons/TeleporterArea" to="." method="TeleporterAreaBodyEntered"]
+[connection signal="body_exited" from="Wagons/TeleporterArea" to="." method="TeleporterAreaBodyExited"]
 [connection signal="timeout" from="PlanetRotation" to="." method="_on_planet_rotation_timeout"]

@@ -9,9 +9,11 @@ extends State
 @export var attack3State: State
 
 func enter() -> void:
+	var sfx = parent.find_child("JumpSound")
 	parent.sword.monitoring = false
 	super() #call the enter function of the class we inherit from
 	parent.fallFromPlatform = false
+	sfx.play()
 	parent.velocity.y = jumpVelocity
 
 func process_input(event: InputEvent) -> State:

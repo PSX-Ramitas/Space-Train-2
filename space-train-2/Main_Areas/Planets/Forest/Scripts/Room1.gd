@@ -3,7 +3,6 @@ extends Node
 @onready var camera = find_child("Camera2D")
 @onready var transition: TransitionScreen = $CanvasLayer/TransitionAnim
 @onready var player_ss: Player = $PlayerSS
-
 var levelFinished: bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +26,8 @@ func _on_transition_screen_body_entered(body: Node2D) -> void:
 	if body is Player and enemies.is_empty():
 		levelFinished = true
 		transition.play_transition("DiamondOut")
+		var sfx = self.find_child("transitionScreen")
+		sfx.play_trans_sound()
 
 
 func _on_transition_finished() -> void:

@@ -27,6 +27,8 @@ func _on_transition_screen_body_entered(body: Node2D) -> void:
 	if body is Player and enemies.is_empty():
 		levelFinished = true
 		transition.play_transition("DiamondOut")
+		var sfx = self.find_child("transitionScreen")
+		sfx.play_trans_sound()
 
 func _on_transition_finished() -> void:
 	if levelFinished == true:

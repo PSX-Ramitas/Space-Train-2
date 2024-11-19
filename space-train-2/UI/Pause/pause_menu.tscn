@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl7wej5k1tlc4"]
+[gd_scene load_steps=5 format=3 uid="uid://cl7wej5k1tlc4"]
 
 [ext_resource type="Script" path="res://UI/Pause/pause_menu.gd" id="1_bqthm"]
 [ext_resource type="PackedScene" uid="uid://db6nsiuqoytme" path="res://UI/Settings/Settings.tscn" id="2_0mehi"]
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="3_xxvbq"]
+[ext_resource type="AudioStream" uid="uid://bodnb3yj5rrfc" path="res://Sounds/SFX/smb3_pause.wav" id="4_vag16"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -80,6 +81,18 @@ offset_bottom = 18.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TransitionAnim" parent="CanvasLayer" instance=ExtResource("3_xxvbq")]
+
+[node name="Sounds" type="Node" parent="."]
+process_mode = 3
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="Sounds"]
+bus = &"SFX"
+
+[node name="PauseSound" type="AudioStreamPlayer" parent="Sounds"]
+process_mode = 3
+stream = ExtResource("4_vag16")
+volume_db = -20.306
+bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/GridContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="ColorRect/GridContainer/Options" to="." method="_on_options_pressed"]

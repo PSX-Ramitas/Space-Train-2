@@ -67,6 +67,8 @@ func process_physics(delta: float) -> State:
 		animations.flip_h = false
 		#parent.hitbox.position.x = 0
 	if parent.is_on_floor():
+		var sfx = parent.find_child("LandSound")
+		sfx.play()
 		if jumpBufferTimer > 0:
 			return jumpState
 		

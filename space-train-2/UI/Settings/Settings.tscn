@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://db6nsiuqoytme"]
+[gd_scene load_steps=4 format=3 uid="uid://db6nsiuqoytme"]
 
 [ext_resource type="Script" path="res://UI/Settings/settings.gd" id="1_qps2c"]
 [ext_resource type="PackedScene" uid="uid://c42l0q6o71v4j" path="res://UI/Settings/Input_Settings.tscn" id="2_cexpp"]
+[ext_resource type="AudioStream" uid="uid://caadytsfr0t2p" path="res://Sounds/SFX/cute-level-up-3-189853.mp3" id="3_o6bct"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -102,6 +103,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 scale = Vector2(0.710718, 0.772528)
+
+[node name="TestSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o6bct")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="value_changed" from="MainSettings/VBoxContainer/MasterVolume" to="." method="_on_volume_value_changed"]
 [connection signal="value_changed" from="MainSettings/VBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]

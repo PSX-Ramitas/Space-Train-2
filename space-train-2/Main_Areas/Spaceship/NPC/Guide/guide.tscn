@@ -1,0 +1,329 @@
+[gd_scene load_steps=35 format=3 uid="uid://cp5de08wucg0g"]
+
+[ext_resource type="Script" path="res://Main_Areas/Spaceship/NPC/Guide/guide.gd" id="1_4bine"]
+[ext_resource type="Shader" path="res://Main_Areas/Spaceship/NPC/Guide/replace_color.gdshader" id="1_pyufk"]
+[ext_resource type="Texture2D" uid="uid://bspbfqluhnspf" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/1. Idle 48 x 48.png" id="2_maviy"]
+[ext_resource type="PackedScene" uid="uid://d04o58517yg4k" path="res://Main_Areas/Spaceship/NPC/dialogue.tscn" id="2_pns82"]
+[ext_resource type="PackedScene" uid="uid://dco0wwnusv055" path="res://Main_Areas/Spaceship/NPC/interaction_area.tscn" id="3_o7pb2"]
+[ext_resource type="Texture2D" uid="uid://btlb374bnve0o" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/2. Run 48 x 48.png" id="5_qtbug"]
+[ext_resource type="PackedScene" uid="uid://bedye865q217d" path="res://Main_Areas/Spaceship/NPC/interactable_label_component.tscn" id="7_oahf1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6hv1"]
+shader = ExtResource("1_pyufk")
+shader_parameter/original_0 = Color(0.137255, 0.156863, 0.0901961, 1)
+shader_parameter/original_1 = Color(0.168627, 0.196078, 0.109804, 1)
+shader_parameter/original_2 = Color(0.262745, 0.301961, 0.176471, 1)
+shader_parameter/original_3 = Color(0.137255, 0.12549, 0.113725, 1)
+shader_parameter/replace_0 = Color(0.0588235, 0.172549, 0.286275, 1)
+shader_parameter/replace_1 = Color(0.19272, 0.323325, 0.576733, 1)
+shader_parameter/replace_2 = Color(0, 0.344808, 0.674061, 1)
+shader_parameter/replace_3 = Color(0.265021, 0.00425784, 0.31981, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4pv8"]
+atlas = ExtResource("2_maviy")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unv78"]
+atlas = ExtResource("2_maviy")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi6jx"]
+atlas = ExtResource("2_maviy")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06uft"]
+atlas = ExtResource("2_maviy")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wntm4"]
+atlas = ExtResource("2_maviy")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeyqk"]
+atlas = ExtResource("2_maviy")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga8ve"]
+atlas = ExtResource("2_maviy")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osy6c"]
+atlas = ExtResource("2_maviy")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77oji"]
+atlas = ExtResource("2_maviy")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36e0c"]
+atlas = ExtResource("2_maviy")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk5u0"]
+atlas = ExtResource("2_maviy")
+region = Rect2(480, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euv8r"]
+atlas = ExtResource("2_maviy")
+region = Rect2(528, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5t74"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4pv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unv78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi6jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06uft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wntm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeyqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga8ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osy6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77oji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36e0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk5u0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euv8r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_tmb7p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_maviy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bylfc"]
+resource_name = "idle"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_maviy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_t8eqs"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_qtbug")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3uvtx"]
+_data = {
+"RESET": SubResource("Animation_tmb7p"),
+"idle": SubResource("Animation_bylfc"),
+"walk": SubResource("Animation_t8eqs")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3wusl"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ogg7"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ykaho"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pnmij"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hfqya"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_gtsav"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3wusl")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_8ogg7")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ykaho")
+blend_point_2/pos = Vector2(0, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_pnmij")
+blend_point_3/pos = Vector2(0, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_hfqya")
+blend_point_4/pos = Vector2(-1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u654d"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xvj3m"]
+states/Start/position = Vector2(221, 87)
+states/facing/node = SubResource("AnimationNodeBlendSpace2D_gtsav")
+states/facing/position = Vector2(390, 98)
+transitions = ["Start", "facing", SubResource("AnimationNodeStateMachineTransition_u654d")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rde1x"]
+size = Vector2(16, 20)
+
+[node name="Guide" type="CharacterBody2D"]
+script = ExtResource("1_4bine")
+
+[node name="Dialogue" parent="." instance=ExtResource("2_pns82")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_r6hv1")
+sprite_frames = SubResource("SpriteFrames_r5t74")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.522423
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_o7pb2")]
+position = Vector2(0, 27)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3uvtx")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_xvj3m")
+anim_player = NodePath("../AnimationPlayer")
+parameters/facing/blend_position = Vector2(-0.3436, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_maviy")
+hframes = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 9)
+shape = SubResource("RectangleShape2D_rde1x")
+
+[node name="InteractableLabelComponent" parent="." instance=ExtResource("7_oahf1")]
+offset_left = -25.0
+offset_top = -42.0
+offset_right = -7.0
+offset_bottom = -24.0
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

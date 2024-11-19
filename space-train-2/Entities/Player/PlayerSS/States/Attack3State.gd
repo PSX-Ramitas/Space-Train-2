@@ -10,6 +10,8 @@ var nextState: State
 var attackFinished: bool
 
 func enter() -> void:
+	var sfx = parent.find_child("Sword3")
+	sfx.play()
 	parent.sword.monitoring = true
 	if !parent.is_on_floor():
 		parent.usedAirAttack = true

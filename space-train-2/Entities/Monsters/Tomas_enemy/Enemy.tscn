@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c07t1k3q6u62"]
+[gd_scene load_steps=54 format=3 uid="uid://c07t1k3q6u62"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/enemy.gd" id="1_qnemb"]
 [ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="2_6ml1h"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bkgeq3v4et2w5" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/hit and death.png" id="3_06cwn"]
 [ext_resource type="Script" path="res://Entities/enemy_hitbox.gd" id="4_e74ss"]
 [ext_resource type="Texture2D" uid="uid://1kde6qds4n2n" path="res://Entities/Monsters/Tomas_enemy/shield droid/shield droid/walk.png" id="5_vvcw1"]
+[ext_resource type="AudioStream" uid="uid://dajrlu56adm4x" path="res://Sounds/SFX/Mario_and_Luigi_SS_Thunderhand_Release.ogg" id="10_yxcsr"]
+[ext_resource type="AudioStream" uid="uid://bv3gbpispjbvk" path="res://Sounds/SFX/Mario_and_Luigi_SS_Thunderhand_Intro.ogg" id="11_sloyw"]
+[ext_resource type="AudioStream" uid="uid://cv3hes0saetdp" path="res://Sounds/SFX/Mario_and_Luigi_SS_Thunderhand_Loop.ogg" id="12_e5s55"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ja33c"]
 height = 70.4
@@ -340,7 +343,8 @@ position = Vector2(-1.6, -11.2)
 shape = SubResource("RectangleShape2D_g5uan")
 
 [node name="DetectionArea" type="Area2D" parent="."]
-position = Vector2(4.76837e-08, 1.90735e-06)
+position = Vector2(-0.8, -11.6)
+scale = Vector2(0.504003, 0.167999)
 collision_layer = 0
 monitorable = false
 
@@ -367,6 +371,23 @@ scale = Vector2(0.902, 1)
 sprite_frames = SubResource("SpriteFrames_lijxw")
 animation = &"hurt"
 
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Attack" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_yxcsr")
+volume_db = -18.0
+bus = &"SFX"
+
+[node name="Charge" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("11_sloyw")
+volume_db = -22.0
+bus = &"SFX"
+
+[node name="Ready" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("12_e5s55")
+volume_db = -22.0
+bus = &"SFX"
+
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]
 [connection signal="healthChanged" from="DroidHitbox" to="DroidHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
@@ -374,3 +395,4 @@ animation = &"hurt"
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="AttackRangeArea" to="." method="_on_attack_range_area_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="finished" from="Sounds/Charge" to="." method="_on_charge_finished"]

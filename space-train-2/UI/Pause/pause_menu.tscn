@@ -91,7 +91,7 @@ bus = &"SFX"
 [node name="PauseSound" type="AudioStreamPlayer" parent="Sounds"]
 process_mode = 3
 stream = ExtResource("4_vag16")
-volume_db = -20.306
+volume_db = -17.0
 bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/GridContainer/Resume" to="." method="_on_resume_pressed"]

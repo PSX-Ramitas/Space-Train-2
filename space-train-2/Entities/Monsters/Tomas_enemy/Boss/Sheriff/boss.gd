@@ -80,8 +80,8 @@ func RoamState(delta):
 	_sprite_orientation(direction)
 
 func ChaseState():
-#	print("chase state")
-	#	animations.play("move")
+	print("chase state")
+	animations.play("chase")
 	var dir_to_player = position.direction_to(player.position) * movespeed
 	velocity.x = dir_to_player.x
 	direction.x = abs(velocity.x) / velocity.x # flip direction when turning
@@ -89,7 +89,7 @@ func ChaseState():
 	#shoot()
 
 func AttackState(delta):
-	#print("attack state")
+	print("attack state")
 	_sprite_orientation(direction)
 	animations.play("Repeater_fire")
 	windupTimer -= delta
@@ -101,15 +101,17 @@ func AttackState(delta):
 
 func HurtState():
 	print("hurt state")
-	#animations.play("hurt")
+	animations.play("move")
 	
 
 func DeathState(delta):
-	#print("we ded state")
+	print("we ded state")
 	dead=true
+	queue_free()
 	#animations.play("death")
 	if !dead:
 		attackArea.monitoring = false
+
 
 func choose(array):
 	array.shuffle()
@@ -121,13 +123,13 @@ func _on_direction_timer_timeout() -> void:
 		direction = choose([Vector2.RIGHT, Vector2.LEFT])
 		velocity.x=0
 
-func _on_detection_area_area_entered(area: Area2D) -> void:
-	if area.get_parent() is Player:
-		print("shooting range entered by player")
-		player = area.get_parent()
-		playerInChaseRange = true
-		currentState = State.Chase
-		_sprite_orientation(direction)
+#func _on_detection_area_area_entered(area: Area2D) -> void:
+	#if area.get_parent() is Player:
+		#print("shooting range entered by player")
+		#player = area.get_parent()
+		#playerInChaseRange = true
+		#currentState = State.Chase
+		#_sprite_orientation(direction)
 	
 
 func _on_detection_area_area_exited(area: Area2D) -> void:
@@ -136,14 +138,14 @@ func _on_detection_area_area_exited(area: Area2D) -> void:
 		currentState = State.Roam
 	
 
-func _on_attack_range_area_area_entered(area: Area2D) -> void:
-	if area.get_parent() is Player:
-		playerInAttackRange = true
-		currentState = State.Attack
-func _on_attack_range_area_area_exited(area: Area2D) -> void:
-	if area.get_parent() is Player:
-		playerInAttackRange = false
-		currentState = State.Chase
+#func _on_attack_range_area_area_entered(area: Area2D) -> void:
+	#if area.get_parent() is Player:
+		#playerInAttackRange = true
+		#currentState = State.Attack
+#func _on_attack_range_area_area_exited(area: Area2D) -> void:
+	#if area.get_parent() is Player:
+		#playerInAttackRange = false
+		#currentState = State.Chase
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 		match currentState:
@@ -153,16 +155,32 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 				currentState = State.Roam
 				if playerInAttackRange:
 					currentState = State.Attack
-					shoot()
+					#shoot()
 			State.Hurt:
 				currentState = State.Roam
 				if playerInAttackRange:
 					currentState = State.Attack
-					shoot()
+					#shoot()
 			State.Death:
-				dead =true
+				dead= true
 				queue_free()
+				"we queued freed chat"
 
 
 func _on_shooting_timer_timeout() -> void:
 	can_shoot =true
+
+
+func _on_shooting_detection_area_2_area_entered(area: Area2D) -> void:
+	if area.get_parent() is Player:
+		print("shooting range entered by player")
+		player = area.get_parent()
+		playerInChaseRange = true
+		currentState = State.Chase
+		_sprite_orientation(direction)
+
+
+func _on_shooting_detection_area_2_area_exited(area: Area2D) -> void:
+		if area.get_parent() is Player:
+			playerInChaseRange = false
+			currentState = State.Roam

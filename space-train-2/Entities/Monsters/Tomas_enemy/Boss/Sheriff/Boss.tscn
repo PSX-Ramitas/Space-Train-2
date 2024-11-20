@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://citu8occwl0xr"]
+[gd_scene load_steps=38 format=3 uid="uid://citu8occwl0xr"]
 
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="1_k3w4u"]
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/boss.gd" id="1_way5i"]
@@ -13,6 +13,22 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_743fi"]
 height = 64.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvgrd"]
+atlas = ExtResource("7_5leb6")
+region = Rect2(0, 0, 20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mphrm"]
+atlas = ExtResource("7_5leb6")
+region = Rect2(20, 0, 20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj45g"]
+atlas = ExtResource("7_5leb6")
+region = Rect2(40, 0, 20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrscx"]
+atlas = ExtResource("7_5leb6")
+region = Rect2(60, 0, 20, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d3w0o"]
 atlas = ExtResource("6_jqait")
@@ -40,6 +56,23 @@ region = Rect2(60, 0, 20, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_socaq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvgrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mphrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj45g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrscx")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d3w0o")
@@ -72,10 +105,6 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8vd8"]
 radius = 11.0
 height = 70.0
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_hd8vq"]
-a = Vector2(1380, 8.00029)
-b = Vector2(-1062, 14.0003)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apb8y"]
 atlas = ExtResource("8_r8tle")
@@ -184,6 +213,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2i82c"]
+a = Vector2(1380, 8.00029)
+b = Vector2(-1062, 14.0003)
+
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_way5i")
 maxHealth = 200
@@ -196,11 +229,11 @@ position = Vector2(-17, -8)
 shape = SubResource("CapsuleShape2D_743fi")
 
 [node name="HealthBar" parent="." instance=ExtResource("1_k3w4u")]
-offset_left = -32.4
-offset_top = 1.6
-offset_right = 31.6
-offset_bottom = 41.6
-scale = Vector2(0.416386, 0.521012)
+offset_left = -43.0
+offset_top = 26.0
+offset_right = 21.0
+offset_bottom = 66.0
+scale = Vector2(0.878549, 0.927186)
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -208,8 +241,8 @@ texture_filter = 1
 position = Vector2(-16.4, -8.8)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_socaq")
-animation = &"move"
-frame_progress = 0.80942
+animation = &"chase"
+frame_progress = 0.273446
 
 [node name="BossHitBox" parent="." instance=ExtResource("3_1xwtl")]
 monitorable = true
@@ -219,16 +252,6 @@ script = ExtResource("4_vopp6")
 position = Vector2(-17, -6)
 shape = SubResource("CapsuleShape2D_h8vd8")
 
-[node name="ShootingDetectionArea" type="Area2D" parent="."]
-position = Vector2(-18.8, -10.4)
-collision_layer = 0
-monitorable = false
-
-[node name="DetectionAreaBody" type="CollisionShape2D" parent="ShootingDetectionArea"]
-position = Vector2(0, 1.99994)
-scale = Vector2(0.2, 0.2)
-shape = SubResource("SegmentShape2D_hd8vq")
-
 [node name="DirectionTimer" type="Timer" parent="."]
 autostart = true
 
@@ -237,6 +260,21 @@ wait_time = 0.5
 one_shot = true
 
 [node name="weapons" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_pqern")
 animation = &"elephant_fire"
-frame_progress = 0.00173087
+frame_progress = 0.667994
+
+[node name="ShootingDetectionArea2" type="Area2D" parent="."]
+position = Vector2(-18.8, -10.4)
+collision_layer = 0
+monitorable = false
+
+[node name="DetectionAreaBody" type="CollisionShape2D" parent="ShootingDetectionArea2"]
+position = Vector2(0, 1.99994)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("SegmentShape2D_2i82c")
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="area_entered" from="ShootingDetectionArea2" to="." method="_on_shooting_detection_area_2_area_entered"]
+[connection signal="area_exited" from="ShootingDetectionArea2" to="." method="_on_shooting_detection_area_2_area_exited"]

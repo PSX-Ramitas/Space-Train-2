@@ -553,7 +553,7 @@ position = Vector2(2317, 382)
 position = Vector2(2999, 393)
 
 [node name="Killzone" parent="." instance=ExtResource("10_f1gjy")]
-position = Vector2(414, 609)
+position = Vector2(414, 761)
 scale = Vector2(34.1532, -3.89449)
 
 [node name="Boar" parent="." instance=ExtResource("12_4ovt0")]

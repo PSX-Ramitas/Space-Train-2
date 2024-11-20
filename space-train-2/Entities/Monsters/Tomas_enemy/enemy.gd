@@ -7,6 +7,10 @@ var direction = Vector2.RIGHT
 var player 
 @onready var attackArea = $AttackArea
 @onready var animations = $AnimatedSprite2D
+@onready var attackSound: AudioStreamPlayer = $Sounds/Attack
+@onready var chargeSound1: AudioStreamPlayer = $Sounds/Charge
+@onready var chargeSound2: AudioStreamPlayer = $Sounds/Ready
+
 var prevHealth = health
 enum State {
 	Roam,
@@ -64,6 +68,12 @@ func ChaseState():
 
 func AttackState(delta):
 	animations.play("attack")
+	if animations.frame == 0:
+		if chargeSound1.playing == true:
+			chargeSound1.stop()
+		if chargeSound2.playing == true:
+			chargeSound2.stop()
+		attackSound.play()
 	windupTimer -= delta
 	if windupTimer <= 0:
 		attackArea.monitoring = true;
@@ -90,12 +100,17 @@ func _on_direction_timer_timeout() -> void:
 
 func _on_detection_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player:
+		chargeSound1.play()
 		player = area.get_parent()
 		currentState = State.Chase
 	pass # Replace with function body.
 
 func _on_detection_area_area_exited(area: Area2D) -> void:
 	if area.get_parent() is Player:
+		if chargeSound1.playing == true:
+			chargeSound1.stop()
+		if chargeSound2.playing == true:
+			chargeSound2.stop()
 		currentState = State.Roam
 
 func _on_attack_range_area_area_entered(area: Area2D) -> void:
@@ -111,3 +126,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 			currentState = State.Roam
 		State.Death:
 			queue_free()
+
+
+func _on_charge_finished() -> void:
+	chargeSound2.play()

@@ -8,6 +8,9 @@ enum spike_state {ACTIVE, ANIMATED, INACTIVE, DOWN_ANI}
 @export var pause_frame: float = 0.6  # Set the desired frame (in seconds) to pause at
 var is_transitioning: bool = false  # Prevents disruption while transitioning
 
+#SOUND
+@onready var trigger: AudioStreamPlayer = $Trigger
+
 #GENERAL ANIMATION FUNCTIONS----------------------------------------------------------------------
 func _on_animated_spikes_ready() -> void:
 	# Connect the animation_finished signal properly
@@ -50,6 +53,7 @@ func transition_To_active():
 	is_transitioning = true #set transition state
 	curr_state = spike_state.ANIMATED
 	$AnimatedSpikes.play("Spikes_Animation")
+	trigger.play()
 	$AnimatedSpikes.speed_scale = 1.2
 
 	# Add a timer to stop at a specific frame

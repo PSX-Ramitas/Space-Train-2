@@ -171,6 +171,7 @@ states/facing/position = Vector2(514, 100)
 transitions = ["Start", "facing", SubResource("AnimationNodeStateMachineTransition_t74nf")]
 
 [node name="CatDroid" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_y58oi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -199,6 +200,9 @@ parameters/facing/blend_position = Vector2(0, -0.1)
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_ddpav")]
 
+[node name="DialogueTimer" type="Timer" parent="InteractionArea"]
+one_shot = true
+
 [node name="Dialogue" parent="." instance=ExtResource("4_hm4gf")]
 
 [node name="InteractableLabelComponent" parent="." instance=ExtResource("5_qrb86")]
@@ -210,3 +214,4 @@ offset_bottom = -55.0
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="timeout" from="InteractionArea/DialogueTimer" to="." method="_on_dialogue_timer_timeout"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://b5o4esi0e5ybw"
+path="res://.godot/imported/guide.dialogue-f185bf3a1a1f09e317dc3ec4143327e5.tres"
+
+[deps]
+
+source_file="res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/guide.dialogue"
+dest_files=["res://.godot/imported/guide.dialogue-f185bf3a1a1f09e317dc3ec4143327e5.tres"]
+
+[params]
+
+defaults=true

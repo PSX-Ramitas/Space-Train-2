@@ -1,0 +1,19 @@
+~ start
+Cat Droid: [[Hi|Hello|Howdy]], I am your database for known enemies for this world.
+~ info
+Cat Droid: Choose which monster you would like to know more.
+- Snail
+	Cat Droid: This slimy enemy likes to wander around, not very dangerous. => info
+- Boar
+	Cat Droid: This creature is very territorial.
+	Cat Droid: It will chase you if you enter its territory. => info
+- Bees
+	Cat Droid: Bees are higly territorial and will chase you from the air. => info
+- Droid Bot
+	Cat Droid: The droid will attack with static energy if you get close to it. => info
+- Botwheel
+	Cat Droid: Trained killer, he shots you on sight be careful. => info
+- Start again => start
+- End the conversation => END
+Cat Droid: Let me know if you need anything else.
+=> END

@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	animated_sprite_2d.offset.y = radius * sin(omega)
 	if teleportable:
 		if Input.is_action_just_pressed("interact"):
-			get_tree().change_scene_to_file("res://UI/temp_level_select.tscn")
+			get_tree().change_scene_to_file("res://Main_Areas/Planets/Forest/Forest_room_1.tscn")
 
 
 func TeleporterAreaBodyEntered(body: Node2D) -> void:

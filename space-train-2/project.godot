@@ -145,7 +145,7 @@ conversation_start={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/guide.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/guide.dialogue", "res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/cat.dialogue")
 
 [layer_names]
 

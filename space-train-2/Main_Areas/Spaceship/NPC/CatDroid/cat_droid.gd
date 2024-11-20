@@ -11,6 +11,7 @@ enum CAT_STATE { IDLE, WALK, TALK}
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var timer: Timer = $Timer
 @onready var dialogue: Label = $Dialogue
+var ballon_scene = preload("res://Main_Areas/Spaceship/NPC/Dialogue/game_dialogue_balloon.tscn")
 @onready var dialogue_timer: Timer = $InteractionArea/DialogueTimer
 @onready var interactable_label_component: Control = $InteractableLabelComponent
 
@@ -58,7 +59,9 @@ func _on_timer_timeout() -> void:
 func _process(delta: float) -> void:
 	if NPC_dialogue:
 		if Input.is_action_just_pressed("conversation_start"):
-			dialogue.text = "Do you want to explore new planets?"
+			var ballon : BaseGameDialogueBalloon = ballon_scene.instantiate()
+			get_tree().current_scene.add_child(ballon)
+			ballon.start(load("res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/cat.dialogue"), "start")
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	interactable_label_component.show()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://hb82744trdpu"]
+[gd_scene load_steps=31 format=3 uid="uid://hb82744trdpu"]
 
 [ext_resource type="Texture2D" uid="uid://c7qcwdgg7eckw" path="res://Entities/Monsters/Forest/Boar/Assets/Walk/Walk-Base-SheetBlack.png" id="1_6yo0l"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Boar/boar.gd" id="1_q3jh0"]
+[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_emfly"]
 [ext_resource type="Texture2D" uid="uid://c0qk6kdnjhhdp" path="res://Entities/Monsters/Forest/Boar/Assets/Hit-Vanish/Hit-Sheet-Black.png" id="3_d6f0g"]
 [ext_resource type="PackedScene" uid="uid://b403m60sq8cnl" path="res://Entities/Player/PlayerSS2/Attacks/damageable.tscn" id="4_oc6uk"]
 [ext_resource type="Texture2D" uid="uid://csdapyw3pr4di" path="res://Entities/Monsters/Forest/Boar/Assets/Run/Run-Sheet-Black.png" id="4_sd38o"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bvbd6rpskjse2" path="res://Entities/Monsters/Forest/Boar/Attacks/attack_area.tscn" id="8_ksjpw"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Boar/Attacks/attack_area.gd" id="9_hask7"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Boar/Attacks/facing_collision_shape_2d.gd" id="9_jh3cg"]
+[ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="15_u8hqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kq2n"]
 size = Vector2(30, 26)
@@ -221,10 +223,16 @@ transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(20, 26)
 
 [node name="Boar" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
-collision_layer = 4
+collision_layer = 5
 collision_mask = 3
 script = ExtResource("1_q3jh0")
 hit_state = NodePath("CharacterStateMachine/Hit")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_emfly")]
+offset_left = -32.0
+offset_top = 17.0
+offset_right = 32.0
+offset_bottom = 27.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 4)
@@ -243,8 +251,9 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_iaq5i")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Damageable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_oc6uk")]
+[node name="Damageable" parent="." node_paths=PackedStringArray("parent", "enemy_health_bar") instance=ExtResource("4_oc6uk")]
 parent = NodePath("..")
+enemy_health_bar = NodePath("../HealthBar")
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "animation_tree")]
 script = ExtResource("5_myluo")
@@ -285,6 +294,7 @@ target_position = Vector2(-20, 10)
 target_position = Vector2(15, 10)
 
 [node name="AttackArea" parent="." node_paths=PackedStringArray("monster", "facing_shape") instance=ExtResource("8_ksjpw")]
+collision_layer = 4
 script = ExtResource("9_hask7")
 monster = NodePath("..")
 facing_shape = NodePath("CollisionShape2D")
@@ -293,8 +303,8 @@ facing_shape = NodePath("CollisionShape2D")
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_j1kqj")
 script = ExtResource("9_jh3cg")
-facing_left_position = Vector2(-12, 4)
-facing_right_position = Vector2(12, 4)
+facing_left_position = Vector2(-15, 4)
+facing_right_position = Vector2(15, 4)
 
 [node name="DetectionRight" type="RayCast2D" parent="."]
 target_position = Vector2(100, 0)
@@ -304,8 +314,16 @@ collision_mask = 2
 target_position = Vector2(-100, 0)
 collision_mask = 2
 
+[node name="Sounds" type="Node" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("15_u8hqk")
+volume_db = -17.0
+bus = &"SFX"
+
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]
 [connection signal="timeout" from="CharacterStateMachine/Attack/AttackTimer" to="CharacterStateMachine/Attack" method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]
 [connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]

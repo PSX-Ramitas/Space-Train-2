@@ -1,0 +1,217 @@
+[gd_scene load_steps=20 format=3 uid="uid://b6en2ww83au5c"]
+
+[ext_resource type="Texture2D" uid="uid://bhuqy5nkatoyy" path="res://Main_Areas/Spaceship/NPC/CatDroid/Assets/TX Player.png" id="1_33pgr"]
+[ext_resource type="Script" path="res://Main_Areas/Spaceship/NPC/CatDroid/cat_droid.gd" id="1_y58oi"]
+[ext_resource type="PackedScene" uid="uid://dco0wwnusv055" path="res://Main_Areas/Spaceship/NPC/interaction_area.tscn" id="3_ddpav"]
+[ext_resource type="PackedScene" uid="uid://d04o58517yg4k" path="res://Main_Areas/Spaceship/NPC/dialogue.tscn" id="4_hm4gf"]
+[ext_resource type="PackedScene" uid="uid://bedye865q217d" path="res://Main_Areas/Spaceship/NPC/interactable_label_component.tscn" id="5_qrb86"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojqgv"]
+size = Vector2(21, 20)
+
+[sub_resource type="Animation" id="Animation_77aye"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ho2pr"]
+resource_name = "facing_down"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fcot0"]
+resource_name = "facing_left"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wyav7"]
+resource_name = "facing_right"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1d378"]
+resource_name = "facing_up"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6c12"]
+_data = {
+"RESET": SubResource("Animation_77aye"),
+"facing_down": SubResource("Animation_ho2pr"),
+"facing_left": SubResource("Animation_fcot0"),
+"facing_right": SubResource("Animation_wyav7"),
+"facing_up": SubResource("Animation_1d378")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y4g3f"]
+animation = &"facing_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7g3my"]
+animation = &"facing_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2jrq8"]
+animation = &"facing_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cm3a5"]
+animation = &"facing_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_be7ct"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_y4g3f")
+blend_point_0/pos = Vector2(0, -1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_7g3my")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_2jrq8")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_cm3a5")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t74nf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sj1ru"]
+states/facing/node = SubResource("AnimationNodeBlendSpace2D_be7ct")
+states/facing/position = Vector2(514, 100)
+transitions = ["Start", "facing", SubResource("AnimationNodeStateMachineTransition_t74nf")]
+
+[node name="CatDroid" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_y58oi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -27)
+texture = ExtResource("1_33pgr")
+hframes = 4
+frame = 1
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 63)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_ojqgv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o6c12")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_sj1ru")
+anim_player = NodePath("../AnimationPlayer")
+parameters/facing/blend_position = Vector2(0, -0.1)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_ddpav")]
+
+[node name="DialogueTimer" type="Timer" parent="InteractionArea"]
+one_shot = true
+
+[node name="Dialogue" parent="." instance=ExtResource("4_hm4gf")]
+
+[node name="InteractableLabelComponent" parent="." instance=ExtResource("5_qrb86")]
+offset_left = -27.0
+offset_top = -73.0
+offset_right = -9.0
+offset_bottom = -55.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="timeout" from="InteractionArea/DialogueTimer" to="." method="_on_dialogue_timer_timeout"]

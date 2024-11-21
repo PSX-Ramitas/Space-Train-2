@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c42l0q6o71v4j"]
+[gd_scene load_steps=5 format=3 uid="uid://c42l0q6o71v4j"]
 
 [ext_resource type="PackedScene" uid="uid://b3ofrj3jtgs13" path="res://UI/Settings/input_button.tscn" id="1_41saw"]
 [ext_resource type="Script" path="res://UI/Settings/input_settings.gd" id="1_ppfe8"]
+[ext_resource type="AudioStream" uid="uid://6cwe4vngu5ii" path="res://Sounds/SFX/SE_BTL_BEEP2.wav" id="3_gjhrs"]
+[ext_resource type="AudioStream" uid="uid://iik8xvfd5ml7" path="res://Sounds/SFX/SE_BTL_BEEP3.wav" id="4_2cv84"]
 
 [node name="InputSettings" type="Control"]
 layout_mode = 3
@@ -51,5 +53,17 @@ size_flags_horizontal = 3
 
 [node name="InputButton" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("1_41saw")]
 layout_mode = 2
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_gjhrs")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="BackButtonPress" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_2cv84")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

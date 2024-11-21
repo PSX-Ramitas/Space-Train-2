@@ -24,13 +24,13 @@ func test_verify_setup():
 
 
 func test_chase():
-	var startDistance = _player.position.x - _droid2.position.x
+	var startDistance = abs(_player.position.x - _droid2.position.x)
 	wait_seconds(3)
-	var currDistance = _player.position.x - _droid2.position.x
+	var currDistance = abs(_player.position.x - _droid2.position.x)
 	assert_true(startDistance > currDistance, "Droid moved towards player")
 
 func test_no_attack():
-	assert_true(_droid2.state != "Attack", "Droid can't attack player out of range")
+	assert_true(_droid2.get_state() != 2, "Droid can't attack player out of range")
 #
 #func test_attack():
 	#startHealth = _player.health

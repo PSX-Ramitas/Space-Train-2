@@ -18,6 +18,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if attacker is Player and area is PlayerHitbox:
 		area.take_damage(attack)
 		print("boss attacking area: ", area.name)
+		return
 	else:
 		pass
 func _on_area_exited(area: Area2D) -> void:

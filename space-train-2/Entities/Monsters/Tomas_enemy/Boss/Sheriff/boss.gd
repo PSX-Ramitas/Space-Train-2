@@ -71,7 +71,6 @@ func RoamState(delta):
 	print("roam state")
 	animations.play("walk")
 	velocity += direction * movespeed * delta
-	_sprite_orientation(direction)
 
 func ChaseState():
 	print("chase state")
@@ -91,7 +90,7 @@ func AttackState(delta):
 		var dir_to_player = position.direction_to(player.position) * movespeed
 		velocity.x = dir_to_player.x
 		direction.x = abs(velocity.x) / velocity.x # flip direction when turning
-		_sprite_orientation(direction)
+	#	_sprite_orientation(direction)
 		
 		animations.play(random_attack)
 		
@@ -187,4 +186,5 @@ func _on_boss_attack_range_area_exited(area: Area2D) -> void:
 	if area.get_parent() is Player:
 			playerInAttackRange = false
 			playerInChaseRange=true
+			_sprite_orientation(direction)
 			currentState = State.Chase

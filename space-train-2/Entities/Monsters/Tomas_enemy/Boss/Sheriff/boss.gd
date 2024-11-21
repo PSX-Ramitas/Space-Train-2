@@ -6,6 +6,7 @@ class_name Boss
 
 @onready var projectile = load("res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn")
 var can_shoot = true
+var can_attack = true
 var dead = false
 const gravity = 900 #custom gravity
 var windupTimer = .3
@@ -15,6 +16,7 @@ var playerInChaseRange = false
 var playerInAttackRange = false
 @onready var attackArea = $CloseAttackArea
 @onready var animations = $AnimatedSprite2D
+var attacks = ["attack", "attack_3", "attack_2","air_attack"]
 
 var prevHealth = health
 enum State {Roam,Chase,Attack,Hurt,Death,}
@@ -48,10 +50,9 @@ func shoot():
 		else:
 			instance.dir = Vector2.RIGHT  # Normal direction to the right
 		can_shoot=false
-		$Shooting_Timer.start()
+		#$Shooting_Timer.start()
 
 func _process(delta):
-	#print ("_process function")
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x =0
@@ -75,12 +76,12 @@ func _process(delta):
 	
 func RoamState(delta):
 	#print("roam state")
-	animations.play("move")
+	animations.play("walk")
 	velocity += direction * movespeed * delta
 	_sprite_orientation(direction)
 
 func ChaseState():
-	print("chase state")
+	#print("chase state")
 	animations.play("chase")
 	var dir_to_player = position.direction_to(player.position) * movespeed
 	velocity.x = dir_to_player.x
@@ -89,23 +90,33 @@ func ChaseState():
 	#shoot()
 
 func AttackState(delta):
-	print("attack state")
-	_sprite_orientation(direction)
-	animations.play("Repeater_fire")
-	windupTimer -= delta
-	if windupTimer <= 0:
-		if attackArea: 
-			attackArea.monitoring = true
-		else: 
-			print("attackArea not assigned")
+	if can_attack:
+		var random_attack = attacks[0]
+		attacks.shuffle()
+		var dir_to_player = position.direction_to(player.position) * movespeed
+		velocity.x = dir_to_player.x
+		direction.x = abs(velocity.x) / velocity.x # flip direction when turning
+		_sprite_orientation(direction)
+		animations.play(random_attack)
+		windupTimer -= delta
+		if windupTimer <= 0:
+			if attackArea: 
+				attackArea.monitoring = true
+		else:
+			pass 
+			#print("attackArea not assigned")
+		can_attack = false
+		$Attack_Timer.start()
+		
+		
 
 func HurtState():
-	print("hurt state")
-	animations.play("move")
-	
+	#print("hurt state")
+	if $AnimatedSprite2D.animation != "hurt":
+		animations.play("hurt")
 
 func DeathState(delta):
-	print("we ded state")
+	#print("we ded state")
 	dead=true
 	queue_free()
 	#animations.play("death")
@@ -123,38 +134,17 @@ func _on_direction_timer_timeout() -> void:
 		direction = choose([Vector2.RIGHT, Vector2.LEFT])
 		velocity.x=0
 
-#func _on_detection_area_area_entered(area: Area2D) -> void:
-	#if area.get_parent() is Player:
-		#print("shooting range entered by player")
-		#player = area.get_parent()
-		#playerInChaseRange = true
-		#currentState = State.Chase
-		#_sprite_orientation(direction)
-	
-
-func _on_detection_area_area_exited(area: Area2D) -> void:
-	if area.get_parent() is Player:
-		playerInChaseRange = false
-		currentState = State.Roam
-	
-
-#func _on_attack_range_area_area_entered(area: Area2D) -> void:
-	#if area.get_parent() is Player:
-		#playerInAttackRange = true
-		#currentState = State.Attack
-#func _on_attack_range_area_area_exited(area: Area2D) -> void:
-	#if area.get_parent() is Player:
-		#playerInAttackRange = false
-		#currentState = State.Chase
-
 func _on_animated_sprite_2d_animation_finished() -> void:
+		#print ("on animated sprite finished")
 		match currentState:
 			State.Attack:
 				attackArea.monitoring = false
 				windupTimer = .5
 				currentState = State.Roam
 				if playerInAttackRange:
+					_sprite_orientation(direction)
 					currentState = State.Attack
+
 					#shoot()
 			State.Hurt:
 				currentState = State.Roam
@@ -167,20 +157,22 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 				"we queued freed chat"
 
 
-func _on_shooting_timer_timeout() -> void:
-	can_shoot =true
+func _on_attack_timer_timeout() -> void:
+	#print("on shooting timer time out")
+	can_attack =true
+	_sprite_orientation(direction)
 
 
-func _on_shooting_detection_area_2_area_entered(area: Area2D) -> void:
+#player has entered boss' attack radius, boss attacks
+func _on_boss_attack_radius_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player:
-		print("shooting range entered by player")
+		playerInChaseRange= true
 		player = area.get_parent()
-		playerInChaseRange = true
-		currentState = State.Chase
 		_sprite_orientation(direction)
+		currentState = State.Attack
 
 
-func _on_shooting_detection_area_2_area_exited(area: Area2D) -> void:
-		if area.get_parent() is Player:
+func _on_boss_attack_radius_area_exited(area: Area2D) -> void:
+	if area.get_parent() is Player:
 			playerInChaseRange = false
 			currentState = State.Roam

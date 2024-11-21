@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.gd" id="1_t6rrs"]
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_7iy6m"]
-[ext_resource type="PackedScene" path="res://Entities/entity_hitbox.tscn" id="3_8drpg"]
+[ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="3_8drpg"]
 [ext_resource type="PackedScene" uid="uid://bx5w1c6jc4as7" path="res://Entities/Monsters/danger_area.tscn" id="3_48m00"]
 [ext_resource type="Texture2D" uid="uid://cskxqtimarqiq" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/charge.png" id="5_b8xyt"]
 [ext_resource type="Script" path="res://Entities/enemy_hitbox.gd" id="5_qstnc"]

@@ -17,10 +17,11 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 	elif attacker is not Player and area is EnemyHitbox:
 			area.take_damage(attack)
-			print("area.name that took damage: ", area.name)
+			print("damaged w/2nd elif, area: ", area.name)
 	else:
 		for child in attacker.get_children():
 			if (child is Damageable):
+				print ("damaging with 3rd damage else statemetn")
 				var direction_to_damageable = (area.global_position - get_parent().global_position)
 				var direction_sign = sign(direction_to_damageable.x)
 				

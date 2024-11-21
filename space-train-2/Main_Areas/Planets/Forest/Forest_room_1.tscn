@@ -543,4 +543,6 @@ position = Vector2(2607, 476)
 position = Vector2(2679, 476)
 
 [node name="Boss" parent="." instance=ExtResource("10_l5p4g")]
-position = Vector2(1383, 336)
+position = Vector2(1401, 385)
+collision_layer = 4
+movespeed = 200

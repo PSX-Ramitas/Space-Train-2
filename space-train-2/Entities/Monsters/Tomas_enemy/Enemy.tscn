@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c07t1k3q6u62"]
+[gd_scene load_steps=55 format=3 uid="uid://c07t1k3q6u62"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/enemy.gd" id="1_qnemb"]
 [ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="2_6ml1h"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dajrlu56adm4x" path="res://Sounds/SFX/Mario_and_Luigi_SS_Thunderhand_Release.ogg" id="10_yxcsr"]
 [ext_resource type="AudioStream" uid="uid://bv3gbpispjbvk" path="res://Sounds/SFX/Mario_and_Luigi_SS_Thunderhand_Intro.ogg" id="11_sloyw"]
 [ext_resource type="AudioStream" uid="uid://cv3hes0saetdp" path="res://Sounds/SFX/Mario_and_Luigi_SS_Thunderhand_Loop.ogg" id="12_e5s55"]
+[ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="13_75kli"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ja33c"]
 height = 70.4
@@ -281,6 +282,14 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_crgrg")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 1.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o4tx4")
 }, {
@@ -344,7 +353,7 @@ shape = SubResource("RectangleShape2D_g5uan")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 position = Vector2(-0.8, -11.6)
-scale = Vector2(0.504003, 0.167999)
+scale = Vector2(0.312003, 0.055999)
 collision_layer = 0
 monitorable = false
 
@@ -369,7 +378,8 @@ texture_filter = 1
 position = Vector2(0, -16)
 scale = Vector2(0.902, 1)
 sprite_frames = SubResource("SpriteFrames_lijxw")
-animation = &"hurt"
+animation = &"sleep"
+frame_progress = 0.319075
 
 [node name="Sounds" type="Node" parent="."]
 
@@ -380,12 +390,17 @@ bus = &"SFX"
 
 [node name="Charge" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("11_sloyw")
-volume_db = -22.0
+volume_db = -24.0
 bus = &"SFX"
 
 [node name="Ready" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("12_e5s55")
-volume_db = -22.0
+volume_db = -24.0
+bus = &"SFX"
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("13_75kli")
+volume_db = -17.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

@@ -3,7 +3,7 @@ class_name EnemyHitbox
 
 @onready var enemy: = $".."
 @onready var enemy_health_bar: TextureProgressBar = $"../HealthBar"
-
+@onready var death_sound: AudioStreamPlayer = $"../Sounds/DeathSound"
 
 #if healing 20 hp - (true, 20)
 #if dealing 10 hp - (false, 10)
@@ -25,6 +25,8 @@ func take_damage(damageAmount: int):
 		tempHealth = enemy.health - damageAmount
 		enemy.health = max(tempHealth, 0)
 		enemy_health_bar._set_health(enemy.health)
+	if enemy.health <= 0:
+		death_sound.play()
 		
 func heal_health(healAmount: int):
 	var tempHealth

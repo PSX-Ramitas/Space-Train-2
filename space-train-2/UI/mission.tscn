@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd2jhuyir2ikt"]
+
+[ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scenes/mission sign.gd" id="1_jwy4c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkqi1"]
+size = Vector2(580, 314)
+
+[node name="Mission" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 480.0
+offset_top = 477.0
+offset_right = 520.0
+offset_bottom = 517.0
+script = ExtResource("1_jwy4c")
+
+[node name="SignZone" type="Area2D" parent="."]
+position = Vector2(0, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SignZone"]
+z_index = 2
+position = Vector2(-200, -94)
+shape = SubResource("RectangleShape2D_hkqi1")
+
+[connection signal="area_entered" from="SignZone" to="." method="_on_sign_zone_area_entered"]
+[connection signal="area_exited" from="SignZone" to="." method="_on_sign_zone_area_exited"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl7wej5k1tlc4"]
+[gd_scene load_steps=7 format=3 uid="uid://cl7wej5k1tlc4"]
 
 [ext_resource type="Script" path="res://UI/Pause/pause_menu.gd" id="1_bqthm"]
 [ext_resource type="PackedScene" uid="uid://db6nsiuqoytme" path="res://UI/Settings/Settings.tscn" id="2_0mehi"]
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="3_xxvbq"]
+[ext_resource type="AudioStream" uid="uid://6cwe4vngu5ii" path="res://Sounds/SFX/SE_BTL_BEEP2.wav" id="4_h2nq8"]
 [ext_resource type="AudioStream" uid="uid://bodnb3yj5rrfc" path="res://Sounds/SFX/smb3_pause.wav" id="4_vag16"]
+[ext_resource type="AudioStream" uid="uid://iik8xvfd5ml7" path="res://Sounds/SFX/SE_BTL_BEEP3.wav" id="6_c4q7t"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -12,6 +14,7 @@ process_physics_priority = 35
 visible = false
 top_level = true
 z_index = 30
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,12 +89,19 @@ offset_bottom = 18.0
 process_mode = 3
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_h2nq8")
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="PauseSound" type="AudioStreamPlayer" parent="Sounds"]
 process_mode = 3
 stream = ExtResource("4_vag16")
 volume_db = -17.0
+bus = &"SFX"
+
+[node name="BackButtonPress" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_c4q7t")
+volume_db = -20.0
 bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/GridContainer/Resume" to="." method="_on_resume_pressed"]

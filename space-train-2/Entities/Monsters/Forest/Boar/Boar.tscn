@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://hb82744trdpu"]
+[gd_scene load_steps=31 format=3 uid="uid://hb82744trdpu"]
 
 [ext_resource type="Texture2D" uid="uid://c7qcwdgg7eckw" path="res://Entities/Monsters/Forest/Boar/Assets/Walk/Walk-Base-SheetBlack.png" id="1_6yo0l"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Boar/boar.gd" id="1_q3jh0"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bvbd6rpskjse2" path="res://Entities/Monsters/Forest/Boar/Attacks/attack_area.tscn" id="8_ksjpw"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Boar/Attacks/attack_area.gd" id="9_hask7"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Boar/Attacks/facing_collision_shape_2d.gd" id="9_jh3cg"]
+[ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="15_u8hqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kq2n"]
 size = Vector2(30, 26)
@@ -312,6 +313,13 @@ collision_mask = 2
 [node name="DetectionLeft" type="RayCast2D" parent="."]
 target_position = Vector2(-100, 0)
 collision_mask = 2
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("15_u8hqk")
+volume_db = -17.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]

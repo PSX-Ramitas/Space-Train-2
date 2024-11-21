@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://d1gbrlw0d6k6b"]
+[gd_scene load_steps=81 format=3 uid="uid://d1gbrlw0d6k6b"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.gd" id="1_t6rrs"]
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_7iy6m"]
@@ -16,7 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://ctev5wkp8nqkk" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/shoot with FX.png" id="13_4koie"]
 [ext_resource type="Texture2D" uid="uid://b5onmny6w10ji" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/static idle.png" id="14_otm6x"]
 [ext_resource type="Texture2D" uid="uid://bakf00de1p0fl" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/wake.png" id="15_fli2n"]
-[ext_resource type="PackedScene" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn" id="16_70gbj"]
+[ext_resource type="PackedScene" uid="uid://c58t3k1w873be" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn" id="16_70gbj"]
+[ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="18_rodag"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4uma"]
 radius = 4.4
@@ -548,7 +549,7 @@ shape = SubResource("SegmentShape2D_0c4vt")
 texture_filter = 1
 position = Vector2(-16.4, -8.8)
 sprite_frames = SubResource("SpriteFrames_ho6xj")
-animation = &"move"
+animation = &"wake"
 
 [node name="projectile" parent="." instance=ExtResource("16_70gbj")]
 position = Vector2(-14.8, -8.4)
@@ -560,6 +561,13 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-19.2, -8.8)
 shape = SubResource("CapsuleShape2D_vicpv")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("18_rodag")
+volume_db = -17.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="CloseAttackArea" to="CloseAttackArea" method="_on_area_entered"]
 [connection signal="area_entered" from="ShootingDetectionArea" to="." method="_on_detection_area_area_entered"]

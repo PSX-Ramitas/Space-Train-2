@@ -3,6 +3,7 @@ extends Node
 class_name State2
 
 @export var can_move : bool = true
+@onready var death_sound: AudioStreamPlayer = $"../../Sounds/DeathSound"
 
 var character : CharacterBody2D
 var next_state : State2
@@ -18,7 +19,7 @@ func state_input(event : InputEvent):
 	pass
 
 func on_enter():
-	pass
+	death_sound.play()
 
 func on_exit():
 	pass

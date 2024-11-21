@@ -198,6 +198,7 @@ position = Vector2(10400, 752)
 scale = Vector2(28.3044, -1.88754)
 
 [node name="Mission" parent="." instance=ExtResource("14_skgto")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Mission"]
 layout_mode = 0
@@ -206,6 +207,7 @@ offset_top = -46.0
 offset_right = 139.0
 offset_bottom = -23.0
 text = "Survive and Reach the Goal!"
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_oy6au")

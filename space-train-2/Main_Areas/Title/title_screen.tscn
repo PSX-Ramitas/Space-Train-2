@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://v68rubr571l"]
+[gd_scene load_steps=62 format=3 uid="uid://v68rubr571l"]
 
 [ext_resource type="Script" path="res://Main_Areas/Title/title_screen.gd" id="1_qy4ah"]
 [ext_resource type="Texture2D" uid="uid://bntaopptrds6i" path="res://Main_Areas/Title/Space Background(1).png" id="1_uu0sr"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c77osvw1ckdqw" path="res://Main_Areas/Title/Space Background(4).png" id="2_rrrvo"]
 [ext_resource type="Texture2D" uid="uid://cw8kpxsf6f801" path="res://Main_Areas/Title/53721020.png" id="2_x7ev4"]
 [ext_resource type="Script" path="res://Main_Areas/Title/title.gd" id="3_a787a"]
-[ext_resource type="PackedScene" uid="uid://pmqkwyfmea3m" path="res://UI/temp_level_select.tscn" id="6_pk7ou"]
 [ext_resource type="PackedScene" uid="uid://db6nsiuqoytme" path="res://UI/Settings/Settings.tscn" id="8_fnm3i"]
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="8_yigv6"]
 [ext_resource type="AudioStream" uid="uid://6cwe4vngu5ii" path="res://Sounds/SFX/SE_BTL_BEEP2.wav" id="10_d725h"]
@@ -446,14 +445,6 @@ offset_bottom = 151.0
 scale = Vector2(1.7, 1.7)
 text = "Exit Game"
 
-[node name="TempLevelSelect" parent="Control" instance=ExtResource("6_pk7ou")]
-visible = false
-z_index = 10
-offset_left = 189.0
-offset_top = -33.0
-offset_right = 189.0
-offset_bottom = -33.0
-
 [node name="Settings" parent="Control" instance=ExtResource("8_fnm3i")]
 visible = false
 z_index = 10
@@ -485,7 +476,4 @@ bus = &"SFX"
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Options" to="Control" method="_on_options_pressed"]
 [connection signal="pressed" from="Control/Quit" to="Control" method="_on_quit_pressed"]
-[connection signal="back_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_back_pressed"]
-[connection signal="multUI_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_mult_ui_pressed"]
 [connection signal="backButton" from="Control/Settings" to="Control" method="_on_settings_back_button"]
-[connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="Control/TempLevelSelect" method="_on_transition_finished"]

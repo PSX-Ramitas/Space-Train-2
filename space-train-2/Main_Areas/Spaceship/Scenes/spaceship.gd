@@ -4,10 +4,22 @@ var teleportable = false
 var radius = 200
 var omega = 0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var transition: TransitionScreen = $CanvasLayer/TransitionAnim
+@onready var label: Label = $Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if LevelManager.worldClear == true:
+		LevelManager.worldClear = false
+		transition.play_transition("Split")
+	elif PlayerData.is_dead == true:
+		PlayerData.is_dead = false
+		transition.play_transition("FadeIn")
+	elif PlayerData.forfeited == true:
+		PlayerData.forfeited = false
+		transition.play_transition("FadeIn")
+	else:
+		transition.play_transition("Split")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,22 +28,25 @@ func _process(delta: float) -> void:
 	animated_sprite_2d.offset.y = radius * sin(omega)
 	if teleportable:
 		if Input.is_action_just_pressed("interact"):
-			get_tree().change_scene_to_file("res://Main_Areas/Planets/Forest/Forest_room_1.tscn")
-
-
-func TeleporterAreaBodyEntered(body: Node2D) -> void:
-	teleportable = true
-	print(str(body) + "entered")
-	pass # Replace with function body.
-
-
-func TeleporterAreaBodyExited(body: Node2D) -> void:
-	teleportable = false
-	print(str(body) + "exited")
-	pass # Replace with function body.
+			transition.play_transition("FadeOut")
 
 
 func _on_planet_rotation_timeout() -> void:
 	if(omega > 6.28319):
 		omega = 0
 	omega += 0.005
+	
+func _on_transition_finished() -> void:
+	if teleportable:
+		LevelManager.loadLevel()
+
+
+func _on_teleporter_area_body_entered(body: Node2D) -> void:
+	teleportable = true
+	label.visible = true
+	pass
+
+func _on_teleporter_area_body_exited(body: Node2D) -> void:
+	teleportable = false
+	label.visible = false
+	pass # Replace with function body.

@@ -12,6 +12,7 @@ enum GUIDE_STATE { IDLE, WALK, TALK}
 @onready var timer: Timer = $Timer
 @onready var dialogue: Label = $Dialogue
 var ballon_scene = preload("res://Main_Areas/Spaceship/NPC/Dialogue/game_dialogue_balloon.tscn")
+var ballon : BaseGameDialogueBalloon
 @onready var dialogue_timer: Timer = $InteractionArea/DialogueTimer
 @onready var interactable_label_component: Control = $InteractableLabelComponent
 
@@ -59,7 +60,7 @@ func _on_timer_timeout() -> void:
 func _process(delta: float) -> void:
 	if NPC_dialogue:
 		if Input.is_action_just_pressed("conversation_start"):
-			var ballon : BaseGameDialogueBalloon = ballon_scene.instantiate()
+			ballon = ballon_scene.instantiate()
 			get_tree().current_scene.add_child(ballon)
 			ballon.start(load("res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/guide.dialogue"), "start")
 			#dialogue.text = "Do you want to explore new planets?"

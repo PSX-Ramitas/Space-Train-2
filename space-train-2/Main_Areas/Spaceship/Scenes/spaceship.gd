@@ -6,7 +6,7 @@ var omega = 0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var transition: TransitionScreen = $CanvasLayer/TransitionAnim
 @onready var label: Label = $Label
-@onready var interactable_label_component: Control = $CanvasLayer/InteractableLabelComponent
+@onready var interactable_label_component: Control = $InteractableLabelComponent
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

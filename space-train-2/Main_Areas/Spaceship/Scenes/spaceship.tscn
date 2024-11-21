@@ -420,14 +420,7 @@ horizontal_alignment = 1
 [node name="TeleporterArea" parent="." instance=ExtResource("8_umg2h")]
 position = Vector2(962, 357)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TransitionAnim" parent="CanvasLayer" instance=ExtResource("9_o3d8t")]
-top_level = true
-z_index = 30
-position = Vector2(-3, 1)
-
-[node name="InteractableLabelComponent" type="Control" parent="CanvasLayer"]
+[node name="InteractableLabelComponent" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 5.0
@@ -436,23 +429,30 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.539964, 0.68164)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InteractableLabelComponent"]
+[node name="TextureRect" type="TextureRect" parent="InteractableLabelComponent"]
 layout_mode = 0
-offset_left = 935.247
-offset_top = 688.046
-offset_right = 1959.25
-offset_bottom = 1712.05
+offset_left = 1663.07
+offset_top = 608.826
+offset_right = 2687.08
+offset_bottom = 1632.83
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("10_3j3mu")
 
-[node name="Button" type="Button" parent="CanvasLayer/InteractableLabelComponent"]
+[node name="Button" type="Button" parent="InteractableLabelComponent"]
 layout_mode = 0
-offset_left = 937.099
-offset_top = 686.579
-offset_right = 1036.1
-offset_bottom = 788.579
+offset_left = 1666.78
+offset_top = 608.826
+offset_right = 1763.78
+offset_bottom = 707.826
 scale = Vector2(2.04665, 1.94814)
 text = "Teleport"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionAnim" parent="CanvasLayer" instance=ExtResource("9_o3d8t")]
+top_level = true
+z_index = 30
+position = Vector2(-3, 1)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_t8n3x")
@@ -461,5 +461,5 @@ autoplay = true
 [connection signal="timeout" from="AnimatedSprite2D/PlanetRotation" to="." method="_on_planet_rotation_timeout"]
 [connection signal="body_entered" from="TeleporterArea" to="." method="_on_teleporter_area_body_entered"]
 [connection signal="body_exited" from="TeleporterArea" to="." method="_on_teleporter_area_body_exited"]
+[connection signal="button_down" from="InteractableLabelComponent/Button" to="." method="_on_button_button_down"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]
-[connection signal="button_down" from="CanvasLayer/InteractableLabelComponent/Button" to="." method="_on_button_button_down"]

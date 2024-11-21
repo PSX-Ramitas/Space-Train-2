@@ -4,22 +4,29 @@ class_name PlayerHitbox
 @onready var player_ss: Player = $".."
 
 @onready var player_health_bar: TextureProgressBar = $"../HUD/HealthBar"
+@onready var damage_sound: AudioStreamPlayer = $"../Sounds/DamageSound"
 
 signal healthChanged(isHeal: bool, amount: int)
 var is_alive
 func _ready() -> void:
 	is_alive = true
-	if PlayerData.health == null or PlayerData.health == 0:
+	var curHealth = PlayerData.health
+	if PlayerData.health == 0 or PlayerData.health == null:
 		PlayerData.health = PlayerData.maxHealth
+	else:
+		PlayerData.health = curHealth
 	print("Player Health: ", PlayerData.health)
-	player_health_bar.init_health(PlayerData.health)
+	player_health_bar.init_health(PlayerData.maxHealth)
+	player_health_bar._set_health(PlayerData.health)
 
 func take_damage(damageAmount: int):
-	if is_alive: 
+	if is_alive:
+		damage_sound.play()
 		var new_health = max(0, PlayerData.health - damageAmount)
 		player_ss.health = new_health
 		player_health_bar._set_health(new_health)
 		if new_health == 0:
+			self.PROCESS_MODE_DISABLED
 			is_alive = false
 		# healthChanged.emit( false, damageAmount)
 

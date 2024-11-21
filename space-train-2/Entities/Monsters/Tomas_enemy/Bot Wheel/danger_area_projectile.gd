@@ -1,4 +1,5 @@
 extends Area2D
+@onready var projectile: Projectile = $".."
 
 var sword_area
 var attack = 3
@@ -12,7 +13,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.name=="PlayerHitbox":
 			print("playerhitbox taking damage")
 			area.take_damage(attack)
-			queue_free()
+			projectile.queue_free()
 	else: 
 		#print("Error: area does not have a take_damage method")
 		return	

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5qebaxc55f4r"]
+[gd_scene load_steps=10 format=3 uid="uid://b5qebaxc55f4r"]
 
 [ext_resource type="Script" path="res://Entities/LevelObstacles/animate_spikes.gd" id="1_v0l2m"]
 [ext_resource type="Texture2D" uid="uid://cs3gb2w7o12jo" path="res://Entities/LevelObstacles/Obstacle_Assets/animatedSpriteSpikes.png" id="1_w2nk3"]
+[ext_resource type="AudioStream" uid="uid://ctbdfncpwy4pf" path="res://Sounds/SFX/SE_BTL_KP_GUARD.wav" id="3_2q1wq"]
 
 [sub_resource type="Animation" id="Animation_qwdwh"]
 resource_name = "Active"
@@ -167,6 +168,11 @@ disabled = true
 libraries = {
 "": SubResource("AnimationLibrary_7romn")
 }
+
+[node name="Trigger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2q1wq")
+volume_db = -22.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_animated_Spikes_entered"]
 [connection signal="animation_finished" from="AnimatedSpikes" to="." method="_on_animated_spikes_animation_finished"]

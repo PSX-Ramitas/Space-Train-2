@@ -47,11 +47,10 @@ func _tween_health_and_damage(health_value: float):
 		damage_bar.value = health_value
 
 func init_health(initial_health: int):
-	health = initial_health
-	max_value = health
-	value = health
-	damage_bar.max_value = health
-	damage_bar.value = health
+	max_value = initial_health
+	value = initial_health
+	damage_bar.max_value = initial_health
+	damage_bar.value = initial_health
 
 func _on_timer_timeout():
 	if damage_tween == null or not damage_tween.is_valid():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=90 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
@@ -10,14 +10,23 @@
 [ext_resource type="Script" path="res://Entities/player_hitbox.gd" id="4_0m58k"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.gd" id="4_4cvk8"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/IdleState.gd" id="4_k6y6q"]
+[ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="4_rqoi5"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DashState.gd" id="5_lobj3"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/RunState.gd" id="5_sn4mp"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FallState.gd" id="6_d8ypo"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/JumpState.gd" id="7_bufn4"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack1State.gd" id="8_kiy5g"]
+[ext_resource type="AudioStream" uid="uid://clcvhn8mhuf63" path="res://Sounds/SFX/Sonic2_Jump.ogg" id="9_yl5ma"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DieState.gd" id="10_cg6rn"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack2State.gd" id="10_g4e6d"]
+[ext_resource type="AudioStream" uid="uid://bh62sqsd7fcr5" path="res://Sounds/SFX/LTTP_Sword1.wav" id="11_2xbu7"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack3State.gd" id="11_nv6s7"]
+[ext_resource type="AudioStream" uid="uid://bxct3i7nwbt3f" path="res://Sounds/SFX/LTTP_Sword4.wav" id="12_hu1i7"]
+[ext_resource type="AudioStream" uid="uid://j61u0t0e0my6" path="res://Sounds/SFX/LTTP_Sword2.wav" id="13_667j2"]
+[ext_resource type="AudioStream" uid="uid://bfb2f35p4rqj6" path="res://Sounds/SFX/LTTP_Sword_Spin.wav" id="14_waqik"]
+[ext_resource type="AudioStream" uid="uid://cmb8xmkxjsms3" path="res://Sounds/SFX/LTTP_Link_Land.wav" id="15_l1kjy"]
+[ext_resource type="AudioStream" uid="uid://dfu6wd0qadvbm" path="res://Sounds/SFX/LTTP_Link_Dying.wav" id="16_31vkk"]
+[ext_resource type="AudioStream" uid="uid://cv7mwbvy6w133" path="res://Sounds/SFX/SE_BTL_DAMAGE1.wav" id="17_nk67b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epcnk"]
 radius = 13.0
@@ -489,7 +498,7 @@ size = Vector2(10.5, 29)
 
 [node name="PlayerSS" type="CharacterBody2D"]
 scale = Vector2(2, 2)
-collision_layer = 2
+collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jaw55")
 health = 30
@@ -497,8 +506,11 @@ movespeed = 325
 attack = 10
 
 [node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
+process_priority = 1
 
 [node name="HealthBar" parent="HUD" instance=ExtResource("2_s31bq")]
+process_mode = 1
 offset_right = 64.0
 offset_bottom = 10.0
 scale = Vector2(2.3, 2.3)
@@ -507,8 +519,13 @@ step = 0.5
 
 [node name="PauseMenu" parent="HUD" instance=ExtResource("3_ak4tc")]
 
+[node name="DeathTransition" parent="HUD" instance=ExtResource("4_rqoi5")]
+position = Vector2(-254, -443)
+scale = Vector2(5.34039, 2.18085)
+
 [node name="PlayerHitbox" parent="." instance=ExtResource("2_rlyqj")]
 scale = Vector2(0.5, 0.5)
+collision_layer = 3
 monitorable = true
 script = ExtResource("4_0m58k")
 
@@ -518,6 +535,7 @@ shape = SubResource("CapsuleShape2D_epcnk")
 
 [node name="PlayerSwordArea" parent="." instance=ExtResource("3_d10ch")]
 position = Vector2(17.5, -10)
+collision_mask = 5
 script = ExtResource("4_4cvk8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSwordArea"]
@@ -536,6 +554,50 @@ shape = SubResource("RectangleShape2D_fiavj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_yl5ma")
+volume_db = -23.0
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="Sword1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("11_2xbu7")
+volume_db = -17.0
+bus = &"SFX"
+
+[node name="Sword2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("12_hu1i7")
+volume_db = -17.0
+pitch_scale = 2.2
+bus = &"SFX"
+
+[node name="Sword3" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("13_667j2")
+volume_db = -17.0
+bus = &"SFX"
+
+[node name="DashSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("14_waqik")
+volume_db = -17.0
+bus = &"SFX"
+
+[node name="LandSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("15_l1kjy")
+volume_db = -22.0
+bus = &"SFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("16_31vkk")
+volume_db = -17.0
+bus = &"SFX"
+
+[node name="DamageSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("17_nk67b")
+volume_db = -20.0
+bus = &"SFX"
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("startState")]
 script = ExtResource("3_15oje")
@@ -640,7 +702,6 @@ animationName = "Death"
 
 [connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_area_entered"]
-[connection signal="body_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack1" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack2" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack3" method="FinishedAttack"]

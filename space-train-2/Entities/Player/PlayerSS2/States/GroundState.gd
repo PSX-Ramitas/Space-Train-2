@@ -16,11 +16,10 @@ func state_process(delta):
 func state_input(event : InputEvent):
 	if(event.is_action_pressed("jump")):
 		jump()
-	if(event.is_action_pressed("attack")):
+	if(event.is_action_pressed("attack_melee")):
 		attack()
 
 func jump():
-	print(character.health)
 	character.velocity.y = jump_velocity
 	next_state = air_state
 	playback.travel(jump_animation)

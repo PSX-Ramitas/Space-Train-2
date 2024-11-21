@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://pmqkwyfmea3m"]
+[gd_scene load_steps=4 format=3 uid="uid://pmqkwyfmea3m"]
 
 [ext_resource type="Script" path="res://temp_level_select.gd" id="1_gvo34"]
+[ext_resource type="AudioStream" uid="uid://6cwe4vngu5ii" path="res://Sounds/SFX/SE_BTL_BEEP2.wav" id="2_osmsk"]
+[ext_resource type="AudioStream" uid="uid://iik8xvfd5ml7" path="res://Sounds/SFX/SE_BTL_BEEP3.wav" id="3_7nq04"]
 
 [node name="TempLevelSelect" type="Control"]
 layout_mode = 3
@@ -45,6 +47,18 @@ offset_top = 105.833
 offset_right = 113.0
 offset_bottom = 185.833
 text = "Back"
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("2_osmsk")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="BackButtonPress" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_7nq04")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="pressed" from="Hub" to="." method="_on_hub_pressed"]
 [connection signal="pressed" from="MultUI" to="." method="_on_mult_ui_pressed"]

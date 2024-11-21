@@ -24,6 +24,9 @@ func _ready() -> void:
 	animation_tree.active = true
 	direction = starting_move_direction
 
+func get_health():
+	return health
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

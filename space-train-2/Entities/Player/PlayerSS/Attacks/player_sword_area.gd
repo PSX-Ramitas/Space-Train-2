@@ -15,11 +15,19 @@ func _on_area_entered(area: Area2D) -> void:
 	if attacker is SpikesClass:
 		print("YES SPIKES",area.name)
 		return
-	elif attacker is Projectile:
-		pass
 	elif attacker is not Player and area is EnemyHitbox:
 			area.take_damage(attack)
 			print("area.name that took damage: ", area.name)
-	else: 
-		print("idk man :()")
-			
+	else:
+		for child in attacker.get_children():
+			if (child is Damageable):
+				var direction_to_damageable = (area.global_position - get_parent().global_position)
+				var direction_sign = sign(direction_to_damageable.x)
+				
+				if(direction_sign > 0):
+					child.hit(attack, Vector2.RIGHT)
+				elif(direction_sign < 0):
+					child.hit(attack, Vector2.LEFT)
+				else:
+					child.hit(attack, Vector2.ZERO)
+		

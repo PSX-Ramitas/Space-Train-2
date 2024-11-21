@@ -5,13 +5,19 @@ var levels = [
 	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_1.tscn",
 	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_2.tscn",
 	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_3.tscn",
-	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_4.tscn"
+	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_4.tscn",
+	"res://Main_Areas/Planets/Forest/Scenes/forest_room_5.tscn"
 ]
 
 var levelCount = levels.size()
 var currLevel
 var visited = { }
-
+var worldClear = false
+func resetLevelState():
+	levelCount = levels.size()  # Reset the level count back to the full set
+	visited.clear()  # Clear the visited levels
+	print("Level state reset: ", visited)
+	
 func loadLevel():
 	var found = false
 	while found == false:
@@ -26,6 +32,11 @@ func loadLevel():
 			#currLevel = randi() % levels.size()
 			#if visited.get(currLevel) != true:
 				#found = true
+		if levelCount == 0:
+			worldClear = true
+			print("World Cleared")
+			resetLevelState()
+			get_tree().change_scene_to_file("res://Main_Areas/Title/title_screen.tscn")
 func _ready() -> void:
 	pass # Replace with function body.
 

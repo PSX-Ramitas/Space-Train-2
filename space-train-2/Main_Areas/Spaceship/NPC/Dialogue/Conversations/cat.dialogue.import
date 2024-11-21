@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://stp82ely1rmy"
+path="res://.godot/imported/cat.dialogue-ba06d6e78ef244bb6e0d1992c445f3db.tres"
+
+[deps]
+
+source_file="res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/cat.dialogue"
+dest_files=["res://.godot/imported/cat.dialogue-ba06d6e78ef244bb6e0d1992c445f3db.tres"]
+
+[params]
+
+defaults=true

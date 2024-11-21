@@ -11,7 +11,7 @@ func _ready() -> void:
 func _input(event) -> void:
 	if Input.is_action_just_pressed("transform"):
 		#PlayerTranformer.emit_signal("on_swap_player", player_ss, player_ss_2)
-		PlayerTransformer.connect("on_swap_player", player_to_monster)
+		PlayerTransformer.emit_signal("on_swap_player", player_ss, player_ss_2)
 
 func player_to_monster(player_ss, player_ss_2):
 	var temp_state = player_ss_2.active

@@ -61,7 +61,9 @@ func _process(delta: float) -> void:
 	stateMachine.process_frame(delta)
 	if active:
 		self.visible = true
+		set_collision_layer_value(1, true)
 		set_collision_layer_value(2, true)
 	else:
 		self.visible = false
+		set_collision_layer_value(1, false)
 		set_collision_layer_value(2, false)

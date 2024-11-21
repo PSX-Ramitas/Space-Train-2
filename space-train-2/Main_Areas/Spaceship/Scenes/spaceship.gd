@@ -55,4 +55,5 @@ func _on_teleporter_area_body_exited(body: Node2D) -> void:
 
 
 func _on_button_button_down() -> void:
+	interactable_label_component.visible = false
 	transition.play_transition("FadeOut")

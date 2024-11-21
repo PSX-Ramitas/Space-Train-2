@@ -21,6 +21,6 @@ func process_physics(delta: float) -> State:
 		transitionScreen.play_transition("FadeOut")
 		animTimer -= delta
 		if animTimer <= 0:
-			get_tree().change_scene_to_file("res://Main_Areas/Title/title_screen.tscn")
+			get_tree().change_scene_to_file("res://Main_Areas/Spaceship/Scenes/spaceship.tscn")
 			LevelManager.resetLevelState()
 	return null

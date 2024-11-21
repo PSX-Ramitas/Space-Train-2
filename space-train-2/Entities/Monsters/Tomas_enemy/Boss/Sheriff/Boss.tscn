@@ -956,11 +956,11 @@ radius = 8.0
 height = 62.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ot1wv"]
-radius = 50.9966
-height = 387.835
+radius = 490.164
+height = 1176.13
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3u3x5"]
-radius = 18.2483
+radius = 19.7231
 
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_way5i")
@@ -971,12 +971,10 @@ attack = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-23, -8)
+position = Vector2(-49, -6)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_socaq")
-animation = &"hurt"
-frame = 3
-frame_progress = 1.0
+animation = &"attack_3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1009,20 +1007,21 @@ autostart = true
 wait_time = 0.4
 
 [node name="BossAttackRadius" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossAttackRadius"]
-visible = false
 position = Vector2(-9, 23)
 rotation = 1.58236
 shape = SubResource("CapsuleShape2D_ot1wv")
 
 [node name="BossSwordArea" type="Area2D" parent="."]
+position = Vector2(-13, 30)
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("19_t8eup")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossSwordArea"]
-position = Vector2(11, 21)
-rotation = 2.60425
+position = Vector2(1, 0)
+rotation = 6.22039
 shape = SubResource("CircleShape2D_3u3x5")
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ctev5wkp8nqkk" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/shoot with FX.png" id="13_4koie"]
 [ext_resource type="Texture2D" uid="uid://b5onmny6w10ji" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/static idle.png" id="14_otm6x"]
 [ext_resource type="Texture2D" uid="uid://bakf00de1p0fl" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/wake.png" id="15_fli2n"]
-[ext_resource type="PackedScene" uid="uid://c58t3k1w873be" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn" id="16_70gbj"]
+[ext_resource type="PackedScene" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn" id="16_70gbj"]
 [ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="18_rodag"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4uma"]

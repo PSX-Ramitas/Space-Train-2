@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cmxi04qi3alj0" path="res://UI/MonsterHealthLabel/health_changed_manager.tscn" id="11_iwgb5"]
 [ext_resource type="PackedScene" uid="uid://b4u8btqaiklaf" path="res://Entities/Player/PlayerSS2/PlayerSS2.tscn" id="12_63lec"]
 [ext_resource type="PackedScene" uid="uid://cf8lh53lnh1d4" path="res://UI/Transition/transitioner.tscn" id="12_mt5ct"]
-[ext_resource type="PackedScene" uid="uid://cja2emr7q7rtu" path="res://Main_Areas/Planets/Forest/Forest_room_2.tscn" id="13_axltg"]
+[ext_resource type="PackedScene" uid="uid://cja2emr7q7rtu" path="res://Tests/Resources/test_player_level.tscn" id="13_axltg"]
 [ext_resource type="Script" path="res://UI/Transition/transition_debbuger.gd" id="13_hcbuo"]
 [ext_resource type="AudioStream" uid="uid://nyrw6l50rdy7" path="res://UI/Music/Forest Music 1.mp3" id="13_whef7"]
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="15_ubefm"]

@@ -14,6 +14,7 @@ var direction = Vector2.RIGHT
 var player 
 var playerInChaseRange = false
 var playerInAttackRange = false
+#var sword = $BossSwordArea/CollisionShape2D
 @onready var attackArea = $CloseAttackArea
 @onready var animations = $AnimatedSprite2D
 var attacks = ["attack", "attack_3", "attack_2","air_attack"]
@@ -33,10 +34,16 @@ func _ready() -> void:
 	currentState = State.Roam
 
 func _sprite_orientation(direction):
+	var left_offset =115
+	var right_offset=-5
 	if direction.x < 0 :
 		$AnimatedSprite2D.flip_h = true
+		print("$bossSwordArea.position.x (true), ", $BossSwordArea.position.x)
+		$BossSwordArea.position.x = -abs(left_offset)
 	else:
 		$AnimatedSprite2D.flip_h = false
+		print("$bossSwordArea.position.x (false), ", $BossSwordArea.position.x)
+		$BossSwordArea.position.x = abs(right_offset)
 
 func shoot():
 	if can_shoot: 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b4u8btqaiklaf"]
+[gd_scene load_steps=54 format=3 uid="uid://b4u8btqaiklaf"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS2/player_ss_2.gd" id="1_m120f"]
 [ext_resource type="Texture2D" uid="uid://dg2e5pxiomifh" path="res://Entities/Player/PlayerSS2/Assets/idle.png" id="1_vxxtm"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS2/States/HitState.gd" id="13_uji3x"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS2/States/State.gd" id="14_rh48v"]
 [ext_resource type="PackedScene" uid="uid://b403m60sq8cnl" path="res://Entities/Player/PlayerSS2/Attacks/damageable.tscn" id="17_2nd4x"]
+[ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="19_f04cn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72y4f"]
 radius = 12.0
@@ -631,6 +632,13 @@ player_ss_2 = NodePath("..")
 [node name="Damageable" parent="." node_paths=PackedStringArray("parent", "enemy_health_bar") instance=ExtResource("17_2nd4x")]
 parent = NodePath("..")
 enemy_health_bar = NodePath("../HUD/HealthBar")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("19_f04cn")
+volume_db = -17.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]

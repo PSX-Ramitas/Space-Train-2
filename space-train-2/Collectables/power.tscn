@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://djbq2pyatw6yi"]
+
+[ext_resource type="PackedScene" uid="uid://bdphgx3agu28v" path="res://Collectables/collectable.tscn" id="1_ultsp"]
+[ext_resource type="Texture2D" uid="uid://d1phyw5kkjp7b" path="res://sprites/ScrollFire.png" id="2_74fdx"]
+[ext_resource type="Resource" uid="uid://berog1sqrrtof" path="res://inventory/items/power.tres" id="2_wbuac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtd2g"]
+resource_local_to_scene = true
+size = Vector2(14, 14)
+
+[node name="power" instance=ExtResource("1_ultsp")]
+itemRes = ExtResource("2_wbuac")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_qtd2g")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_74fdx")

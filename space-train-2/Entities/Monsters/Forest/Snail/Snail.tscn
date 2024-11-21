@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dd67h2umvkaaf"]
+[gd_scene load_steps=24 format=3 uid="uid://dd67h2umvkaaf"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Snail/snail.gd" id="1_l7n31"]
 [ext_resource type="Texture2D" uid="uid://bpnqj3mgy7vpo" path="res://Entities/Monsters/Forest/Snail/Assets/walk-Sheet.png" id="1_w3td2"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://btmktjs3nvoqp" path="res://Entities/Monsters/Forest/Snail/Attacks/attack_area.tscn" id="8_q6pym"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Snail/Attacks/attack_area.gd" id="9_vcayd"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Snail/Attacks/facing_collision_shape_2d.gd" id="10_2kbkt"]
+[ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="12_sja5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p84d"]
 size = Vector2(26, 21)
@@ -242,6 +243,13 @@ shape = SubResource("RectangleShape2D_isn7c")
 script = ExtResource("10_2kbkt")
 facing_left_position = Vector2(-15, 5)
 facing_right_position = Vector2(15, 5)
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("12_sja5p")
+volume_db = -17.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]

@@ -2,6 +2,8 @@ extends Control
 
 @onready var input_button_scene = preload("res://ui/Settings/input_button.tscn")
 @onready var action_list: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList
+@onready var button_press: AudioStreamPlayer = $Sounds/ButtonPress
+@onready var back_button_press: AudioStreamPlayer = $Sounds/BackButtonPress
 
 var is_remapping = false
 var action_to_remap = null
@@ -48,6 +50,7 @@ func _create_action_list():
 		button.pressed.connect(_on_input_button_pressed.bind(button, action))
 
 func _on_input_button_pressed(button, action):
+	button_press.play()
 	if !is_remapping:
 		is_remapping = true
 		action_to_remap = action
@@ -71,4 +74,5 @@ func _update_action_list(button, event):
 	button.find_child("LabelInput").text = event.as_text().trim_suffix(" (Physical)")
 
 func _on_back_pressed() -> void:
+	back_button_press.play()
 	backPressed.emit()

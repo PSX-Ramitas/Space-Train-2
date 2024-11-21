@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://db6nsiuqoytme"]
+[gd_scene load_steps=6 format=3 uid="uid://db6nsiuqoytme"]
 
 [ext_resource type="Script" path="res://UI/Settings/settings.gd" id="1_qps2c"]
 [ext_resource type="PackedScene" uid="uid://c42l0q6o71v4j" path="res://UI/Settings/Input_Settings.tscn" id="2_cexpp"]
 [ext_resource type="AudioStream" uid="uid://caadytsfr0t2p" path="res://Sounds/SFX/cute-level-up-3-189853.mp3" id="3_o6bct"]
+[ext_resource type="AudioStream" uid="uid://6cwe4vngu5ii" path="res://Sounds/SFX/SE_BTL_BEEP2.wav" id="4_o0ce3"]
+[ext_resource type="AudioStream" uid="uid://iik8xvfd5ml7" path="res://Sounds/SFX/SE_BTL_BEEP3.wav" id="5_lw6sv"]
 
 [node name="Settings" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,9 +107,21 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 scale = Vector2(0.710718, 0.772528)
 
-[node name="TestSFX" type="AudioStreamPlayer" parent="."]
+[node name="Sounds" type="Node" parent="."]
+
+[node name="TestSFX" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("3_o6bct")
 volume_db = -10.0
+bus = &"SFX"
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_o0ce3")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="BackButtonPress" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_lw6sv")
+volume_db = -20.0
 bus = &"SFX"
 
 [connection signal="value_changed" from="MainSettings/VBoxContainer/MasterVolume" to="." method="_on_volume_value_changed"]

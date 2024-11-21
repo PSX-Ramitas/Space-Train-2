@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=90 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://bfb2f35p4rqj6" path="res://Sounds/SFX/LTTP_Sword_Spin.wav" id="14_waqik"]
 [ext_resource type="AudioStream" uid="uid://cmb8xmkxjsms3" path="res://Sounds/SFX/LTTP_Link_Land.wav" id="15_l1kjy"]
 [ext_resource type="AudioStream" uid="uid://dfu6wd0qadvbm" path="res://Sounds/SFX/LTTP_Link_Dying.wav" id="16_31vkk"]
+[ext_resource type="AudioStream" uid="uid://cv7mwbvy6w133" path="res://Sounds/SFX/SE_BTL_DAMAGE1.wav" id="17_nk67b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epcnk"]
 radius = 13.0
@@ -591,6 +592,11 @@ bus = &"SFX"
 [node name="Death" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("16_31vkk")
 volume_db = -17.0
+bus = &"SFX"
+
+[node name="DamageSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("17_nk67b")
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("startState")]

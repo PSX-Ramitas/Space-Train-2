@@ -10,6 +10,7 @@ var player
 @onready var attackSound: AudioStreamPlayer = $Sounds/Attack
 @onready var chargeSound1: AudioStreamPlayer = $Sounds/Charge
 @onready var chargeSound2: AudioStreamPlayer = $Sounds/Ready
+@onready var death_sound: AudioStreamPlayer = $Sounds/DeathSound
 
 var prevHealth = health
 enum State {
@@ -73,6 +74,7 @@ func AttackState(delta):
 			chargeSound1.stop()
 		if chargeSound2.playing == true:
 			chargeSound2.stop()
+	if animations.frame == 1:
 		attackSound.play()
 	windupTimer -= delta
 	if windupTimer <= 0:

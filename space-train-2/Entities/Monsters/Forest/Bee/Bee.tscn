@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dfhtb56c4ftla"]
+[gd_scene load_steps=31 format=3 uid="uid://dfhtb56c4ftla"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Bee/bee.gd" id="1_4k1fe"]
 [ext_resource type="Texture2D" uid="uid://bn5x71a5pyemc" path="res://Entities/Monsters/Forest/Bee/Assets/Fly/Fly-Sheet.png" id="1_ehumf"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://v8pts0g56ld3" path="res://Entities/Monsters/Forest/Bee/Attacks/attack_area.tscn" id="10_mkglo"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Bee/Attacks/attack_area.gd" id="11_be47v"]
 [ext_resource type="Script" path="res://Entities/Monsters/Forest/Bee/Attacks/facing_collision_shape_2d.gd" id="12_8e7wa"]
+[ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="15_20v3f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewj64"]
 
@@ -329,6 +330,13 @@ collision_mask = 2
 [node name="DetectionBottomRight" type="RayCast2D" parent="."]
 target_position = Vector2(57, 57)
 collision_mask = 2
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("15_20v3f")
+volume_db = -17.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://ftf103p4nshv"]
+
+[ext_resource type="Texture2D" uid="uid://ckonxvs5tn4i7" path="res://assets/space_background_pack/Blue Version/layered/blue-with-stars.png" id="1_mfwvs"]
+[ext_resource type="Texture2D" uid="uid://d0wvtttyupfpq" path="res://assets/space_background_pack/Blue Version/layered/asteroid-1.png" id="2_tirda"]
+[ext_resource type="Texture2D" uid="uid://clex0do4rymwf" path="res://assets/space_background_pack/Blue Version/layered/asteroid-2.png" id="3_shw64"]
+[ext_resource type="Texture2D" uid="uid://bgvllwnrvkqi4" path="res://assets/space_background_pack/Blue Version/layered/prop-planet-big.png" id="4_da4d1"]
+[ext_resource type="Texture2D" uid="uid://c0o1ghpg4lkhd" path="res://assets/space_background_pack/Blue Version/layered/prop-planet-small.png" id="5_ndke0"]
+
+[node name="Background" type="Node2D"]
+z_index = -1
+position = Vector2(618, 532)
+scale = Vector2(6, 6)
+
+[node name="ParallaxBackground" type="Node2D" parent="."]
+position = Vector2(0, 3)
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(272, 0)
+repeat_times = 6
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D"]
+position = Vector2(2.39996, -0.399986)
+texture = ExtResource("1_mfwvs")
+
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-115, -54)
+repeat_size = Vector2(176, 0)
+repeat_times = 18
+follow_viewport = false
+
+[node name="asteroid-1" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
+position = Vector2(0, -4.5)
+rotation = -0.00799359
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tirda")
+
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-84, 53)
+repeat_size = Vector2(300, 0)
+repeat_times = 6
+follow_viewport = false
+
+[node name="asteroid-2" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_shw64")
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.5, 0)
+scroll_offset = Vector2(77, 15)
+repeat_size = Vector2(300, 0)
+repeat_times = 7
+follow_viewport = false
+
+[node name="prop-planet-big" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_da4d1")
+centered = false
+
+[node name="Parallax2D5" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.4, 0)
+scroll_offset = Vector2(-34, 61)
+repeat_size = Vector2(200, 0)
+repeat_times = 9
+follow_viewport = false
+
+[node name="prop-planet-small" type="Sprite2D" parent="ParallaxBackground/Parallax2D5"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_ndke0")
+centered = false

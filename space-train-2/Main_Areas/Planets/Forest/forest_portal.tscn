@@ -58,7 +58,7 @@ texture = ExtResource("2_5jeyt")
 
 [node name="PlayerSS" parent="." instance=ExtResource("3_uu3fc")]
 z_index = 2
-position = Vector2(117, 573)
+position = Vector2(110, 648)
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1

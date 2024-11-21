@@ -32,4 +32,9 @@ func _on_warp_area_entered(area: Area2D) -> void:
 		portal_used = true
 		warping.play()
 		animations.play("Warp")
+		portal_used = true
 		warp.emit()
+
+
+func _on_warp_area_exited(area: Area2D) -> void:
+	pass

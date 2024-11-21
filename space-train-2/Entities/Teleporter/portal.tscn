@@ -384,7 +384,7 @@ position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_0x5iv")
 
 [node name="WarpArea" type="Area2D" parent="."]
-position = Vector2(0, -18)
+position = Vector2(0, -9)
 priority = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarpArea"]
@@ -407,3 +407,4 @@ bus = &"SFX"
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_exited"]
 [connection signal="area_entered" from="WarpArea" to="." method="_on_warp_area_entered"]
+[connection signal="area_exited" from="WarpArea" to="." method="_on_warp_area_exited"]

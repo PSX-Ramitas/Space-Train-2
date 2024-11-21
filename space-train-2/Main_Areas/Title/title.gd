@@ -39,3 +39,8 @@ func _on_settings_back_button() -> void:
 	options.visible = true
 	quit.visible = true
 	settings.visible = false
+
+#WILL BE DELETED WHEN DONE
+#temp just to make it easier for me to test
+func _on_temp_level_testing_pressed() -> void:
+	get_tree().change_scene_to_file("res://Main_Areas/Planets/Forest/Forest_room_TempTest.tscn")

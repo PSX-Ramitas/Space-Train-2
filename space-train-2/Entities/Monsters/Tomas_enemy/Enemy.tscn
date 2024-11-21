@@ -365,7 +365,7 @@ texture_filter = 1
 position = Vector2(0, -16)
 scale = Vector2(0.902, 1)
 sprite_frames = SubResource("SpriteFrames_lijxw")
-animation = &"hurt"
+animation = &"walking"
 
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]
 [connection signal="healthChanged" from="DroidHitbox" to="DroidHitbox" method="_on_health_changed"]

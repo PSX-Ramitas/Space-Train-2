@@ -458,9 +458,17 @@ offset_top = -184.0
 offset_right = -383.0
 offset_bottom = -184.0
 
+[node name="TempLevelTesting" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -850.0
+offset_top = -124.0
+offset_right = -587.0
+offset_bottom = 30.0
+
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Options" to="Control" method="_on_options_pressed"]
 [connection signal="pressed" from="Control/Quit" to="Control" method="_on_quit_pressed"]
 [connection signal="back_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_back_pressed"]
 [connection signal="multUI_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_mult_ui_pressed"]
 [connection signal="backButton" from="Control/Settings" to="Control" method="_on_settings_back_button"]
+[connection signal="pressed" from="Control/TempLevelTesting" to="Control" method="_on_temp_level_testing_pressed"]

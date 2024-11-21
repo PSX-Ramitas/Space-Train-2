@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://c07t1k3q6u62"]
+[gd_scene load_steps=55 format=3 uid="uid://d1x8v4fwoxic5"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/enemy.gd" id="1_qnemb"]
 [ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="2_6ml1h"]
@@ -378,9 +378,6 @@ texture_filter = 1
 position = Vector2(0, -16)
 scale = Vector2(0.902, 1)
 sprite_frames = SubResource("SpriteFrames_lijxw")
-<<<<<<< HEAD
-animation = &"walking"
-=======
 animation = &"sleep"
 frame_progress = 0.319075
 
@@ -405,7 +402,6 @@ bus = &"SFX"
 stream = ExtResource("13_75kli")
 volume_db = -17.0
 bus = &"SFX"
->>>>>>> main
 
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]
 [connection signal="healthChanged" from="DroidHitbox" to="DroidHitbox" method="_on_health_changed"]

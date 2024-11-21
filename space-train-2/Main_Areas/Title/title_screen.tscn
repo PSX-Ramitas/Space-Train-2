@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://v68rubr571l"]
+[gd_scene load_steps=63 format=3 uid="uid://dhrnu2gwwyobn"]
 
 [ext_resource type="Script" path="res://Main_Areas/Title/title_screen.gd" id="1_qy4ah"]
 [ext_resource type="Texture2D" uid="uid://bntaopptrds6i" path="res://Main_Areas/Title/Space Background(1).png" id="1_uu0sr"]
@@ -463,14 +463,6 @@ offset_top = -184.0
 offset_right = -383.0
 offset_bottom = -184.0
 
-<<<<<<< HEAD
-[node name="TempLevelTesting" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = -850.0
-offset_top = -124.0
-offset_right = -587.0
-offset_bottom = 30.0
-=======
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TransitionAnim" parent="CanvasLayer" instance=ExtResource("8_yigv6")]
@@ -489,7 +481,6 @@ bus = &"SFX"
 stream = ExtResource("11_s8cun")
 volume_db = -20.0
 bus = &"SFX"
->>>>>>> main
 
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Options" to="Control" method="_on_options_pressed"]
@@ -497,8 +488,4 @@ bus = &"SFX"
 [connection signal="back_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_back_pressed"]
 [connection signal="multUI_pressed" from="Control/TempLevelSelect" to="Control" method="_on_temp_level_select_mult_ui_pressed"]
 [connection signal="backButton" from="Control/Settings" to="Control" method="_on_settings_back_button"]
-<<<<<<< HEAD
-[connection signal="pressed" from="Control/TempLevelTesting" to="Control" method="_on_temp_level_testing_pressed"]
-=======
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="Control/TempLevelSelect" method="_on_transition_finished"]
->>>>>>> main

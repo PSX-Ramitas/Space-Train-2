@@ -17,7 +17,7 @@ var playerInAttackRange = false
 #var sword = $BossSwordArea/CollisionShape2D
 @onready var attackArea = $CloseAttackArea
 @onready var animations = $AnimatedSprite2D
-var attacks = ["attack", "attack_3", "attack_2","air_attack"]
+var attacks = ["attack", "attack_3", "attack_2"]
 
 var prevHealth = health
 enum State {Roam,Chase,Attack,Hurt,Death,}
@@ -45,20 +45,6 @@ func _sprite_orientation(direction):
 		print("$bossSwordArea.position.x (false), ", $BossSwordArea.position.x)
 		$BossSwordArea.position.x = abs(right_offset)
 
-func shoot():
-	if can_shoot: 
-		var gun_offset = Vector2(-45,-28)
-		var instance = projectile.instantiate()
-		instance.spawnPos= global_position + gun_offset.rotated(global_rotation)
-		instance.spawnRot = global_rotation
-		bossInstance.add_child(instance)
-		if $AnimatedSprite2D.flip_h:
-			instance.dir = Vector2.LEFT  
-		else:
-			instance.dir = Vector2.RIGHT  # Normal direction to the right
-		can_shoot=false
-		#$Shooting_Timer.start()
-
 func _process(delta):
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -82,13 +68,13 @@ func _process(delta):
 	move_and_slide()
 	
 func RoamState(delta):
-	#print("roam state")
+	print("roam state")
 	animations.play("walk")
 	velocity += direction * movespeed * delta
 	_sprite_orientation(direction)
 
 func ChaseState():
-	#print("chase state")
+	print("chase state")
 	animations.play("chase")
 	var dir_to_player = position.direction_to(player.position) * movespeed
 	velocity.x = dir_to_player.x
@@ -98,13 +84,17 @@ func ChaseState():
 
 func AttackState(delta):
 	if can_attack:
+		
 		var random_attack = attacks[0]
 		attacks.shuffle()
+		
 		var dir_to_player = position.direction_to(player.position) * movespeed
 		velocity.x = dir_to_player.x
 		direction.x = abs(velocity.x) / velocity.x # flip direction when turning
 		_sprite_orientation(direction)
+		
 		animations.play(random_attack)
+		
 		windupTimer -= delta
 		if windupTimer <= 0:
 			if attackArea: 
@@ -118,9 +108,11 @@ func AttackState(delta):
 		
 
 func HurtState():
-	#print("hurt state")
+	print("hurt state")
 	if $AnimatedSprite2D.animation != "hurt":
+		print("if $AnimatedSprite2D.animation != hurt:")
 		animations.play("hurt")
+	print("done with hurt state")
 
 func DeathState(delta):
 	#print("we ded state")
@@ -142,7 +134,7 @@ func _on_direction_timer_timeout() -> void:
 		velocity.x=0
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-		#print ("on animated sprite finished")
+		print ("on animated sprite finished")
 		match currentState:
 			State.Attack:
 				attackArea.monitoring = false
@@ -165,21 +157,34 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_attack_timer_timeout() -> void:
-	#print("on shooting timer time out")
+	print("on shooting timer time out")
 	can_attack =true
-	_sprite_orientation(direction)
+	#_sprite_orientation(direction)
 
 
 #player has entered boss' attack radius, boss attacks
-func _on_boss_attack_radius_area_entered(area: Area2D) -> void:
+func _on_boss_chase_radius_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player:
 		playerInChaseRange= true
 		player = area.get_parent()
-		_sprite_orientation(direction)
-		currentState = State.Attack
+		#_sprite_orientation(direction)
+		currentState = State.Chase
 
-
-func _on_boss_attack_radius_area_exited(area: Area2D) -> void:
+func _on_boss_chase_radius_area_exited(area: Area2D) -> void:
 	if area.get_parent() is Player:
 			playerInChaseRange = false
 			currentState = State.Roam
+
+func _on_boss_attack_range_area_entered(area: Area2D) -> void:
+	if area.get_parent() is Player:
+		playerInAttackRange= true
+		player = area.get_parent()
+		_sprite_orientation(direction)
+		currentState= State.Attack
+		
+
+func _on_boss_attack_range_area_exited(area: Area2D) -> void:
+	if area.get_parent() is Player:
+			playerInAttackRange = false
+			playerInChaseRange=true
+			currentState = State.Chase

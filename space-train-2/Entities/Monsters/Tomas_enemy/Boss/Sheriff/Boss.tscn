@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://citu8occwl0xr"]
+[gd_scene load_steps=148 format=3 uid="uid://citu8occwl0xr"]
 
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="1_k3w4u"]
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/boss.gd" id="1_way5i"]
@@ -962,7 +962,12 @@ height = 1176.13
 [sub_resource type="CircleShape2D" id="CircleShape2D_3u3x5"]
 radius = 19.7231
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_34tto"]
+a = Vector2(61, -1)
+b = Vector2(-135, -1)
+
 [node name="Boss" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_way5i")
 maxHealth = 200
 health = 200
@@ -977,22 +982,20 @@ sprite_frames = SubResource("SpriteFrames_socaq")
 animation = &"attack_3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-15, 26)
+position = Vector2(-35, 34)
 shape = SubResource("CapsuleShape2D_743fi")
 
 [node name="HealthBar" parent="." instance=ExtResource("1_k3w4u")]
-visible = false
-offset_left = -41.0
-offset_top = 59.0
-offset_right = 23.0
-offset_bottom = 99.0
+offset_left = -71.0
+offset_top = 65.0
+offset_right = -7.0
+offset_bottom = 105.0
 scale = Vector2(1.03855, 1.32718)
 metadata/_edit_use_anchors_ = true
 
 [node name="BossHitBox" parent="." instance=ExtResource("3_1xwtl")]
-visible = false
-position = Vector2(-1, 30)
+position = Vector2(-21, 38)
+collision_layer = 4
 monitorable = true
 script = ExtResource("4_vopp6")
 
@@ -1006,9 +1009,10 @@ autostart = true
 [node name="Attack_Timer" type="Timer" parent="."]
 wait_time = 0.4
 
-[node name="BossAttackRadius" type="Area2D" parent="."]
+[node name="BossChaseRadius" type="Area2D" parent="."]
+visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BossAttackRadius"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossChaseRadius"]
 position = Vector2(-9, 23)
 rotation = 1.58236
 shape = SubResource("CapsuleShape2D_ot1wv")
@@ -1024,8 +1028,17 @@ position = Vector2(1, 0)
 rotation = 6.22039
 shape = SubResource("CircleShape2D_3u3x5")
 
+[node name="BossAttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossAttackRange"]
+position = Vector2(0, 28)
+shape = SubResource("SegmentShape2D_34tto")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]
-[connection signal="area_entered" from="BossAttackRadius" to="." method="_on_boss_attack_radius_area_entered"]
-[connection signal="area_exited" from="BossAttackRadius" to="." method="_on_boss_attack_radius_area_exited"]
+[connection signal="area_entered" from="BossChaseRadius" to="." method="_on_boss_chase_radius_area_entered"]
+[connection signal="area_exited" from="BossChaseRadius" to="." method="_on_boss_chase_radius_area_exited"]
 [connection signal="area_entered" from="BossSwordArea" to="BossSwordArea" method="_on_area_entered"]
+[connection signal="area_exited" from="BossSwordArea" to="BossSwordArea" method="_on_area_exited"]
+[connection signal="area_entered" from="BossAttackRange" to="." method="_on_boss_attack_range_area_entered"]
+[connection signal="area_exited" from="BossAttackRange" to="." method="_on_boss_attack_range_area_exited"]

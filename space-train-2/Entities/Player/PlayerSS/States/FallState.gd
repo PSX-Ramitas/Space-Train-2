@@ -7,6 +7,7 @@ extends State
 @export var attack1State: State
 @export var attack2State: State
 @export var attack3State: State
+@export var shootState: State
 
 var coyoteTime = 0.075
 var coyoteTimer = 0.0
@@ -33,6 +34,8 @@ func process_input(event: InputEvent) -> State:
 			return attack2State
 		else:
 			return attack3State
+	if Input.is_action_just_pressed("fire_projectile"):
+		return shootState
 	return null
 
 func process_physics(delta: float) -> State:

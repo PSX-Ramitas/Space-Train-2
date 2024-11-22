@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://d21bqed47iosm"]
+
+[ext_resource type="Script" path="res://Entities/Player/PlayerSS/Projectile/base_projectile.gd" id="1_bayhn"]
+[ext_resource type="Texture2D" uid="uid://dijsqmgmpx2ic" path="res://Entities/Player/PlayerSS/Projectile/All_Fire_Bullet_Pixel_16x16.png" id="2_vvi2i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ratwp"]
+atlas = ExtResource("2_vvi2i")
+region = Rect2(336, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdjr6"]
+atlas = ExtResource("2_vvi2i")
+region = Rect2(352, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d63dw"]
+atlas = ExtResource("2_vvi2i")
+region = Rect2(368, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv8fg"]
+atlas = ExtResource("2_vvi2i")
+region = Rect2(384, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hva36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ratwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdjr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d63dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv8fg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fu87m"]
+size = Vector2(11, 5)
+
+[node name="BaseProjectile" type="CharacterBody2D"]
+script = ExtResource("1_bayhn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_hva36")
+autoplay = "default"
+frame_progress = 0.918826
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("2_vvi2i")
+hframes = 40
+vframes = 23
+
+[node name="BulletArea" type="Area2D" parent="."]
+position = Vector2(-1.5, 0.5)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
+shape = SubResource("RectangleShape2D_fu87m")
+
+[connection signal="area_entered" from="BulletArea" to="." method="_on_bullet_area_area_entered"]

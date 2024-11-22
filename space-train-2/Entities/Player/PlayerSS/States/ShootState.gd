@@ -2,21 +2,18 @@ extends State
 
 @export var idleState: State
 @export var jumpState: State
-@export var shootState: State
 @export var fallState: State
 @export var dashState: State
 @export var dieState: State
-@export var attack2State: State
+@export var projectile :PackedScene
 
 var nextState: State
 var attackFinished: bool
 
 func enter() -> void:
-	var sfx = parent.find_child("Sword1")
+	var sfx = parent.find_child("Sword3")
 	sfx.play()
-	parent.sword.monitoring = true
-	if !parent.is_on_floor():
-		parent.usedAirAttack = true
+	parent.sword.monitoring = false
 	#kill y movement so that it can not be abused to jump higher
 	parent.velocity.y = 0
 	#used to move the player forwards a bit
@@ -24,43 +21,32 @@ func enter() -> void:
 		parent.velocity.x = dashVelocity * 0.2
 	else:
 		parent.velocity.x = -dashVelocity * 0.2
-		
-	parent.queuedAttack = 2
-	attackFinished = false
-	nextState = idleState
+	Fire()
 	super() #call the enter function of the class we inherit from
 
 func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
+
 	if parent.health <= 0:
 		return dieState
-	#move player forwards
-	parent.velocity.x = move_toward(parent.velocity.x, 0, 50)
+	#move player backwards
+	parent.velocity.x = move_toward(parent.velocity.x, 0, -50)
 	#apply a little bit of gravity
 	parent.velocity.y += gravity * delta * .075
 	# only one attack while in air:
-	if !parent.is_on_floor() and attackFinished:
-		nextState = fallState
-		return fallState
-	parent.move_and_slide()
-	if attackFinished == true:
-		if Input.is_action_just_pressed("attack_melee"):
-			nextState = attack2State
-			return nextState
-		elif Input.is_action_just_pressed("jump"):
-			nextState = jumpState
-			return nextState
-		elif Input.is_action_just_pressed("dash"):
-			nextState = dashState
-			return nextState
-		else:
-			nextState = idleState
-			return nextState
-	return null
+	return idleState
+
+@rpc("any_peer", "call_local")
+func Fire():
+	var b = projectile.instantiate()
+	b.global_position = $"../../ProjectileSpawn".global_position
+	get_tree().root.add_child(b)
 
 
 @rpc("any_peer", "call_local")
 func FinishedAttack():
 	attackFinished = true
+func _on_animated_sprite_2d_animation_finished() -> void:
+	FinishedAttack()

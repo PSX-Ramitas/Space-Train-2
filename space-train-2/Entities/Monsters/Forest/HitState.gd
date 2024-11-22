@@ -39,7 +39,7 @@ func _on_timer_timeout() -> void:
 
 func drop_item():
 	# Set a drop chance (e.g., 30%)
-	var drop_chance = 0.5  # 30% probability
+	var drop_chance = 0.7  # 30% probability
 
 	# Generate a random number between 0 and 1
 	if randf() <= drop_chance:

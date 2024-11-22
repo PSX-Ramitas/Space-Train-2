@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DashState.gd" id="5_lobj3"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/RunState.gd" id="5_sn4mp"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FallState.gd" id="6_d8ypo"]
-[ext_resource type="PackedScene" path="res://UI/inventory_gui.tscn" id="6_satfl"]
+[ext_resource type="PackedScene" uid="uid://cd0un7grrfdfn" path="res://UI/inventory_gui.tscn" id="6_satfl"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/JumpState.gd" id="7_bufn4"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack1State.gd" id="8_kiy5g"]
 [ext_resource type="AudioStream" uid="uid://clcvhn8mhuf63" path="res://Sounds/SFX/Sonic2_Jump.ogg" id="9_yl5ma"]
@@ -530,12 +530,12 @@ scale = Vector2(5.34039, 2.18085)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = -50.0
-offset_right = 43.0
-offset_bottom = -10.0
+offset_left = 3.0
+offset_top = -88.0
+offset_right = 40.0
+offset_bottom = -48.0
 grow_vertical = 0
-scale = Vector2(1.10769, 1.14754)
+scale = Vector2(2.1531, 2.10833)
 
 [node name="PlayerHitbox" parent="." instance=ExtResource("2_rlyqj")]
 scale = Vector2(0.5, 0.5)

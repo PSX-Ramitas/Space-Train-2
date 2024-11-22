@@ -5,6 +5,8 @@ class_name HealthItem extends InventoryItem
 #@onready var player: Player = get_node("res://Enities/Player/PlayerSS/player_ss.gd") 
 
 @export var health_increase: int = 1
+#@export var scene: PackedScene = preload("res://Collectables/potion.tscn")
+
 
 #func use(player: Player) -> void:
 	#print("called")

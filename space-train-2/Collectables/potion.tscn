@@ -6,7 +6,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7a2e"]
 resource_local_to_scene = true
-size = Vector2(8, 10)
+size = Vector2(28, 30)
 
 [node name="potion" instance=ExtResource("1_mkhks")]
 collision_mask = 2
@@ -16,4 +16,6 @@ itemRes = ExtResource("2_nh3uh")
 shape = SubResource("RectangleShape2D_u7a2e")
 
 [node name="Sprite2D" parent="." index="1"]
+position = Vector2(2.38419e-07, 4.76837e-07)
+scale = Vector2(3.11111, 2.72727)
 texture = ExtResource("2_wtirh")

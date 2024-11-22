@@ -9,6 +9,7 @@ var amountHeal = 5
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 @onready var area: Area2D = $"../../PlayerHitbox"
 #@onready var player: Player = get_node("res://Entities/Player/PlayerSS/player_ss.gd")
+@onready var heal_sound: AudioStreamPlayer = $"../../Sounds/HealSound"
 
 func _ready():
 	inventory.updated.connect(update)

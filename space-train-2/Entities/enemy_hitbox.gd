@@ -11,6 +11,7 @@ class_name EnemyHitbox
 	preload("res://Collectables/power.tscn")
 ]
 
+var bot
 
 signal healthChanged(isHeal: bool, amount: int)
 
@@ -54,17 +55,29 @@ func _on_health_changed(isHeal: bool, amount: int) -> void:
 # Function to handle random item drops
 
 func drop_item():
-	if item_scenes.size() > 0:
-		var random_index = randi() % item_scenes.size()
-		var item_scene = item_scenes[random_index]  
+	# Set a drop chance (e.g., 30%)
+	var drop_chance = 0.5  # 30% probability of dropping an item
 
-		var item_instance = item_scene.instantiate()
-		var root_node = get_tree().get_current_scene()
-		if root_node:
-			root_node.add_child(item_instance) 
-		else:
-			print("Error: Could not find the current scene root!")
-			return
-		item_instance.global_position = global_position  
+	# Generate a random float between 0 and 1
+	if randf() <= drop_chance:
+		if item_scenes.size() > 0:
+			var random_index = randi() % item_scenes.size()
+			var item_scene = item_scenes[random_index]  
 
-		print("Dropped item:", item_instance)
+			var item_instance = item_scene.instantiate()
+			var root_node = get_tree().get_current_scene()
+			if root_node:
+				root_node.add_child(item_instance) 
+			else:
+				print("Error: Could not find the current scene root!")
+				return
+
+			# Adjust the drop position
+			if botWheel:
+				item_instance.global_position = global_position + Vector2(0, -50) 
+			else:
+				item_instance.global_position = global_position
+
+			print("Dropped item:", item_instance)
+	else:
+		print("No item dropped this time.")  # Debug message for no drop

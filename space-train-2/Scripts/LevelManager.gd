@@ -6,7 +6,8 @@ var levels = [
 	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_2.tscn",
 	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_3.tscn",
 	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_4.tscn",
-	"res://Main_Areas/Planets/Forest/Scenes/forest_room_5.tscn"
+	"res://Main_Areas/Planets/Forest/Scenes/forest_room_5.tscn",
+	"res://Main_Areas/Planets/Forest/forest_room_6.tscn"
 ]
 
 var levelCount = 4
@@ -15,6 +16,8 @@ var visited = { }
 var worldClear = false
 func resetLevelState():
 	levelCount = 4  # Reset the level count back to the full set
+	PlayerData.maxHealth = PlayerData.initHealth
+	PlayerData.health = PlayerData.maxHealth
 	visited.clear()  # Clear the visited levels
 	print("Level state reset: ", visited)
 	

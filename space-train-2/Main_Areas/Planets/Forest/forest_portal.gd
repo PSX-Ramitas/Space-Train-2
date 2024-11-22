@@ -3,10 +3,14 @@ extends Node2D
 @onready var level_music: AudioStreamPlayer = $LevelMusic
 @onready var player_ss: Player = $PlayerSS
 @onready var portal: Node2D = $Portal
-
+@onready var camera = find_child("Camera2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	camera.limit_left = -150
+	camera.limit_top = -150
+	camera.limit_bottom = 1100
+	camera.limit_right = 1550
 	transition.play_transition("DiamondIn")
 	level_music.play()
 

@@ -459,6 +459,7 @@ sources/0 = SubResource("TileSetAtlasSource_1xhn7")
 font_size = 12
 
 [node name="ForestRoom3" type="Node2D"]
+texture_filter = 1
 position = Vector2(-36, 101)
 script = ExtResource("1_r5fx6")
 
@@ -525,6 +526,7 @@ position = Vector2(1937, 456)
 position = Vector2(2524, 475)
 
 [node name="transitionScreen" parent="." instance=ExtResource("6_uh0lx")]
+visible = false
 position = Vector2(3034, 438)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

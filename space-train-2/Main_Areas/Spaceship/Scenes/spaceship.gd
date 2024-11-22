@@ -7,6 +7,7 @@ var omega = 0
 @onready var transition: TransitionScreen = $CanvasLayer/TransitionAnim
 @onready var label: Label = $Label
 @onready var interactable_label_component: Control = $InteractableLabelComponent
+@onready var lostNPC: CharacterBody2D = $LostGuyTD
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,6 +23,10 @@ func _ready() -> void:
 		transition.play_transition("FadeIn")
 	else:
 		transition.play_transition("Split")
+	if TrainNPCs.lostGuyInteracted == false:
+		lostNPC.queue_free()
+	elif TrainNPCs.lostGuyInteracted == true:
+		lostNPC.queue_redraw()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

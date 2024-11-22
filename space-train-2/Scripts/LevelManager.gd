@@ -15,6 +15,7 @@ var visited = { }
 var worldClear = false
 func resetLevelState():
 	levelCount = 4  # Reset the level count back to the full set
+	PlayerData.health = PlayerData.maxHealth
 	visited.clear()  # Clear the visited levels
 	print("Level state reset: ", visited)
 	

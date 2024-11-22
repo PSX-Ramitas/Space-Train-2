@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b0j7v5gowdblt" path="res://slot_gui.tscn" id="2_o5dh3"]
 
 [node name="inventoryGui" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 37.0

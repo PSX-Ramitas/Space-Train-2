@@ -29,4 +29,3 @@ func _on_area_entered(area: Area2D) -> void:
 					child.hit(attack, Vector2.LEFT)
 				else:
 					child.hit(attack, Vector2.ZERO)
-		

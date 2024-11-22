@@ -7,6 +7,13 @@ extends Entity
 @onready var sword = $PlayerSwordArea
 @onready var playerHB: TextureProgressBar = $HUD/HealthBar
 
+@export var inventory: Inventory
+
+@onready var originalAttack : int = attack 
+
+signal attackChanged
+signal damgeReduced
+
 var queuedAttack = 1
 var usedAirAttack = false
 var dashCD = 2
@@ -23,6 +30,7 @@ func _ready() -> void:
 	movespeed = PlayerData.movespeed
 	attack = PlayerData.attack
 	stateMachine.init(self, animations)
+	inventory.use_item.connect(use_item)
 
 func _unhandled_input(event: InputEvent) -> void:
 	stateMachine.process_input(event)
@@ -67,3 +75,27 @@ func _process(delta: float) -> void:
 		self.visible = false
 		set_collision_layer_value(1, false)
 		set_collision_layer_value(2, false)
+
+func increase_attack(amount: int) -> void:
+	print(" Original Attack: ", attack)
+	#print(attack)
+	attack += amount
+	
+	attackChanged.emit(attack)
+	#print(attack)
+	print(" New Attack: ", attack)
+	$Timer.start()
+
+
+func use_item(item: InventoryItem) -> void:
+	item.use(self)
+
+
+func _on_timer_timeout() -> void:
+	attack = originalAttack
+	attackChanged.emit(attack)
+	print("Attack now: ", attack)
+
+
+func _on_player_hitbox_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

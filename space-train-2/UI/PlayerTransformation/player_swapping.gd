@@ -1,5 +1,6 @@
 extends Control
 
+@export var boss_killed : bool = false
 @export var player_ss: Player
 @export var player_ss_2: Player2
 
@@ -14,10 +15,14 @@ func _input(event) -> void:
 		PlayerTransformer.emit_signal("on_swap_player", player_ss, player_ss_2)
 
 func player_to_monster(player_ss, player_ss_2):
-	var temp_state = player_ss_2.active
-	player_ss_2.active = player_ss.active
-	player_ss.active = temp_state
-	if(player_ss_2.active):
-		player_ss_2.global_position = player_ss.global_position
-	elif(player_ss.active):
-		player_ss.global_position = player_ss_2.global_position
+	if(boss_killed):
+		var temp_state = player_ss_2.active
+		player_ss_2.active = player_ss.active
+		player_ss.active = temp_state
+		if(player_ss_2.active):
+			player_ss_2.global_position = player_ss.global_position
+		elif(player_ss.active):
+			player_ss.global_position = player_ss_2.global_position
+
+func on_boss_killed(can_transform):
+	can_transform = boss_killed

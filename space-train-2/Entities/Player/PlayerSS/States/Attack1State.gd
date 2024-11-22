@@ -2,7 +2,6 @@ extends State
 
 @export var idleState: State
 @export var jumpState: State
-@export var shootState: State
 @export var fallState: State
 @export var dashState: State
 @export var dieState: State

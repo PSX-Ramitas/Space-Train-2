@@ -7,7 +7,6 @@ extends State
 @export var attack1State: State
 @export var attack2State: State
 @export var attack3State: State
-@export var shootState: State
 
 func enter() -> void:
 	var sfx = parent.find_child("JumpSound")
@@ -27,8 +26,6 @@ func process_input(event: InputEvent) -> State:
 			return attack2State
 		else:
 			return attack3State
-	if Input.is_action_just_pressed("fire_projectile"):
-		return shootState
 	return null
 
 func process_physics(delta: float) -> State:

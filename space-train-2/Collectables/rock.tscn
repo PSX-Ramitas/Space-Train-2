@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1fbqq7lyqnp0"]
+
+[ext_resource type="PackedScene" uid="uid://bdphgx3agu28v" path="res://Collectables/collectable.tscn" id="1_xh2bn"]
+[ext_resource type="Texture2D" uid="uid://dmsyivq1ywgyw" path="res://sprites/items (1).png" id="2_h0ghl"]
+[ext_resource type="Resource" uid="uid://cyduk2mkj8s3t" path="res://inventory/items/rock.tres" id="2_n6uql"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_evhrv"]
+radius = 8.06226
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4quff"]
+atlas = ExtResource("2_h0ghl")
+region = Rect2(64, 0, 32, 32)
+
+[node name="rock" instance=ExtResource("1_xh2bn")]
+itemRes = ExtResource("2_n6uql")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_evhrv")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_4quff")

@@ -5,7 +5,7 @@ class_name PlayerHitbox
 
 @onready var player_health_bar: TextureProgressBar = $"../HUD/HealthBar"
 @onready var damage_sound: AudioStreamPlayer = $"../Sounds/DamageSound"
-
+@onready var inventory: Inventory = preload("res://inventory/playerinventory.tres")
 signal healthChanged(isHeal: bool, amount: int)
 var is_alive
 func _ready() -> void:
@@ -42,3 +42,14 @@ func _on_health_changed(isHeal: bool, amount: int) -> void:
 		heal_health(amount)
 	else:
 		take_damage(amount)
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.has_method("collect") and count_items_in_inventory() < 1:
+		area.collect(inventory)
+
+func count_items_in_inventory() -> int:
+	var count = 0
+	for item in inventory.items:
+		if item:
+			count += 1
+	return count

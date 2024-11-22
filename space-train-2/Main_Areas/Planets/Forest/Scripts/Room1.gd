@@ -27,12 +27,13 @@ func _process(delta: float) -> void:
 func _on_transition_screen_body_entered(body: Node2D) -> void:
 	var enemies = $Enemies.get_children()
 	print(enemies)
+	var sfx = self.find_child("transitionScreen")
 	if body is Player and enemies.is_empty():
 		levelFinished = true
 		transition.play_transition("DiamondOut")
-		var sfx = self.find_child("transitionScreen")
 		sfx.play_trans_sound()
-
+	elif body is Player and !enemies.is_empty():
+		sfx.play_buzzer_sound()
 
 func _on_transition_finished() -> void:
 	if levelFinished == true:

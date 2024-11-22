@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://ct8cosa24rq35"
+path="res://.godot/imported/lostTD.dialogue-bbb6061a17db9e9f9aa2f8919f212971.tres"
+
+[deps]
+
+source_file="res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/lostTD.dialogue"
+dest_files=["res://.godot/imported/lostTD.dialogue-bbb6061a17db9e9f9aa2f8919f212971.tres"]
+
+[params]
+
+defaults=true

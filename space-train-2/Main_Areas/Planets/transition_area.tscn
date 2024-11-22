@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyhs8teinbtt1"]
+[gd_scene load_steps=6 format=3 uid="uid://cyhs8teinbtt1"]
 
 [ext_resource type="AudioStream" uid="uid://bve4y3kacbubb" path="res://Sounds/SFX/smw_goal_iris-out.wav" id="1_4iqov"]
 [ext_resource type="Script" path="res://Main_Areas/Planets/transition_area.gd" id="1_28qak"]
+[ext_resource type="AudioStream" uid="uid://dajmpsitpgtko" path="res://Sounds/SFX/smb3_bonus_game_no_match.wav" id="3_3k5in"]
 [ext_resource type="Texture2D" uid="uid://cm21jggmajvvi" path="res://Main_Areas/Spaceship/Assets/TX Props.png" id="3_vvd0x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ut4eg"]
@@ -18,6 +19,11 @@ shape = SubResource("RectangleShape2D_ut4eg")
 [node name="TransSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_4iqov")
 volume_db = -8.0
+bus = &"SFX"
+
+[node name="Buzzer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3k5in")
+volume_db = -17.0
 bus = &"SFX"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

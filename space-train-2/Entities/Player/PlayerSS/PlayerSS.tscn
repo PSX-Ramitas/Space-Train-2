@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=93 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Resource" uid="uid://dr18hr2uxbsl0" path="res://inventory/playerinventory.tres" id="2_poxt0"]
@@ -18,17 +18,18 @@
 [ext_resource type="PackedScene" uid="uid://cd0un7grrfdfn" path="res://UI/inventory_gui.tscn" id="6_satfl"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/JumpState.gd" id="7_bufn4"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack1State.gd" id="8_kiy5g"]
-[ext_resource type="AudioStream" uid="uid://clcvhn8mhuf63" path="res://Sounds/SFX/Sonic2_Jump.ogg" id="9_yl5ma"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DieState.gd" id="10_cg6rn"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack2State.gd" id="10_g4e6d"]
 [ext_resource type="AudioStream" uid="uid://bh62sqsd7fcr5" path="res://Sounds/SFX/LTTP_Sword1.wav" id="11_2xbu7"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack3State.gd" id="11_nv6s7"]
+[ext_resource type="AudioStream" uid="uid://gd0k3peuklx4" path="res://Sounds/SFX/cartoon-jump-6462.mp3" id="12_htm7q"]
 [ext_resource type="AudioStream" uid="uid://bxct3i7nwbt3f" path="res://Sounds/SFX/LTTP_Sword4.wav" id="12_hu1i7"]
 [ext_resource type="AudioStream" uid="uid://j61u0t0e0my6" path="res://Sounds/SFX/LTTP_Sword2.wav" id="13_667j2"]
 [ext_resource type="AudioStream" uid="uid://bfb2f35p4rqj6" path="res://Sounds/SFX/LTTP_Sword_Spin.wav" id="14_waqik"]
 [ext_resource type="AudioStream" uid="uid://cmb8xmkxjsms3" path="res://Sounds/SFX/LTTP_Link_Land.wav" id="15_l1kjy"]
 [ext_resource type="AudioStream" uid="uid://dfu6wd0qadvbm" path="res://Sounds/SFX/LTTP_Link_Dying.wav" id="16_31vkk"]
 [ext_resource type="AudioStream" uid="uid://cv7mwbvy6w133" path="res://Sounds/SFX/SE_BTL_DAMAGE1.wav" id="17_nk67b"]
+[ext_resource type="AudioStream" uid="uid://cx5ymqqphjsvq" path="res://Sounds/SFX/SE_RECOVERY.wav" id="20_5hk3w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epcnk"]
 radius = 13.0
@@ -499,6 +500,7 @@ animations = [{
 size = Vector2(10.5, 29)
 
 [node name="PlayerSS" type="CharacterBody2D"]
+texture_filter = 1
 scale = Vector2(2, 2)
 collision_layer = 3
 collision_mask = 3
@@ -572,9 +574,8 @@ limit_left = 0
 [node name="Sounds" type="Node" parent="."]
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("9_yl5ma")
+stream = ExtResource("12_htm7q")
 volume_db = -23.0
-pitch_scale = 0.8
 bus = &"SFX"
 
 [node name="Sword1" type="AudioStreamPlayer" parent="Sounds"]
@@ -610,6 +611,11 @@ bus = &"SFX"
 
 [node name="DamageSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("17_nk67b")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="HealSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("20_5hk3w")
 volume_db = -20.0
 bus = &"SFX"
 

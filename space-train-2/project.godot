@@ -22,6 +22,7 @@ PlayerData="*res://Scripts/PlayerData.gd"
 SignalBusMonster="*res://Scripts/signal_bus_monster.gd"
 PlayerTransformer="*res://Scripts/PlayerTranformer.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+TrainNPCs="*res://Scripts/TrainNPCs.gd"
 
 [display]
 
@@ -152,7 +153,7 @@ ui_use_item={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/guide.dialogue", "res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/cat.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/guide.dialogue", "res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/cat.dialogue", "res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/lost.dialogue", "res://Main_Areas/Spaceship/NPC/Dialogue/Conversations/lostTD.dialogue")
 
 [layer_names]
 

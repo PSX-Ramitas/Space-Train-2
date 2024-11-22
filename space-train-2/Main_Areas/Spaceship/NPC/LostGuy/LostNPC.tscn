@@ -1,12 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://cp5de08wucg0g"]
+[gd_scene load_steps=25 format=3 uid="uid://4bkd8i6ris7r"]
 
-[ext_resource type="Script" path="res://Main_Areas/Spaceship/NPC/Guide/guide.gd" id="1_4bine"]
-[ext_resource type="Texture2D" uid="uid://bspbfqluhnspf" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/1. Idle 48 x 48.png" id="2_maviy"]
-[ext_resource type="PackedScene" uid="uid://d04o58517yg4k" path="res://Main_Areas/Spaceship/NPC/dialogue.tscn" id="2_pns82"]
-[ext_resource type="PackedScene" uid="uid://dco0wwnusv055" path="res://Main_Areas/Spaceship/NPC/interaction_area.tscn" id="3_o7pb2"]
-[ext_resource type="Texture2D" uid="uid://btlb374bnve0o" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/2. Run 48 x 48.png" id="5_qtbug"]
-[ext_resource type="Shader" path="res://Main_Areas/Spaceship/NPC/Guide/animation_player.gdshader" id="7_l7je6"]
-[ext_resource type="PackedScene" uid="uid://bedye865q217d" path="res://Main_Areas/Spaceship/NPC/interactable_label_component.tscn" id="7_oahf1"]
+[ext_resource type="Script" path="res://Main_Areas/Spaceship/NPC/LostGuy/lost_npc.gd" id="1_akhop"]
+[ext_resource type="PackedScene" uid="uid://d04o58517yg4k" path="res://Main_Areas/Spaceship/NPC/dialogue.tscn" id="2_vql1w"]
+[ext_resource type="PackedScene" uid="uid://dco0wwnusv055" path="res://Main_Areas/Spaceship/NPC/interaction_area.tscn" id="3_ye27r"]
+[ext_resource type="Texture2D" uid="uid://bspbfqluhnspf" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/1. Idle 48 x 48.png" id="4_e2xsw"]
+[ext_resource type="Texture2D" uid="uid://btlb374bnve0o" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/2. Run 48 x 48.png" id="5_flcvk"]
+[ext_resource type="Shader" path="res://Main_Areas/Spaceship/NPC/Guide/animation_player.gdshader" id="6_yaslt"]
+[ext_resource type="PackedScene" uid="uid://bedye865q217d" path="res://Main_Areas/Spaceship/NPC/interactable_label_component.tscn" id="7_131sc"]
 
 [sub_resource type="Animation" id="Animation_tmb7p"]
 length = 0.001
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_maviy")]
+"values": [ExtResource("4_e2xsw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -74,7 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_maviy")]
+"values": [ExtResource("4_e2xsw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -128,7 +128,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_maviy")]
+"values": [ExtResource("4_e2xsw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -182,7 +182,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_qtbug")]
+"values": [ExtResource("5_flcvk")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -236,7 +236,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_qtbug")]
+"values": [ExtResource("5_flcvk")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -322,14 +322,14 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nfo4f"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xvj3m"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1ikri"]
 states/Start/position = Vector2(212, 98)
 states/facing/node = SubResource("AnimationNodeBlendSpace2D_gtsav")
 states/facing/position = Vector2(390, 98)
 transitions = ["Start", "facing", SubResource("AnimationNodeStateMachineTransition_nfo4f")]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7721"]
-shader = ExtResource("7_l7je6")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uk04f"]
+shader = ExtResource("6_yaslt")
 shader_parameter/original_0 = null
 shader_parameter/original_1 = null
 shader_parameter/original_2 = null
@@ -339,16 +339,15 @@ shader_parameter/replace_1 = null
 shader_parameter/replace_2 = null
 shader_parameter/replace_3 = null
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rde1x"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwm56"]
 size = Vector2(16, 20)
 
-[node name="Guide" type="CharacterBody2D"]
-z_index = 1
-script = ExtResource("1_4bine")
+[node name="LostGuy" type="CharacterBody2D"]
+script = ExtResource("1_akhop")
 
-[node name="Dialogue" parent="." instance=ExtResource("2_pns82")]
+[node name="Dialogue" parent="." instance=ExtResource("2_vql1w")]
 
-[node name="InteractionArea" parent="." instance=ExtResource("3_o7pb2")]
+[node name="InteractionArea" parent="." instance=ExtResource("3_ye27r")]
 position = Vector2(0, 27)
 
 [node name="DialogueTimer" type="Timer" parent="InteractionArea"]
@@ -362,20 +361,20 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_xvj3m")
+tree_root = SubResource("AnimationNodeStateMachine_1ikri")
 anim_player = NodePath("../AnimationPlayer")
 parameters/facing/blend_position = Vector2(-0.000962436, 0.0234042)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_j7721")
-texture = ExtResource("2_maviy")
+material = SubResource("ShaderMaterial_uk04f")
+texture = ExtResource("4_e2xsw")
 hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 9)
-shape = SubResource("RectangleShape2D_rde1x")
+shape = SubResource("RectangleShape2D_lwm56")
 
-[node name="InteractableLabelComponent" parent="." instance=ExtResource("7_oahf1")]
+[node name="InteractableLabelComponent" parent="." instance=ExtResource("7_131sc")]
 offset_left = -25.0
 offset_top = -42.0
 offset_right = -7.0

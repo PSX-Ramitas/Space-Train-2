@@ -458,6 +458,7 @@ sources/0 = SubResource("TileSetAtlasSource_1xhn7")
 font_size = 12
 
 [node name="ForestRoom2" type="Node2D"]
+texture_filter = 1
 position = Vector2(-36, 101)
 script = ExtResource("1_apuhv")
 

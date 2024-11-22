@@ -5,6 +5,8 @@ class_name PlayerHitbox
 
 @onready var player_health_bar: TextureProgressBar = $"../HUD/HealthBar"
 @onready var damage_sound: AudioStreamPlayer = $"../Sounds/DamageSound"
+@onready var heal_sound: AudioStreamPlayer = $"../Sounds/HealSound"
+
 @onready var inventory: Inventory = preload("res://inventory/playerinventory.tres")
 signal healthChanged(isHeal: bool, amount: int)
 var is_alive
@@ -32,6 +34,7 @@ func take_damage(damageAmount: int):
 
 func heal_health(healAmount: int):
 	if is_alive:
+		heal_sound.play()
 		var new_health = min(PlayerData.maxHealth, PlayerData.health + healAmount)
 		player_ss.health = new_health
 		player_health_bar._set_health(new_health)

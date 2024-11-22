@@ -23,7 +23,9 @@ var prevHealth = health
 enum State {Roam,Chase,Attack,Hurt,Death,}
 var currentState = State.Roam
 
-
+@export var boss_facing_shape : BossFacingCollisionShape2D
+@export var boss_hitbox_facing_shape : BossHitCollisionShape2D
+signal boss_facing_direction_changed(facing_right : bool)
 	
 func get_health(): 
 	return health
@@ -32,6 +34,7 @@ func get_state():
 
 func _ready() -> void:
 	currentState = State.Roam
+	connect("boss_facing_direction_changed", _on_boss_facing_direction_changed)
 
 func _sprite_orientation(direction):
 	var left_offset =115
@@ -47,6 +50,7 @@ func _sprite_orientation(direction):
 		$AnimatedSprite2D.flip_h = false
 		print("$bossSwordArea.position.x (false), ", $BossSwordArea.position.x)
 		$BossSwordArea.position.x = abs(right_offset)
+	emit_signal("boss_facing_direction_changed", !$AnimatedSprite2D.flip_h)
 
 func _process(delta):
 	if !is_on_floor():
@@ -187,3 +191,11 @@ func _on_boss_attack_range_area_exited(area: Area2D) -> void:
 			playerInChaseRange=true
 			_sprite_orientation(direction)
 			currentState = State.Chase
+
+func _on_boss_facing_direction_changed(facing_right : bool):
+	if(facing_right):
+		boss_hitbox_facing_shape.position = boss_hitbox_facing_shape.boss_hitbox_facing_right_position
+		boss_facing_shape.position = boss_facing_shape.boss_facing_right_position
+	else:
+		boss_facing_shape.position = boss_facing_shape.boss_facing_left_position
+		boss_hitbox_facing_shape.position = boss_hitbox_facing_shape.boss_hitbox_facing_left_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3 uid="uid://citu8occwl0xr"]
+[gd_scene load_steps=150 format=3 uid="uid://citu8occwl0xr"]
 
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="1_k3w4u"]
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/boss.gd" id="1_way5i"]
@@ -15,9 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://i34ax6wswxvd" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/FULL_Samurai 2D Pixel Art v1.2/Sprites/ATTACK 3.png" id="12_wycyy"]
 [ext_resource type="Texture2D" uid="uid://c5wdu6fxcrvn4" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/FULL_Samurai 2D Pixel Art v1.2/Sprites/DEATH.png" id="15_h78a6"]
 [ext_resource type="Texture2D" uid="uid://qfk4v7u7j3du" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/FULL_Samurai 2D Pixel Art v1.2/Sprites/WALK.png" id="15_wosa7"]
+[ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/boss_collision_shape.gd" id="16_eeker"]
 [ext_resource type="Texture2D" uid="uid://dt7j1h7l8a1en" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/FULL_Samurai 2D Pixel Art v1.2/Sprites/SPECIAL ATTACK.png" id="16_y2pwj"]
 [ext_resource type="Texture2D" uid="uid://djo78v8ax7rl1" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/FULL_Samurai 2D Pixel Art v1.2/Sprites/THROW.png" id="17_ffb7u"]
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/boss_sword_area.gd" id="19_t8eup"]
+[ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/boss_hit_collision_shape.gd" id="20_2fa7x"]
 [ext_resource type="Texture2D" uid="uid://bc7pn2mtbfjrq" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/FULL_Samurai 2D Pixel Art v1.2/Sprites/WALL CONTACT.png" id="21_ad0sm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rebri"]
@@ -953,7 +955,7 @@ height = 60.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8vd8"]
 radius = 8.0
-height = 62.0
+height = 60.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ot1wv"]
 radius = 490.164
@@ -966,9 +968,11 @@ radius = 19.7231
 a = Vector2(61, -1)
 b = Vector2(-135, -1)
 
-[node name="Boss" type="CharacterBody2D"]
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("boss_facing_shape", "boss_hitbox_facing_shape")]
 collision_layer = 4
 script = ExtResource("1_way5i")
+boss_facing_shape = NodePath("BossCollisionShape")
+boss_hitbox_facing_shape = NodePath("BossHitBox/BossHitCollisionShape")
 maxHealth = 200
 health = 200
 movespeed = 250
@@ -981,9 +985,12 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_socaq")
 animation = &"attack_3"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-35, 34)
+[node name="BossCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(-40, 30)
 shape = SubResource("CapsuleShape2D_743fi")
+script = ExtResource("16_eeker")
+boss_facing_left_position = Vector2(-60, 34)
+boss_facing_right_position = Vector2(-40, 30)
 
 [node name="HealthBar" parent="." instance=ExtResource("1_k3w4u")]
 offset_left = -71.0
@@ -994,14 +1001,16 @@ scale = Vector2(1.03855, 1.32718)
 metadata/_edit_use_anchors_ = true
 
 [node name="BossHitBox" parent="." instance=ExtResource("3_1xwtl")]
-position = Vector2(-21, 38)
 collision_layer = 4
 monitorable = true
 script = ExtResource("4_vopp6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHitBox"]
-position = Vector2(-13, -5)
+[node name="BossHitCollisionShape" type="CollisionShape2D" parent="BossHitBox"]
+position = Vector2(-40, 30)
 shape = SubResource("CapsuleShape2D_h8vd8")
+script = ExtResource("20_2fa7x")
+boss_hitbox_facing_left_position = Vector2(-60, 34)
+boss_hitbox_facing_right_position = Vector2(-40, 30)
 
 [node name="DirectionTimer" type="Timer" parent="."]
 autostart = true

@@ -1,5 +1,6 @@
 extends Control
 
+@export var boss_killed : bool = false
 @export var player_ss: Player
 @export var player_ss_2: Player2
 

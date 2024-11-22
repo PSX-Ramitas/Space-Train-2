@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://xepqp6ejccew"]
+
+[ext_resource type="Script" path="res://UI/Timer/timer.gd" id="1_13wc0"]
+
+[node name="Timer" type="Panel"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 69.0
+offset_bottom = 31.0
+grow_horizontal = 2
+scale = Vector2(1.7, 1.7)
+pivot_offset = Vector2(0, -30)
+size_flags_horizontal = 4
+script = ExtResource("1_13wc0")
+
+[node name="Minutes" type="Label" parent="."]
+layout_mode = 2
+offset_left = 1.17647
+offset_top = 2.94118
+offset_right = 41.1765
+offset_bottom = 25.9412
+text = "00:"
+horizontal_alignment = 2
+
+[node name="Seconds" type="Label" parent="."]
+layout_mode = 2
+offset_left = 24.1764
+offset_top = 2.94118
+offset_right = 64.1764
+offset_bottom = 25.9412
+text = "00:"
+horizontal_alignment = 2
+
+[node name="Milliseconds" type="Label" parent="."]
+layout_mode = 2
+offset_left = 47.1765
+offset_top = 2.94118
+offset_right = 87.1765
+offset_bottom = 25.9412
+text = "00"
+horizontal_alignment = 2

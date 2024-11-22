@@ -971,7 +971,7 @@ collision_layer = 4
 script = ExtResource("1_way5i")
 maxHealth = 200
 health = 200
-movespeed = 150
+movespeed = 250
 attack = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -1023,6 +1023,8 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("19_t8eup")
 
+[node name="DamageTimer" type="Timer" parent="BossSwordArea"]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossSwordArea"]
 position = Vector2(1, 0)
 rotation = 6.22039
@@ -1040,5 +1042,6 @@ shape = SubResource("SegmentShape2D_34tto")
 [connection signal="area_exited" from="BossChaseRadius" to="." method="_on_boss_chase_radius_area_exited"]
 [connection signal="area_entered" from="BossSwordArea" to="BossSwordArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BossSwordArea" to="BossSwordArea" method="_on_area_exited"]
+[connection signal="timeout" from="BossSwordArea/DamageTimer" to="BossSwordArea" method="_deal_damage"]
 [connection signal="area_entered" from="BossAttackRange" to="." method="_on_boss_attack_range_area_entered"]
 [connection signal="area_exited" from="BossAttackRange" to="." method="_on_boss_attack_range_area_exited"]

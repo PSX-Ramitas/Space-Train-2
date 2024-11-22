@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg00i2m66ytgm"]
+
+[ext_resource type="Texture2D" uid="uid://cm8jd24peuji0" path="res://sprites/coin.png" id="1_s1vt1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm2uo"]
+atlas = ExtResource("1_s1vt1")
+region = Rect2(0, 0, 16, 0)
+
+[node name="CoinDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 22.0
+offset_bottom = 27.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.5
+offset_top = -14.5
+offset_right = 8.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_dm2uo")

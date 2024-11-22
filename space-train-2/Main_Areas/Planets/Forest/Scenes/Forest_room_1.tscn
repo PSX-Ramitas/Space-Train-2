@@ -555,7 +555,8 @@ position = Vector2(1291, 486)
 position = Vector2(2317, 382)
 
 [node name="transitionScreen" parent="." instance=ExtResource("10_d5hcj")]
-position = Vector2(2999, 393)
+visible = false
+position = Vector2(3009, 454)
 
 [node name="Killzone" parent="." instance=ExtResource("10_f1gjy")]
 position = Vector2(414, 761)

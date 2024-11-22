@@ -522,7 +522,8 @@ position = Vector2(800, 582)
 position = Vector2(1719, 634)
 
 [node name="transitionScreen" parent="." instance=ExtResource("7_aqotw")]
-position = Vector2(1941, 563)
+visible = false
+position = Vector2(1981, 633)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

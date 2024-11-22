@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://v68rubr571l"]
+[gd_scene load_steps=63 format=3 uid="uid://v68rubr571l"]
 
 [ext_resource type="Script" path="res://Main_Areas/Title/title_screen.gd" id="1_qy4ah"]
 [ext_resource type="Texture2D" uid="uid://bntaopptrds6i" path="res://Main_Areas/Title/Space Background(1).png" id="1_uu0sr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="8_yigv6"]
 [ext_resource type="AudioStream" uid="uid://6cwe4vngu5ii" path="res://Sounds/SFX/SE_BTL_BEEP2.wav" id="10_d725h"]
 [ext_resource type="AudioStream" uid="uid://iik8xvfd5ml7" path="res://Sounds/SFX/SE_BTL_BEEP3.wav" id="11_s8cun"]
+[ext_resource type="AudioStream" uid="uid://kx8lr636i5dx" path="res://UI/Music/Chasing Shadows in Space.mp3" id="11_xyo5n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkuu2"]
 atlas = ExtResource("2_x7ev4")
@@ -472,6 +473,10 @@ bus = &"SFX"
 stream = ExtResource("11_s8cun")
 volume_db = -20.0
 bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("11_xyo5n")
+autoplay = true
 
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Options" to="Control" method="_on_options_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cg73rhtkogqdl"]
+[gd_scene load_steps=64 format=3 uid="uid://cg73rhtkogqdl"]
 
 [ext_resource type="Script" path="res://Main_Areas/Spaceship/Scenes/spaceship.gd" id="1_xl6vl"]
 [ext_resource type="PackedScene" uid="uid://2d3g1hndk8yp" path="res://Main_Areas/Spaceship/Scenes/parallax_background.tscn" id="2_g3ve1"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cw8kpxsf6f801" path="res://Main_Areas/Title/53721020.png" id="7_5rdjh"]
 [ext_resource type="PackedScene" uid="uid://cyhs8teinbtt1" path="res://Main_Areas/Planets/transition_area.tscn" id="8_umg2h"]
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="9_o3d8t"]
+[ext_resource type="Texture2D" uid="uid://bohap2fdm71jb" path="res://Main_Areas/Spaceship/SpaceTrain.webp" id="10_3j3mu"]
+[ext_resource type="AudioStream" uid="uid://kx8lr636i5dx" path="res://UI/Music/Chasing Shadows in Space.mp3" id="11_t8n3x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0aiya"]
 atlas = ExtResource("7_5rdjh")
@@ -385,6 +387,7 @@ position = Vector2(221, 464)
 position = Vector2(581, 266)
 
 [node name="PlayerTD" parent="." instance=ExtResource("6_137br")]
+z_index = 1
 position = Vector2(335, 275)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerTD"]
@@ -392,8 +395,8 @@ zoom = Vector2(1.2, 1.2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -2
-position = Vector2(1014, -86)
-scale = Vector2(1.75, 1.95)
+position = Vector2(587, 360)
+scale = Vector2(2.5, 2.787)
 sprite_frames = SubResource("SpriteFrames_m4578")
 autoplay = "default"
 frame_progress = 0.00523182
@@ -415,8 +418,34 @@ label_settings = SubResource("LabelSettings_1sdm4")
 horizontal_alignment = 1
 
 [node name="TeleporterArea" parent="." instance=ExtResource("8_umg2h")]
-position = Vector2(955, 337)
-scale = Vector2(1.4402, 0.641244)
+position = Vector2(962, 357)
+
+[node name="InteractableLabelComponent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 10.0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.539964, 0.68164)
+
+[node name="TextureRect" type="TextureRect" parent="InteractableLabelComponent"]
+layout_mode = 0
+offset_left = 1663.07
+offset_top = 608.826
+offset_right = 2687.08
+offset_bottom = 1632.83
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_3j3mu")
+
+[node name="Button" type="Button" parent="InteractableLabelComponent"]
+layout_mode = 0
+offset_left = 1666.78
+offset_top = 608.826
+offset_right = 1763.78
+offset_bottom = 707.826
+scale = Vector2(2.04665, 1.94814)
+text = "Teleport"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -425,7 +454,12 @@ top_level = true
 z_index = 30
 position = Vector2(-3, 1)
 
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_t8n3x")
+autoplay = true
+
 [connection signal="timeout" from="AnimatedSprite2D/PlanetRotation" to="." method="_on_planet_rotation_timeout"]
 [connection signal="body_entered" from="TeleporterArea" to="." method="_on_teleporter_area_body_entered"]
 [connection signal="body_exited" from="TeleporterArea" to="." method="_on_teleporter_area_body_exited"]
+[connection signal="button_down" from="InteractableLabelComponent/Button" to="." method="_on_button_button_down"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

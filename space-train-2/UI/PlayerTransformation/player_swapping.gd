@@ -5,11 +5,13 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	PlayerTranformer.connect("on_swap_player", player_to_monster)
+	#PlayerTranformer.connect("on_swap_player", player_to_monster)
+	PlayerTransformer.connect("on_swap_player", player_to_monster)
 
 func _input(event) -> void:
 	if Input.is_action_just_pressed("transform"):
-		PlayerTranformer.emit_signal("on_swap_player", player_ss, player_ss_2)
+		#PlayerTranformer.emit_signal("on_swap_player", player_ss, player_ss_2)
+		PlayerTransformer.emit_signal("on_swap_player", player_ss, player_ss_2)
 
 func player_to_monster(player_ss, player_ss_2):
 	var temp_state = player_ss_2.active

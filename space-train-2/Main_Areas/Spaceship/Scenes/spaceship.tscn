@@ -459,6 +459,7 @@ position = Vector2(-3, 1)
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_t8n3x")
 autoplay = true
+bus = &"Music"
 
 [node name="LostGuyTD" parent="." instance=ExtResource("12_3g0mf")]
 position = Vector2(477, 359)

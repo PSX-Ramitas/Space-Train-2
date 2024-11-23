@@ -495,6 +495,7 @@ height = 19.2
 position = Vector2(-1.19209e-07, -2.38419e-07)
 scale = Vector2(2.5, 2.5)
 slide_on_ceiling = false
+floor_stop_on_slope = false
 script = ExtResource("1_t6rrs")
 maxHealth = 30
 health = 50

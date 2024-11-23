@@ -477,6 +477,7 @@ bus = &"SFX"
 [node name="Music" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("11_xyo5n")
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Options" to="Control" method="_on_options_pressed"]

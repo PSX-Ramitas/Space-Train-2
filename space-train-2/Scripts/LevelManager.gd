@@ -38,7 +38,6 @@ func loadLevel():
 				#found = true
 		if levelCount == 0:
 			worldClear = true
-			resetLevelState()
 			get_tree().change_scene_to_file("res://Main_Areas/Planets/Forest/forest_portal.tscn")
 func _ready() -> void:
 	pass # Replace with function body.

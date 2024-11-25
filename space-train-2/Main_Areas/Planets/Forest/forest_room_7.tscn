@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dfhtb56c4ftla" path="res://Entities/Monsters/Forest/Bee/Bee.tscn" id="16_s1mcw"]
 
 [node name="Forest_Room_7" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_o5opn")
 
 [node name="Parallax" type="Node" parent="."]

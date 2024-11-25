@@ -4,10 +4,10 @@
 [ext_resource type="Resource" uid="uid://dr18hr2uxbsl0" path="res://inventory/playerinventory.tres" id="2_poxt0"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
 [ext_resource type="PackedScene" uid="uid://bhsc1c1ccq0q3" path="res://Entities/entity_hitbox.tscn" id="2_rlyqj"]
-[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_s31bq"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FSM.gd" id="3_15oje"]
 [ext_resource type="PackedScene" uid="uid://cl7wej5k1tlc4" path="res://UI/Pause/pause_menu.tscn" id="3_ak4tc"]
 [ext_resource type="PackedScene" uid="uid://bh8hgh0ot1xyj" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.tscn" id="3_d10ch"]
+[ext_resource type="PackedScene" uid="uid://d31oquot12rly" path="res://UI/PlayerHUD/player_gui.tscn" id="3_fusxc"]
 [ext_resource type="Script" path="res://Entities/player_hitbox.gd" id="4_0m58k"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/Attacks/player_sword_area.gd" id="4_4cvk8"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/IdleState.gd" id="4_k6y6q"]
@@ -535,17 +535,21 @@ attack = 10
 process_mode = 3
 process_priority = 1
 
-[node name="HealthBar" parent="HUD" instance=ExtResource("2_s31bq")]
-process_mode = 1
-offset_right = 64.0
-offset_bottom = 10.0
-scale = Vector2(2.3, 2.3)
-pivot_offset = Vector2(-18, -15)
-step = 0.5
+[node name="HealthBar" parent="HUD" instance=ExtResource("3_fusxc")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(2.7, 2.7)
+pivot_offset = Vector2(-3, -3)
 
 [node name="PauseMenu" parent="HUD" instance=ExtResource("3_ak4tc")]
 
 [node name="DeathTransition" parent="HUD" instance=ExtResource("4_rqoi5")]
+z_index = 4
 position = Vector2(-254, -443)
 scale = Vector2(5.34039, 2.18085)
 
@@ -553,12 +557,13 @@ scale = Vector2(5.34039, 2.18085)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -88.0
-offset_right = 40.0
-offset_bottom = -48.0
+offset_left = 5.0
+offset_top = -91.0
+offset_right = 42.0
+offset_bottom = -51.0
 grow_vertical = 0
-scale = Vector2(2.1531, 2.10833)
+scale = Vector2(1.5, 1.469)
+pivot_offset = Vector2(-30, -40)
 
 [node name="PlayerHitbox" parent="." instance=ExtResource("2_rlyqj")]
 scale = Vector2(0.5, 0.5)

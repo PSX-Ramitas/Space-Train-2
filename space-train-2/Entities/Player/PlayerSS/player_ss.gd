@@ -5,7 +5,7 @@ extends Entity
 @onready var animations = $AnimatedSprite2D
 @onready var stateMachine = $FSM
 @onready var sword = $PlayerSwordArea
-@onready var playerHB: TextureProgressBar = $HUD/HealthBar
+@onready var PlayerHB: Control = $HUD/HealthBar
 @onready var bullets: Node2D = $ProjectileSpawn
 
 @export var inventory: Inventory

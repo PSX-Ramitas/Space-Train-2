@@ -21,6 +21,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snrbd"]
 
 [node name="Forest_Room_6" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_iops7")
 
 [node name="Parallax" type="Node" parent="."]

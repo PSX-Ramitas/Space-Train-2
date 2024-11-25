@@ -374,6 +374,7 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_1sdm4"]
 
 [node name="Train" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_xl6vl")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_g3ve1")]

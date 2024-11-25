@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="9_eu6el"]
 
 [node name="forest_portal" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_tcxvo")
 
 [node name="Parallax" type="Node" parent="."]

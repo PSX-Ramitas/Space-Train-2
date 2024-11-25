@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://v68rubr571l"]
+[gd_scene load_steps=65 format=3 uid="uid://v68rubr571l"]
 
 [ext_resource type="Script" path="res://Main_Areas/Title/title_screen.gd" id="1_qy4ah"]
 [ext_resource type="Texture2D" uid="uid://bntaopptrds6i" path="res://Main_Areas/Title/Space Background(1).png" id="1_uu0sr"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://6cwe4vngu5ii" path="res://Sounds/SFX/SE_BTL_BEEP2.wav" id="10_d725h"]
 [ext_resource type="AudioStream" uid="uid://iik8xvfd5ml7" path="res://Sounds/SFX/SE_BTL_BEEP3.wav" id="11_s8cun"]
 [ext_resource type="AudioStream" uid="uid://kx8lr636i5dx" path="res://UI/Music/Chasing Shadows in Space.mp3" id="11_xyo5n"]
+[ext_resource type="FontFile" uid="uid://iua8btsbjy5v" path="res://Fonts/Pixica-Bold.ttf" id="12_jgnn0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkuu2"]
 atlas = ExtResource("2_x7ev4")
@@ -370,7 +371,16 @@ animations = [{
 "speed": 100.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_w0bka"]
+font = ExtResource("12_jgnn0")
+font_size = 128
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 32
+shadow_color = Color(0, 0, 0, 0.556863)
+
 [node name="TitleScreen" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_qy4ah")
 
 [node name="Sprites" type="CanvasGroup" parent="."]
@@ -477,6 +487,16 @@ bus = &"SFX"
 [node name="Music" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("11_xyo5n")
 autoplay = true
+bus = &"Music"
+
+[node name="Label" type="Label" parent="."]
+z_index = 5
+offset_left = 502.0
+offset_top = 70.0
+offset_right = 1150.0
+offset_bottom = 172.0
+text = "Space Train 2"
+label_settings = SubResource("LabelSettings_w0bka")
 
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Options" to="Control" method="_on_options_pressed"]

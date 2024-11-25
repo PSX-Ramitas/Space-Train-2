@@ -374,6 +374,7 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_1sdm4"]
 
 [node name="Train" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_xl6vl")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_g3ve1")]
@@ -459,6 +460,7 @@ position = Vector2(-3, 1)
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_t8n3x")
 autoplay = true
+bus = &"Music"
 
 [node name="LostGuyTD" parent="." instance=ExtResource("12_3g0mf")]
 position = Vector2(477, 359)

@@ -7,7 +7,8 @@ var levels = [
 	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_3.tscn",
 	"res://Main_Areas/Planets/Forest/Scenes/Forest_room_4.tscn",
 	"res://Main_Areas/Planets/Forest/Scenes/forest_room_5.tscn",
-	"res://Main_Areas/Planets/Forest/forest_room_6.tscn"
+	"res://Main_Areas/Planets/Forest/forest_room_6.tscn",
+	"res://Main_Areas/Planets/Forest/forest_room_7.tscn"
 ]
 
 var levelCount = 4
@@ -37,7 +38,6 @@ func loadLevel():
 				#found = true
 		if levelCount == 0:
 			worldClear = true
-			resetLevelState()
 			get_tree().change_scene_to_file("res://Main_Areas/Planets/Forest/forest_portal.tscn")
 func _ready() -> void:
 	pass # Replace with function body.

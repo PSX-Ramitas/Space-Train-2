@@ -317,6 +317,7 @@ animations = [{
 position = Vector2(541, 512)
 scale = Vector2(2.5, 2.5)
 slide_on_ceiling = false
+floor_stop_on_slope = false
 script = ExtResource("1_qnemb")
 health = 30
 movespeed = 50

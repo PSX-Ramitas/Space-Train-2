@@ -2,6 +2,7 @@ extends Node2D
 @onready var detection_area: Area2D = $DetectionArea
 @onready var warp_area: Area2D = $WarpArea
 @onready var animations: AnimatedSprite2D = $AnimatedSprite2D
+
 @onready var started: AudioStreamPlayer = $Sounds/Started
 @onready var warping: AudioStreamPlayer = $Sounds/Warping
 

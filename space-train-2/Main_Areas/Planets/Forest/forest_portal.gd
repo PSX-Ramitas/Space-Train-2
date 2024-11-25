@@ -29,3 +29,4 @@ func _on_portal_warp() -> void:
 func _on_transition_finished() -> void:
 	if portal.portal_used:
 		get_tree().change_scene_to_file("res://Main_Areas/Spaceship/Scenes/spaceship.tscn")
+		LevelManager.resetLevelState()

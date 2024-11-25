@@ -6,6 +6,7 @@ extends State
 @export var dashState: State
 @export var dieState: State
 @export var attack2State: State
+@export var shootState: State
 
 var nextState: State
 var attackFinished: bool

@@ -8,7 +8,7 @@ extends State
 @export var attack1State: State
 @export var attack2State: State
 @export var attack3State: State
-
+@export var shootState: State
 
 func enter() -> void:
 	parent.sword.monitoring = false
@@ -26,6 +26,8 @@ func process_input(event: InputEvent) -> State:
 			return attack2State
 		else:
 			return attack3State
+	if Input.is_action_just_pressed("fire_projectile"):
+		return shootState
 	return null
 
 func process_physics(delta: float) -> State:
@@ -60,11 +62,13 @@ func process_physics(delta: float) -> State:
 		
 	if(parent.lbp == "l"):
 		parent.sword.position = Vector2(-17.5,-10)
+		parent.bullets.position = Vector2(-0.5,-13.5)
 		animations.flip_h = true
 		#parent.hitbox.position.x = -5
 	else:
 		#parent.scale = Vector2(2,-2)
 		parent.sword.position = Vector2(17.5,-10)
+		parent.bullets.position = Vector2(0.5,-13.5)
 		animations.flip_h = false
 		#parent.hitbox.position.x = 0
 		

@@ -8,6 +8,7 @@ extends State
 @export var attack2State: State
 @export var attack3State: State
 @export var dieState: State
+@export var shootState: State
 
 func enter() -> void:
 	parent.sword.monitoring = false
@@ -30,6 +31,8 @@ func process_input(event: InputEvent) -> State:
 			return attack2State
 		else:
 			return attack3State
+	if Input.is_action_just_pressed("fire_projectile"):
+		return shootState
 	return null
 
 func process_physics(delta: float) -> State:

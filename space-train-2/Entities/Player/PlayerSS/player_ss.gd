@@ -6,6 +6,7 @@ extends Entity
 @onready var stateMachine = $FSM
 @onready var sword = $PlayerSwordArea
 @onready var playerHB: TextureProgressBar = $HUD/HealthBar
+@onready var bullets: Node2D = $ProjectileSpawn
 
 @export var inventory: Inventory
 

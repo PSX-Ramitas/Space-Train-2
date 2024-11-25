@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=96 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Resource" uid="uid://dr18hr2uxbsl0" path="res://inventory/playerinventory.tres" id="2_poxt0"]
@@ -30,6 +30,9 @@
 [ext_resource type="AudioStream" uid="uid://dfu6wd0qadvbm" path="res://Sounds/SFX/LTTP_Link_Dying.wav" id="16_31vkk"]
 [ext_resource type="AudioStream" uid="uid://cv7mwbvy6w133" path="res://Sounds/SFX/SE_BTL_DAMAGE1.wav" id="17_nk67b"]
 [ext_resource type="AudioStream" uid="uid://cx5ymqqphjsvq" path="res://Sounds/SFX/SE_RECOVERY.wav" id="20_5hk3w"]
+[ext_resource type="AudioStream" uid="uid://bxiibbbx506vi" path="res://Sounds/SFX/megaman_bullet.mp3" id="21_p3ali"]
+[ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/ShootState.gd" id="31_lqf48"]
+[ext_resource type="PackedScene" uid="uid://d21bqed47iosm" path="res://Entities/Player/PlayerSS/Projectile/baseProjectile.tscn" id="32_3mcbe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epcnk"]
 radius = 13.0
@@ -494,6 +497,23 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmg1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp0q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0315")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3sgq")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fiavj"]
@@ -562,7 +582,7 @@ shape = SubResource("CircleShape2D_nevb6")
 texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_c6t2i")
-animation = &"Attack3"
+animation = &"Shoot"
 flip_h = true
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
@@ -620,11 +640,16 @@ stream = ExtResource("20_5hk3w")
 volume_db = -20.0
 bus = &"SFX"
 
+[node name="BulletSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("21_p3ali")
+volume_db = -28.0
+bus = &"SFX"
+
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("startState")]
 script = ExtResource("3_15oje")
 startState = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("fallState", "jumpState", "moveState", "dashState", "attack1State", "attack2State", "attack3State", "dieState")]
+[node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("fallState", "jumpState", "moveState", "dashState", "attack1State", "attack2State", "attack3State", "dieState", "shootState")]
 script = ExtResource("4_k6y6q")
 fallState = NodePath("../Fall")
 jumpState = NodePath("../Jump")
@@ -634,6 +659,7 @@ attack1State = NodePath("../Attack1")
 attack2State = NodePath("../Attack2")
 attack3State = NodePath("../Attack3")
 dieState = NodePath("../Die")
+shootState = NodePath("../Shooting")
 animationName = "Idle"
 
 [node name="Dash" type="Node" parent="FSM" node_paths=PackedStringArray("fallState", "idleState", "moveState", "dieState")]
@@ -644,7 +670,7 @@ moveState = NodePath("../Run")
 dieState = NodePath("../Die")
 animationName = "Dash"
 
-[node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "jumpState", "fallState", "dashState", "dieState", "attack1State", "attack2State", "attack3State")]
+[node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "jumpState", "fallState", "dashState", "dieState", "attack1State", "attack2State", "attack3State", "shootState")]
 script = ExtResource("5_sn4mp")
 idleState = NodePath("../Idle")
 jumpState = NodePath("../Jump")
@@ -654,9 +680,10 @@ dieState = NodePath("../Die")
 attack1State = NodePath("../Attack1")
 attack2State = NodePath("../Attack2")
 attack3State = NodePath("../Attack3")
+shootState = NodePath("../Shooting")
 animationName = "Run"
 
-[node name="Fall" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "jumpState", "dashState", "dieState", "attack1State", "attack2State", "attack3State")]
+[node name="Fall" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "jumpState", "dashState", "dieState", "attack1State", "attack2State", "attack3State", "shootState")]
 script = ExtResource("6_d8ypo")
 idleState = NodePath("../Idle")
 jumpState = NodePath("../Jump")
@@ -665,9 +692,10 @@ dieState = NodePath("../Die")
 attack1State = NodePath("../Attack1")
 attack2State = NodePath("../Attack2")
 attack3State = NodePath("../Attack3")
+shootState = NodePath("../Shooting")
 animationName = "Fall"
 
-[node name="Jump" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "fallState", "dashState", "dieState", "attack1State", "attack2State", "attack3State")]
+[node name="Jump" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "fallState", "dashState", "dieState", "attack1State", "attack2State", "attack3State", "shootState")]
 script = ExtResource("7_bufn4")
 idleState = NodePath("../Idle")
 fallState = NodePath("../Fall")
@@ -676,9 +704,10 @@ dieState = NodePath("../Die")
 attack1State = NodePath("../Attack1")
 attack2State = NodePath("../Attack2")
 attack3State = NodePath("../Attack3")
+shootState = NodePath("../Shooting")
 animationName = "Jump"
 
-[node name="Attack1" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "jumpState", "fallState", "dashState", "dieState", "attack2State")]
+[node name="Attack1" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "jumpState", "fallState", "dashState", "dieState", "attack2State", "shootState")]
 script = ExtResource("8_kiy5g")
 idleState = NodePath("../Idle")
 jumpState = NodePath("../Jump")
@@ -686,6 +715,7 @@ fallState = NodePath("../Fall")
 dashState = NodePath("../Dash")
 dieState = NodePath("../Die")
 attack2State = NodePath("../Attack2")
+shootState = NodePath("../Shooting")
 animationName = "Attack1"
 
 [node name="Attack2" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "jumpState", "fallState", "dashState", "dieState", "attack3State")]
@@ -711,11 +741,19 @@ animationName = "Attack3"
 script = ExtResource("10_cg6rn")
 animationName = "Death"
 
+[node name="Shooting" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "jumpState", "fallState", "dashState", "dieState")]
+script = ExtResource("31_lqf48")
+idleState = NodePath("../Idle")
+jumpState = NodePath("../Jump")
+fallState = NodePath("../Fall")
+dashState = NodePath("../Dash")
+dieState = NodePath("../Die")
+projectile = ExtResource("32_3mcbe")
+animationName = "Shoot"
+
 [node name="States to be implemented later" type="Node" parent="."]
 
 [node name="Hurt" type="Node" parent="States to be implemented later"]
-
-[node name="Shoot" type="Node" parent="States to be implemented later"]
 
 [node name="Item" type="Node" parent="States to be implemented later"]
 
@@ -724,6 +762,9 @@ animationName = "Death"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="ProjectileSpawn" type="Node2D" parent="."]
+position = Vector2(0.5, -13.5)
 
 [connection signal="area_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_area_entered"]
 [connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]

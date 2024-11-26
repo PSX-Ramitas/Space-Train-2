@@ -92,7 +92,7 @@ layout_mode = 1
 offset_left = 27.0
 offset_top = 20.0
 offset_right = -149.0
-offset_bottom = -5.0
+offset_bottom = -172.0
 scale = Vector2(1.15358, 1.46526)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

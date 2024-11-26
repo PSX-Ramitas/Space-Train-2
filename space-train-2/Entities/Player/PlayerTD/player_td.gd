@@ -1,10 +1,14 @@
 extends CharacterBody2D
+@onready var pause_menu: Control = $HUD/PauseMenu
 
 # Define movement speed
 var speed = 350
 @onready var animations = $Sprite
 var lbp = "left"
 # Function to handle movement
+func _ready():
+	var button = pause_menu.find_child("Forfeit")
+	button.visible = false
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	

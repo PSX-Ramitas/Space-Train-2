@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://cp5de08wucg0g"]
+[gd_scene load_steps=26 format=3 uid="uid://cp5de08wucg0g"]
 
 [ext_resource type="Script" path="res://Main_Areas/Spaceship/NPC/Guide/guide.gd" id="1_4bine"]
 [ext_resource type="Texture2D" uid="uid://bspbfqluhnspf" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/1. Idle 48 x 48.png" id="2_maviy"]
 [ext_resource type="PackedScene" uid="uid://d04o58517yg4k" path="res://Main_Areas/Spaceship/NPC/dialogue.tscn" id="2_pns82"]
+[ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="3_04o7j"]
 [ext_resource type="PackedScene" uid="uid://dco0wwnusv055" path="res://Main_Areas/Spaceship/NPC/interaction_area.tscn" id="3_o7pb2"]
 [ext_resource type="Texture2D" uid="uid://btlb374bnve0o" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/2. Run 48 x 48.png" id="5_qtbug"]
 [ext_resource type="Shader" path="res://Main_Areas/Spaceship/NPC/Guide/animation_player.gdshader" id="7_l7je6"]
@@ -284,36 +285,36 @@ _data = {
 "walk_left": SubResource("Animation_7inea")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3wusl"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r5bba"]
 animation = &"walk"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ogg7"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u3f0h"]
 animation = &"walk"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ykaho"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s7054"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pnmij"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tbtiq"]
 animation = &"walk"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hfqya"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k5ibk"]
 animation = &"walk_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u5aoh"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_61plw"]
 animation = &"idle_left"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_gtsav"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_3wusl")
+blend_point_0/node = SubResource("AnimationNodeAnimation_r5bba")
 blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_8ogg7")
+blend_point_1/node = SubResource("AnimationNodeAnimation_u3f0h")
 blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_ykaho")
+blend_point_2/node = SubResource("AnimationNodeAnimation_s7054")
 blend_point_2/pos = Vector2(0, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_pnmij")
+blend_point_3/node = SubResource("AnimationNodeAnimation_tbtiq")
 blend_point_3/pos = Vector2(0, -1)
-blend_point_4/node = SubResource("AnimationNodeAnimation_hfqya")
+blend_point_4/node = SubResource("AnimationNodeAnimation_k5ibk")
 blend_point_4/pos = Vector2(-1, 0)
-blend_point_5/node = SubResource("AnimationNodeAnimation_u5aoh")
+blend_point_5/node = SubResource("AnimationNodeAnimation_61plw")
 blend_point_5/pos = Vector2(-0.1, 0)
 min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
@@ -344,9 +345,11 @@ size = Vector2(16, 20)
 
 [node name="Guide" type="CharacterBody2D"]
 z_index = 1
+texture_filter = 1
 script = ExtResource("1_4bine")
 
 [node name="Dialogue" parent="." instance=ExtResource("2_pns82")]
+label_settings = ExtResource("3_04o7j")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_o7pb2")]
 position = Vector2(0, 27)

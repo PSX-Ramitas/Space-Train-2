@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0j7v5gowdblt"]
+
+[ext_resource type="Texture2D" uid="uid://dixb4xlagrep" path="res://sprites/inventorySlot.png" id="1_lmee3"]
+[ext_resource type="Script" path="res://slot_gui.gd" id="1_mdqlr"]
+[ext_resource type="AudioStream" uid="uid://6qqifvvkvr0c" path="res://Sounds/SFX/Mario_&_Luigi_PIT_Special_Item.ogg" id="3_yet52"]
+
+[node name="Slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_mdqlr")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_lmee3")
+centered = false
+vframes = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item" type="Sprite2D" parent="CenterContainer/Panel"]
+scale = Vector2(1.2, 1.2)
+
+[node name="ItemNotif" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yet52")
+volume_db = -20.0
+bus = &"SFX"

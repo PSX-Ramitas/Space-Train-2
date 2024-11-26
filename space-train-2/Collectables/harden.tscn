@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://22sdum8lisii"]
+
+[ext_resource type="PackedScene" uid="uid://bdphgx3agu28v" path="res://Collectables/collectable.tscn" id="1_u86qa"]
+[ext_resource type="Texture2D" uid="uid://cwsw7r7ap8ecl" path="res://sprites/ScrollRock.png" id="2_ghsr8"]
+
+[sub_resource type="GDScript" id="GDScript_13odv"]
+script/source = "class_name HardenBoost extends InventoryItem
+
+@export var damage_decrease: int = 1
+
+#func use1(player: Player) -> void:
+	#if player:
+	
+	#player.decrease_damage_taken(damage_decrease)  # Call increase_attack on the player
+	#else:
+		#print(\"Error: Player instance is null!\")
+	
+"
+
+[sub_resource type="Resource" id="Resource_551ax"]
+script = SubResource("GDScript_13odv")
+damage_decrease = 1
+name = "harden"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok7vd"]
+resource_local_to_scene = true
+size = Vector2(14, 14)
+
+[node name="harden" instance=ExtResource("1_u86qa")]
+itemRes = SubResource("Resource_551ax")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_ok7vd")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_ghsr8")

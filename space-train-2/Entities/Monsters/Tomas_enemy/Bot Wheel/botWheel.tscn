@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://d1gbrlw0d6k6b"]
+[gd_scene load_steps=83 format=3 uid="uid://d1gbrlw0d6k6b"]
 
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.gd" id="1_t6rrs"]
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_7iy6m"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://bakf00de1p0fl" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/wake.png" id="15_fli2n"]
 [ext_resource type="PackedScene" uid="uid://c58t3k1w873be" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn" id="16_70gbj"]
 [ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="18_rodag"]
+[ext_resource type="AudioStream" uid="uid://dqthnlchxhkmo" path="res://Sounds/SFX/snes_MMX_Chargeup.wav" id="19_uw7h3"]
+[ext_resource type="AudioStream" uid="uid://dr1ssqbvh5d6m" path="res://Sounds/SFX/snes_MMX_Power_shot.wav" id="20_3xjye"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4uma"]
 radius = 4.4
@@ -493,6 +495,7 @@ height = 19.2
 position = Vector2(-1.19209e-07, -2.38419e-07)
 scale = Vector2(2.5, 2.5)
 slide_on_ceiling = false
+floor_stop_on_slope = false
 script = ExtResource("1_t6rrs")
 maxHealth = 30
 health = 50
@@ -549,11 +552,9 @@ texture_filter = 1
 position = Vector2(-16.4, -8.8)
 sprite_frames = SubResource("SpriteFrames_ho6xj")
 animation = &"shoot_fx"
-frame = 3
-frame_progress = 1.0
 
 [node name="projectile" parent="." instance=ExtResource("16_70gbj")]
-position = Vector2(-14.8, -8.4)
+position = Vector2(-14.8, -11.2001)
 
 [node name="Shooting_Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -568,6 +569,16 @@ shape = SubResource("CapsuleShape2D_vicpv")
 [node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("18_rodag")
 volume_db = -17.0
+bus = &"SFX"
+
+[node name="Charge" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("19_uw7h3")
+volume_db = -18.0
+bus = &"SFX"
+
+[node name="PowerShot" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("20_3xjye")
+volume_db = -20.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="CloseAttackArea" to="CloseAttackArea" method="_on_area_entered"]

@@ -222,6 +222,7 @@ size = Vector2(10, 25)
 [node name="Bee" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
 collision_layer = 4
 collision_mask = 3
+floor_stop_on_slope = false
 script = ExtResource("1_4k1fe")
 hit_state = NodePath("CharacterStateMachine/Hit")
 

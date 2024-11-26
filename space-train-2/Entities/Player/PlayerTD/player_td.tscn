@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0cu0cu5qc4iu"]
+[gd_scene load_steps=23 format=3 uid="uid://d0cu0cu5qc4iu"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerTD/player_td.gd" id="1_4451l"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_v2qt5"]
+[ext_resource type="PackedScene" uid="uid://cl7wej5k1tlc4" path="res://UI/Pause/pause_menu.tscn" id="3_hdcc3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vktni"]
 atlas = ExtResource("2_v2qt5")
@@ -154,3 +155,9 @@ frame_progress = 0.332058
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.125)
 shape = SubResource("RectangleShape2D_ve1ok")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
+process_priority = 1
+
+[node name="PauseMenu" parent="HUD" instance=ExtResource("3_hdcc3")]

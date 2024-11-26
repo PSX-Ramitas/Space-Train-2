@@ -1,5 +1,6 @@
 extends Entity
 class_name botWheel
+
 @onready var botWheelIns = get_node(".")
 
 @onready var projectile = load("res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn")
@@ -13,6 +14,8 @@ var playerInChaseRange = false
 var playerInAttackRange = false
 @onready var attackArea = $CloseAttackArea
 @onready var animations = $AnimatedSprite2D
+@onready var charge: AudioStreamPlayer = $Sounds/Charge
+@onready var power_shot: AudioStreamPlayer = $Sounds/PowerShot
 
 var prevHealth = health
 enum State {Roam,Chase,Attack,Hurt,Death,}
@@ -46,7 +49,7 @@ func shoot():
 		else:
 			instance.dir = Vector2.RIGHT  # Normal direction to the right
 		can_shoot=false
-		$ShootingTimer.start()
+		$Shooting_Timer.start()
 
 func _process(delta):
 	#print ("_process function")
@@ -90,9 +93,18 @@ func AttackState(delta):
 	#print("attack state")
 	_sprite_orientation(direction)
 	animations.play("shoot_fx")
+	if animations.frame == 0 and !charge.playing:
+		charge.play()
+	if animations.frame == 3:
+		charge.stop()
 	windupTimer -= delta
 	if windupTimer <= 0:
-		if attackArea: 
+		if attackArea:
+			if animations.animation_finished:
+				if charge.playing:
+					charge.stop
+				if !power_shot.playing:
+					power_shot.play()
 			attackArea.monitoring = true
 		else: 
 			print("attackArea not assigned")

@@ -1,6 +1,5 @@
 extends Entity
 class_name botWheel
-
 @onready var botWheelIns = get_node(".")
 
 @onready var projectile = load("res://Entities/Monsters/Tomas_enemy/Bot Wheel/enemy_projectile.tscn")
@@ -47,7 +46,7 @@ func shoot():
 		else:
 			instance.dir = Vector2.RIGHT  # Normal direction to the right
 		can_shoot=false
-		$Shooting_Timer.start()
+		$ShootingTimer.start()
 
 func _process(delta):
 	#print ("_process function")

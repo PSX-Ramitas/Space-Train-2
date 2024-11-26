@@ -548,7 +548,9 @@ shape = SubResource("SegmentShape2D_0c4vt")
 texture_filter = 1
 position = Vector2(-16.4, -8.8)
 sprite_frames = SubResource("SpriteFrames_ho6xj")
-animation = &"wake"
+animation = &"shoot_fx"
+frame = 3
+frame_progress = 1.0
 
 [node name="projectile" parent="." instance=ExtResource("16_70gbj")]
 position = Vector2(-14.8, -8.4)

@@ -25,8 +25,8 @@ var fallFromPlatform = false #used to determine if coyote jump is allowed, as pl
 var lbp = "r" #last button pressed, used to correct which way the player sprite faces
 
 # variables to control player flashing white
-var flash_duration = 2.0 # Total time to flash
-var flash_interval = 0.2 # Time between flashes
+var flash_duration = 1.0 # Total time to flash
+var flash_interval = 0.1 # Time between flashes
 var flash_timer = 0.0
 var flashing = false
 

@@ -746,13 +746,14 @@ animationName = "Attack3"
 script = ExtResource("10_cg6rn")
 animationName = "Death"
 
-[node name="Shooting" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "jumpState", "fallState", "dashState", "dieState")]
+[node name="Shooting" type="Node" parent="FSM" node_paths=PackedStringArray("idleState", "jumpState", "fallState", "dashState", "dieState", "moveState")]
 script = ExtResource("31_lqf48")
 idleState = NodePath("../Idle")
 jumpState = NodePath("../Jump")
 fallState = NodePath("../Fall")
 dashState = NodePath("../Dash")
 dieState = NodePath("../Die")
+moveState = NodePath("../Run")
 projectile = ExtResource("32_3mcbe")
 animationName = "Shoot"
 
@@ -765,7 +766,7 @@ animationName = "Shoot"
 [node name="Cast" type="Node" parent="States to be implemented later"]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 0.3
 one_shot = true
 
 [node name="ProjectileSpawn" type="Node2D" parent="."]

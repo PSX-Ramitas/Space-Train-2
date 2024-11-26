@@ -16,6 +16,8 @@ class_name HitState
 	preload("res://Collectables/power.tscn")
 ]
 
+var item_count = 0
+
 func _ready() -> void:
 	damageable.connect("on_hit", on_damageable_hit)
 
@@ -27,7 +29,9 @@ func on_damageable_hit(node : Node, damage_amount : int, knockback_direction : V
 		monster.velocity = knocback_speed * knockback_direction
 		emit_signal("interrupt_state", self)
 	else:
-		drop_item()  # Call the drop_item function
+		if item_count < 1:
+			drop_item()  # Call the drop_item function
+			item_count+=1
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation_node)
 

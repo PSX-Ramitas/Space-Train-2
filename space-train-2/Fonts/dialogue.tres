@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cooif7s218rxq"]
+
+[ext_resource type="FontFile" uid="uid://bpmkl6yuil5sw" path="res://Fonts/PixicaMono-Bold.ttf" id="1_jr3d8"]
+
+[resource]
+font = ExtResource("1_jr3d8")

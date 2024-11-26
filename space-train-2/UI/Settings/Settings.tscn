@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://db6nsiuqoytme"]
+[gd_scene load_steps=7 format=3 uid="uid://db6nsiuqoytme"]
 
 [ext_resource type="Script" path="res://UI/Settings/settings.gd" id="1_qps2c"]
 [ext_resource type="PackedScene" uid="uid://c42l0q6o71v4j" path="res://UI/Settings/Input_Settings.tscn" id="2_cexpp"]
+[ext_resource type="FontFile" uid="uid://iua8btsbjy5v" path="res://Fonts/Pixica-Bold.ttf" id="2_jn1ur"]
 [ext_resource type="AudioStream" uid="uid://caadytsfr0t2p" path="res://Sounds/SFX/cute-level-up-3-189853.mp3" id="3_o6bct"]
 [ext_resource type="AudioStream" uid="uid://6cwe4vngu5ii" path="res://Sounds/SFX/SE_BTL_BEEP2.wav" id="4_o0ce3"]
 [ext_resource type="AudioStream" uid="uid://iik8xvfd5ml7" path="res://Sounds/SFX/SE_BTL_BEEP3.wav" id="5_lw6sv"]
@@ -29,6 +30,7 @@ layout_mode = 2
 
 [node name="Volume" type="Label" parent="MainSettings/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jn1ur")
 text = "Master Volume
 "
 
@@ -41,6 +43,7 @@ value = 2.0
 
 [node name="Volume2" type="Label" parent="MainSettings/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jn1ur")
 text = "Music Volume
 "
 
@@ -53,6 +56,7 @@ value = 2.0
 
 [node name="Volume3" type="Label" parent="MainSettings/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jn1ur")
 text = "SFX Volume
 "
 
@@ -65,10 +69,12 @@ value = 2.0
 
 [node name="Res" type="Label" parent="MainSettings/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jn1ur")
 text = "Resolution"
 
 [node name="Resolution" type="OptionButton" parent="MainSettings/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jn1ur")
 selected = 0
 item_count = 3
 popup/item_0/text = "1280 x 720"
@@ -84,6 +90,7 @@ text = "
 
 [node name="InputControls" type="Button" parent="MainSettings/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jn1ur")
 text = "Input Controls
 "
 
@@ -94,6 +101,7 @@ text = "
 
 [node name="Back" type="Button" parent="MainSettings/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jn1ur")
 text = "Back
 "
 

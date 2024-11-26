@@ -544,7 +544,7 @@ offset_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(2.7, 2.7)
-pivot_offset = Vector2(-3, -3)
+pivot_offset = Vector2(5, -3)
 
 [node name="PauseMenu" parent="HUD" instance=ExtResource("3_ak4tc")]
 

@@ -7,6 +7,9 @@ extends Control
 @onready var button_press: AudioStreamPlayer = $"../Sounds/ButtonPress"
 @onready var back_button_press: AudioStreamPlayer = $"../Sounds/BackButtonPress"
 @onready var transition_anim: TransitionScreen = $"../CanvasLayer/TransitionAnim"
+@onready var planet: AnimatedSprite2D = $"../Sprites/Planet"
+@onready var bg_planets: Sprite2D = $"../Sprites/BGPlanets"
+@onready var title: Label = $"../Label"
 
 
 func _on_start_pressed() -> void:
@@ -21,6 +24,9 @@ func _on_options_pressed() -> void:
 	options.visible = false
 	quit.visible = false
 	settings.visible = true
+	planet.visible = false
+	bg_planets.visible = false
+	title.visible = false
 	
 func _on_quit_pressed() -> void:
 	back_button_press.play()
@@ -34,3 +40,6 @@ func _on_settings_back_button() -> void:
 	options.visible = true
 	quit.visible = true
 	settings.visible = false
+	planet.visible = true
+	bg_planets.visible = true
+	title.visible = true

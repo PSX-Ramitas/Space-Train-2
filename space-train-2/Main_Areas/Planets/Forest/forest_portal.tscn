@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7gge5dgqc1qk"]
+[gd_scene load_steps=11 format=3 uid="uid://c7gge5dgqc1qk"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_r0vsv"]
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/forest_portal.gd" id="1_tcxvo"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="6_jy5v0"]
 [ext_resource type="PackedScene" uid="uid://bswqo3rvakv63" path="res://Entities/Teleporter/portal.tscn" id="7_kpml8"]
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="9_eu6el"]
+[ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="10_xyn6d"]
 
 [node name="forest_portal" type="Node2D"]
 texture_filter = 1
@@ -113,6 +114,7 @@ offset_top = -46.0
 offset_right = 7.0
 offset_bottom = -23.0
 text = "You Did It!"
+label_settings = ExtResource("10_xyn6d")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

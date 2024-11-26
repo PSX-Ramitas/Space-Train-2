@@ -11,6 +11,8 @@ extends State
 @export var shootState: State
 
 func enter() -> void:
+	var hitbox = parent.find_child("PlayerHitbox")
+	hitbox.can_hurt = true
 	parent.sword.monitoring = false
 	if parent.is_on_floor():
 		parent.usedAirAttack = false

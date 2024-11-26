@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://hb82744trdpu" path="res://Entities/Monsters/Forest/Boar/Boar.tscn" id="12_4ovt0"]
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="13_cj4lo"]
 [ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="14_tk06i"]
+[ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="14_xr1cm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cqrnw"]
 texture = ExtResource("4_f6a5w")
@@ -458,9 +459,6 @@ texture = ExtResource("4_f6a5w")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cqrnw")
 
-[sub_resource type="LabelSettings" id="LabelSettings_354dt"]
-font_size = 12
-
 [node name="ForestRoom1" type="Node2D"]
 texture_filter = 1
 position = Vector2(-36, 101)
@@ -587,7 +585,7 @@ offset_top = -40.0
 offset_right = 117.0
 offset_bottom = -17.0
 text = "Defeat all the Enemies!"
-label_settings = SubResource("LabelSettings_354dt")
+label_settings = ExtResource("14_xr1cm")
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_tk06i")

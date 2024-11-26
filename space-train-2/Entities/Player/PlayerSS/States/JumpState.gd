@@ -10,6 +10,8 @@ extends State
 @export var shootState: State
 
 func enter() -> void:
+	var hitbox = parent.find_child("PlayerHitbox")
+	hitbox.can_hurt = true
 	var sfx = parent.find_child("JumpSound")
 	parent.sword.monitoring = false
 	super() #call the enter function of the class we inherit from

@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://cwv3roi3erpcj"]
+[gd_scene load_steps=26 format=3 uid="uid://cwv3roi3erpcj"]
 
 [ext_resource type="Script" path="res://Main_Areas/Spaceship/NPC/LostGuy/lost_npcTD.gd" id="1_smvce"]
 [ext_resource type="PackedScene" uid="uid://d04o58517yg4k" path="res://Main_Areas/Spaceship/NPC/dialogue.tscn" id="2_yvcox"]
+[ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="3_jnglo"]
 [ext_resource type="PackedScene" uid="uid://dco0wwnusv055" path="res://Main_Areas/Spaceship/NPC/interaction_area.tscn" id="3_n32ck"]
 [ext_resource type="Texture2D" uid="uid://bspbfqluhnspf" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/1. Idle 48 x 48.png" id="4_2nfnk"]
 [ext_resource type="Texture2D" uid="uid://btlb374bnve0o" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/2. Run 48 x 48.png" id="5_6fa0h"]
@@ -343,9 +344,11 @@ shader_parameter/replace_3 = null
 size = Vector2(16, 20)
 
 [node name="LostGuyTD" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_smvce")
 
 [node name="Dialogue" parent="." instance=ExtResource("2_yvcox")]
+label_settings = ExtResource("3_jnglo")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_n32ck")]
 position = Vector2(0, 27)

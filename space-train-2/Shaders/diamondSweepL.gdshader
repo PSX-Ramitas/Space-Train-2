@@ -10,7 +10,7 @@ void vertex() {
 void fragment() {
 	float x = abs(fract(FRAGCOORD.x/diamondSize) - 0.5);
 	float y = abs(fract(FRAGCOORD.y/diamondSize) - 0.5);
-	
+
 	if (x + y + UV.x > progress * 2.0){
 		if (fill){
 			discard;

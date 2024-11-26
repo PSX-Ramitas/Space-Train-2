@@ -23,6 +23,18 @@ var attackResetTimer = 1.5
 var fallFromPlatform = false #used to determine if coyote jump is allowed, as player can enter fall state from jump
 var lbp = "r" #last button pressed, used to correct which way the player sprite faces
 
+# variables to control player flashing white
+var flash_duration = 1.0 # Total time to flash
+var flash_interval = 0.1 # Time between flashes
+var flash_timer = 0.0
+var flashing = false
+
+func start_flashing():
+	flash_timer = flash_duration
+	flashing = true
+	
+var player_hurt = false
+
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
@@ -55,6 +67,18 @@ func _physics_process(delta: float) -> void:
 		else:
 			attackResetTimer -= delta
 		stateMachine.process_physics(delta)
+		if PlayerData.is_hurt:
+			start_flashing()
+			PlayerData.is_hurt = false
+		if flashing:
+			flash_timer -= delta
+		# Toggle the flash based on the interval
+			var flash_phase = int((flash_duration - flash_timer) / flash_interval) % 2
+			animations.material.set_shader_parameter("flash_intensity", flash_phase)
+		# Stop flashing after the duration
+		if flash_timer <= 0:
+			flashing = false
+			animations.material.set_shader_parameter("flash_intensity", 0.0)
 
 func updatePlayerData():
 	if maxHealth != PlayerData.maxHealth:
@@ -81,7 +105,6 @@ func increase_attack(amount: int) -> void:
 	print(" Original Attack: ", attack)
 	#print(attack)
 	attack += amount
-	
 	attackChanged.emit(attack)
 	#print(attack)
 	print(" New Attack: ", attack)

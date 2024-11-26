@@ -6,7 +6,7 @@ class_name PlayerHitbox
 @onready var player_health_bar: Control = $"../HUD/HealthBar"
 @onready var damage_sound: AudioStreamPlayer = $"../Sounds/DamageSound"
 @onready var heal_sound: AudioStreamPlayer = $"../Sounds/HealSound"
-
+@onready var player_sprite = $"../AnimatedSprite2D"
 @onready var inventory: Inventory = preload("res://inventory/playerinventory.tres")
 signal healthChanged(isHeal: bool, amount: int)
 var is_alive
@@ -24,6 +24,7 @@ func _ready() -> void:
 	player_health_bar.start_health(PlayerData.maxHealth)
 	player_health_bar.set_health(PlayerData.health)
 
+
 func take_damage(damageAmount: int):
 	if is_alive and can_hurt:
 		damage_sound.play()
@@ -34,6 +35,9 @@ func take_damage(damageAmount: int):
 			self.PROCESS_MODE_DISABLED
 			is_alive = false
 		# healthChanged.emit( false, damageAmount)
+		PlayerData.is_hurt = true
+
+
 
 func heal_health(healAmount: int):
 	if is_alive:

@@ -1,5 +1,6 @@
-[gd_scene load_steps=96 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=98 format=3 uid="uid://qdsqap23j4ie"]
 
+[ext_resource type="Shader" path="res://Entities/Player/PlayerSS/flash.gdshader" id="1_6f40k"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Resource" uid="uid://dr18hr2uxbsl0" path="res://inventory/playerinventory.tres" id="2_poxt0"]
 [ext_resource type="Texture2D" uid="uid://bfdcj5hawxhod" path="res://Entities/Player/DarkSamurai.png" id="2_qrcop"]
@@ -39,6 +40,10 @@ radius = 13.0
 height = 38.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nevb6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8bd2"]
+shader = ExtResource("1_6f40k")
+shader_parameter/flash_intensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmg1m"]
 atlas = ExtResource("2_qrcop")
@@ -585,6 +590,7 @@ shape = SubResource("CircleShape2D_nevb6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_d8bd2")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_c6t2i")
 animation = &"Shoot"
@@ -758,8 +764,6 @@ projectile = ExtResource("32_3mcbe")
 animationName = "Shoot"
 
 [node name="States to be implemented later" type="Node" parent="."]
-
-[node name="Hurt" type="Node" parent="States to be implemented later"]
 
 [node name="Item" type="Node" parent="States to be implemented later"]
 

@@ -563,20 +563,20 @@ scale = Vector2(5.34039, 2.18085)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 68.0
-offset_top = -107.0
-offset_right = 105.0
-offset_bottom = -66.9999
+offset_top = -40.0001
+offset_bottom = 0.0
 grow_vertical = 0
 scale = Vector2(1.5, 1.469)
-pivot_offset = Vector2(-30, -40)
+pivot_offset = Vector2(-150, 105)
 
 [node name="DashIcon" parent="HUD" instance=ExtResource("7_5i0bf")]
-offset_left = 13.0
-offset_top = 559.0
-offset_right = -1102.0
-offset_bottom = -49.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+grow_horizontal = 1
+grow_vertical = 0
 scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(-12, 180)
 
 [node name="PlayerHitbox" parent="." instance=ExtResource("2_rlyqj")]
 scale = Vector2(0.5, 0.5)

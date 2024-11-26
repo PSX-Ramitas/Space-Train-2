@@ -1,0 +1,145 @@
+[gd_scene load_steps=19 format=3 uid="uid://biahfhodysuqd"]
+
+[ext_resource type="Texture2D" uid="uid://crq14kticngmw" path="res://Entities/Player/PlayerSS/Cast/pulse_mid.png" id="1_kmhaw"]
+[ext_resource type="Texture2D" uid="uid://bn3kw3fiwak4y" path="res://Entities/Player/PlayerSS/Cast/spark_big.png" id="2_2xorm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsb1u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s74bo"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahcnv"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dix6"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0gpj"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1423y"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6nj2"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf4dr"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3nps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s74bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahcnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dix6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0gpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1423y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6nj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dix6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4dr")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Scan",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygtte"]
+size = Vector2(25.4535, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yepnf"]
+atlas = ExtResource("2_2xorm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5bwp"]
+atlas = ExtResource("2_2xorm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geasn"]
+atlas = ExtResource("2_2xorm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5lg0"]
+atlas = ExtResource("2_2xorm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku0xa"]
+atlas = ExtResource("2_2xorm")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0kesf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yepnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5bwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geasn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5lg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku0xa")
+}],
+"loop": true,
+"name": &"Shock",
+"speed": 18.0
+}]
+
+[node name="Cast" type="Node2D"]
+
+[node name="Scan" type="Node2D" parent="."]
+
+[node name="ScanArea" type="Area2D" parent="Scan"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scan/ScanArea"]
+shape = SubResource("CircleShape2D_rsb1u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Scan"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_b3nps")
+animation = &"Scan"
+frame_progress = 0.329073
+
+[node name="Shock" type="Node2D" parent="."]
+
+[node name="ShockArea" type="Area2D" parent="Shock"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shock/ShockArea"]
+position = Vector2(2.6079, 0.5)
+scale = Vector2(1.05228, 1)
+shape = SubResource("RectangleShape2D_ygtte")
+
+[node name="ShockAnim" type="AnimatedSprite2D" parent="Shock"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_0kesf")
+animation = &"Shock"
+frame_progress = 0.59607

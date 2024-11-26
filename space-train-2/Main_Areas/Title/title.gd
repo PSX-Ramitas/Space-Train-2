@@ -43,3 +43,10 @@ func _on_settings_back_button() -> void:
 	planet.visible = true
 	bg_planets.visible = true
 	title.visible = true
+
+
+func temp_button_pressed() -> void:
+	button_press.play()
+	transition_anim.play_transition("FadeOut")
+	await transition_anim.anim_finished
+	get_tree().change_scene_to_file("res://Main_Areas/Planets/Forest/Scenes/Forest_room_TempTest.tscn")

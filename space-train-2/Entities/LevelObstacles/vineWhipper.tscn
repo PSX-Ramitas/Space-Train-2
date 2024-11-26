@@ -1,0 +1,192 @@
+[gd_scene load_steps=13 format=3 uid="uid://d3vymx6v3011v"]
+
+[ext_resource type="Script" path="res://Entities/LevelObstacles/vine_Hurtbox.gd" id="1_avdno"]
+[ext_resource type="Texture2D" uid="uid://ckqst5ofsqp14" path="res://Entities/LevelObstacles/Obstacle_Assets/PlantAlternate-Vinespiker-crop.png" id="1_jgt23"]
+[ext_resource type="Script" path="res://Entities/LevelObstacles/vineWhipper.gd" id="1_uchbx"]
+[ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="3_l1i8j"]
+[ext_resource type="Script" path="res://Entities/LevelObstacles/detection_area.gd" id="3_lgtm3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k7sxy"]
+radius = 11.0
+height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6a2mc"]
+radius = 55.0091
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4rt6d"]
+radius = 65.0077
+
+[sub_resource type="Animation" id="Animation_7dhsq"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attackRadius:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../DetectionArea/DetectionAreaBody:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WhipperHurtBox/HurtAreaShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xr1sq"]
+resource_name = "Idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:curr_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ie8h3"]
+resource_name = "active_attack"
+length = 1.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.166667, 0.3, 0.433333, 0.6, 0.733333, 0.866667, 0.966667, 1.13333, 1.26667, 1.43333, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 9, 3, 7, 4, 5, 6, 8, 2, 10, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attackRadius:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.1, 0.433333, 0.566667, 1.1, 1.4, 1.93333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath(".:curr_state")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w02gq"]
+_data = {
+"Death": SubResource("Animation_7dhsq"),
+"Idle": SubResource("Animation_xr1sq"),
+"active_attack": SubResource("Animation_ie8h3")
+}
+
+[node name="WhipperHurtBox" type="Area2D"]
+script = ExtResource("1_avdno")
+
+[node name="HurtAreaShape" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -3)
+shape = SubResource("CapsuleShape2D_k7sxy")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_l1i8j")]
+offset_left = -15.0
+offset_top = 14.0
+offset_right = 49.0
+offset_bottom = 54.0
+scale = Vector2(0.448872, 0.363552)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("3_lgtm3")
+
+[node name="DetectionAreaBody" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_6a2mc")
+
+[node name="VineWhipper" type="Area2D" parent="."]
+script = ExtResource("1_uchbx")
+curr_state = 1
+
+[node name="attackRadius" type="CollisionShape2D" parent="VineWhipper"]
+shape = SubResource("CircleShape2D_4rt6d")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="VineWhipper"]
+position = Vector2(-1, 1)
+scale = Vector2(1.17742, 1.28788)
+texture = ExtResource("1_jgt23")
+hframes = 11
+
+[node name="AnimatedVineWhipper" type="AnimationPlayer" parent="VineWhipper"]
+libraries = {
+"": SubResource("AnimationLibrary_w02gq")
+}
+
+[node name="Timer" type="Timer" parent="VineWhipper"]
+
+[connection signal="healthChanged" from="." to="." method="_on_health_changed"]
+[connection signal="health_changed" from="." to="VineWhipper" method="_on_health_changed"]
+[connection signal="area_entered" from="DetectionArea" to="VineWhipper" method="_on_detection_area_entered"]
+[connection signal="area_exited" from="DetectionArea" to="VineWhipper" method="_on_detection_area_exited"]
+[connection signal="animation_finished" from="VineWhipper/AnimatedVineWhipper" to="VineWhipper" method="_on_vine_whipper_animation_finished"]

@@ -33,6 +33,10 @@ func take_damage(damageAmount: int):
 		if new_health == 0:
 			self.PROCESS_MODE_DISABLED
 			is_alive = false
+		PlayerData.is_hurt = true
+		can_hurt = false
+		await get_tree().create_timer(0.9).timeout
+		can_hurt = true
 		# healthChanged.emit( false, damageAmount)
 
 func heal_health(healAmount: int):

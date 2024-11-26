@@ -1,14 +1,15 @@
 ~ start
 Nevana: [[Hi|Hello|Howdy]], your back.
+~ info
 Nevana: Here's what you should know.
 - Movement
-	Nevana: You can move using "awsd" and jump using space.
+	Nevana: You can move using "awsd" and jump using space. => info
 - Attack
-	Nevana: You can attack and interact using "j".
+	Nevana: You can attack and interact using "j". => info
 - Enemies
-	Nevana: Watchout for the boar.
+	Nevana: Watchout for the boar. => info
 - Start Adventure
-	Nevana: Step on the teleport and interact with it.
+	Nevana: Step on the teleport and interact with it. => info
 - Start again => start
 - End the conversation => END
 Nevana: Let me know if you need anything else.

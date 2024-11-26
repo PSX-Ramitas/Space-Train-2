@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://b6en2ww83au5c"]
+[gd_scene load_steps=21 format=3 uid="uid://b6en2ww83au5c"]
 
 [ext_resource type="Texture2D" uid="uid://bhuqy5nkatoyy" path="res://Main_Areas/Spaceship/NPC/CatDroid/Assets/TX Player.png" id="1_33pgr"]
 [ext_resource type="Script" path="res://Main_Areas/Spaceship/NPC/CatDroid/cat_droid.gd" id="1_y58oi"]
 [ext_resource type="PackedScene" uid="uid://dco0wwnusv055" path="res://Main_Areas/Spaceship/NPC/interaction_area.tscn" id="3_ddpav"]
 [ext_resource type="PackedScene" uid="uid://d04o58517yg4k" path="res://Main_Areas/Spaceship/NPC/dialogue.tscn" id="4_hm4gf"]
+[ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="5_d2fuc"]
 [ext_resource type="PackedScene" uid="uid://bedye865q217d" path="res://Main_Areas/Spaceship/NPC/interactable_label_component.tscn" id="5_qrb86"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojqgv"]
@@ -172,6 +173,7 @@ transitions = ["Start", "facing", SubResource("AnimationNodeStateMachineTransiti
 
 [node name="CatDroid" type="CharacterBody2D"]
 z_index = 1
+texture_filter = 1
 script = ExtResource("1_y58oi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -204,6 +206,7 @@ parameters/facing/blend_position = Vector2(0, -0.1)
 one_shot = true
 
 [node name="Dialogue" parent="." instance=ExtResource("4_hm4gf")]
+label_settings = ExtResource("5_d2fuc")
 
 [node name="InteractableLabelComponent" parent="." instance=ExtResource("5_qrb86")]
 offset_left = -27.0

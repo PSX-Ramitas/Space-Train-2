@@ -2,12 +2,13 @@ extends CharacterBody2D
 class_name Projectile
 #extends Entity
 var SPEED = 150
+@onready var bullet_area: Area2D = $BulletArea
 
 #var dir : float 
 var spawnPos : Vector2 
 var spawnRot : float
 var dir = Vector2.ZERO
-var damage =6
+var damage = 2
 var hit =0; 
 #var collision = move_and_slide(velocity)
 

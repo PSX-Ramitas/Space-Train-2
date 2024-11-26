@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c53eeswqgi1is"]
+
+[ext_resource type="Script" path="res://Entities/LevelObstacles/vine_spike_shot.gd" id="1_orytk"]
+[ext_resource type="Texture2D" uid="uid://b3vjo83jyl0ns" path="res://Entities/LevelObstacles/Obstacle_Assets/PlantAlternate_ProjectilesV2.png" id="2_q88a3"]
+[ext_resource type="Script" path="res://Entities/LevelObstacles/vine_shot_area_2d.gd" id="3_8tcsm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_brms0"]
+radius = 4.0
+height = 18.0
+
+[node name="VineSpikeShot" type="CharacterBody2D"]
+script = ExtResource("1_orytk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(0.365854, 0.346154)
+texture = ExtResource("2_q88a3")
+hframes = 14
+vframes = 4
+frame = 27
+
+[node name="VineShotArea2D" type="Area2D" parent="."]
+script = ExtResource("3_8tcsm")
+
+[node name="HItbox" type="CollisionShape2D" parent="VineShotArea2D"]
+position = Vector2(-8, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_brms0")
+
+[node name="queueFreeTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="VineShotArea2D" to="VineShotArea2D" method="_on_area_entered"]
+[connection signal="timeout" from="queueFreeTimer" to="." method="_on_queue_free_timer_timeout"]

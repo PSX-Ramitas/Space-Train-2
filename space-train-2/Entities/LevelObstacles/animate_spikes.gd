@@ -40,8 +40,6 @@ func _process(_delta):
 			active_animated_Spikes()
 		spike_state.INACTIVE:
 			inactive_Spikes()
-		spike_state.DOWN_ANI:
-			going_down_Spikes()
 
 
 #END OF GENERAL ANIMATION FUNCTIONS-------------------------------------------------------------
@@ -59,7 +57,7 @@ func transition_To_active():
 	$AnimatedSpikes.speed_scale = 1.2
 
 	# Add a timer to stop at a specific frame
-	#await get_tree().create_timer(pause_frame).timeout
+	await get_tree().create_timer(pause_frame).timeout
 	$AnimatedSpikes.seek(pause_frame, true)  # Seek to the specified frame
 	$AnimatedSpikes.stop()  # Stop the animation at the pause frame
 	

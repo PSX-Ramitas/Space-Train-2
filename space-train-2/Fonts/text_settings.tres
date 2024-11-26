@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b8cpami1h0xjo"]
+
+[ext_resource type="FontFile" uid="uid://iua8btsbjy5v" path="res://Fonts/Pixica-Bold.ttf" id="1_iu0yl"]
+
+[resource]
+font = ExtResource("1_iu0yl")
+font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)

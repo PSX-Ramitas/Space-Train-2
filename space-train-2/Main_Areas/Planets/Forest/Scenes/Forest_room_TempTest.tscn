@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5qebaxc55f4r" path="res://Entities/LevelObstacles/animate_spikes.tscn" id="5_hc6ok"]
 [ext_resource type="PackedScene" uid="uid://bahjx67ee1f3n" path="res://Entities/LevelObstacles/spikes.tscn" id="6_qeb8s"]
 [ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="7_1bbag"]
-[ext_resource type="PackedScene" uid="uid://d3vymx6v3011v" path="res://Entities/LevelObstacles/vineWhipper.tscn" id="8_w6ij7"]
+[ext_resource type="PackedScene" uid="uid://bwksfc2rao3al" path="res://Entities/LevelObstacles/VineShooterBody.tscn" id="9_xhftn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("3_aiur1")
@@ -535,5 +535,5 @@ position = Vector2(2607, 476)
 [node name="TriggeredSpikes5" parent="Spikes" instance=ExtResource("7_1bbag")]
 position = Vector2(2679, 476)
 
-[node name="VineWhipper" parent="." instance=ExtResource("8_w6ij7")]
-position = Vector2(784, 228)
+[node name="VineShooterBody" parent="." instance=ExtResource("9_xhftn")]
+position = Vector2(2013, 476)

@@ -168,6 +168,7 @@ disabled = true
 libraries = {
 "": SubResource("AnimationLibrary_7romn")
 }
+autoplay = "Spikes_Animation"
 
 [node name="Trigger" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_2q1wq")

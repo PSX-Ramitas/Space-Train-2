@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://ccfic4x8n7kb0"]
+[gd_scene load_steps=12 format=4 uid="uid://ccfic4x8n7kb0"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_w4ks8"]
 [ext_resource type="Texture2D" uid="uid://cinnmbjlmokyb" path="res://Main_Areas/Planets/Forest/Assets/BG_1.png" id="2_eylef"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="7_cf1wb"]
 [ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="8_5mv0j"]
 [ext_resource type="PackedScene" uid="uid://d1gbrlw0d6k6b" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.tscn" id="9_ocw00"]
+[ext_resource type="PackedScene" uid="uid://bot6rg383w7n3" path="res://Collectables/potion.tscn" id="10_g4d4h"]
+[ext_resource type="PackedScene" uid="uid://djbq2pyatw6yi" path="res://Collectables/power.tscn" id="11_e8284"]
 
 [node name="ForestRoom1" type="Node2D"]
 position = Vector2(-36, 101)
@@ -119,3 +121,11 @@ health = 40
 position = Vector2(834, 234)
 maxHealth = 50
 health = 40
+
+[node name="potion" parent="." instance=ExtResource("10_g4d4h")]
+position = Vector2(297, 365)
+scale = Vector2(2, 2.16667)
+
+[node name="power" parent="." instance=ExtResource("11_e8284")]
+position = Vector2(630, 254)
+scale = Vector2(-2, 2)

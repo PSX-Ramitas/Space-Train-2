@@ -57,5 +57,5 @@ func _on_settings_back_button() -> void:
 	settings.hide()
 
 func _on_transition_finished() -> void:
-	get_tree().change_scene_to_file("res://Main_Areas/Title/title_screen.tscn")
+	get_tree().change_scene_to_file("res://Main_Areas/Spaceship/Scenes/spaceship.tscn")
 	LevelManager.resetLevelState()

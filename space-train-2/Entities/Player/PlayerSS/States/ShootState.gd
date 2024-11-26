@@ -5,21 +5,19 @@ extends State
 @export var fallState: State
 @export var dashState: State
 @export var dieState: State
+@export var moveState: State
 @export var projectile :PackedScene
 
 var nextState: State
 var attackFinished: bool
-var bulletCounter: int
+var bulletCounter: int = 0
+
 func enter() -> void:
 	if bulletCounter < 5:
 		var sfx = parent.find_child("BulletSound")
 		sfx.play()
 		parent.sword.monitoring = false
 		#used to move the player forwards a bit
-		if(parent.lbp == "l"):
-			parent.velocity.x = dashVelocity * 0.2
-		else:
-			parent.velocity.x = -dashVelocity * 0.2
 		bulletCounter += 1
 		Fire()
 	super() #call the enter function of the class we inherit from
@@ -30,18 +28,12 @@ func process_input(event: InputEvent) -> State:
 func process_physics(delta: float) -> State:
 	if parent.health <= 0:
 		return dieState
-	#move player backwards
-	if parent.lbp == "l":
-		parent.velocity.x = move_toward(0, -parent.velocity.x, 50)
-	else:
-		parent.velocity.x = move_toward(parent.velocity.x, 0, -50)
-	#apply a little bit of gravity
-	if parent.velocity.y != 0:
-		parent.velocity.y += gravity * delta * .075
 	if Input.is_action_just_pressed("dash") and !parent.usedDash:
 		return dashState
 	if parent.velocity.y != 0:
 		return fallState
+	if parent.velocity.x != 0 and parent.is_on_floor():
+		return moveState
 	return idleState
 
 @rpc("any_peer", "call_local")

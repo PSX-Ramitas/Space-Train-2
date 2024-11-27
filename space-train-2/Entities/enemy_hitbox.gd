@@ -88,7 +88,7 @@ func drop_item():
 		print("No item dropped this time.")  # Debug message for no drop
 		
 func _process(delta: float) -> void:
-	if enemy.get_health() < enemy.maxHealth * 0.5 and !has_been_scanned:
+	if enemy.get_health() < enemy.maxHealth * 0.25 and !has_been_scanned:
 		is_scannable = true
 	else:
 		is_scannable = false

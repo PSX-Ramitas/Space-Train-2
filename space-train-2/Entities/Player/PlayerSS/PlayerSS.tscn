@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=102 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Resource" uid="uid://dr18hr2uxbsl0" path="res://inventory/playerinventory.tres" id="2_poxt0"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dlvdht3xemejy" path="res://UI/PlayerHUD/dash_icon.tscn" id="7_5i0bf"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/JumpState.gd" id="7_bufn4"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack1State.gd" id="8_kiy5g"]
+[ext_resource type="PackedScene" uid="uid://bmre7hdpas8fn" path="res://UI/PlayerHUD/cast_gui.tscn" id="8_krgxj"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DieState.gd" id="10_cg6rn"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack2State.gd" id="10_g4e6d"]
 [ext_resource type="AudioStream" uid="uid://bh62sqsd7fcr5" path="res://Sounds/SFX/LTTP_Sword1.wav" id="11_2xbu7"]
@@ -580,6 +581,15 @@ grow_vertical = 0
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(-12, 180)
 
+[node name="cast_gui" parent="HUD" instance=ExtResource("8_krgxj")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(-30, -270)
+
 [node name="PlayerHitbox" parent="." instance=ExtResource("2_rlyqj")]
 scale = Vector2(0.5, 0.5)
 collision_layer = 3
@@ -600,7 +610,7 @@ shape = SubResource("CircleShape2D_nevb6")
 
 [node name="Cast" parent="." instance=ExtResource("12_1eqcw")]
 z_index = 6
-position = Vector2(18.5, -15)
+position = Vector2(-83, -15)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

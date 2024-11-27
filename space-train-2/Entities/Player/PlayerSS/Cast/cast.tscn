@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bn3kw3fiwak4y" path="res://Entities/Player/PlayerSS/Cast/spark_big.png" id="2_2xorm"]
 [ext_resource type="AudioStream" uid="uid://bcml086hatvl3" path="res://Sounds/SFX/SE_EFFECT14.wav" id="3_x5mn6"]
 [ext_resource type="AudioStream" uid="uid://dajrlu56adm4x" path="res://Sounds/SFX/Mario_and_Luigi_SS_Thunderhand_Release.ogg" id="4_pu3qu"]
-[ext_resource type="AudioStream" uid="uid://6qqifvvkvr0c" path="res://Sounds/SFX/Mario_&_Luigi_PIT_Special_Item.ogg" id="4_wid8h"]
+[ext_resource type="AudioStream" uid="uid://4u5umny8fvnt" path="res://Sounds/SFX/29.wav" id="6_cpnpd"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rsb1u"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bg0j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s74bo"]
 atlas = ExtResource("1_kmhaw")
@@ -136,19 +136,20 @@ script = ExtResource("1_k06mx")
 [node name="Scan" type="Node2D" parent="."]
 
 [node name="ScanArea" type="Area2D" parent="Scan"]
-position = Vector2(1, 0)
+position = Vector2(5, 0)
 scale = Vector2(1.05, 1.05)
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scan/ScanArea"]
-scale = Vector2(1.05, 1.05)
-shape = SubResource("CircleShape2D_rsb1u")
+scale = Vector2(1.69762, 0.630952)
+shape = SubResource("CapsuleShape2D_6bg0j")
 debug_color = Color(0.895343, 0.28902, 0.342732, 0.698039)
 
 [node name="ScanAnim" type="AnimatedSprite2D" parent="Scan"]
 visible = false
 texture_filter = 1
-scale = Vector2(1.05, 1.05)
+position = Vector2(5, 0)
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_b3nps")
 animation = &"Scan"
 frame = 7
@@ -162,8 +163,8 @@ bus = &"SFX"
 [node name="Shock" type="Node2D" parent="."]
 
 [node name="ShockArea" type="Area2D" parent="Shock"]
-position = Vector2(5, 0)
-scale = Vector2(1.2, 1.2)
+position = Vector2(25, 0)
+scale = Vector2(3.12, 1.2)
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shock/ShockArea"]
@@ -175,7 +176,8 @@ debug_color = Color(0.858128, 0.127883, 0.825453, 0.42)
 [node name="ShockAnim" type="AnimatedSprite2D" parent="Shock"]
 visible = false
 texture_filter = 1
-scale = Vector2(1.2, 1.2)
+position = Vector2(42, 0)
+scale = Vector2(4.28785, 2.27163)
 sprite_frames = SubResource("SpriteFrames_0kesf")
 animation = &"Shock"
 frame = 9
@@ -187,8 +189,8 @@ volume_db = -18.0
 bus = &"SFX"
 
 [node name="CastNotif" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_wid8h")
-volume_db = -20.0
+stream = ExtResource("6_cpnpd")
+volume_db = -10.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="Scan/ScanArea" to="." method="_on_scan_area_entered"]

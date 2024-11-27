@@ -13,12 +13,21 @@ func flip_sprites(flag: bool):
 	elif PlayerData.castType == "electric":
 		shock_anim.flip_h = flag
 
+func flipped(flag:bool):
+	if flag == true:
+		scan_area.position = Vector2(62, 0)
+		scan_anim.position = Vector2(62, 0)
+	else:
+		scan_area.position = Vector2(5, 0)
+		scan_anim.position = Vector2(5, 0)
+	flip_sprites(flag)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if PlayerData.castType == "neutral":
-		scan_area.monitoring = true
+		shock_area.monitoring = false
 	elif PlayerData.castType == "electric":
-		shock_area.monitoring = true
+		scan_area.monitoring = false
 	scan_anim.visible = false
 	shock_anim.visible = false
 
@@ -61,7 +70,7 @@ func _on_scan_area_entered(area: Area2D) -> void:
 			cast_notif.play()
 			await scan_anim.animation_finished
 			PlayerData.castType = victim.type
-			area.has_been_scanned = true
+			area.take_damage(victim.health)
 	print(PlayerData.castType)
 
 

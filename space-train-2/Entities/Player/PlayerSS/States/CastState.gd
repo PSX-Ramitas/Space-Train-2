@@ -26,11 +26,11 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	if parent.lbp == "l":
-		cast.position = Vector2(-24.5, -15)
-		cast.flip_sprites(true)
+		cast.position = Vector2(-83, -15)
+		cast.flipped(true)
 	else:
 		cast.position = Vector2(18.5, -15)
-		cast.flip_sprites(false)
+		cast.flipped(false)
 	if parent.health <= 0:
 		return dieState
 	if Input.is_action_just_pressed("dash") and !parent.usedDash:

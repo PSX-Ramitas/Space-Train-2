@@ -9,6 +9,7 @@ var pausable: bool = false #May need to be removed
 var is_dead: bool = false
 var forfeited: bool = false
 var is_hurt: bool = false
+var castType: String = "neutral"
 #can also put currency and abilities in here
 
 # Called when the node enters the scene tree for the first time.

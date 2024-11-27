@@ -5,6 +5,7 @@ var animTimer = 0.7
 var transitionScreen
 func enter() -> void:
 	PlayerData.is_dead = true
+	PlayerData.castType = "neutral"
 	transitionScreen = parent.find_child("DeathTransition")
 	var sfx = parent.find_child("Death")
 	sfx.play()

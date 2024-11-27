@@ -9,6 +9,7 @@ extends State
 @export var attack3State: State
 @export var dieState: State
 @export var shootState: State
+@export var castState: State
 
 func enter() -> void:
 	var hitbox = parent.find_child("PlayerHitbox")
@@ -35,6 +36,8 @@ func process_input(event: InputEvent) -> State:
 			return attack3State
 	if Input.is_action_just_pressed("fire_projectile"):
 		return shootState
+	if Input.is_action_just_pressed("cast_spell"):
+		return castState
 	return null
 
 func process_physics(delta: float) -> State:

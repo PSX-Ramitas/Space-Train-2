@@ -5,6 +5,9 @@ class_name EnemyHitbox
 @onready var enemy_health_bar: TextureProgressBar = $"../HealthBar"
 @onready var death_sound: AudioStreamPlayer = $"../Sounds/DeathSound"
 
+var is_scannable
+var has_been_scanned
+
 # Preload item scenes for random drops
 @onready var item_scenes = [
 	preload("res://Collectables/potion.tscn"),
@@ -16,6 +19,8 @@ var bot
 signal healthChanged(isHeal: bool, amount: int)
 
 func _ready() -> void:
+	is_scannable = false
+	has_been_scanned = false
 	var initial_health = enemy.get_health()
 	print("Enemy Health: ", enemy.health)
 	enemy_health_bar.init_health(initial_health)
@@ -28,11 +33,11 @@ func take_damage(damageAmount: int):
 		tempHealth = enemy.health - damageAmount
 		enemy.health = max(tempHealth, 0)
 		enemy_health_bar._set_health(enemy.health)
-	
 	# Check if enemy has died
 	if enemy.health <= 0:
 		death_sound.play()
 		drop_item()  # Call the drop_item function
+		await get_tree().create_timer(0.5).timeout
 		queue_free()  # Remove enemy from the scene
 
 # Heal enemy health
@@ -81,3 +86,9 @@ func drop_item():
 			print("Dropped item:", item_instance)
 	else:
 		print("No item dropped this time.")  # Debug message for no drop
+		
+func _process(delta: float) -> void:
+	if enemy.get_health() < enemy.maxHealth * 0.5 and !has_been_scanned:
+		is_scannable = true
+	else:
+		is_scannable = false

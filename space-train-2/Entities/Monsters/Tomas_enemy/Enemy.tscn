@@ -319,7 +319,8 @@ scale = Vector2(2.5, 2.5)
 slide_on_ceiling = false
 floor_stop_on_slope = false
 script = ExtResource("1_qnemb")
-health = 30
+maxHealth = 35
+health = 35
 movespeed = 50
 attack = 5
 

@@ -807,7 +807,7 @@ projectile = ExtResource("32_3mcbe")
 animationName = "Shoot"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 3.0
 one_shot = true
 
 [node name="ProjectileSpawn" type="Node2D" parent="."]

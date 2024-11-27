@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c6sjr8aixgkm6"
+path="res://.godot/imported/thunder cast.MP3-6c74dba9df28ace62e4b5a865ce947bc.mp3str"
+
+[deps]
+
+source_file="res://Sounds/SFX/thunder cast.MP3"
+dest_files=["res://.godot/imported/thunder cast.MP3-6c74dba9df28ace62e4b5a865ce947bc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

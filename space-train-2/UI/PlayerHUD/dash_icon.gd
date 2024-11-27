@@ -1,6 +1,7 @@
 extends Control
 @onready var cooldownPlayer: AnimationPlayer = $AnimationPlayer
 @onready var background: Sprite2D = $NinePatchRect/GridContainer/background
+@onready var recharge_notif: AudioStreamPlayer = $RechargeNotif
 
 
 func play_cooldown():
@@ -20,3 +21,4 @@ func _process(delta: float) -> void:
 
 func _on_animation_finished(anim_name: StringName) -> void:
 	background.visible = false
+	recharge_notif.play()

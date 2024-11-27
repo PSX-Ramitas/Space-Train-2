@@ -35,6 +35,7 @@ func take_damage(damageAmount: int):
 		enemy_health_bar._set_health(enemy.health)
 	# Check if enemy has died
 	if enemy.health <= 0:
+		is_scannable = false
 		death_sound.play()
 		drop_item()  # Call the drop_item function
 		await get_tree().create_timer(0.5).timeout
@@ -88,7 +89,7 @@ func drop_item():
 		print("No item dropped this time.")  # Debug message for no drop
 		
 func _process(delta: float) -> void:
-	if enemy.get_health() < enemy.maxHealth * 0.25 and !has_been_scanned:
+	if enemy.get_health() < enemy.maxHealth * 0.25 and enemy.get_health() > 0 and !has_been_scanned:
 		is_scannable = true
 	else:
 		is_scannable = false

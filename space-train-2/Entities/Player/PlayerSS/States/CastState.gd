@@ -26,7 +26,7 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	if parent.lbp == "l":
-		cast.position = Vector2(-83, -15)
+		cast.position = Vector2(-90.5, -15)
 		cast.flipped(true)
 	else:
 		cast.position = Vector2(18.5, -15)

@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/Cast/cast.gd" id="1_k06mx"]
 [ext_resource type="Texture2D" uid="uid://crq14kticngmw" path="res://Entities/Player/PlayerSS/Cast/pulse_mid.png" id="1_kmhaw"]
 [ext_resource type="Texture2D" uid="uid://bn3kw3fiwak4y" path="res://Entities/Player/PlayerSS/Cast/spark_big.png" id="2_2xorm"]
-[ext_resource type="AudioStream" uid="uid://bcml086hatvl3" path="res://Sounds/SFX/SE_EFFECT14.wav" id="3_x5mn6"]
-[ext_resource type="AudioStream" uid="uid://dajrlu56adm4x" path="res://Sounds/SFX/Mario_and_Luigi_SS_Thunderhand_Release.ogg" id="4_pu3qu"]
-[ext_resource type="AudioStream" uid="uid://4u5umny8fvnt" path="res://Sounds/SFX/29.wav" id="6_cpnpd"]
+[ext_resource type="AudioStream" uid="uid://f4fnl2qiblax" path="res://Sounds/SFX/Mario_&_Luigi_SS_Hologram.ogg" id="3_0g1xs"]
+[ext_resource type="AudioStream" uid="uid://d2b5jexib6bpp" path="res://Sounds/SFX/Mario_&_Luigi_Thunder_Bolt.ogg" id="5_73set"]
+[ext_resource type="AudioStream" uid="uid://bm7abqrsd5gnp" path="res://Sounds/SFX/Mario_&_Luigi_SS_Power_Up.ogg" id="6_u07q2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bg0j"]
 
@@ -156,7 +156,7 @@ frame = 7
 frame_progress = 1.0
 
 [node name="Scan" type="AudioStreamPlayer" parent="Scan"]
-stream = ExtResource("3_x5mn6")
+stream = ExtResource("3_0g1xs")
 volume_db = -20.0
 bus = &"SFX"
 
@@ -184,13 +184,13 @@ frame = 9
 frame_progress = 1.0
 
 [node name="Shock" type="AudioStreamPlayer" parent="Shock"]
-stream = ExtResource("4_pu3qu")
+stream = ExtResource("5_73set")
 volume_db = -18.0
 bus = &"SFX"
 
 [node name="CastNotif" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_cpnpd")
-volume_db = -10.0
+stream = ExtResource("6_u07q2")
+volume_db = -20.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="Scan/ScanArea" to="." method="_on_scan_area_entered"]

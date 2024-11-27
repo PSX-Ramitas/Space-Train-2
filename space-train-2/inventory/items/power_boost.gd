@@ -6,7 +6,8 @@ class_name PowerBoost extends InventoryItem
 
 func use(player: Player) -> void:
 	#if player:
-	
+	var sfx = player.find_child("PowUp")
+	sfx.play()
 	player.increase_attack(attack_increase)  # Call increase_attack on the player
 	#else:
 		#print("Error: Player instance is null!")

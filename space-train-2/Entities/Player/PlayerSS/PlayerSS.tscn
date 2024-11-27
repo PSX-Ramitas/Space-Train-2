@@ -611,7 +611,7 @@ shape = SubResource("CircleShape2D_nevb6")
 
 [node name="Cast" parent="." instance=ExtResource("12_1eqcw")]
 z_index = 6
-position = Vector2(-90.5, -15)
+position = Vector2(18.5, -15)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -619,7 +619,6 @@ material = SubResource("ShaderMaterial_b2suj")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_c6t2i")
 animation = &"Idle"
-flip_h = true
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
@@ -806,14 +805,6 @@ dieState = NodePath("../Die")
 moveState = NodePath("../Run")
 projectile = ExtResource("32_3mcbe")
 animationName = "Shoot"
-
-[node name="States to be implemented later" type="Node" parent="."]
-
-[node name="Hurt" type="Node" parent="States to be implemented later"]
-
-[node name="Item" type="Node" parent="States to be implemented later"]
-
-[node name="Cast" type="Node" parent="States to be implemented later"]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3

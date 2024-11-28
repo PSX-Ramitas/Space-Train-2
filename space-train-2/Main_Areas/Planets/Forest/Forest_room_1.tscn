@@ -1,13 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://ccfic4x8n7kb0"]
+[gd_scene load_steps=7 format=4 uid="uid://ccfic4x8n7kb0"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_w4ks8"]
 [ext_resource type="Texture2D" uid="uid://cinnmbjlmokyb" path="res://Main_Areas/Planets/Forest/Assets/BG_1.png" id="2_eylef"]
 [ext_resource type="TileSet" uid="uid://chvpi5yuykc0i" path="res://Main_Areas/Planets/Forest/ForestTileset.tres" id="3_vjy71"]
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="4_dgi62"]
-[ext_resource type="PackedScene" uid="uid://b5qebaxc55f4r" path="res://Entities/LevelObstacles/animate_spikes.tscn" id="5_5ota0"]
-[ext_resource type="PackedScene" uid="uid://bahjx67ee1f3n" path="res://Entities/LevelObstacles/spikes.tscn" id="6_w6c7q"]
-[ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="7_cf1wb"]
-[ext_resource type="PackedScene" uid="uid://bot6rg383w7n3" path="res://Collectables/potion.tscn" id="10_g4d4h"]
 [ext_resource type="PackedScene" uid="uid://citu8occwl0xr" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/Boss.tscn" id="10_r6xae"]
 [ext_resource type="PackedScene" uid="uid://djbq2pyatw6yi" path="res://Collectables/power.tscn" id="11_e8284"]
 
@@ -65,47 +61,6 @@ tile_set = ExtResource("3_vjy71")
 [node name="PlayerSS" parent="." instance=ExtResource("4_dgi62")]
 position = Vector2(217, 399)
 collision_layer = 2
-
-[node name="Spikes" type="Node2D" parent="."]
-
-[node name="AnimateSpikes" parent="Spikes" instance=ExtResource("5_5ota0")]
-position = Vector2(854, 272)
-
-[node name="AnimateSpikes2" parent="Spikes" instance=ExtResource("5_5ota0")]
-position = Vector2(872, 272)
-
-[node name="AnimateSpikes3" parent="Spikes" instance=ExtResource("5_5ota0")]
-position = Vector2(890, 272)
-
-[node name="AnimateSpikes4" parent="Spikes" instance=ExtResource("5_5ota0")]
-position = Vector2(607, 468)
-
-[node name="Spikes" parent="Spikes" instance=ExtResource("6_w6c7q")]
-position = Vector2(1566, 334)
-rotation = 3.14159
-scale = Vector2(1, -1)
-
-[node name="AnimateSpikes5" parent="Spikes" instance=ExtResource("5_5ota0")]
-position = Vector2(908, 272)
-
-[node name="TriggeredSpikes" parent="Spikes" instance=ExtResource("7_cf1wb")]
-position = Vector2(1132, 286)
-
-[node name="TriggeredSpikes2" parent="Spikes" instance=ExtResource("7_cf1wb")]
-position = Vector2(1911, 477)
-
-[node name="TriggeredSpikes3" parent="Spikes" instance=ExtResource("7_cf1wb")]
-position = Vector2(2148, 480)
-
-[node name="TriggeredSpikes4" parent="Spikes" instance=ExtResource("7_cf1wb")]
-position = Vector2(2607, 476)
-
-[node name="TriggeredSpikes5" parent="Spikes" instance=ExtResource("7_cf1wb")]
-position = Vector2(2679, 476)
-
-[node name="potion" parent="." instance=ExtResource("10_g4d4h")]
-position = Vector2(297, 365)
-scale = Vector2(2, 2.16667)
 
 [node name="power" parent="." instance=ExtResource("11_e8284")]
 position = Vector2(630, 254)

@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DashState.gd" id="5_lobj3"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/RunState.gd" id="5_sn4mp"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FallState.gd" id="6_d8ypo"]
-[ext_resource type="PackedScene" uid="uid://cd0un7grrfdfn" path="res://UI/inventory_gui.tscn" id="6_satfl"]
+[ext_resource type="PackedScene" path="res://UI/inventory_gui.tscn" id="6_satfl"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/JumpState.gd" id="7_bufn4"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack1State.gd" id="8_kiy5g"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DieState.gd" id="10_cg6rn"]

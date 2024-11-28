@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=3 uid="uid://citu8occwl0xr"]
+[gd_scene load_steps=151 format=3 uid="uid://citu8occwl0xr"]
 
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="1_k3w4u"]
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/boss.gd" id="1_way5i"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/boss_sword_area.gd" id="19_t8eup"]
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/boss_hit_collision_shape.gd" id="20_2fa7x"]
 [ext_resource type="Texture2D" uid="uid://bc7pn2mtbfjrq" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/FULL_Samurai 2D Pixel Art v1.2/Sprites/WALL CONTACT.png" id="21_ad0sm"]
+[ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/boss_mechanics.gd" id="22_dhcgm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rebri"]
 atlas = ExtResource("9_g2egp")
@@ -983,7 +984,9 @@ texture_filter = 1
 position = Vector2(-49, -6)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_socaq")
-animation = &"attack_3"
+animation = &"healing"
+frame = 14
+frame_progress = 1.0
 
 [node name="BossCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(-40, 30)
@@ -1044,6 +1047,9 @@ shape = SubResource("CircleShape2D_3u3x5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossAttackRange"]
 position = Vector2(0, 28)
 shape = SubResource("SegmentShape2D_34tto")
+
+[node name="Boss_Mechanics" type="Node2D" parent="."]
+script = ExtResource("22_dhcgm")
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]

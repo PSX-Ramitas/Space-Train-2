@@ -14,6 +14,8 @@ var direction = Vector2.RIGHT
 var player 
 var playerInChaseRange = false
 var playerInAttackRange = false
+var boss_mechanics 
+@onready var player_position = get_node("../PlayerSS").global_position
 #var sword = $BossSwordArea/CollisionShape2D
 @onready var attackArea = $CloseAttackArea
 @onready var animations = $AnimatedSprite2D
@@ -34,6 +36,7 @@ func get_state():
 
 func _ready() -> void:
 	currentState = State.Roam
+	boss_mechanics = $Boss_Mechanics
 	connect("boss_facing_direction_changed", _on_boss_facing_direction_changed)
 
 func _sprite_orientation(direction):
@@ -73,14 +76,21 @@ func _process(delta):
 		State.Death:
 			DeathState(delta)
 	move_and_slide()
+
+func _physics_process(delta):
+		var knockback = boss_mechanics.process_knockback(delta)
+		if knockback != Vector2.ZERO:
+			move_and_slide()
+		else:
+			pass
 	
 func RoamState(delta):
-	print("roam state\n")
+#	print("roam state\n")
 	animations.play("walk")
 	velocity += direction * movespeed * delta
 
 func ChaseState():
-	print("chase state\n")
+#	print("chase state\n")
 	animations.play("chase")
 	_sprite_orientation(direction)
 	#shoot()
@@ -107,14 +117,18 @@ func AttackState(delta):
 
 func HurtState():
 	can_attack=false
-	print("hurt state\n")
+	#print("hurt state\n")
+	#print ("player position var is : ", player_position)
+	var knockback_direction = global_position - player_position
+	print("knockback direction is : ", knockback_direction)
+	boss_mechanics.apply_knockback(knockback_direction, 0.3)
 	if $AnimatedSprite2D.animation != "hurt":
 	#	print("if $AnimatedSprite2D.animation != hurt:")
 		animations.play("hurt")
 	print("done with hurt state")
 
 func DeathState(delta):
-	print("we ded state\n")
+#	print("we ded state\n")
 	dead=true
 	animations.play("death")
 	queue_free()
@@ -133,7 +147,7 @@ func _on_direction_timer_timeout() -> void:
 		velocity.x=0
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-		print ("on animated sprite finished\n")
+#		print ("on animated sprite finished\n")
 		match currentState:
 			State.Attack:
 				attackArea.monitoring = false
@@ -156,7 +170,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_attack_timer_timeout() -> void:
-	print("on shooting timer time out\n")
+#	print("on shooting timer time out\n")
 	can_attack =true
 	#_sprite_orientation(direction)
 

@@ -23,6 +23,7 @@ SignalBusMonster="*res://Scripts/signal_bus_monster.gd"
 PlayerTransformer="*res://Scripts/PlayerTranformer.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 TrainNPCs="*res://Scripts/TrainNPCs.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -35,7 +36,7 @@ project/assembly_name="Space-Train-2"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [input]
 

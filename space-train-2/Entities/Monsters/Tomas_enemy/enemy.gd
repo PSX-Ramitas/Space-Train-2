@@ -13,6 +13,8 @@ var player
 @onready var death_sound: AudioStreamPlayer = $Sounds/DeathSound
 
 var prevHealth = health
+var type: String = "electric"
+
 enum State {
 	Roam,
 	Chase,

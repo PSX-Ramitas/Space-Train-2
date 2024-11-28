@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="11_e4n46"]
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="12_c12sn"]
 [ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="13_jbynk"]
+[ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="13_yghmj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("3_a55yr")
@@ -455,9 +456,6 @@ texture = ExtResource("3_a55yr")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1xhn7")
 
-[sub_resource type="LabelSettings" id="LabelSettings_cwpxo"]
-font_size = 12
-
 [node name="ForestRoom4" type="Node2D"]
 texture_filter = 1
 position = Vector2(-36, 101)
@@ -620,7 +618,7 @@ offset_top = -40.0
 offset_right = 117.0
 offset_bottom = -17.0
 text = "Defeat all the Enemies!"
-label_settings = SubResource("LabelSettings_cwpxo")
+label_settings = ExtResource("13_yghmj")
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_jbynk")

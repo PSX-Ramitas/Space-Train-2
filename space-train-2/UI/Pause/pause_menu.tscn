@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl7wej5k1tlc4"]
+[gd_scene load_steps=10 format=3 uid="uid://cl7wej5k1tlc4"]
 
 [ext_resource type="Script" path="res://UI/Pause/pause_menu.gd" id="1_bqthm"]
 [ext_resource type="PackedScene" uid="uid://db6nsiuqoytme" path="res://UI/Settings/Settings.tscn" id="2_0mehi"]
+[ext_resource type="Texture2D" uid="uid://cmj8d1vjdps2" path="res://UI/PlayerHUD/Sprites/gradient-rectangle-background-abstract-geometric-shape-wallpaper-for-web-banner-presentation-vector.jpg" id="2_kqwnq"]
+[ext_resource type="FontFile" uid="uid://bpmkl6yuil5sw" path="res://Fonts/PixicaMono-Bold.ttf" id="2_qduw2"]
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="3_xxvbq"]
 [ext_resource type="AudioStream" uid="uid://6cwe4vngu5ii" path="res://Sounds/SFX/SE_BTL_BEEP2.wav" id="4_h2nq8"]
 [ext_resource type="AudioStream" uid="uid://bodnb3yj5rrfc" path="res://Sounds/SFX/smb3_pause.wav" id="4_vag16"]
 [ext_resource type="AudioStream" uid="uid://iik8xvfd5ml7" path="res://Sounds/SFX/SE_BTL_BEEP3.wav" id="6_c4q7t"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bgqp1"]
+blend_mode = 3
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -14,7 +19,7 @@ process_physics_priority = 35
 visible = false
 top_level = true
 z_index = 30
-texture_filter = 1
+texture_filter = 5
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,8 +28,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bqthm")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 process_mode = 3
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_bgqp1")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,7 +44,8 @@ offset_right = 509.0
 offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.45098)
+texture = ExtResource("2_kqwnq")
+expand_mode = 1
 
 [node name="GridContainer" type="GridContainer" parent="ColorRect"]
 layout_mode = 1
@@ -46,40 +54,46 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = -68.0
-offset_right = 47.0
-offset_bottom = 68.0
+offset_left = -118.0
+offset_top = -115.5
+offset_right = -24.0
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.29752, 2.36931)
 
 [node name="Resume" type="Button" parent="ColorRect/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qduw2")
 text = "Resume"
 
 [node name="Options" type="Button" parent="ColorRect/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qduw2")
 text = "Options"
 
 [node name="Forfeit" type="Button" parent="ColorRect/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qduw2")
 text = "Forfeit Run"
 
 [node name="Exit" type="Button" parent="ColorRect/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qduw2")
 text = "Quit Game"
 
 [node name="Settings" parent="ColorRect" instance=ExtResource("2_0mehi")]
 visible = false
 layout_mode = 1
-offset_left = 94.0
-offset_top = 43.0
-offset_right = -82.0
-offset_bottom = 18.0
+offset_left = 27.0
+offset_top = 20.0
+offset_right = -149.0
+offset_bottom = -172.0
+scale = Vector2(1.15358, 1.46526)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

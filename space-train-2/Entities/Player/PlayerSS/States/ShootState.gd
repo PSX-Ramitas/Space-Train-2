@@ -13,6 +13,8 @@ var attackFinished: bool
 var bulletCounter: int = 0
 
 func enter() -> void:
+	var hitbox = parent.find_child("PlayerHitbox")
+	hitbox.can_hurt = true
 	if bulletCounter < 5:
 		var sfx = parent.find_child("BulletSound")
 		sfx.play()

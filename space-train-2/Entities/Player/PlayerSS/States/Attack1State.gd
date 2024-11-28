@@ -7,11 +7,13 @@ extends State
 @export var dieState: State
 @export var attack2State: State
 @export var shootState: State
-
+@export var castState: State
 var nextState: State
 var attackFinished: bool
 
 func enter() -> void:
+	var hitbox = parent.find_child("PlayerHitbox")
+	hitbox.can_hurt = true
 	var sfx = parent.find_child("Sword1")
 	sfx.play()
 	parent.sword.monitoring = true
@@ -55,6 +57,9 @@ func process_physics(delta: float) -> State:
 		elif Input.is_action_just_pressed("dash"):
 			nextState = dashState
 			return nextState
+		elif Input.is_action_just_pressed("cast_spell"):
+			nextState = dashState
+			return castState
 		else:
 			nextState = idleState
 			return nextState

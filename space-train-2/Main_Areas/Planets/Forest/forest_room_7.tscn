@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1ydrv1snp6tt"]
+[gd_scene load_steps=17 format=3 uid="uid://b1ydrv1snp6tt"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/forest_room_7.gd" id="1_o5opn"]
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="2_yqj37"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://b6ggsqgg4o80e" path="res://Main_Areas/Planets/Forest/ForestTileset.tres" id="5_auer1"]
 [ext_resource type="PackedScene" uid="uid://cyhs8teinbtt1" path="res://Main_Areas/Planets/transition_area.tscn" id="6_rhanf"]
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="7_rcoxi"]
+[ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="9_ldicu"]
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="9_nfpm2"]
 [ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="10_aitwa"]
 [ext_resource type="PackedScene" uid="uid://cf675ehvborw" path="res://Main_Areas/killzone.tscn" id="11_5o2ff"]
@@ -98,19 +99,25 @@ position = Vector2(-3, 18)
 scale = Vector2(1, 1.8)
 
 [node name="Mission" parent="." instance=ExtResource("9_nfpm2")]
-offset_left = 115.0
-offset_top = 526.0
-offset_right = 155.0
-offset_bottom = 566.0
+offset_left = 202.0
+offset_top = 538.0
+offset_right = 242.0
+offset_bottom = 578.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Mission"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.075
+anchor_right = 0.6
+anchor_bottom = 0.075
 offset_left = -76.0
 offset_top = -46.0
 offset_right = 139.0
 offset_bottom = -23.0
 text = "Survive and Reach the Goal!"
+label_settings = ExtResource("9_ldicu")
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfbapgrn0ywpq"]
+[gd_scene load_steps=19 format=3 uid="uid://bfbapgrn0ywpq"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scenes/forest_room_5.gd" id="1_lq44h"]
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="2_rjit5"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="13_wju2g"]
 [ext_resource type="PackedScene" uid="uid://cf675ehvborw" path="res://Main_Areas/killzone.tscn" id="14_krkmr"]
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="14_skgto"]
+[ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="16_c2jkm"]
 [ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="16_oy6au"]
 [ext_resource type="PackedScene" uid="uid://4bkd8i6ris7r" path="res://Main_Areas/Spaceship/NPC/LostGuy/LostNPC.tscn" id="17_km444"]
 
@@ -203,6 +204,7 @@ offset_top = -46.0
 offset_right = 139.0
 offset_bottom = -23.0
 text = "Survive and Reach the Goal!"
+label_settings = ExtResource("16_c2jkm")
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]

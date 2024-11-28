@@ -14,6 +14,10 @@ func _on_area_entered(area: Area2D) -> void:
 	if attacker is SpikesClass:
 		#print("YES SPIKES",area.name)
 		return
+	#Any area2d based entity can use it
+	elif attacker is not Player and area is VineHurtbox: #for the new vine enemies can update this later
+		area.take_damage(attack)
+		print("area.name that took damage: ", area.name)
 	elif attacker is not Player and area is EnemyHitbox:
 			area.take_damage(attack)
 			#print("damaged w/2nd elif, area: ", area.name)

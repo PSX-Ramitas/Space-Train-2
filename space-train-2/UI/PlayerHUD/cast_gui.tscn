@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmre7hdpas8fn"]
+
+[ext_resource type="Script" path="res://UI/PlayerHUD/cast_gui.gd" id="1_mdevf"]
+[ext_resource type="Texture2D" uid="uid://dxrhimc8jbren" path="res://sprites/InventoryRect.png" id="2_ri1cv"]
+[ext_resource type="Texture2D" uid="uid://bfobjkllxny54" path="res://UI/PlayerHUD/Sprites/3082421.png" id="3_51sxt"]
+[ext_resource type="Texture2D" uid="uid://gjfj1t8r5a6m" path="res://UI/PlayerHUD/Sprites/lightning.png" id="4_ggnrj"]
+
+[node name="cast_gui" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mdevf")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_right = 37.0
+offset_bottom = 40.0
+texture = ExtResource("2_ri1cv")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -13.0
+offset_right = 7.5
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.35, 1.3)
+pivot_offset = Vector2(1.5, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/CenterContainer"]
+z_index = -1
+layout_mode = 2
+
+[node name="ScanSprite" type="Sprite2D" parent="NinePatchRect/GridContainer/CenterContainer/Panel"]
+visible = false
+z_index = 1
+texture_filter = 1
+position = Vector2(0.0185174, 0)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("3_51sxt")
+
+[node name="ShockSprite" type="Sprite2D" parent="NinePatchRect/GridContainer/CenterContainer/Panel"]
+visible = false
+z_index = 1
+texture_filter = 1
+position = Vector2(0.0185188, 0)
+scale = Vector2(0.009, 0.009)
+texture = ExtResource("4_ggnrj")

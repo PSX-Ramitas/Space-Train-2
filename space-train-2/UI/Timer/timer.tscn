@@ -1,44 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://xepqp6ejccew"]
+[gd_scene load_steps=6 format=3 uid="uid://xepqp6ejccew"]
 
 [ext_resource type="Script" path="res://UI/Timer/timer.gd" id="1_13wc0"]
+[ext_resource type="LabelSettings" uid="uid://b8cpami1h0xjo" path="res://Fonts/text_settings.tres" id="2_6euns"]
+[ext_resource type="Texture2D" uid="uid://cmj8d1vjdps2" path="res://UI/PlayerHUD/Sprites/gradient-rectangle-background-abstract-geometric-shape-wallpaper-for-web-banner-presentation-vector.jpg" id="3_3kubm"]
+[ext_resource type="Texture2D" uid="uid://bn0rdfr7jjl8n" path="res://UI/PlayerHUD/Sprites/black-rectangle.jpg" id="4_4obdn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t1wrb"]
+blend_mode = 2
+light_mode = 2
 
 [node name="Timer" type="Panel"]
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_t1wrb")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -32.0
-offset_right = 69.0
+offset_left = -101.0
+offset_right = 41.0
 offset_bottom = 31.0
 grow_horizontal = 2
-scale = Vector2(1.7, 1.7)
+scale = Vector2(4, 4)
 pivot_offset = Vector2(0, -30)
 size_flags_horizontal = 4
+size_flags_stretch_ratio = 5.95
 script = ExtResource("1_13wc0")
 
-[node name="Minutes" type="Label" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 169.0
+offset_bottom = 34.0
+alignment = 2
+
+[node name="Minutes" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 1.17647
-offset_top = 2.94118
-offset_right = 41.1765
-offset_bottom = 25.9412
 text = "00:"
+label_settings = ExtResource("2_6euns")
 horizontal_alignment = 2
 
-[node name="Seconds" type="Label" parent="."]
+[node name="Seconds" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 24.1764
-offset_top = 2.94118
-offset_right = 64.1764
-offset_bottom = 25.9412
 text = "00:"
+label_settings = ExtResource("2_6euns")
 horizontal_alignment = 2
 
-[node name="Milliseconds" type="Label" parent="."]
+[node name="Milliseconds" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 47.1765
-offset_top = 2.94118
-offset_right = 87.1765
-offset_bottom = 25.9412
-text = "00"
+text = "000"
+label_settings = ExtResource("2_6euns")
 horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(145.25, 16.25)
+scale = Vector2(0.211436, 0.0467616)
+skew = -0.628319
+texture = ExtResource("3_3kubm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(148.5, 20.75)
+scale = Vector2(0.211436, 0.0467616)
+skew = -0.628319
+texture = ExtResource("4_4obdn")

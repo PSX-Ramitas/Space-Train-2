@@ -1,0 +1,197 @@
+[gd_scene load_steps=23 format=3 uid="uid://biahfhodysuqd"]
+
+[ext_resource type="Script" path="res://Entities/Player/PlayerSS/Cast/cast.gd" id="1_k06mx"]
+[ext_resource type="Texture2D" uid="uid://crq14kticngmw" path="res://Entities/Player/PlayerSS/Cast/pulse_mid.png" id="1_kmhaw"]
+[ext_resource type="Texture2D" uid="uid://bn3kw3fiwak4y" path="res://Entities/Player/PlayerSS/Cast/spark_big.png" id="2_2xorm"]
+[ext_resource type="AudioStream" uid="uid://f4fnl2qiblax" path="res://Sounds/SFX/Mario_&_Luigi_SS_Hologram.ogg" id="3_0g1xs"]
+[ext_resource type="AudioStream" uid="uid://d2b5jexib6bpp" path="res://Sounds/SFX/Mario_&_Luigi_Thunder_Bolt.ogg" id="5_73set"]
+[ext_resource type="AudioStream" uid="uid://bm7abqrsd5gnp" path="res://Sounds/SFX/Mario_&_Luigi_SS_Power_Up.ogg" id="6_u07q2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bg0j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s74bo"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahcnv"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dix6"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0gpj"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1423y"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6nj2"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf4dr"]
+atlas = ExtResource("1_kmhaw")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3nps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s74bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahcnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dix6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0gpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1423y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6nj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dix6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4dr")
+}],
+"loop": false,
+"name": &"Scan",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygtte"]
+size = Vector2(25.4535, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yepnf"]
+atlas = ExtResource("2_2xorm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5bwp"]
+atlas = ExtResource("2_2xorm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geasn"]
+atlas = ExtResource("2_2xorm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5lg0"]
+atlas = ExtResource("2_2xorm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku0xa"]
+atlas = ExtResource("2_2xorm")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0kesf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yepnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5bwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geasn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5lg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku0xa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yepnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5bwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geasn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5lg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku0xa")
+}],
+"loop": false,
+"name": &"Shock",
+"speed": 20.0
+}]
+
+[node name="Cast" type="Node2D"]
+script = ExtResource("1_k06mx")
+
+[node name="Scan" type="Node2D" parent="."]
+
+[node name="ScanArea" type="Area2D" parent="Scan"]
+position = Vector2(5, 0)
+scale = Vector2(1.05, 1.05)
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scan/ScanArea"]
+scale = Vector2(1.69762, 0.630952)
+shape = SubResource("CapsuleShape2D_6bg0j")
+debug_color = Color(0.895343, 0.28902, 0.342732, 0.698039)
+
+[node name="ScanAnim" type="AnimatedSprite2D" parent="Scan"]
+visible = false
+texture_filter = 1
+position = Vector2(5, 0)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_b3nps")
+animation = &"Scan"
+frame = 7
+frame_progress = 1.0
+
+[node name="Scan" type="AudioStreamPlayer" parent="Scan"]
+stream = ExtResource("3_0g1xs")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="Shock" type="Node2D" parent="."]
+
+[node name="ShockArea" type="Area2D" parent="Shock"]
+position = Vector2(25, 0)
+scale = Vector2(3.12, 1.2)
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shock/ShockArea"]
+position = Vector2(2.6079, 0.5)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_ygtte")
+debug_color = Color(0.858128, 0.127883, 0.825453, 0.42)
+
+[node name="ShockAnim" type="AnimatedSprite2D" parent="Shock"]
+visible = false
+texture_filter = 1
+position = Vector2(42, 0)
+scale = Vector2(4.28785, 2.27163)
+sprite_frames = SubResource("SpriteFrames_0kesf")
+animation = &"Shock"
+frame = 9
+frame_progress = 1.0
+
+[node name="Shock" type="AudioStreamPlayer" parent="Shock"]
+stream = ExtResource("5_73set")
+volume_db = -18.0
+bus = &"SFX"
+
+[node name="CastNotif" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_u07q2")
+volume_db = -20.0
+bus = &"SFX"
+
+[connection signal="area_entered" from="Scan/ScanArea" to="." method="_on_scan_area_entered"]
+[connection signal="area_entered" from="Shock/ShockArea" to="." method="_on_shock_area_entered"]

@@ -8,6 +8,7 @@ var omega = 0
 @onready var label: Label = $Label
 @onready var interactable_label_component: Control = $InteractableLabelComponent
 @onready var lostNPC: CharacterBody2D = $LostGuyTD
+@onready var warping: AudioStreamPlayer = $Warping
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,6 +36,7 @@ func _process(delta: float) -> void:
 	animated_sprite_2d.offset.y = radius * sin(omega)
 	if teleportable:
 		if Input.is_action_just_pressed("interact"):
+			warping.play()
 			transition.play_transition("FadeOut")
 
 
@@ -61,4 +63,5 @@ func _on_teleporter_area_body_exited(body: Node2D) -> void:
 
 func _on_button_button_down() -> void:
 	interactable_label_component.visible = false
+	warping.play()
 	transition.play_transition("FadeOut")

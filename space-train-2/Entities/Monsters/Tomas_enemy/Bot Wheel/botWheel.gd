@@ -21,6 +21,7 @@ var prevHealth = health
 enum State {Roam,Chase,Attack,Hurt,Death,}
 var currentState = State.Roam
 
+var type: String = "electric"
 
 	
 func get_health(): 

@@ -10,8 +10,11 @@ class_name PlayerHitbox
 @onready var inventory: Inventory = preload("res://inventory/playerinventory.tres")
 signal healthChanged(isHeal: bool, amount: int)
 var is_alive
+var can_hurt
+
 func _ready() -> void:
 	is_alive = true
+	can_hurt = true
 	var curHealth = PlayerData.health
 	if PlayerData.health == 0 or PlayerData.health == null:
 		PlayerData.health = PlayerData.maxHealth
@@ -22,7 +25,7 @@ func _ready() -> void:
 	player_health_bar.set_health(PlayerData.health)
 
 func take_damage(damageAmount: int):
-	if is_alive:
+	if is_alive and can_hurt:
 		damage_sound.play()
 		var new_health = max(0, PlayerData.health - damageAmount)
 		player_ss.health = new_health
@@ -30,6 +33,10 @@ func take_damage(damageAmount: int):
 		if new_health == 0:
 			self.PROCESS_MODE_DISABLED
 			is_alive = false
+		PlayerData.is_hurt = true
+		can_hurt = false
+		await get_tree().create_timer(0.9).timeout
+		can_hurt = true
 		# healthChanged.emit( false, damageAmount)
 
 func heal_health(healAmount: int):

@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://cp5de08wucg0g"]
+[gd_scene load_steps=26 format=3 uid="uid://cp5de08wucg0g"]
 
 [ext_resource type="Script" path="res://Main_Areas/Spaceship/NPC/Guide/guide.gd" id="1_4bine"]
 [ext_resource type="Texture2D" uid="uid://bspbfqluhnspf" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/1. Idle 48 x 48.png" id="2_maviy"]
 [ext_resource type="PackedScene" uid="uid://d04o58517yg4k" path="res://Main_Areas/Spaceship/NPC/dialogue.tscn" id="2_pns82"]
+[ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="3_04o7j"]
 [ext_resource type="PackedScene" uid="uid://dco0wwnusv055" path="res://Main_Areas/Spaceship/NPC/interaction_area.tscn" id="3_o7pb2"]
 [ext_resource type="Texture2D" uid="uid://btlb374bnve0o" path="res://Main_Areas/Spaceship/NPC/Guide/Assets/2. Run 48 x 48.png" id="5_qtbug"]
 [ext_resource type="Shader" path="res://Main_Areas/Spaceship/NPC/Guide/animation_player.gdshader" id="7_l7je6"]
@@ -344,9 +345,11 @@ size = Vector2(16, 20)
 
 [node name="Guide" type="CharacterBody2D"]
 z_index = 1
+texture_filter = 1
 script = ExtResource("1_4bine")
 
 [node name="Dialogue" parent="." instance=ExtResource("2_pns82")]
+label_settings = ExtResource("3_04o7j")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_o7pb2")]
 position = Vector2(0, 27)

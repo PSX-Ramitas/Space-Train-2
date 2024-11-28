@@ -9,8 +9,11 @@ extends State
 @export var attack2State: State
 @export var attack3State: State
 @export var shootState: State
+@export var castState: State
 
 func enter() -> void:
+	var hitbox = parent.find_child("PlayerHitbox")
+	hitbox.can_hurt = true
 	parent.sword.monitoring = false
 	super() #call the enter function of the class we inherit from
 
@@ -28,6 +31,8 @@ func process_input(event: InputEvent) -> State:
 			return attack3State
 	if Input.is_action_just_pressed("fire_projectile"):
 		return shootState
+	if Input.is_action_just_pressed("cast_spell"):
+		return castState
 	return null
 
 func process_physics(delta: float) -> State:

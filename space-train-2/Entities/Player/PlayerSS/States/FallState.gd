@@ -8,12 +8,15 @@ extends State
 @export var attack2State: State
 @export var attack3State: State
 @export var shootState: State
+@export var castState: State
 
 var coyoteTime = 0.075
 var coyoteTimer = 0.0
 var jumpBufferTime = 0.1
 var jumpBufferTimer = 0.0
 func enter() -> void:
+	var hitbox = parent.find_child("PlayerHitbox")
+	hitbox.can_hurt = true
 	parent.sword.monitoring = false
 	super() #call the enter function of the class we inherit from
 	coyoteTimer = coyoteTime
@@ -36,6 +39,8 @@ func process_input(event: InputEvent) -> State:
 			return attack3State
 	if Input.is_action_just_pressed("fire_projectile"):
 		return shootState
+	if Input.is_action_just_pressed("cast_spell"):
+		return castState
 	return null
 
 func process_physics(delta: float) -> State:

@@ -498,7 +498,7 @@ slide_on_ceiling = false
 floor_stop_on_slope = false
 script = ExtResource("1_t6rrs")
 maxHealth = 30
-health = 50
+health = 30
 movespeed = 125
 attack = 5
 

@@ -11,7 +11,7 @@ extends Node
 var levelFinished: bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	speedTime.set_timer(45)
+	speedTime.set_timer(60)
 	camera.limit_left = -150
 	camera.limit_top = -119
 	camera.limit_bottom = 1196

@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://qdsqap23j4ie"]
+[gd_scene load_steps=103 format=3 uid="uid://qdsqap23j4ie"]
 
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/player_ss.gd" id="1_jaw55"]
 [ext_resource type="Resource" uid="uid://dr18hr2uxbsl0" path="res://inventory/playerinventory.tres" id="2_poxt0"]
@@ -35,6 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://cv7mwbvy6w133" path="res://Sounds/SFX/SE_BTL_DAMAGE1.wav" id="17_nk67b"]
 [ext_resource type="AudioStream" uid="uid://cx5ymqqphjsvq" path="res://Sounds/SFX/SE_RECOVERY.wav" id="20_5hk3w"]
 [ext_resource type="AudioStream" uid="uid://bxiibbbx506vi" path="res://Sounds/SFX/megaman_bullet.mp3" id="21_p3ali"]
+[ext_resource type="AudioStream" uid="uid://cv263ojbxtgk1" path="res://Sounds/SFX/Mario_&_Luigi_SS_Pepper_Sound.ogg" id="26_m6qs8"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/CastState.gd" id="27_lnp8f"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/ShootState.gd" id="31_lqf48"]
 [ext_resource type="PackedScene" uid="uid://d21bqed47iosm" path="res://Entities/Player/PlayerSS/Projectile/baseProjectile.tscn" id="32_3mcbe"]
@@ -610,7 +611,7 @@ shape = SubResource("CircleShape2D_nevb6")
 
 [node name="Cast" parent="." instance=ExtResource("12_1eqcw")]
 z_index = 6
-position = Vector2(-83, -15)
+position = Vector2(18.5, -15)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -618,7 +619,6 @@ material = SubResource("ShaderMaterial_b2suj")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_c6t2i")
 animation = &"Idle"
-flip_h = true
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
@@ -678,6 +678,11 @@ bus = &"SFX"
 [node name="BulletSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("21_p3ali")
 volume_db = -28.0
+bus = &"SFX"
+
+[node name="PowUp" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("26_m6qs8")
+volume_db = -17.0
 bus = &"SFX"
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("startState")]
@@ -801,16 +806,8 @@ moveState = NodePath("../Run")
 projectile = ExtResource("32_3mcbe")
 animationName = "Shoot"
 
-[node name="States to be implemented later" type="Node" parent="."]
-
-[node name="Hurt" type="Node" parent="States to be implemented later"]
-
-[node name="Item" type="Node" parent="States to be implemented later"]
-
-[node name="Cast" type="Node" parent="States to be implemented later"]
-
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 3.0
 one_shot = true
 
 [node name="ProjectileSpawn" type="Node2D" parent="."]

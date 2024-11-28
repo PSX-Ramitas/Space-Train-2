@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlvdht3xemejy"]
+[gd_scene load_steps=11 format=3 uid="uid://dlvdht3xemejy"]
 
 [ext_resource type="Script" path="res://UI/PlayerHUD/dash_icon.gd" id="1_4ooh7"]
 [ext_resource type="Texture2D" uid="uid://dxrhimc8jbren" path="res://sprites/InventoryRect.png" id="1_6bu2e"]
 [ext_resource type="Texture2D" uid="uid://5eayw0lpvetj" path="res://UI/PlayerHUD/Sprites/Pegasus-boots.png" id="2_ss1iy"]
 [ext_resource type="Shader" path="res://Shaders/SweepU.gdshader" id="3_0ikbp"]
 [ext_resource type="Texture2D" uid="uid://dixb4xlagrep" path="res://sprites/inventorySlot.png" id="4_dbb08"]
+[ext_resource type="AudioStream" uid="uid://dxcx2m1uw04ey" path="res://Sounds/SFX/SE_BTL_TOUCH2.wav" id="6_p8wxr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5n14o"]
 shader = ExtResource("3_0ikbp")
@@ -183,5 +184,10 @@ vframes = 2
 libraries = {
 "": SubResource("AnimationLibrary_32u7u")
 }
+
+[node name="RechargeNotif" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_p8wxr")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

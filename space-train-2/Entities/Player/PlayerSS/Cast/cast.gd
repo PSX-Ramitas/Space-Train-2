@@ -24,10 +24,8 @@ func flipped(flag:bool):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if PlayerData.castType == "neutral":
-		shock_area.monitoring = false
-	elif PlayerData.castType == "electric":
-		scan_area.monitoring = false
+	shock_area.monitoring = false
+	scan_area.monitoring = false
 	scan_anim.visible = false
 	shock_anim.visible = false
 
@@ -51,10 +49,10 @@ func _process(delta: float) -> void:
 			scan_area.monitoring = false
 			
 		if PlayerData.castType == "electric":
-			shock_anim.visible = true
-			shock_area.monitoring = true
 			shock_anim.play()
 			shock_sound.play()
+			shock_anim.visible = true
+			shock_area.monitoring = true
 			await shock_anim.animation_finished
 			shock_anim.visible = false
 			shock_area.monitoring = false
@@ -67,6 +65,7 @@ func _on_scan_area_entered(area: Area2D) -> void:
 		print(victim.type)
 		print("Area Scannable: ", area.is_scannable)
 		if area.is_scannable and scan_anim.is_playing():
+			scan_sound.stop()
 			cast_notif.play()
 			await scan_anim.animation_finished
 			PlayerData.castType = victim.type

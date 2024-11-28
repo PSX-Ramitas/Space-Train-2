@@ -14,6 +14,7 @@ var direction = Vector2.RIGHT
 var player 
 var playerInChaseRange = false
 var playerInAttackRange = false
+var fromState
 var boss_mechanics 
 @onready var Boss_Sword_Area = get_node("BossSwordArea")
 @onready var playerSS = get_node("../PlayerSS")
@@ -183,7 +184,9 @@ func _on_attack_timer_timeout() -> void:
 #player has entered boss' attack radius, boss attacks
 func _on_boss_chase_radius_area_entered(area: Area2D) -> void:
 	print("on boss chase radius area entered\n")
-	if area.get_parent() is Player:
+	#if area.get_parent() is Player:
+	print ("area in boss chase enterred: ", area.name)
+	if area is PlayerHitbox:
 		playerInChaseRange= true
 		player = area.get_parent()
 		#_sprite_orientation(direction)
@@ -191,16 +194,18 @@ func _on_boss_chase_radius_area_entered(area: Area2D) -> void:
 
 func _on_boss_chase_radius_area_exited(area: Area2D) -> void:
 	print("on boss chase radius area exited\n")
-	if area.get_parent() is Player:
+	#if area.get_parent() is Player:
+	if area is PlayerHitbox:
 			playerInChaseRange = false
 			currentState = State.Roam
 
 func _on_boss_attack_range_area_entered(area: Area2D) -> void:
 	print("on boss attack range area entered\n")
-	if area.get_parent() is Player:
+	#if area.get_parent() is Player:
+	if area is PlayerHitbox:
 		playerInAttackRange= true
 		can_attack=true
-		#playerInChaseRange = false
+		playerInChaseRange = false
 		player = area.get_parent()
 		_sprite_orientation(direction)
 		currentState= State.Attack
@@ -208,7 +213,8 @@ func _on_boss_attack_range_area_entered(area: Area2D) -> void:
 
 func _on_boss_attack_range_area_exited(area: Area2D) -> void:
 	print("on boss attack range area exited\n")
-	if area.get_parent() is Player:
+	#if area.get_parent() is Player:
+	if area is PlayerHitbox:
 			playerInAttackRange = false
 			can_attack=false
 			playerInChaseRange=true

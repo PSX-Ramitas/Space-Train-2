@@ -10,8 +10,8 @@ var nextState: State
 var attackFinished: bool
 
 func enter() -> void:
-	var hitbox = parent.find_child("PlayerHitbox")
-	hitbox.can_hurt = true
+	var hb = parent.find_child("PlayerHitbox")
+	hb.dash_used = false
 	var sfx = parent.find_child("Sword3")
 	sfx.play()
 	parent.sword.monitoring = true

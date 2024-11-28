@@ -12,8 +12,8 @@ extends State
 @export var castState: State
 
 func enter() -> void:
-	var hitbox = parent.find_child("PlayerHitbox")
-	hitbox.can_hurt = true
+	var hb = parent.find_child("PlayerHitbox")
+	hb.dash_used = false
 	parent.sword.monitoring = false
 	super() #call the enter function of the class we inherit from
 

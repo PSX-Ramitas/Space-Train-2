@@ -976,7 +976,7 @@ boss_facing_shape = NodePath("BossCollisionShape")
 boss_hitbox_facing_shape = NodePath("BossHitBox/BossHitCollisionShape")
 maxHealth = 200
 health = 200
-movespeed = 250
+movespeed = 150
 attack = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -1029,7 +1029,7 @@ rotation = 1.58236
 shape = SubResource("CapsuleShape2D_ot1wv")
 
 [node name="BossSwordArea" type="Area2D" parent="."]
-position = Vector2(-13, 30)
+position = Vector2(-5, 30)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("19_t8eup")
@@ -1037,14 +1037,15 @@ script = ExtResource("19_t8eup")
 [node name="DamageTimer" type="Timer" parent="BossSwordArea"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossSwordArea"]
-position = Vector2(1, 0)
+position = Vector2(-6, 0)
 rotation = 6.22039
 shape = SubResource("CircleShape2D_3u3x5")
 
 [node name="BossAttackRange" type="Area2D" parent="."]
+position = Vector2(-9, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossAttackRange"]
-position = Vector2(0, 28)
+position = Vector2(1, -1)
 shape = SubResource("SegmentShape2D_34tto")
 
 [node name="Boss_Mechanics" type="Node2D" parent="."]

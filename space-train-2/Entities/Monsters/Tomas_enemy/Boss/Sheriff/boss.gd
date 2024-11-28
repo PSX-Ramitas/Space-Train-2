@@ -41,8 +41,8 @@ func _ready() -> void:
 	connect("boss_facing_direction_changed", _on_boss_facing_direction_changed)
 
 func _sprite_orientation(direction):
-	var left_offset =115
-	var right_offset=-5
+	var left_offset =95
+	var right_offset=-8
 	var dir_to_player = position.direction_to(playerSS.position) * movespeed
 	velocity.x = dir_to_player.x
 	direction.x = abs(velocity.x) / velocity.x # flip direction when turning
@@ -104,11 +104,8 @@ func ChaseState():
 
 func AttackState(delta):
 	if can_attack:
-		var random_attack = attacks[0]
-		attacks.shuffle()
 		_sprite_orientation(direction)
-		#animations.play(random_attack)
-		
+		currentState=State.Chase	
 		windupTimer -= delta
 		if windupTimer <= 0:
 			if attackArea: 
@@ -116,7 +113,6 @@ func AttackState(delta):
 		else:
 			pass 
 			#print("attackArea not assigned")
-		can_attack = false
 		$Attack_Timer.start()
 		
 		
@@ -165,7 +161,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 					#shoot()
 			State.Hurt:
-				currentState = State.Roam
+				currentState = State.Chase
 				if playerInAttackRange:
 					currentState = State.Attack
 					#shoot()
@@ -183,10 +179,8 @@ func _on_attack_timer_timeout() -> void:
 
 #player has entered boss' attack radius, boss attacks
 func _on_boss_chase_radius_area_entered(area: Area2D) -> void:
-	print("on boss chase radius area entered\n")
-	#if area.get_parent() is Player:
-	print ("area in boss chase enterred: ", area.name)
-	if area is PlayerHitbox:
+	if area.get_parent() is Player:
+		print ("area in boss chase enterred: ", area.name)
 		playerInChaseRange= true
 		player = area.get_parent()
 		#_sprite_orientation(direction)
@@ -194,8 +188,8 @@ func _on_boss_chase_radius_area_entered(area: Area2D) -> void:
 
 func _on_boss_chase_radius_area_exited(area: Area2D) -> void:
 	print("on boss chase radius area exited\n")
-	#if area.get_parent() is Player:
-	if area is PlayerHitbox:
+	if area.get_parent() is Player:
+	#if area is PlayerHitbox:
 			playerInChaseRange = false
 			currentState = State.Roam
 
@@ -205,7 +199,7 @@ func _on_boss_attack_range_area_entered(area: Area2D) -> void:
 	if area is PlayerHitbox:
 		playerInAttackRange= true
 		can_attack=true
-		playerInChaseRange = false
+		#playerInChaseRange = false
 		player = area.get_parent()
 		_sprite_orientation(direction)
 		currentState= State.Attack

@@ -27,10 +27,12 @@ func _on_area_exited(area: Area2D) -> void:
 		$DamageTimer.stop()
 
 func _deal_damage() -> void:
-	if can_attack and attacker:
+	print ("attacker.name : ", attacker.name)
+	if can_attack and attacker.name=="PlayerSS":
 		var random_attack = attacks[0]
 		attacks.shuffle()
 		animations.play(random_attack)
+		await get_tree().create_timer(0.5).timeout
 		var player_hitbox = attacker.get_node_or_null("PlayerHitbox")
 		if player_hitbox:
 			player_hitbox.take_damage(attack)

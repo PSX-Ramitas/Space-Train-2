@@ -959,8 +959,8 @@ radius = 8.0
 height = 60.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ot1wv"]
-radius = 490.164
-height = 1176.13
+radius = 237.331
+height = 474.662
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3u3x5"]
 radius = 19.7231

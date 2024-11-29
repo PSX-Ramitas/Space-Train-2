@@ -36,11 +36,14 @@ func get_state():
 	return currentState
 
 func _ready() -> void:
+	print("ready() <- ", fromState)
 	currentState = State.Roam
 	boss_mechanics = $Boss_Mechanics
 	connect("boss_facing_direction_changed", _on_boss_facing_direction_changed)
+	fromState = "_ready"
 
 func _sprite_orientation(direction):
+	print("SpriteOrientation <- ", fromState, "\n")
 	var left_offset =95
 	var right_offset=-8
 	var dir_to_player = position.direction_to(playerSS.position) * movespeed
@@ -60,8 +63,10 @@ func _sprite_orientation(direction):
 		$BossSwordArea.position.x = abs(right_offset)
 	emit_signal("boss_facing_direction_changed", !$AnimatedSprite2D.flip_h)
 #	pass
+	fromState = "SpriteOrientation"
 
 func _process(delta):
+	print("_process <- ", fromState, "\n")
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x =0
@@ -82,30 +87,36 @@ func _process(delta):
 		State.Death:
 			DeathState(delta)
 	move_and_slide()
+	fromState= "_process"
 
 func _physics_process(delta):
-		var knockback = boss_mechanics.process_knockback(delta)
-		if knockback != Vector2.ZERO:
-			move_and_slide()
-		else:
-			pass
+	print("_physics_proces <- ", fromState, "\n")
+	var knockback = boss_mechanics.process_knockback(delta)
+	if knockback != Vector2.ZERO:
+		move_and_slide()
+	else:
+		pass
+	fromState = "_physics_process"
 	
 func RoamState(delta):
-	print("roam state\n")
+	print("RoamState <- ", fromState, "\n")
 	animations.play("walk")
-	_sprite_orientation(direction)
 	velocity += direction * movespeed * delta
+	_sprite_orientation(direction)
+	fromState="RoamState"
 
 func ChaseState():
-	print("chase state\n")
+	print("ChaseState <- ", fromState, "\n")
 	animations.play("chase")
 	_sprite_orientation(direction)
+	fromState= "ChaseState"
 	#shoot()
 
 func AttackState(delta):
+	print("AttackState <- ", fromState, "\n")
 	if can_attack:
 		_sprite_orientation(direction)
-		currentState=State.Chase	
+		animations.play("attack")
 		windupTimer -= delta
 		if windupTimer <= 0:
 			if attackArea: 
@@ -114,42 +125,44 @@ func AttackState(delta):
 			pass 
 			#print("attackArea not assigned")
 		$Attack_Timer.start()
-		
+	fromState= "AttackState"		
 		
 
 func HurtState():
+	print("hurtState <- ", fromState, "\n")
 	can_attack=false
-	print("hurt state\n")
 	#print ("player position var is : ", player_position)
 	var knockback_direction = global_position - playerSS.global_position
-	print("knockback direction is : ", knockback_direction)
+	#print("knockback direction is : ", knockback_direction)
 	boss_mechanics.apply_knockback(knockback_direction, 0.3)
 	if $AnimatedSprite2D.animation != "hurt":
 	#	print("if $AnimatedSprite2D.animation != hurt:")
 		animations.play("hurt")
-	print("done with hurt state")
+	fromState= "hurtState"
 
 func DeathState(delta):
-#	print("we ded state\n")
+	print("in DeathState <- ", fromState, "\n")
 	dead=true
 	animations.play("death")
 	queue_free()
 	if !dead:
 		attackArea.monitoring = false
-
+	fromState="DeathState"
 
 func choose(array):
 	array.shuffle()
 	return array.front()
 
 func _on_direction_timer_timeout() -> void:
+	print("in DirTimerTimeout <- ", fromState, "\n")
 	$DirectionTimer.wait_time= choose([1.5,2.0,2.5])
 	if currentState == State.Roam:
 		direction = choose([Vector2.RIGHT, Vector2.LEFT])
 		velocity.x=0
+	fromState= "DirTimerTimeout"
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-		print ("on animated sprite finished\n")
+		print("in animationFinished <- ", fromState, "\n")
 		match currentState:
 			State.Attack:
 				attackArea.monitoring = false
@@ -170,31 +183,34 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 				queue_free()
 				"we queued freed chat"
 
+		fromState= "animationFinished"
 
 func _on_attack_timer_timeout() -> void:
-	print("on shooting timer time out\n")
+	print("attackTimerTimeout, from ", fromState, "\n")
 	can_attack =true
 	#_sprite_orientation(direction)
-
+	fromState= "attackTimerTimeout"
 
 #player has entered boss' attack radius, boss attacks
 func _on_boss_chase_radius_area_entered(area: Area2D) -> void:
+	print("bossChaseRadiusEntered <- ", fromState, "\n")
 	if area.get_parent() is Player:
 		print ("area in boss chase enterred: ", area.name)
 		playerInChaseRange= true
 		player = area.get_parent()
 		#_sprite_orientation(direction)
 		currentState = State.Chase
-
+	fromState= "bossChaseRadiusEntered"
 func _on_boss_chase_radius_area_exited(area: Area2D) -> void:
-	print("on boss chase radius area exited\n")
+	print("on bossChaseRadiusExited, from ",fromState, "\n")
 	if area.get_parent() is Player:
 	#if area is PlayerHitbox:
 			playerInChaseRange = false
 			currentState = State.Roam
+	fromState= "bossChaseRadiusExited"	
 
 func _on_boss_attack_range_area_entered(area: Area2D) -> void:
-	print("on boss attack range area entered\n")
+	print("in bossAttackRangeEntered <- ",fromState, "\n")
 	#if area.get_parent() is Player:
 	if area is PlayerHitbox:
 		playerInAttackRange= true
@@ -203,10 +219,10 @@ func _on_boss_attack_range_area_entered(area: Area2D) -> void:
 		player = area.get_parent()
 		_sprite_orientation(direction)
 		currentState= State.Attack
-		
+	fromState= "bossAttackRangeEntered"	
 
 func _on_boss_attack_range_area_exited(area: Area2D) -> void:
-	print("on boss attack range area exited\n")
+	print("bossAttackRangeExited <- ", fromState, "\n")
 	#if area.get_parent() is Player:
 	if area is PlayerHitbox:
 			playerInAttackRange = false
@@ -214,8 +230,10 @@ func _on_boss_attack_range_area_exited(area: Area2D) -> void:
 			playerInChaseRange=true
 			_sprite_orientation(direction)
 			currentState = State.Chase
+	fromState = "bossAttackRangeExited"
 
 func _on_boss_facing_direction_changed(facing_right : bool):
+	print("in bossFacingDirChanged <-", fromState, "\n")
 #	print("on boss dir changed")
 	if(facing_right):
 		boss_hitbox_facing_shape.position = boss_hitbox_facing_shape.boss_hitbox_facing_right_position
@@ -223,3 +241,4 @@ func _on_boss_facing_direction_changed(facing_right : bool):
 	else:
 		boss_facing_shape.position = boss_facing_shape.boss_facing_left_position
 		boss_hitbox_facing_shape.position = boss_hitbox_facing_shape.boss_hitbox_facing_left_position
+	fromState = "bossFacingDirChanged"

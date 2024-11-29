@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyfjwkxosvijg"]
+[gd_scene load_steps=13 format=3 uid="uid://cyfjwkxosvijg"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_iq17t"]
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/forest_phantom_camera_test.gd" id="1_uxj71"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="5_5w0it"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_c8616"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_lgw62"]
+[ext_resource type="PackedScene" uid="uid://gidmugiqhooj" path="res://Entities/Monsters/Forest/Boar/BiggerBoar.tscn" id="9_5tyx2"]
 
 [sub_resource type="Resource" id="Resource_md8r6"]
 script = ExtResource("7_lgw62")
@@ -25,6 +26,7 @@ ease = 2
 size = Vector2(1644, 58.3861)
 
 [node name="Forest_Phantom_Camera_Test" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_uxj71")
 
 [node name="Parallax" type="Node" parent="."]
@@ -121,10 +123,11 @@ show_viewfinder_in_play = true
 draw_limits = true
 limit_bottom = 886
 
-[node name="Arena Cam" type="Node2D" parent="."]
-position = Vector2(2632, 330)
+[node name="Arena Cam" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
+position = Vector2(1512, 624.5)
 script = ExtResource("6_c8616")
-follow_mode = 5
+follow_mode = 3
+follow_targets = [NodePath("../PlayerSS"), NodePath("../Boar")]
 zoom = Vector2(0.7, 0.8)
 snap_to_pixel = true
 tween_resource = SubResource("Resource_xd3ox")
@@ -140,6 +143,10 @@ position = Vector2(2600, 330)
 position = Vector2(30, -33)
 scale = Vector2(1, 12.64)
 shape = SubResource("RectangleShape2D_1y6n5")
+
+[node name="Boar" parent="." instance=ExtResource("9_5tyx2")]
+texture_filter = 1
+position = Vector2(2914, 601)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

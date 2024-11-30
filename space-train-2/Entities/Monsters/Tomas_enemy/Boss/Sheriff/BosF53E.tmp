@@ -959,15 +959,15 @@ radius = 8.0
 height = 60.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ot1wv"]
-radius = 205.113
-height = 540.08
+radius = 237.331
+height = 474.662
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3u3x5"]
 radius = 19.7231
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_34tto"]
 a = Vector2(2, 0)
-b = Vector2(-125, 0)
+b = Vector2(-101, 1)
 
 [node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("boss_facing_shape", "boss_hitbox_facing_shape")]
 collision_layer = 4
@@ -1022,7 +1022,6 @@ autostart = true
 wait_time = 0.4
 
 [node name="BossChaseRadius" type="Area2D" parent="."]
-position = Vector2(-41, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossChaseRadius"]
 position = Vector2(-9, 23)

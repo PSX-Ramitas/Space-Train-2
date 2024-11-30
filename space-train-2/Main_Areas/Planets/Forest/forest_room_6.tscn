@@ -13,7 +13,7 @@
 [ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="10_lfws0"]
 [ext_resource type="PackedScene" path="res://Main_Areas/killzone.tscn" id="11_ftve6"]
 [ext_resource type="PackedScene" uid="uid://dd67h2umvkaaf" path="res://Entities/Monsters/Forest/Snail/Snail.tscn" id="12_8cwow"]
-[ext_resource type="PackedScene" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.tscn" id="13_mdtxm"]
+[ext_resource type="PackedScene" uid="uid://d1gbrlw0d6k6b" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.tscn" id="13_mdtxm"]
 [ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="14_iqgno"]
 [ext_resource type="PackedScene" uid="uid://hb82744trdpu" path="res://Entities/Monsters/Forest/Boar/Boar.tscn" id="15_edo8u"]
 [ext_resource type="PackedScene" uid="uid://dfhtb56c4ftla" path="res://Entities/Monsters/Forest/Bee/Bee.tscn" id="16_1c38e"]

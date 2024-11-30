@@ -16,25 +16,25 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	can_attack = true
 	attacker = area.get_parent()
-	if attacker is Player and area is PlayerHitbox:
+	if area is PlayerHitbox:
 		print(attacker.name, " IN BOSS SWORD AREA, dealing damage")
 		_deal_damage()
 		$DamageTimer.start()
 
 func _on_area_exited(area: Area2D) -> void:
-	if area.get_parent() is Player and area is PlayerHitbox:
+	if area is PlayerHitbox:
 		can_attack = false
 		$DamageTimer.stop()
 
 func _deal_damage() -> void:
 	print ("attacker.name : ", attacker.name)
 	if can_attack and attacker.name=="PlayerSS":
-		var random_attack = attacks[0]
 		attacks.shuffle()
-		animations.play(random_attack)
-		await get_tree().create_timer(0.5).timeout
+		var random_attack = attacks[0]
 		var player_hitbox = attacker.get_node_or_null("PlayerHitbox")
 		if player_hitbox:
+			animations.play(random_attack)
+			await get_tree().create_timer(0.5).timeout
 			player_hitbox.take_damage(attack)
 			print("Dealing damage to: ", attacker.name)
 

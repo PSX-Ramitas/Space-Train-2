@@ -82,7 +82,7 @@ func _process(delta):
 func _physics_process(delta):
 	var knockback = boss_mechanics.process_knockback(delta)
 	if knockback != Vector2.ZERO:
-		move_and_slide()
+		position += knockback * delta
 	else:
 		pass
 	
@@ -106,13 +106,13 @@ func AttackState(delta):
 	if can_attack:
 		attacks.shuffle
 		_sprite_orientation(direction)
-		animations.play(attacks[0])
-		windupTimer -= delta
-		if windupTimer <= 0:
-			if BossAttackArea: 
-				BossAttackArea.monitoring = true
-		else:
-			pass 
+	#	animations.play(attacks[0])
+		#windupTimer -= delta
+		#if windupTimer <= 0:
+			#if BossAttackArea: 
+				#BossAttackArea.monitoring = true
+		#else:
+			#pass 
 		can_attack= false
 		$Attack_Timer.start()
 		
@@ -121,10 +121,8 @@ func HurtState():
 	print("HURT")
 	can_attack=false
 	var knockback_direction = global_position - playerSS.global_position
-	#print("knockback direction is : ", knockback_direction)
-	boss_mechanics.apply_knockback(knockback_direction, 0.3)
-	if $AnimatedSprite2D.animation != "hurt":
-	#	print("if $AnimatedSprite2D.animation != hurt:")
+	boss_mechanics.apply_knockback(knockback_direction, 0.1)
+	if animations.animation != "hurt":
 		animations.play("hurt")
 
 func DeathState(delta):

@@ -2,11 +2,11 @@ extends Node
 
 
 var knockback_velocity = Vector2.ZERO
-var knockback_duration = 0.0
+var knockback_duration = 0.1
 var knockback_timer = 0.0
 var is_knocked_back = false
 
-const KNOCKBACK_SPEED = 500.0
+const KNOCKBACK_SPEED = 350.0
 
 func apply_knockback(direction: Vector2, duration: float):
 	knockback_velocity = direction.normalized() * KNOCKBACK_SPEED
@@ -16,7 +16,6 @@ func apply_knockback(direction: Vector2, duration: float):
 
 func process_knockback(delta):
 	if is_knocked_back:
-		print("we knockbacking yall")
 		knockback_timer += delta
 		if knockback_timer < knockback_duration:
 			return knockback_velocity

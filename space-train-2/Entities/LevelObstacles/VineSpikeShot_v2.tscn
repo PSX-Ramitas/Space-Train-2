@@ -1,26 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://c53eeswqgi1is"]
+[gd_scene load_steps=5 format=3 uid="uid://cdkvdxmwdibxj"]
 
-[ext_resource type="Script" path="res://Entities/LevelObstacles/vine_spike_shot.gd" id="1_orytk"]
-[ext_resource type="Texture2D" uid="uid://b3vjo83jyl0ns" path="res://Entities/LevelObstacles/Obstacle_Assets/PlantAlternate_ProjectilesV2.png" id="2_q88a3"]
-[ext_resource type="Script" path="res://Entities/LevelObstacles/vine_shot_area_2d.gd" id="3_8tcsm"]
+[ext_resource type="Script" path="res://Entities/LevelObstacles/vine_spike_shot_v_2.gd" id="1_4to4v"]
+[ext_resource type="Texture2D" uid="uid://b3vjo83jyl0ns" path="res://Entities/LevelObstacles/Obstacle_Assets/PlantAlternate_ProjectilesV2.png" id="2_up2a2"]
+[ext_resource type="Script" path="res://Entities/LevelObstacles/vine_shot_area_2d_v2.gd" id="3_mtwnk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_brms0"]
 radius = 6.0
 height = 22.0
 
-[node name="VineSpikeShot" type="CharacterBody2D"]
-script = ExtResource("1_orytk")
+[node name="VineSpikeShot_v2" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_4to4v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, 0)
+rotation = 1.5708
 scale = Vector2(0.365854, 0.346154)
-texture = ExtResource("2_q88a3")
+texture = ExtResource("2_up2a2")
 hframes = 14
 vframes = 4
 frame = 27
 
 [node name="VineShotArea2D" type="Area2D" parent="."]
-script = ExtResource("3_8tcsm")
+rotation = 1.5708
+script = ExtResource("3_mtwnk")
 
 [node name="HItbox" type="CollisionShape2D" parent="VineShotArea2D"]
 position = Vector2(-8, -3)

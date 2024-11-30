@@ -2,7 +2,7 @@ extends Area2D
 class_name VineFamilyClass
 
 # Vine common properties  
-@export var vines_damage: int = 9  # Default damage dealt by trap
+@export var vines_damage: int = 12  # Default damage dealt by trap
 @export var max_health: int = 60
 @export var health: int
 @onready var health_bar = $HealthBar  # Reference to the health bar

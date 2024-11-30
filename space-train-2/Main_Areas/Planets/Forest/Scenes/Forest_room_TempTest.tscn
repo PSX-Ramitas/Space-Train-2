@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dxu0tpaa1h5o2"]
+[gd_scene load_steps=12 format=4 uid="uid://dxu0tpaa1h5o2"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_eigrg"]
 [ext_resource type="Texture2D" uid="uid://cinnmbjlmokyb" path="res://Main_Areas/Planets/Forest/Assets/BG_1.png" id="2_r0ixv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5qebaxc55f4r" path="res://Entities/LevelObstacles/animate_spikes.tscn" id="5_hc6ok"]
 [ext_resource type="PackedScene" uid="uid://bahjx67ee1f3n" path="res://Entities/LevelObstacles/spikes.tscn" id="6_qeb8s"]
 [ext_resource type="PackedScene" uid="uid://ki05t1ys4gu1" path="res://Entities/LevelObstacles/Triggered_Spikes.tscn" id="7_1bbag"]
+[ext_resource type="PackedScene" uid="uid://d3vymx6v3011v" path="res://Entities/LevelObstacles/vineWhipper.tscn" id="9_6r6uh"]
 [ext_resource type="PackedScene" uid="uid://bwksfc2rao3al" path="res://Entities/LevelObstacles/VineShooterBody.tscn" id="9_xhftn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
@@ -537,3 +538,6 @@ position = Vector2(2679, 476)
 
 [node name="VineShooterBody" parent="." instance=ExtResource("9_xhftn")]
 position = Vector2(2013, 476)
+
+[node name="WhipperHurtBox" parent="." instance=ExtResource("9_6r6uh")]
+position = Vector2(1654, 288)

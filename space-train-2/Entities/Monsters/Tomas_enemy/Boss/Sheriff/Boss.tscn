@@ -1023,6 +1023,7 @@ wait_time = 0.4
 
 [node name="BossChaseRadius" type="Area2D" parent="."]
 position = Vector2(-41, 27)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossChaseRadius"]
 position = Vector2(-9, 23)
@@ -1054,10 +1055,6 @@ script = ExtResource("22_dhcgm")
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]
-[connection signal="area_entered" from="BossChaseRadius" to="." method="_on_boss_chase_radius_area_entered"]
-[connection signal="area_exited" from="BossChaseRadius" to="." method="_on_boss_chase_radius_area_exited"]
 [connection signal="area_entered" from="BossSwordArea" to="BossSwordArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BossSwordArea" to="BossSwordArea" method="_on_area_exited"]
 [connection signal="timeout" from="BossSwordArea/DamageTimer" to="BossSwordArea" method="_deal_damage"]
-[connection signal="area_entered" from="BossAttackRange" to="." method="_on_boss_attack_range_area_entered"]
-[connection signal="area_exited" from="BossAttackRange" to="." method="_on_boss_attack_range_area_exited"]

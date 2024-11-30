@@ -20,7 +20,9 @@ var boss_mechanics
 @onready var BossAttackArea = $BossAttackRange
 @onready var BossChaseRadius = $BossChaseRadius
 @onready var animations = $AnimatedSprite2D
-@onready var PlayerHitBox = $PlayerHitBox
+#@onready var PlayerHitBox = $PlayerHitBox
+@onready var PlayerHitBox = get_parent().get_node("PlayerSS/PlayerHitbox")
+@onready var PlayerSwordArea = get_parent().get_node("PlayerSS/PlayerSwordArea")
 var attacks = ["attack", "attack_3", "attack_2"]
 
 var prevHealth = health
@@ -85,7 +87,13 @@ func _physics_process(delta):
 		position += knockback * delta
 	else:
 		pass
-	
+	playerInChaseRange = BossChaseRadius.overlaps_area(PlayerSwordArea)	
+	playerInAttackRange = BossAttackArea.overlaps_area(PlayerSwordArea)
+	print("playerInCHASErange : ", playerInChaseRange)
+	print("playerInATTACKrange : ", playerInAttackRange)
+	inBossChaseRadius()
+	inBossAttackRange()
+
 func RoamState(delta):
 	print("ROAMSTATE")
 	can_attack=false
@@ -97,31 +105,17 @@ func ChaseState():
 	print("CHASE\n")
 	animations.play("chase")
 	_sprite_orientation(direction)
-	if BossAttackArea: 
-			BossAttackArea.monitoring = true
 	#shoot()
 
 func AttackState(delta):
 	print ("ATTACK")
-	if can_attack:
-		attacks.shuffle
-		_sprite_orientation(direction)
-	#	animations.play(attacks[0])
-		#windupTimer -= delta
-		#if windupTimer <= 0:
-			#if BossAttackArea: 
-				#BossAttackArea.monitoring = true
-		#else:
-			#pass 
-		can_attack= false
-		$Attack_Timer.start()
+	$Attack_Timer.start()
 		
 
 func HurtState():
 	print("HURT")
-	can_attack=false
 	var knockback_direction = global_position - playerSS.global_position
-	boss_mechanics.apply_knockback(knockback_direction, 0.1)
+	boss_mechanics.apply_knockback(knockback_direction, 0.3)
 	if animations.animation != "hurt":
 		animations.play("hurt")
 
@@ -146,21 +140,14 @@ func _on_direction_timer_timeout() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 		match currentState:
 			State.Attack:
-				if playerInAttackRange:
-					_sprite_orientation(direction)
-					currentState = State.Attack
-				else:
-					#BossAttackArea.monitoring = false
-					windupTimer = .3
 					currentState = State.Chase
 
 					#shoot()
 			State.Hurt:
-				can_attack=true
-				if playerInAttackRange:
-					currentState = State.Attack
-				else:
-					currentState = State.Chase
+					if playerInAttackRange:
+						currentState = State.Attack
+					else :
+						currentState = State.Chase
 					#shoot()
 			State.Death:
 				dead= true
@@ -170,41 +157,18 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_attack_timer_timeout() -> void:
 	can_attack =true
 
-#player has entered boss' attack radius, boss attacks
-func _on_boss_chase_radius_area_entered(area: Area2D) -> void:
-	if area.name == "PlayerSwordArea":
-		print ("bossChaseRadius enterred by : ", area.name)
+
+func inBossChaseRadius() -> void:
+	if playerInChaseRange:
 		currentState = State.Chase
-		playerInChaseRange= true
-		player = area.get_parent()
-		BossChaseRadius.monitoring=true
+		playerInChaseRange=false
 
-func _on_boss_chase_radius_area_exited(area: Area2D) -> void:
-	if area.name == "PlayerSwordArea":
-			print ("bossChaseRadius exited by : ", area.name)
-			currentState = State.Roam
-			playerInChaseRange = false
-			BossChaseRadius.monitoring=true
-
-func _on_boss_attack_range_area_entered(area: Area2D) -> void:
-	BossAttackArea.monitoring=true
-	if area is PlayerHitbox:
-		print("boss atackk range entered PLAYERHITBOX")
-		can_attack=true
-		playerInAttackRange= true
-		playerInChaseRange = false
-		_sprite_orientation(direction)
-		currentState= State.Attack
-		player = area.get_parent()
-
-func _on_boss_attack_range_area_exited(area: Area2D) -> void:
-	if area is PlayerHitbox:
-			can_attack=false
-			print("boss attack range exited")
-			playerInChaseRange=true
-			playerInAttackRange = false
-			_sprite_orientation(direction)
-			currentState = State.Chase
+func inBossAttackRange() -> void:
+	if playerInAttackRange:
+			can_attack=true
+			#_sprite_orientation(direction)
+			currentState = State.Attack
+			playerInAttackRange=false
 
 func _on_boss_facing_direction_changed(facing_right : bool):
 	if(facing_right):

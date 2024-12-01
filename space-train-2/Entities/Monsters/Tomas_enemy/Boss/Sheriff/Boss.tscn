@@ -1019,7 +1019,7 @@ boss_hitbox_facing_right_position = Vector2(-40, 30)
 autostart = true
 
 [node name="Attack_Timer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 10.0
 
 [node name="BossChaseRadius" type="Area2D" parent="."]
 position = Vector2(-41, 27)
@@ -1054,7 +1054,7 @@ shape = SubResource("SegmentShape2D_34tto")
 script = ExtResource("22_dhcgm")
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
-[connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Attack_Timer" to="BossSwordArea" method="deal_damage"]
 [connection signal="area_entered" from="BossSwordArea" to="BossSwordArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BossSwordArea" to="BossSwordArea" method="_on_area_exited"]
-[connection signal="timeout" from="BossSwordArea/DamageTimer" to="BossSwordArea" method="_deal_damage"]
+[connection signal="timeout" from="BossSwordArea/DamageTimer" to="BossSwordArea" method="deal_damage"]

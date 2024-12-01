@@ -61,6 +61,7 @@ tile_set = ExtResource("3_vjy71")
 [node name="PlayerSS" parent="." instance=ExtResource("4_dgi62")]
 position = Vector2(948, 238)
 collision_layer = 2
+maxHealth = 500
 
 [node name="power" parent="." instance=ExtResource("11_e8284")]
 position = Vector2(630, 254)

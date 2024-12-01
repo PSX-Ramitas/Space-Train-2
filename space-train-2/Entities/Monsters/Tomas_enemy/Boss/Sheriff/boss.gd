@@ -12,17 +12,18 @@ const gravity = 900 #custom gravity
 var windupTimer = .2
 var direction = Vector2.RIGHT
 var player 
-var playerInChaseRange = false
-var playerInAttackRange = false
+var playerInChaseRange 
+var playerInAttackRange
 var boss_mechanics 
 @onready var Boss_Sword_Area = get_node("BossSwordArea")
 @onready var playerSS = get_node("../PlayerSS")
 @onready var BossAttackArea = $BossAttackRange
 @onready var BossChaseRadius = $BossChaseRadius
 @onready var animations = $AnimatedSprite2D
-#@onready var PlayerHitBox = $PlayerHitBox
 @onready var PlayerHitBox = get_parent().get_node("PlayerSS/PlayerHitbox")
 @onready var PlayerSwordArea = get_parent().get_node("PlayerSS/PlayerSwordArea")
+@onready var PlayerDetection = get_parent().get_node("PlayerSS/FuckingDetectThisAreaGodotYouBitch")
+@onready var player_node =null
 var attacks = ["attack", "attack_3", "attack_2"]
 
 var prevHealth = health
@@ -41,6 +42,7 @@ func get_state():
 func _ready() -> void:
 	currentState = State.Roam
 	boss_mechanics = $Boss_Mechanics
+	player_node = get_parent().get_node("PlayerSS")
 	connect("boss_facing_direction_changed", _on_boss_facing_direction_changed)
 
 func _sprite_orientation(direction):
@@ -87,33 +89,39 @@ func _physics_process(delta):
 		position += knockback * delta
 	else:
 		pass
-	playerInChaseRange = BossChaseRadius.overlaps_area(PlayerSwordArea)	
-	playerInAttackRange = BossAttackArea.overlaps_area(PlayerSwordArea)
-	print("playerInCHASErange : ", playerInChaseRange)
-	print("playerInATTACKrange : ", playerInAttackRange)
+#	if BossChaseRadius != null:
+#		print("BossChaseRadius name: ", BossChaseRadius.get_parent().name, "\n")
+#	if Boss_Sword_Area != null:
+#		print("BossAttackArea name: ", BossAttackArea.get_parent().name, "\n")
+#	if PlayerHitBox != null:
+#		print("PlayerHitBox name: ", PlayerHitBox.get_parent().name, "\n")
+	playerInChaseRange = BossChaseRadius.overlaps_area(PlayerDetection)	
+	playerInAttackRange = BossAttackArea.overlaps_area(PlayerDetection)
+	#print("playerInCHASErange : ", playerInChaseRange)
+	#print("playerInATTACKrange : ", playerInAttackRange)
 	inBossChaseRadius()
 	inBossAttackRange()
 
 func RoamState(delta):
-	print("ROAMSTATE")
+	#print("ROAMSTATE")
 	can_attack=false
 	animations.play("walk")
 	velocity += direction * movespeed * delta
 	_sprite_orientation(direction)
 
 func ChaseState():
-	print("CHASE\n")
+	#print("CHASE\n")
 	animations.play("chase")
 	_sprite_orientation(direction)
 	#shoot()
 
 func AttackState(delta):
-	print ("ATTACK")
+	#print ("ATTACK")
 	$Attack_Timer.start()
 		
 
 func HurtState():
-	print("HURT")
+	#print("HURT")
 	var knockback_direction = global_position - playerSS.global_position
 	boss_mechanics.apply_knockback(knockback_direction, 0.3)
 	if animations.animation != "hurt":
@@ -140,8 +148,10 @@ func _on_direction_timer_timeout() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 		match currentState:
 			State.Attack:
-					currentState = State.Chase
-
+					if can_attack:
+						currentState = State.Chase
+					else: 
+						currentState = State.Roam
 					#shoot()
 			State.Hurt:
 					if playerInAttackRange:
@@ -161,14 +171,14 @@ func _on_attack_timer_timeout() -> void:
 func inBossChaseRadius() -> void:
 	if playerInChaseRange:
 		currentState = State.Chase
-		playerInChaseRange=false
+		#playerInChaseRange=false
 
 func inBossAttackRange() -> void:
 	if playerInAttackRange:
 			can_attack=true
 			#_sprite_orientation(direction)
 			currentState = State.Attack
-			playerInAttackRange=false
+			#playerInAttackRange=false
 
 func _on_boss_facing_direction_changed(facing_right : bool):
 	if(facing_right):

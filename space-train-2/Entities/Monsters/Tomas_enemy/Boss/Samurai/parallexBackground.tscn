@@ -1,0 +1,148 @@
+[gd_scene load_steps=10 format=4 uid="uid://uicdvrg7yhe8"]
+
+[ext_resource type="Texture2D" uid="uid://ckonxvs5tn4i7" path="res://Entities/Monsters/Tomas_enemy/space_background_pack/Blue Version/layered/blue-with-stars.png" id="1_mfwvs"]
+[ext_resource type="Texture2D" uid="uid://d0wvtttyupfpq" path="res://Entities/Monsters/Tomas_enemy/space_background_pack/Blue Version/layered/asteroid-1.png" id="2_tirda"]
+[ext_resource type="Texture2D" uid="uid://clex0do4rymwf" path="res://Entities/Monsters/Tomas_enemy/space_background_pack/Blue Version/layered/asteroid-2.png" id="3_shw64"]
+[ext_resource type="Texture2D" uid="uid://bgvllwnrvkqi4" path="res://Entities/Monsters/Tomas_enemy/space_background_pack/Blue Version/layered/prop-planet-big.png" id="4_da4d1"]
+[ext_resource type="Texture2D" uid="uid://c0o1ghpg4lkhd" path="res://Entities/Monsters/Tomas_enemy/space_background_pack/Blue Version/layered/prop-planet-small.png" id="5_ndke0"]
+[ext_resource type="Texture2D" uid="uid://x6x73xjyh6lf" path="res://Entities/Monsters/Tomas_enemy/Sidescroller Shooter - Central City/Assets/Tiles.png" id="6_iyrsl"]
+[ext_resource type="PackedScene" uid="uid://citu8occwl0xr" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/Boss.tscn" id="7_v3i3s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r7jai"]
+texture = ExtResource("6_iyrsl")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xtw7x"]
+sources/1 = SubResource("TileSetAtlasSource_r7jai")
+
+[node name="Background" type="Node2D"]
+z_index = -1
+position = Vector2(362, 411)
+scale = Vector2(6, 6)
+
+[node name="ParallaxBackground" type="Node2D" parent="."]
+position = Vector2(-0.333333, -14)
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(272, 0)
+repeat_times = 6
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D"]
+position = Vector2(2.39996, -0.399986)
+texture = ExtResource("1_mfwvs")
+
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-115, -54)
+repeat_size = Vector2(176, 0)
+repeat_times = 18
+follow_viewport = false
+
+[node name="asteroid-1" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
+position = Vector2(0, -4.5)
+rotation = -0.00799359
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tirda")
+
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-84, 53)
+repeat_size = Vector2(300, 0)
+repeat_times = 6
+follow_viewport = false
+
+[node name="asteroid-2" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_shw64")
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.5, 0)
+scroll_offset = Vector2(77, 15)
+repeat_size = Vector2(300, 0)
+repeat_times = 7
+follow_viewport = false
+
+[node name="prop-planet-big" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_da4d1")
+centered = false
+
+[node name="Parallax2D5" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.4, 0)
+scroll_offset = Vector2(-34, 61)
+repeat_size = Vector2(200, 0)
+repeat_times = 9
+follow_viewport = false
+
+[node name="prop-planet-small" type="Sprite2D" parent="ParallaxBackground/Parallax2D5"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_ndke0")
+centered = false
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+light_mask = 7
+visibility_layer = 7
+position = Vector2(227.333, -9.66667)
+tile_map_data = PackedByteArray("AAD5/wQAAQADAAAAAAD6/wQAAQADAAAAAAD8/wQAAQADAAAAAAD9/wQAAQADAAAAAAD7/wQAAQACAAAAAAD+/wQAAQACAAAAAAD//wQAAQADAAAAAAAAAAQAAQACAAAAAAABAAQAAQACAAAAAAADAAQAAQACAAAAAAAEAAQAAQADAAAAAAAJAAQAAQACAAAAAAAKAAQAAQADAAAAAAAHAAQAAQACAAAAAAAIAAQAAQADAAAAAAAGAAUAAQACAAAAAAAHAAUAAQADAAAAAAAEAAUAAQACAAAAAAAFAAUAAQADAAAAAAACAAQAAQADAAAAAAAFAAQAAQACAAAAAAAGAAQAAQADAAAAAAALAAQAAQACAAAAAAAMAAQAAQADAAAAAAD4/wQAAQADAAAAAAD3/wQAAQACAAAAAAD1/wQAAQADAAAAAAD2/wQAAQADAAAAAAD0/wQAAQACAAAAAADy/wQAAQACAAAAAADz/wQAAQADAAAAAADw/wQAAQADAAAAAADx/wQAAQADAAAAAADv/wQAAQACAAAAAADt/wQAAQADAAAAAADu/wQAAQADAAAAAADs/wQAAQACAAAAAADp/wQAAQACAAAAAADq/wQAAQACAAAAAADr/wQAAQADAAAAAAA=")
+tile_set = SubResource("TileSet_xtw7x")
+use_kinematic_bodies = true
+
+[node name="Boss" parent="." instance=ExtResource("7_v3i3s")]
+position = Vector2(77, -26)
+scale = Vector2(0.5, 0.5)

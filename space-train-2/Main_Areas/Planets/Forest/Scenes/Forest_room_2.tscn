@@ -465,7 +465,6 @@ script = ExtResource("1_apuhv")
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scale = Vector2(2, 2)
 scroll_offset = Vector2(-1756, -354)
-autoscroll = Vector2(5, 0)
 repeat_times = 2
 
 [node name="Far" type="Sprite2D" parent="Parallax2D"]
@@ -478,7 +477,6 @@ texture = ExtResource("1_hukju")
 scale = Vector2(2, 2)
 scroll_scale = Vector2(0.7, 0.7)
 scroll_offset = Vector2(-1756, -354)
-autoscroll = Vector2(5, 0)
 repeat_times = 2
 
 [node name="Furthest" type="Sprite2D" parent="Parallax2D2"]
@@ -491,7 +489,6 @@ texture = ExtResource("1_hukju")
 scale = Vector2(2, 2)
 scroll_scale = Vector2(0.43, 0.43)
 scroll_offset = Vector2(-1756, -354)
-autoscroll = Vector2(5, 0)
 repeat_times = 2
 
 [node name="Near" type="Sprite2D" parent="Parallax2D3"]

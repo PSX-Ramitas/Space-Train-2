@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=3 uid="uid://citu8occwl0xr"]
+[gd_scene load_steps=152 format=3 uid="uid://citu8occwl0xr"]
 
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="1_k3w4u"]
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/boss.gd" id="1_way5i"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/boss_hit_collision_shape.gd" id="20_2fa7x"]
 [ext_resource type="Texture2D" uid="uid://bc7pn2mtbfjrq" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/FULL_Samurai 2D Pixel Art v1.2/Sprites/WALL CONTACT.png" id="21_ad0sm"]
 [ext_resource type="Script" path="res://Entities/Monsters/Tomas_enemy/Boss/Samurai/boss_mechanics.gd" id="22_dhcgm"]
+[ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="23_xcaqa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rebri"]
 atlas = ExtResource("9_g2egp")
@@ -532,7 +533,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vrnhj")
 }],
-"loop": true,
+"loop": false,
 "name": &"air_attack",
 "speed": 3.0
 }, {
@@ -558,7 +559,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o01qh")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 15.0
 }, {
@@ -584,7 +585,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_in7vf")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_2",
 "speed": 9.0
 }, {
@@ -607,7 +608,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_21sa5")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_3",
 "speed": 10.0
 }, {
@@ -984,9 +985,7 @@ texture_filter = 1
 position = Vector2(-49, -6)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_socaq")
-animation = &"healing"
-frame = 14
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="BossCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(-40, 30)
@@ -1019,7 +1018,7 @@ boss_hitbox_facing_right_position = Vector2(-40, 30)
 autostart = true
 
 [node name="Attack_Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 1.1
 
 [node name="BossChaseRadius" type="Area2D" parent="."]
 position = Vector2(-41, 27)
@@ -1052,6 +1051,13 @@ shape = SubResource("SegmentShape2D_34tto")
 
 [node name="Boss_Mechanics" type="Node2D" parent="."]
 script = ExtResource("22_dhcgm")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("23_xcaqa")
+volume_db = -17.0
+bus = &"SFX"
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="timeout" from="Attack_Timer" to="BossSwordArea" method="deal_damage"]

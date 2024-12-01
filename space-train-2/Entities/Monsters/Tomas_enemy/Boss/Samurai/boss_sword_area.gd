@@ -13,10 +13,8 @@ var attacks = ["attack", "attack_3", "attack_2"]
 @onready var Box = get_node("../../PlayerSS/FuckingDetectThisAreaGodotYouBitch")
 @onready var timer =get_node("../Attack_Timer")
 
-var attack_cooldown = .5
+var attack_cooldown = 1.1
 var attack_timer = 0.0
-
-
 
 func _ready() -> void:
 	var parent_node = get_parent()  # Dynamically get the parent node
@@ -24,6 +22,7 @@ func _ready() -> void:
 		attack = parent_node.attack
 		print(str(parent_node).split(":")[0], " Attack: ", attack)
 	timer.stop()
+	can_attack = false
 
 func _physics_process(delta: float) -> void:
 	playerInAttackRange = BossSwordArea.overlaps_area(Box)	
@@ -31,16 +30,14 @@ func _physics_process(delta: float) -> void:
 	inBossAttackRange(delta)
 
 func inBossAttackRange(delta) -> void:
-	if playerInAttackRange and attack_timer<=0:
-			print("if statement before can_attack taken")
+	if playerInAttackRange and attack_cooldown <= 0:
+			print("if statement while can_attack taken")
 			can_attack=true
-			timer.start()
 			deal_damage()
-	else:
+			timer.start()
+	elif attack_cooldown > 0:
 		can_attack = false
-		
-	if attack_timer >0:
-		attack_timer -= delta
+		attack_cooldown -= delta
 
 func deal_damage():
 	if can_attack:
@@ -52,8 +49,8 @@ func deal_damage():
 		animations.play(random_attack)
 		print("Dealing damage to: ", PlayerHitBox, "\n" )
 		PlayerHitBox.take_damage(attack)
-
-		attack_timer= attack_cooldown
+		can_attack = false
+		attack_cooldown = 1.1
 
 
 #func _on_area_entered(area: Area2D) -> void:

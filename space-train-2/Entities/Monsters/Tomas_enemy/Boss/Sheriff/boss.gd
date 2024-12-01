@@ -24,6 +24,8 @@ var boss_mechanics
 @onready var PlayerSwordArea = get_parent().get_node("PlayerSS/PlayerSwordArea")
 @onready var PlayerDetection = get_parent().get_node("PlayerSS/FuckingDetectThisAreaGodotYouBitch")
 @onready var player_node =null
+@onready var boss_sword_area: Area2D = $BossSwordArea
+
 var attacks = ["attack", "attack_3", "attack_2"]
 
 var prevHealth = health
@@ -39,7 +41,9 @@ func get_health():
 func get_state():
 	return currentState
 
+
 func _ready() -> void:
+	can_attack = false
 	currentState = State.Roam
 	boss_mechanics = $Boss_Mechanics
 	player_node = get_parent().get_node("PlayerSS")
@@ -165,7 +169,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_attack_timer_timeout() -> void:
-	can_attack =true
+	can_attack = false
 
 
 func inBossChaseRadius() -> void:
@@ -175,7 +179,6 @@ func inBossChaseRadius() -> void:
 
 func inBossAttackRange() -> void:
 	if playerInAttackRange:
-			can_attack=true
 			#_sprite_orientation(direction)
 			currentState = State.Attack
 			#playerInAttackRange=false

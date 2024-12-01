@@ -404,6 +404,16 @@ stream = ExtResource("4_ahu4x")
 volume_db = -20.0
 bus = &"SFX"
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-8.52651e-14, 39)
+scale = Vector2(8.08, 0.360001)
+polygon = PackedVector2Array(-4.82673, -11.1111, -9.03465, 16.6666, 9.15842, 16.6666, 4.82673, -11.1111)
+one_way_collision = true
+
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_exited"]
 [connection signal="area_entered" from="WarpArea" to="." method="_on_warp_area_entered"]

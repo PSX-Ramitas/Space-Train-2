@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cg7kdp07gswep"]
+[gd_scene load_steps=22 format=3 uid="uid://cg7kdp07gswep"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_cylcf"]
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/forest_room_6.gd" id="1_iops7"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://hb82744trdpu" path="res://Entities/Monsters/Forest/Boar/Boar.tscn" id="15_edo8u"]
 [ext_resource type="PackedScene" uid="uid://dfhtb56c4ftla" path="res://Entities/Monsters/Forest/Bee/Bee.tscn" id="16_1c38e"]
 [ext_resource type="AudioStream" uid="uid://bb4wogvq3ofkb" path="res://Sounds/SFX/crowd_small_chil_ec049202_9klCwI6.mp3" id="17_hn3v7"]
+[ext_resource type="Texture2D" uid="uid://bffo5c21n1ikp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Bright Blue/7 sky1.png" id="19_4gxb2"]
+[ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="20_u4j7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snrbd"]
 
@@ -32,7 +34,7 @@ z_index = -3
 scale = Vector2(3, 3)
 scroll_scale = Vector2(0.7, 0.7)
 scroll_offset = Vector2(-1252, -887)
-autoscroll = Vector2(5, 0)
+repeat_size = Vector2(1929, 0)
 repeat_times = 15
 
 [node name="Furthest" type="Sprite2D" parent="Parallax/Parallax2D2"]
@@ -45,7 +47,7 @@ texture = ExtResource("1_cylcf")
 z_index = -2
 scale = Vector2(3, 3)
 scroll_offset = Vector2(-1252, -887)
-autoscroll = Vector2(5, 0)
+repeat_size = Vector2(1817, 0)
 repeat_times = 15
 
 [node name="Far" type="Sprite2D" parent="Parallax/Parallax2D"]
@@ -59,7 +61,7 @@ z_index = -1
 scale = Vector2(3, 3)
 scroll_scale = Vector2(0.43, 0.43)
 scroll_offset = Vector2(-1252, -887)
-autoscroll = Vector2(5, 0)
+repeat_size = Vector2(1817, 0)
 repeat_times = 15
 
 [node name="Near" type="Sprite2D" parent="Parallax/Parallax2D3"]
@@ -244,6 +246,31 @@ position = Vector2(12452, 318)
 stream = ExtResource("17_hn3v7")
 volume_db = -10.0
 bus = &"SFX"
+
+[node name="ParallaxSky" type="Parallax2D" parent="."]
+z_index = -12
+scale = Vector2(4.55733, 2.29768)
+scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(3040, -88)
+repeat_size = Vector2(576, 384)
+repeat_times = 5
+
+[node name="Sky" type="Sprite2D" parent="ParallaxSky"]
+position = Vector2(1785.48, 201.943)
+texture = ExtResource("19_4gxb2")
+
+[node name="OutsideFurthest" type="Parallax2D" parent="."]
+z_index = -9
+scale = Vector2(2.3, 2.3)
+scroll_scale = Vector2(0.01, 1)
+repeat_size = Vector2(864, 0)
+repeat_times = 25
+
+[node name="Furthest" type="Sprite2D" parent="OutsideFurthest"]
+texture_filter = 1
+position = Vector2(5943.22, 129.13)
+scale = Vector2(2, 2)
+texture = ExtResource("20_u4j7x")
 
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

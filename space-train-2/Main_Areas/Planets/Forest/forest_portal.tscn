@@ -92,7 +92,7 @@ volume_db = -20.0
 bus = &"Music"
 
 [node name="Portal" parent="." instance=ExtResource("7_kpml8")]
-position = Vector2(982, 509)
+position = Vector2(984, 513)
 scale = Vector2(3.1, 3.1)
 
 [node name="Mission" parent="." instance=ExtResource("9_eu6el")]

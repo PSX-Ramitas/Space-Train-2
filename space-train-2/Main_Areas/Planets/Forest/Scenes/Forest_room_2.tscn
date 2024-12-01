@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c3lbtjb0qk3bj"]
+[gd_scene load_steps=16 format=4 uid="uid://c3lbtjb0qk3bj"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scenes/forest_room_2.gd" id="1_apuhv"]
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_hukju"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="9_jhj0d"]
 [ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="10_ey5gd"]
 [ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="10_nq0lh"]
+[ext_resource type="Texture2D" uid="uid://bffo5c21n1ikp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Bright Blue/7 sky1.png" id="12_pqnxa"]
+[ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="13_s63hj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("3_u2ucr")
@@ -551,6 +553,31 @@ label_settings = ExtResource("10_nq0lh")
 stream = ExtResource("10_ey5gd")
 volume_db = -20.0
 bus = &"Music"
+
+[node name="ParallaxSky" type="Parallax2D" parent="."]
+z_index = -12
+scale = Vector2(4.55733, 2.29768)
+scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(3040, -88)
+repeat_size = Vector2(576, 384)
+repeat_times = 5
+
+[node name="Sky" type="Sprite2D" parent="ParallaxSky"]
+position = Vector2(1785.48, 201.943)
+texture = ExtResource("12_pqnxa")
+
+[node name="OutsideFurthest" type="Parallax2D" parent="."]
+z_index = -9
+scale = Vector2(2.3, 2.3)
+scroll_scale = Vector2(0.01, 1)
+repeat_size = Vector2(864, 0)
+repeat_times = 25
+
+[node name="Furthest" type="Sprite2D" parent="OutsideFurthest"]
+texture_filter = 1
+position = Vector2(5943.22, 118.696)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_s63hj")
 
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

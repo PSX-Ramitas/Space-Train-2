@@ -724,8 +724,8 @@ script = ExtResource("6_v7qcx")
 position = Vector2(9702, 315)
 scale = Vector2(1.29761, -1.16991)
 script = ExtResource("8_ui3xw")
-priority = 1
 follow_mode = 1
+zoom = Vector2(0.93, 0.93)
 tween_resource = SubResource("Resource_4jsp4")
 draw_limits = true
 
@@ -893,7 +893,6 @@ scale = Vector2(3.5, 3.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OminousMessage"]
 position = Vector2(1.28564, 14.2857)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vccwl")
 debug_color = Color(0.143947, 0.334604, 0.181363, 0.42)
 

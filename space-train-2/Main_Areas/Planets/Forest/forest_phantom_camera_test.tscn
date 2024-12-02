@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_iq17t"]
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/forest_phantom_camera_test.gd" id="1_uxj71"]
 [ext_resource type="Texture2D" uid="uid://cinnmbjlmokyb" path="res://Main_Areas/Planets/Forest/Assets/BG_1.png" id="2_mwqop"]
-[ext_resource type="TileSet" uid="uid://b6ggsqgg4o80e" path="res://Main_Areas/Planets/Forest/ForestTileset.tres" id="3_r5r0w"]
+[ext_resource type="TileSet" uid="uid://chvpi5yuykc0i" path="res://Main_Areas/Planets/Forest/ForestTileset.tres" id="3_r5r0w"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_1fq1w"]
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="5_5w0it"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_c8616"]
@@ -124,7 +124,7 @@ draw_limits = true
 limit_bottom = 886
 
 [node name="Arena Cam" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
-position = Vector2(1512, 624.5)
+position = Vector2(110, 648)
 script = ExtResource("6_c8616")
 follow_mode = 3
 follow_targets = [NodePath("../PlayerSS"), NodePath("../Boar")]

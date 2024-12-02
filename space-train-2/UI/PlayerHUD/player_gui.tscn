@@ -17,12 +17,7 @@ shadow_color = Color(0, 0, 0, 0.596078)
 [node name="PlayerGUI" type="Control"]
 texture_filter = 1
 layout_mode = 3
-anchor_right = 1.3
-anchor_bottom = 1.3
-offset_right = -345.6
-offset_bottom = -194.4
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 scale = Vector2(2, 2)
 script = ExtResource("1_js450")
 metadata/_edit_use_anchors_ = true

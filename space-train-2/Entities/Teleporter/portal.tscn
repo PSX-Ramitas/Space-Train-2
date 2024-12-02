@@ -388,7 +388,7 @@ position = Vector2(0, -9)
 priority = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarpArea"]
-position = Vector2(0, 26.75)
+position = Vector2(0, 29)
 shape = SubResource("RectangleShape2D_anqbf")
 debug_color = Color(0.983869, 0.451481, 0.78032, 0.419608)
 

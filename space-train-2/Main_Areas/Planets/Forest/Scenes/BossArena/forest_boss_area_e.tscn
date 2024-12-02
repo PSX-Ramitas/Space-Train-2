@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/forest_boss_area_e.gd" id="1_otyor"]
 [ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="2_dn12q"]
-[ext_resource type="TileSet" uid="uid://b6ggsqgg4o80e" path="res://Main_Areas/Planets/Forest/ForestTileset.tres" id="3_pcspx"]
+[ext_resource type="TileSet" uid="uid://chvpi5yuykc0i" path="res://Main_Areas/Planets/Forest/ForestTileset.tres" id="3_pcspx"]
 [ext_resource type="Texture2D" uid="uid://bleru6ic48ckp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Caged Swamps/Greenish Blue/3 far mid1.png" id="3_w07o1"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_nuwtj"]
 [ext_resource type="Texture2D" uid="uid://eqphsgbrlls0" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Caged Swamps/Greenish Blue/1 close1.png" id="4_wv1v4"]

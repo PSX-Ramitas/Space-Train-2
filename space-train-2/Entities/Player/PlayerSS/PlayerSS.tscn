@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/DashState.gd" id="5_lobj3"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/RunState.gd" id="5_sn4mp"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/FallState.gd" id="6_d8ypo"]
-[ext_resource type="PackedScene" path="res://UI/inventory_gui.tscn" id="6_satfl"]
+[ext_resource type="PackedScene" uid="uid://cd0un7grrfdfn" path="res://UI/inventory_gui.tscn" id="6_satfl"]
 [ext_resource type="PackedScene" uid="uid://dlvdht3xemejy" path="res://UI/PlayerHUD/dash_icon.tscn" id="7_5i0bf"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/JumpState.gd" id="7_bufn4"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSS/States/Attack1State.gd" id="8_kiy5g"]
@@ -549,13 +549,6 @@ process_mode = 3
 process_priority = 1
 
 [node name="HealthBar" parent="HUD" instance=ExtResource("3_fusxc")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
 scale = Vector2(2.7, 2.7)
 pivot_offset = Vector2(5, -3)
 

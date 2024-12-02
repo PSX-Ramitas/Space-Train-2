@@ -37,8 +37,7 @@ func loadLevel():
 			#if visited.get(currLevel) != true:
 				#found = true
 		if levelCount == 0:
-			worldClear = true
-			get_tree().change_scene_to_file("res://Main_Areas/Planets/Forest/forest_portal.tscn")
+			get_tree().change_scene_to_file("res://Main_Areas/Planets/Forest/Scenes/BossArena/forest_boss_area_e.tscn")
 func _ready() -> void:
 	pass # Replace with function body.
 

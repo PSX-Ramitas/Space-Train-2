@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 			PlayerData.is_hurt = false
 		if flashing:
 			flash_timer -= delta
-			print("iframe time remaining: ", flash_timer)
+			#print("iframe time remaining: ", flash_timer)
 			var flash_phase = int((flash_duration - flash_timer) / flash_interval) % 2
 			animations.material.set_shader_parameter("flash_intensity", flash_phase)
 		# Stop flashing after the duration

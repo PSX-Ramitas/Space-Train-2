@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckqqg2b87rx3g"
+path="res://.godot/imported/37 Middle Boss Battle.mp3-7a49bf0a85d17dfef8427c7f5890fd84.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/37 Middle Boss Battle.mp3"
+dest_files=["res://.godot/imported/37 Middle Boss Battle.mp3-7a49bf0a85d17dfef8427c7f5890fd84.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

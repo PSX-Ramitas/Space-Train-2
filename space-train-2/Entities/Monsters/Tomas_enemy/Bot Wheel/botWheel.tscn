@@ -508,6 +508,7 @@ offset_top = 1.6
 offset_right = 31.6
 offset_bottom = 41.6
 scale = Vector2(0.416386, 0.521012)
+metadata/_edit_use_anchors_ = true
 
 [node name="CloseAttackArea" parent="." instance=ExtResource("3_48m00")]
 position = Vector2(-18, -10)

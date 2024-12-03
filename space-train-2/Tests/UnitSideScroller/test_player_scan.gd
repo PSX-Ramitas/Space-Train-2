@@ -42,4 +42,7 @@ func test_scan():
 	_sender.action_down("left").hold_for(0.5)
 	_sender.action_down("cast_spell").hold_for(0.5)
 	await(_sender.idle)
+	await wait_seconds(1)
+	assert_null(_droid2)
+	assert_null(_droid1)
 	pause_before_teardown()

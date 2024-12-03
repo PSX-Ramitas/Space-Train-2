@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ShieldItem" load_steps=3 format=3 uid="uid://djspf4gyygmea"]
+
+[ext_resource type="Script" path="res://inventory/items/shield_item.gd" id="1_po2tg"]
+[ext_resource type="Texture2D" uid="uid://cwsw7r7ap8ecl" path="res://sprites/ScrollRock.png" id="2_qx6yi"]
+
+[resource]
+script = ExtResource("1_po2tg")
+damage_decrease = 1
+name = "shield"
+texture = ExtResource("2_qx6yi")

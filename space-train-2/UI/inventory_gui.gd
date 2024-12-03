@@ -22,6 +22,8 @@ func _unhandled_input(event) -> void:
 		var item = inventory.items[0]  # Get the item from the first slot
 		if item and item is HealthItem:  # Check if it's a HealthItem
 			area.heal_health(amountHeal)
+		if item and item is ShieldItem:
+			area.activate_shield()
 		inventory.use_item_at_index(0)
 		clear_inventory()
 		

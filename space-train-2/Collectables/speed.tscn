@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://rsncuri81354"]
+
+[ext_resource type="PackedScene" uid="uid://bdphgx3agu28v" path="res://Collectables/collectable.tscn" id="1_fnln4"]
+[ext_resource type="Texture2D" uid="uid://dqoydepi0aml8" path="res://sprites/ScrollThunder.png" id="2_plpnb"]
+[ext_resource type="Resource" path="res://inventory/items/speed.tres" id="2_ywc57"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvufv"]
+resource_local_to_scene = true
+size = Vector2(22, 23)
+
+[node name="speed" instance=ExtResource("1_fnln4")]
+itemRes = ExtResource("2_ywc57")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0.5)
+scale = Vector2(1.19048, 1.07059)
+shape = SubResource("RectangleShape2D_rvufv")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(1.95212, 1.71918)
+texture = ExtResource("2_plpnb")

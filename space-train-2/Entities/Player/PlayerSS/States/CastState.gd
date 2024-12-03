@@ -14,9 +14,9 @@ var bulletCounter: int = 0
 var cast
 
 func enter() -> void:
-	var hitbox = parent.find_child("PlayerHitbox")
+	var hb = parent.find_child("PlayerHitbox")
+	hb.dash_used = false
 	cast = parent.find_child("Cast")
-	hitbox.can_hurt = true
 	parent.sword.monitoring = false
 	#used to move the player forwards a bit
 	super() #call the enter function of the class we inherit from

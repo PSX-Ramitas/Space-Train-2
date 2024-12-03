@@ -14,21 +14,23 @@ var player
 
 #Projectile variables
 @onready var projectile
+@onready var projectile_v2
 var windupTimer = .6667
 var can_shoot = true
 var projectile_dir: Vector2
-var gun_offset = Vector2(-10,14)
+var gun_offset = Vector2(-5,14)
+var upward_gun_offset = Vector2(0,-20)
 #General Animation Functions---------------------------------------------------------------------
 func active_ShooterVines():
 	
 	curr_state = vineShooter_state.ACTIVE
 	
-	$AnimatedVineShooter.speed_scale = 1.2
+	$AnimatedVineShooter.speed_scale = 1.8
 	$AnimatedVineShooter.play("Attack")
 	
 func active_upattack_ShooterVines():
 	curr_state = vineShooter_state.ACTIVE_AIR
-	$AnimatedVineShooter.speed_scale = 1.2
+	$AnimatedVineShooter.speed_scale = 1.8
 	$AnimatedVineShooter.play("Attack_Air")
 
 func idle_ShooterVines():
@@ -65,9 +67,9 @@ func shoot():
 		else:
 			instance.dir = Vector2.LEFT  # Normal direction to the right
 		can_shoot=false
+		#negated with the flash invincibility frames
+		#$ShootingTimer.wait_time = 0.5  # Fire every 0.2 seconds (adjust as needed)
 		$ShootingTimer.start()
-
-
 
 
 
@@ -75,7 +77,8 @@ func shoot():
 #Signal Functions---------------------------------------------------------------------------------
 func _ready() -> void:
 	projectile = load("res://Entities/LevelObstacles/VineSpikeShot.tscn")
-	#shoot()
+	projectile_v2 = load("res://Entities/LevelObstacles/VineSpikeShot_v2.tscn")
+	
 	vine_shooter = $"..".global_position
 	# Find and connect to the VineHurtbox
 	hurtbox = $".."
@@ -141,7 +144,7 @@ func _on_animated_vine_shooter_animation_finished(anim_name: StringName) -> void
 			idle_ShooterVines()  # Ensure the idle function is called here
 	elif anim_name == "Attack_Air":
 		if is_player_inside:
-			curr_state = vineShooter_state.ACTIVE_AIR
+			active_upattack_ShooterVines()
 		else:
 			idle_ShooterVines()
 
@@ -163,3 +166,29 @@ func _on_floor_detection_CHAR_BODY_entered(body: Node2D) -> void:
 
 func _on_shooting_timer_timeout() -> void:
 	can_shoot =true
+
+
+#FOR AIR ATTACK ONLY-------------------------------------------------------------------------
+
+
+func _on_air_detection_area_entered(area: Area2D) -> void:
+	if area is PlayerHitbox:
+		active_upattack_ShooterVines()
+		is_player_inside = true #Player is inside
+		print("Player entered Detection Area of VineFamilyClass:", area.name)
+
+
+func _on_air_detection_area_exited(area: Area2D) -> void:
+	if area is PlayerHitbox:
+		print("Player exited Detection Area of VineFamilyClass:", area.name)
+		is_player_inside = false #Player is now out of area.
+
+func upward_Shoot():
+	if can_shoot: 
+		var instance = projectile_v2.instantiate()
+		instance.spawnPos = global_position + upward_gun_offset
+		#instance.spawnRot = global_rotation
+		$"..".add_child(instance)
+		#instance.dir = Vector2.UP  # Set upward direction explicitly
+		can_shoot = false
+		$ShootingTimer.start()

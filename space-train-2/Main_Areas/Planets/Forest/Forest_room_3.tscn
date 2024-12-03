@@ -1,11 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://cfwlhs8wn1yw1"]
+[gd_scene load_steps=26 format=3 uid="uid://cfwlhs8wn1yw1"]
 
 [ext_resource type="Texture2D" uid="uid://v7tmj80lj7oo" path="res://Main_Areas/Planets/Forest/Assets/Terrain_and_Props.png" id="1_mxdqu"]
 [ext_resource type="PackedScene" uid="uid://dd67h2umvkaaf" path="res://Entities/Monsters/Forest/Snail/Snail.tscn" id="3_k8oll"]
 [ext_resource type="PackedScene" uid="uid://bv8krd46t8dww" path="res://Entities/Killzones/killzone.tscn" id="4_bwcan"]
 [ext_resource type="Script" path="res://Scripts/saver_loader.gd" id="5_v0ewa"]
-[ext_resource type="PackedScene" uid="uid://by5q7676qapyn" path="res://Main_Areas/Planets/Forest/moving_platform.tscn" id="6_08fm0"]
-[ext_resource type="PackedScene" uid="uid://di1xem8nlo0xw" path="res://Main_Areas/Planets/Forest/hearts.tscn" id="7_fjf7o"]
+[ext_resource type="PackedScene" path="res://Main_Areas/Planets/Forest/moving_platform.tscn" id="6_08fm0"]
+[ext_resource type="PackedScene" path="res://Main_Areas/Planets/Forest/hearts.tscn" id="7_fjf7o"]
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/scene_transition.gd" id="9_3yqu5"]
 [ext_resource type="PackedScene" uid="uid://hb82744trdpu" path="res://Entities/Monsters/Forest/Boar/Boar.tscn" id="10_buw83"]
 [ext_resource type="PackedScene" uid="uid://cmxi04qi3alj0" path="res://UI/MonsterHealthLabel/health_changed_manager.tscn" id="11_iwgb5"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://qdsqap23j4ie" path="res://Entities/Player/PlayerSS/PlayerSS.tscn" id="15_ubefm"]
 [ext_resource type="PackedScene" uid="uid://dfhtb56c4ftla" path="res://Entities/Monsters/Forest/Bee/Bee.tscn" id="17_6nxaw"]
 [ext_resource type="PackedScene" uid="uid://dm02r6aj02ifx" path="res://UI/PlayerTransformation/player_swapping.tscn" id="17_xh7jf"]
+[ext_resource type="PackedScene" uid="uid://citu8occwl0xr" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/Boss.tscn" id="18_24a8x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5x8ui"]
 texture = ExtResource("1_mxdqu")
@@ -585,7 +586,7 @@ transitioner = NodePath("../CanvasLayer/Transitioner")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTransition"]
 visibility_layer = 2
-position = Vector2(681, -114)
+position = Vector2(681, -117)
 shape = SubResource("RectangleShape2D_dm0qu")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
@@ -650,7 +651,7 @@ libraries = {
 autoplay = "move"
 
 [node name="moving_platform2" parent="Utilities/Platforms" instance=ExtResource("6_08fm0")]
-position = Vector2(709, 31)
+position = Vector2(717, 41)
 
 [node name="Killzones" type="Node" parent="Utilities"]
 
@@ -681,6 +682,9 @@ offset_bottom = 24.0
 focus_mode = 0
 script = ExtResource("13_hcbuo")
 transitioner = NodePath("../Transitioner")
+
+[node name="Boss" parent="." instance=ExtResource("18_24a8x")]
+position = Vector2(-80, 74)
 
 [connection signal="area_entered" from="SceneTransition" to="SceneTransition" method="_on_area_entered"]
 [connection signal="body_entered" from="SceneTransition" to="SceneTransition" method="_on_body_entered"]

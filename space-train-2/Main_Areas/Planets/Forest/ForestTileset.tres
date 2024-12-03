@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b6ggsqgg4o80e"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://chvpi5yuykc0i"]
 
 [ext_resource type="Texture2D" uid="uid://v7tmj80lj7oo" path="res://Main_Areas/Planets/Forest/Assets/Terrain_and_Props.png" id="1_5ujdl"]
 
@@ -231,15 +231,6 @@ texture = ExtResource("1_5ujdl")
 17:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, -1.75, 4, 1, 4, 8)
 19:9/0 = 0
 0:10/0 = 0
-5:10/0 = 0
-5:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4, -8, 6.625)
-5:10/0/physics_layer_0/polygon_0/one_way = true
-6:10/0 = 0
-6:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4, -8, 6.625)
-6:10/0/physics_layer_0/polygon_0/one_way = true
-7:10/0 = 0
-7:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4, -8, 6.625)
-7:10/0/physics_layer_0/polygon_0/one_way = true
 8:10/0 = 0
 8:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4, -8, 6.625)
 8:10/0/physics_layer_0/polygon_0/one_way = true
@@ -489,6 +480,32 @@ texture = ExtResource("1_5ujdl")
 0:0/0 = 0
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:7/0 = 0
+4:7/size_in_atlas = Vector2i(2, 1)
+4:7/0 = 0
+10:10/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+10:9/0 = 0
+10:8/0 = 0
+10:7/0 = 0
+3:4/0 = 0
+6:9/0 = 0
+4:10/0 = 0
+8:7/0 = 0
+10:1/0 = 0
+9:0/0 = 0
+18:14/0 = 0
+12:12/0 = 0
+6:10/0 = 0
+6:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4, -8, 6.625)
+6:10/0/physics_layer_0/polygon_0/one_way = true
+5:10/0 = 0
+5:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4, -8, 6.625)
+5:10/0/physics_layer_0/polygon_0/one_way = true
+7:10/0 = 0
+7:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4, -8, 6.625)
+7:10/0/physics_layer_0/polygon_0/one_way = true
 
 [resource]
 physics_layer_0/collision_layer = 1

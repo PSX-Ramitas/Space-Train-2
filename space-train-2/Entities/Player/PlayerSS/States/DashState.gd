@@ -6,10 +6,10 @@ extends State
 @export var dieState: State
 
 func enter() -> void:
-	var hitbox = parent.find_child("PlayerHitbox")
+	var hb = parent.find_child("PlayerHitbox")
+	hb.dash_used = true
 	var GUI = parent.find_child("DashIcon")
 	GUI.play_cooldown()
-	hitbox.can_hurt = false
 	var sfx = parent.find_child("DashSound")
 	sfx.play()
 	parent.sword.monitoring = false

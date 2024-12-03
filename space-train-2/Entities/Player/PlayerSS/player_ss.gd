@@ -25,7 +25,7 @@ var fallFromPlatform = false #used to determine if coyote jump is allowed, as pl
 var lbp = "r" #last button pressed, used to correct which way the player sprite faces
 
 # variables to control player flashing white
-var flash_duration = 0.9 # Total time to flash
+var flash_duration = 1.1 # Total time to flash
 var flash_interval = 0.1 # Time between flashes
 var flash_timer = 0.0
 var flashing = false
@@ -75,6 +75,7 @@ func _physics_process(delta: float) -> void:
 			PlayerData.is_hurt = false
 		if flashing:
 			flash_timer -= delta
+			#print("iframe time remaining: ", flash_timer)
 			var flash_phase = int((flash_duration - flash_timer) / flash_interval) % 2
 			animations.material.set_shader_parameter("flash_intensity", flash_phase)
 		# Stop flashing after the duration

@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://Entities/LevelObstacles/vine_shot_area_2d.gd" id="3_8tcsm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_brms0"]
-radius = 4.0
-height = 18.0
+radius = 6.0
+height = 22.0
 
 [node name="VineSpikeShot" type="CharacterBody2D"]
 script = ExtResource("1_orytk")

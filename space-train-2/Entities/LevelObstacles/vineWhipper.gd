@@ -12,13 +12,15 @@ var is_initialized: bool = false #true if the object is intialized
 var hurtbox: VineHurtbox  # Reference to the VineHurtbox node
 #GENERAL ANIMATION FUNCTIONS----------------------------------------------------------------------
 func active_WhipperVines():
-	curr_state = vineWhipper_state.ACTIVE
 	if is_attacked: 
-		await get_tree().create_timer(0.6).timeout
-		$AnimatedVineWhipper.speed_scale = 1.8
+		
+		await get_tree().create_timer(0.5).timeout
+		curr_state = vineWhipper_state.ACTIVE
+		$AnimatedVineWhipper.speed_scale = 2.2
 		is_attacked = false
 	else:
-		$AnimatedVineWhipper.speed_scale = 1.8
+		curr_state = vineWhipper_state.ACTIVE
+		$AnimatedVineWhipper.speed_scale = 2.2
 	$AnimatedVineWhipper.play("active_attack")
 
 func idle_WhipperVines():
@@ -81,7 +83,7 @@ func _on_detection_area_exited(area: Area2D) -> void:
 func _on_vine_whipper_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "active_attack":
 		if is_player_inside:
-			curr_state = vineWhipper_state.ACTIVE
+			active_WhipperVines()
 		else:
 			idle_WhipperVines()
 		

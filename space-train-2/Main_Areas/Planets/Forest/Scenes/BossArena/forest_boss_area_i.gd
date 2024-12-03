@@ -40,13 +40,13 @@ func _process(delta: float) -> void:
 		player_p_cam.priority = 1
 		player_p_cam.follow_mode = PhantomCamera2D.FollowMode.GLUED #Ensures camera goes back to centering the player
 		await player_p_cam.tween_completed
+		tile_map.set_layer_enabled(0, false) #On boar defeated, remove arena gates
 		if !level_music.playing:
 			level_music.play()
 		player_p_cam.follow_mode = PhantomCamera2D.FollowMode.FRAMED #After the camera recenters around player, re-add static box
 	if boss_defeated:
 		if boss_music.playing:
 			boss_music.stop()
-		tile_map.set_layer_enabled(0, false) #On boar defeated, remove arena gates
 
 func _on_arena_trigger_entered(area: Area2D) -> void:
 	if area is PlayerHitbox and !boss_defeated: #Upon entering arena, set arena camera to higher priority and add gates 

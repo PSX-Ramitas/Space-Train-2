@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dse4pwy0xn71i"]
+[gd_scene load_steps=21 format=3 uid="uid://dse4pwy0xn71i"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/forest_boss_area_e.gd" id="1_otyor"]
 [ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="2_dn12q"]
@@ -15,6 +15,7 @@
 [ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="13_362bm"]
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="14_lp4dv"]
 [ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="15_xnc8w"]
+[ext_resource type="AudioStream" uid="uid://dc3uvanwjnic7" path="res://Sounds/SFX/ALttP_Stairs_Sound_(1).wav" id="16_2sb4t"]
 
 [sub_resource type="Resource" id="Resource_q6oim"]
 script = ExtResource("7_eamp7")
@@ -203,6 +204,11 @@ scale = Vector2(1, 1.8)
 stream = ExtResource("15_xnc8w")
 volume_db = -20.0
 bus = &"Music"
+
+[node name="TransitionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_2sb4t")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="EntranceCamDetection" to="." method="_on_entrance_cam_detection_area_entered"]
 [connection signal="area_exited" from="EntranceCamDetection" to="." method="_on_entrance_cam_detection_area_exited"]

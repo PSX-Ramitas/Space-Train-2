@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bdphgx3agu28v" path="res://Collectables/collectable.tscn" id="1_u86qa"]
 [ext_resource type="Texture2D" uid="uid://cwsw7r7ap8ecl" path="res://sprites/ScrollRock.png" id="2_ghsr8"]
-[ext_resource type="Resource" path="res://inventory/items/shield.tres" id="2_mdm0f"]
+[ext_resource type="Resource" uid="uid://djspf4gyygmea" path="res://inventory/items/shield.tres" id="2_mdm0f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok7vd"]
 resource_local_to_scene = true

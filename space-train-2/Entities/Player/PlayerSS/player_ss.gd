@@ -12,7 +12,7 @@ extends Entity
 @export var inventory: Inventory
 
 @onready var originalAttack : int = attack 
-@onready var originalSpeed : int = movespeed 
+@onready var originalSpeed : int = movespeed
 
 signal attackChanged
 signal damgeReduced
@@ -119,7 +119,8 @@ func increase_attack(amount: int) -> void:
 
 func increase_speed(amount: int) -> void:
 	print(" Original Speed: ", movespeed)
-	movespeed += amount
+	if(movespeed < 625):
+		movespeed += amount
 	#print("Original Jump: ", velocity.y)
 	#velocity.y = velocity.y + 20
 	print(" New Speeed: ", movespeed)

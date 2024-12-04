@@ -16,7 +16,7 @@ func enter() -> void:
 	var hb = parent.find_child("PlayerHitbox")
 	parent.usedGun = true
 	hb.dash_used = false
-	if bulletCounter < 5:
+	if bulletCounter < 20:
 		var sfx = parent.find_child("BulletSound")
 		sfx.play()
 		parent.sword.monitoring = false

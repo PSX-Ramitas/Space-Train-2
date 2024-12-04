@@ -20,7 +20,7 @@ signal damgeReduced
 var queuedAttack = 1
 var usedAirAttack = false
 @export var dashCD = 2
-@export var gunCD = 3
+@export var gunCD = 0.4
 var usedDash = false
 var usedGun = false
 var attackResetTimer = 1.5
@@ -70,7 +70,7 @@ func _physics_process(delta: float) -> void:
 			usedDash = false
 		if gunCD <= 0:
 			print("GUN back")
-			gunCD = 2
+			gunCD = 0.4
 			usedGun = false
 		if attackResetTimer < 0:
 			#print("reset atttack")

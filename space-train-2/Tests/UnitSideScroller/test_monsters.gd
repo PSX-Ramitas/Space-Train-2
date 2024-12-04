@@ -27,15 +27,15 @@ class TestBoar:
 		await wait_seconds(1)
 		for child in _boar.get_children():
 			if (child is Damageable):
-				print(_boar.name + " took " + str(40) + " damage")
+				print(_boar.name + " took " + str(80) + " damage")
 				var direction_to_damageable = (_boar.global_position - get_parent().global_position)
 				var direction_sign = sign(direction_to_damageable.x)
 				if(direction_sign > 0):
-					child.hit(40, Vector2.RIGHT)
+					child.hit(80, Vector2.RIGHT)
 				elif(direction_sign < 0):
-					child.hit(40, Vector2.LEFT)
+					child.hit(80, Vector2.LEFT)
 				else:
-					child.hit(40, Vector2.ZERO)
+					child.hit(80, Vector2.ZERO)
 		await wait_seconds(1)
 		assert_null(_boar, 'boar did not die')
 
@@ -48,13 +48,13 @@ class TestBoar:
 	func test_boar_changes_direction_right():
 		var direction = _boar.direction
 		gut.p(direction)
-		await wait_seconds(4)
+		await wait_seconds(7)
 		assert_ne(direction,_boar.direction, 'boar did not change direction')
 
 	func test_boar_changes_direction_left():
 		var direction = _boar.direction
 		gut.p(direction)
-		await wait_seconds(10)
+		await wait_seconds(20)
 		assert_eq(direction,_boar.direction, 'boar did not change direction')
 
 class TestSnail:

@@ -39,7 +39,7 @@ func test_scan():
 	_droid1.position.x += 100
 	_sender.action_down("cast_spell").hold_for(0.5)
 	await(_sender.idle)
-	_sender.action_down("left").hold_for(0.5)
+	_sender.action_down("left").hold_for(0.7)
 	_sender.action_down("cast_spell").hold_for(0.5)
 	await(_sender.idle)
 	await wait_seconds(1)

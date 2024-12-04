@@ -37,7 +37,7 @@ func process_input(event: InputEvent) -> State:
 			return attack2State
 		else:
 			return attack3State
-	if Input.is_action_just_pressed("fire_projectile"):
+	if Input.is_action_just_pressed("fire_projectile") and !parent.usedGun:
 		return shootState
 	if Input.is_action_just_pressed("cast_spell"):
 		return castState

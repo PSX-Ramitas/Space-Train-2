@@ -14,6 +14,7 @@ var bulletCounter: int = 0
 
 func enter() -> void:
 	var hb = parent.find_child("PlayerHitbox")
+	parent.usedGun = true
 	hb.dash_used = false
 	if bulletCounter < 5:
 		var sfx = parent.find_child("BulletSound")

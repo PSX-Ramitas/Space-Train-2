@@ -45,6 +45,7 @@ size = Vector2(11, 5)
 [node name="BaseProjectile" type="CharacterBody2D"]
 z_index = 2
 script = ExtResource("1_bayhn")
+damage = 20.0
 
 [node name="BulletSprites" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

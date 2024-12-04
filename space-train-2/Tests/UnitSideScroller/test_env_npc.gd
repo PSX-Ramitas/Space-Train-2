@@ -12,8 +12,8 @@ var startHealth = null
 
 func before_each():
 	_level = add_child_autofree(Level.instantiate())
-	_player = _level.get_node('PlayerSS')
-	_npc = _level.get_node('LostGuy')
+	_player = add_child_autofree(_level.get_node('PlayerSS'))
+	_npc = add_child_autofree(_level.get_node('LostGuy'))
 	startHealth= _player.get_health()
 	
 func after_each():
@@ -35,8 +35,20 @@ func test_npc_start():
 	_player.position.x += 200
 	_sender.action_down("conversation_start")
 	await(_sender.idle)
-	await wait_seconds(0.5)
+	await wait_seconds(1.5)
+	_sender.action_down("interact").hold_for(0.1)
+	await(_sender.idle)
+	await wait_seconds(2)
+	_sender.action_down("interact").hold_for(0.1)
+	await(_sender.idle)
+	await wait_seconds(1.5)
+	_sender.action_down("interact").hold_for(0.1)
+	await(_sender.idle)
+	await wait_seconds(1.5)
+	_sender.action_down("interact").hold_for(0.1)
+	await(_sender.idle)
 	assert_true(_npc.interacted)
+	pause_before_teardown()
 	
 func test_npc_goes_to_spaceship():
 	var playerStartPos = _player.position
@@ -49,7 +61,18 @@ func test_npc_goes_to_spaceship():
 	_player.position.x += 200
 	_sender.action_down("conversation_start")
 	await(_sender.idle)
-	await wait_seconds(0.5)
+	await wait_seconds(1.5)
+	_sender.action_down("interact").hold_for(0.1)
+	await(_sender.idle)
+	await wait_seconds(2)
+	_sender.action_down("interact").hold_for(0.1)
+	await(_sender.idle)
+	await wait_seconds(1.5)
+	_sender.action_down("interact").hold_for(0.1)
+	await(_sender.idle)
+	await wait_seconds(1.5)
+	_sender.action_down("interact").hold_for(0.1)
+	await(_sender.idle)
 	assert_true(_npc.interacted)
 	_level.levelFinished == true
 	TrainNPCs.lostGuyInteracted = true
@@ -63,4 +86,7 @@ func test_npc_goes_to_spaceship():
 	await wait_seconds(0.5)
 	assert_not_null(_catDroid)
 	assert_not_null(_npcTD)
+	_sender.release_all()
+	_sender.clear()
+	_level2.queue_free()
 	pause_before_teardown()

@@ -10,8 +10,8 @@ var startHealth = null
 
 func before_each():
 	_level = add_child_autofree(Level.instantiate())
-	_player = _level.get_node('PlayerSS')
-	_timer = _level.find_child('SpeedrunTimer')
+	_player = add_child_autofree(_level.get_node('PlayerSS'))
+	_timer = add_child_autofree(_level.find_child('SpeedrunTimer'))
 	startHealth= _player.get_health()
 	
 

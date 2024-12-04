@@ -11,8 +11,8 @@ class TestBoar:
 
 	func before_each():
 		_level = add_child_autofree(Level.instantiate())
-		_player = _level.get_node('PlayerSS')
-		_boar = _level.get_node('Boar')
+		_player = add_child_autofree(_level.get_node('PlayerSS'))
+		_boar = add_child_autofree(_level.get_node('Boar'))
 
 	func test_verify_setup():
 		assert_not_null(_player, 'player does not exists')
@@ -68,8 +68,8 @@ class TestSnail:
 
 	func before_each():
 		_level = add_child_autofree(Level.instantiate())
-		_player = _level.get_node('PlayerSS')
-		_snail = _level.get_node('Snail')
+		_player = add_child_autofree(_level.get_node('PlayerSS'))
+		_snail = add_child_autofree(_level.get_node('Snail'))
 
 	func test_verify_setup():
 		assert_not_null(_player, 'player does not exists')

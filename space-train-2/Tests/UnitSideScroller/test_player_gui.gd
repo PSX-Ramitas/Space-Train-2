@@ -8,8 +8,8 @@ var _GUI = null
 var _sender = InputSender.new(Input)
 func before_each():
 	_level = add_child_autofree(Level.instantiate())
-	_player = _level.get_node('PlayerSS')
-	_snail = _level.get_node('Snail')
+	_player = add_child_autofree(_level.get_node('PlayerSS'))
+	_snail = add_child_autofree(_level.get_node('Snail'))
 
 func after_each():
 	_sender.release_all()

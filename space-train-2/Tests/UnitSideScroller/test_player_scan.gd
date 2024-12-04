@@ -11,9 +11,9 @@ var startHealth = null
 
 func before_each():
 	_level = add_child_autofree(Level.instantiate())
-	_player = _level.get_node('PlayerSS')
-	_droid1 = _level.get_node('Droid1')
-	_droid2 = _level.get_node('Droid2')
+	_player = add_child_autofree(_level.get_node('PlayerSS'))
+	_droid1 = add_child_autofree(_level.get_node('Droid1'))
+	_droid2 = add_child_autofree(_level.get_node('Droid2'))
 	startHealth= _droid1.get_health()
 	
 

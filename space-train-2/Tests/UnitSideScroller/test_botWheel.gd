@@ -13,9 +13,9 @@ class TestBotWheel:
 	func before_each():
 		gut.p("initiliazing")
 		_level = add_child_autofree(Level.instantiate())
-		_player = _level.get_node('PlayerSS')
-		_botWheel = _level.get_node('botWheel')
-		_botWheel2 = _level.get_node('botWheel2')
+		_player = add_child_autofree(_level.get_node('PlayerSS'))
+		_botWheel = add_child_autofree(_level.get_node('botWheel'))
+		_botWheel2 = add_child_autofree(_level.get_node('botWheel2'))
 	
 	func after_each():
 		gut.p("releasing")

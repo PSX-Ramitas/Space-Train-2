@@ -6,7 +6,7 @@ var _player = null
 var _sender = InputSender.new(Input)
 func before_each():
 	_level = add_child_autofree(Level.instantiate())
-	_player = _level.get_node('PlayerTD')
+	_player = add_child_autofree(_level.get_node('PlayerTD'))
 
 func after_each():
 	_sender.release_all()

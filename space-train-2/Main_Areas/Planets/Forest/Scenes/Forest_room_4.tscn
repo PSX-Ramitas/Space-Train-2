@@ -590,7 +590,8 @@ position = Vector2(2641, 461)
 
 [node name="transitionScreen" parent="." instance=ExtResource("8_e2ll3")]
 visible = false
-position = Vector2(3112, 222)
+position = Vector2(3166, 216)
+scale = Vector2(3.8, 22.04)
 
 [node name="Boar" parent="." instance=ExtResource("9_ey624")]
 position = Vector2(591, 245)

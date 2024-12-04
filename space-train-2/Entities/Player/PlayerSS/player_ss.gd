@@ -12,7 +12,7 @@ extends Entity
 @export var inventory: Inventory
 
 @onready var originalAttack : int = attack 
-@onready var originalSpeed : int = movespeed
+@onready var originalSpeed : int = 325
 
 signal attackChanged
 signal damgeReduced

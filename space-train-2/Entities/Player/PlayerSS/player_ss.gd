@@ -19,8 +19,10 @@ signal damgeReduced
 
 var queuedAttack = 1
 var usedAirAttack = false
-var dashCD = 2
+@export var dashCD = 2
+@export var gunCD = 0.4
 var usedDash = false
+var usedGun = false
 var attackResetTimer = 1.5
 var fallFromPlatform = false #used to determine if coyote jump is allowed, as player can enter fall state from jump
 var lbp = "r" #last button pressed, used to correct which way the player sprite faces
@@ -60,10 +62,16 @@ func _physics_process(delta: float) -> void:
 		updatePlayerData()
 		if usedDash == true:
 			dashCD -= delta
+		if usedGun == true:
+			gunCD -= delta
 		if dashCD <= 0:
 			print("reset dash")
 			dashCD = 2
 			usedDash = false
+		if gunCD <= 0:
+			print("GUN back")
+			gunCD = 0.4
+			usedGun = false
 		if attackResetTimer < 0:
 			#print("reset atttack")
 			attackResetTimer = 1.5

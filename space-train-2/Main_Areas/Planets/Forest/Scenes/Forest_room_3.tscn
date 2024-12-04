@@ -524,7 +524,8 @@ position = Vector2(2524, 475)
 
 [node name="transitionScreen" parent="." instance=ExtResource("6_uh0lx")]
 visible = false
-position = Vector2(3034, 438)
+position = Vector2(3181, 340)
+scale = Vector2(-6.40404, 17.9109)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,6 +1,6 @@
 class_name SpeedBoost extends InventoryItem
 
-@export var speed_increase: int = 1
+@export var speed_increase: int = 0.3
 
 
 func use(player: Player) -> void:

@@ -48,8 +48,8 @@ layer_3/tile_data = PackedInt32Array(2818065, 1179648, 10, 2883601, 1179648, 10,
 
 [node name="transitionScreen" parent="." instance=ExtResource("6_rhanf")]
 visible = false
-position = Vector2(12761, 132)
-scale = Vector2(1, 16.28)
+position = Vector2(12899, 137)
+scale = Vector2(5.76, 16.28)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

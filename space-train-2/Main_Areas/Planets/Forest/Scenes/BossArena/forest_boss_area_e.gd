@@ -31,12 +31,13 @@ func _process(delta: float) -> void:
 		transition_sound.play()
 		dungeonEntered = true
 		transition.play_transition("FadeOut")
+		player_ss.active = false
 	var playerArea = player_ss.playerHitBox
 	if zoom_cam.overlaps_area(playerArea) and musicFadeTimer > 0.0:
-		level_music.volume_db -= 0.05
+		level_music.volume_db -= 0.03
 		musicFadeTimer -= delta
 	elif level_music.volume_db < -20.0 and musicFadeTimer < 1.0:
-		level_music.volume_db += 0.05
+		level_music.volume_db += 0.03
 		musicFadeTimer += delta
 		
 func _on_entrance_cam_detection_area_entered(area: Area2D) -> void:

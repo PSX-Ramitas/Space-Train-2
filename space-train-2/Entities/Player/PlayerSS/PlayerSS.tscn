@@ -815,6 +815,14 @@ position = Vector2(0.5, -13.5)
 position = Vector2(2, -12.5)
 shape = SubResource("CircleShape2D_rxygo")
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="ShieldTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="area_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_area_entered"]
 [connection signal="healthChanged" from="PlayerHitbox" to="PlayerHitbox" method="_on_health_changed"]
 [connection signal="area_entered" from="PlayerSwordArea" to="PlayerSwordArea" method="_on_area_entered"]
@@ -822,3 +830,5 @@ shape = SubResource("CircleShape2D_rxygo")
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack2" method="FinishedAttack"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="FSM/Attack3" method="FinishedAttack"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="ShieldTimer" to="PlayerHitbox" method="_on_shield_timer_timeout"]

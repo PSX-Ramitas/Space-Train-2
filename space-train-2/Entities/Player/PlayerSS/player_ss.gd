@@ -12,6 +12,7 @@ extends Entity
 @export var inventory: Inventory
 
 @onready var originalAttack : int = attack 
+@onready var originalSpeed : int = movespeed 
 
 signal attackChanged
 signal damgeReduced
@@ -116,6 +117,15 @@ func increase_attack(amount: int) -> void:
 	print(" New Attack: ", attack)
 	$Timer.start()
 
+func increase_speed(amount: int) -> void:
+	print(" Original Speed: ", movespeed)
+	movespeed += amount
+	#print("Original Jump: ", velocity.y)
+	#velocity.y = velocity.y + 20
+	print(" New Speeed: ", movespeed)
+	#print("New Jump: ", velocity.y)
+	$Timer2.start()
+
 
 func use_item(item: InventoryItem) -> void:
 	item.use(self)
@@ -129,3 +139,10 @@ func _on_timer_timeout() -> void:
 
 func _on_player_hitbox_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
+
+
+func _on_timer_2_timeout() -> void:
+	movespeed = originalSpeed
+	#velocity.y = originalJump
+	#speedChanged.emit(movespeed)
+	print("speed now: ", movespeed)

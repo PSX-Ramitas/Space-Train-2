@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpeedBoost" load_steps=3 format=3 uid="uid://ba48rdj5qfece"]
+
+[ext_resource type="Script" path="res://inventory/items/speed_boost.gd" id="1_m5cq1"]
+[ext_resource type="Texture2D" uid="uid://dbeivdvo7sw7j" path="res://sprites/ScrollThunder.png" id="2_gwjqw"]
+
+[resource]
+script = ExtResource("1_m5cq1")
+speed_increase = 1000
+name = "speed"
+texture = ExtResource("2_gwjqw")

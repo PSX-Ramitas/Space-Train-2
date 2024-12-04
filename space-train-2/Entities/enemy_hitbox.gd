@@ -7,11 +7,13 @@ class_name EnemyHitbox
 
 var is_scannable
 var has_been_scanned
-
+var parent_node
 # Preload item scenes for random drops
 @onready var item_scenes = [
 	preload("res://Collectables/potion.tscn"),
-	preload("res://Collectables/power.tscn")
+	preload("res://Collectables/power.tscn"),
+	preload("res://Collectables/harden.tscn"),
+	preload("res://Collectables/speed.tscn")
 ]
 
 var bot
@@ -62,7 +64,7 @@ func _on_health_changed(isHeal: bool, amount: int) -> void:
 
 func drop_item():
 	# Set a drop chance (e.g., 30%)
-	var drop_chance = 0.5  # 30% probability of dropping an item
+	var drop_chance = 0.65  # 30% probability of dropping an item
 
 	# Generate a random float between 0 and 1
 	if randf() <= drop_chance:
@@ -79,10 +81,11 @@ func drop_item():
 				return
 
 			# Adjust the drop position
-			if botWheel:
-				item_instance.global_position = global_position + Vector2(0, -50) 
-			else:
-				item_instance.global_position = global_position
+			var parent_node = get_parent()
+			if parent_node is botWheel:
+				item_instance.global_position = global_position + Vector2(0, -35) 
+			if parent_node is droidEnemy:
+				item_instance.global_position = global_position + Vector2(0,15)
 
 			print("Dropped item:", item_instance)
 	else:

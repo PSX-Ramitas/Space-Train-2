@@ -13,7 +13,9 @@ class_name HitState
 
 @onready var item_scenes = [
 	preload("res://Collectables/potion.tscn"),
-	preload("res://Collectables/power.tscn")
+	preload("res://Collectables/power.tscn"),
+	preload("res://Collectables/harden.tscn"),
+	preload("res://Collectables/speed.tscn")
 ]
 
 var item_count = 0
@@ -60,7 +62,7 @@ func drop_item():
 				return
 
 			# Position the item relative to the monster's position
-			item_instance.global_position = monster.global_position + Vector2(0, -50)
+			item_instance.global_position = monster.global_position + Vector2(0, -20)
 			print("Dropped item:", item_instance)
 		else:
 			print("No item scenes available for dropping.")

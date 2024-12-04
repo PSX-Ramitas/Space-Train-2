@@ -3,7 +3,7 @@ extends Node
 var movespeed = 325
 var maxHealth = 45
 var health = 45
-var initHealth = 145 #For reinitializing in the event of stat upgrades
+var initHealth = 45 #For reinitializing in the event of stat upgrades
 var attack = 10
 var pausable: bool = false #May need to be removed
 var is_dead: bool = false

@@ -540,7 +540,7 @@ collision_mask = 3
 floor_stop_on_slope = false
 script = ExtResource("1_jaw55")
 inventory = ExtResource("2_poxt0")
-health = 500
+health = 80
 movespeed = 325
 attack = 10
 

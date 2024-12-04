@@ -48,6 +48,10 @@ func _ready() -> void:
 	health = PlayerData.health
 	movespeed = PlayerData.movespeed
 	attack = PlayerData.attack
+	if (attack > 10):
+		attack = 10
+	if (movespeed > 325):
+		movespeed = 325
 	stateMachine.init(self, animations)
 	inventory.use_item.connect(use_item)
 

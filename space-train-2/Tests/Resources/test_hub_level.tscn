@@ -1,11 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://ct3c52vykwbb1"]
 
-[ext_resource type="PackedScene" uid="uid://crmrjbkdg4irm" path="res://Main_Areas/Spaceship/Scenes/tileset.tscn" id="1_q86v3"]
 [ext_resource type="PackedScene" uid="uid://d0cu0cu5qc4iu" path="res://Entities/Player/PlayerTD/player_td.tscn" id="2_lc86o"]
+[ext_resource type="PackedScene" uid="uid://1m8lypjq4bq0" path="res://Tests/Resources/TileSets/tileset2.tscn" id="2_rgm7b"]
 
 [node name="TestHubLevel" type="Node2D"]
 
-[node name="Tileset" parent="." instance=ExtResource("1_q86v3")]
-
 [node name="PlayerTD" parent="." instance=ExtResource("2_lc86o")]
 position = Vector2(85, 101)
+
+[node name="Tileset2" parent="." instance=ExtResource("2_rgm7b")]
+z_index = -1

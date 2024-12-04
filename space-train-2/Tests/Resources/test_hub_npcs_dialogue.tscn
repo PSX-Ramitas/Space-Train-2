@@ -1,15 +1,13 @@
 [gd_scene load_steps=6 format=4 uid="uid://hfkngcuyveli"]
 
-[ext_resource type="PackedScene" uid="uid://crmrjbkdg4irm" path="res://Main_Areas/Spaceship/Scenes/tileset.tscn" id="1_6n0v7"]
 [ext_resource type="PackedScene" uid="uid://d0cu0cu5qc4iu" path="res://Entities/Player/PlayerTD/player_td.tscn" id="2_bdxhq"]
 [ext_resource type="PackedScene" uid="uid://b6en2ww83au5c" path="res://Main_Areas/Spaceship/NPC/CatDroid/catDroid.tscn" id="3_j1m81"]
 [ext_resource type="TileSet" uid="uid://bujrlfu13ri44" path="res://Main_Areas/Spaceship/Tilemap Assets/walls_tile_set.tres" id="3_moyme"]
 [ext_resource type="PackedScene" uid="uid://cp5de08wucg0g" path="res://Main_Areas/Spaceship/NPC/Guide/guide.tscn" id="5_1dyfh"]
+[ext_resource type="PackedScene" uid="uid://1m8lypjq4bq0" path="res://Tests/Resources/TileSets/tileset2.tscn" id="5_ocxoo"]
 
 [node name="TestHubLevel" type="Node2D"]
 position = Vector2(182, 124)
-
-[node name="Tileset" parent="." instance=ExtResource("1_6n0v7")]
 
 [node name="PlayerTD" parent="." instance=ExtResource("2_bdxhq")]
 position = Vector2(80, 69)
@@ -24,3 +22,6 @@ position = Vector2(239, 86)
 
 [node name="Guide" parent="." instance=ExtResource("5_1dyfh")]
 position = Vector2(544, 60)
+
+[node name="Tileset2" parent="." instance=ExtResource("5_ocxoo")]
+z_index = -1

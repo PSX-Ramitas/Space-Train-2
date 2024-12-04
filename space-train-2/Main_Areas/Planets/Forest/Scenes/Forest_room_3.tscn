@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dyea33cxeh681"]
+[gd_scene load_steps=19 format=4 uid="uid://dyea33cxeh681"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scenes/forest_room_3.gd" id="1_r5fx6"]
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_u4tvt"]
@@ -14,6 +14,8 @@
 [ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="11_j3h4w"]
 [ext_resource type="Texture2D" uid="uid://bffo5c21n1ikp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Bright Blue/7 sky1.png" id="13_ixw41"]
 [ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="14_e3b10"]
+[ext_resource type="PackedScene" uid="uid://bwksfc2rao3al" path="res://Entities/LevelObstacles/VineShooterBody.tscn" id="15_do43t"]
+[ext_resource type="PackedScene" uid="uid://d3vymx6v3011v" path="res://Entities/LevelObstacles/vineWhipper.tscn" id="16_qqhw2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("3_hbgg1")
@@ -580,6 +582,18 @@ texture_filter = 1
 position = Vector2(5943.22, 118.696)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("14_e3b10")
+
+[node name="VineShooterBody" parent="." instance=ExtResource("15_do43t")]
+position = Vector2(1092, 472)
+
+[node name="VineShooterBody2" parent="." instance=ExtResource("15_do43t")]
+position = Vector2(1601, 299)
+
+[node name="WhipperHurtBox" parent="." instance=ExtResource("16_qqhw2")]
+position = Vector2(783, 224)
+
+[node name="WhipperHurtBox2" parent="." instance=ExtResource("16_qqhw2")]
+position = Vector2(2342, 365)
 
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

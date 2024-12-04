@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://ccfic4x8n7kb0"]
+[gd_scene load_steps=21 format=4 uid="uid://ccfic4x8n7kb0"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scripts/Room1.gd" id="1_wxv3x"]
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="2_wghdo"]
@@ -17,6 +17,7 @@
 [ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="14_xr1cm"]
 [ext_resource type="Texture2D" uid="uid://bffo5c21n1ikp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Bright Blue/7 sky1.png" id="16_eut3v"]
 [ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="17_cstdb"]
+[ext_resource type="PackedScene" uid="uid://bwksfc2rao3al" path="res://Entities/LevelObstacles/VineShooterBody.tscn" id="18_btev7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cqrnw"]
 texture = ExtResource("4_f6a5w")
@@ -615,6 +616,12 @@ texture_filter = 1
 position = Vector2(5943.22, 118.696)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("17_cstdb")
+
+[node name="VineShooterBody" parent="." instance=ExtResource("18_btev7")]
+position = Vector2(1092, 472)
+
+[node name="VineShooterBody2" parent="." instance=ExtResource("18_btev7")]
+position = Vector2(1534, 473)
 
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

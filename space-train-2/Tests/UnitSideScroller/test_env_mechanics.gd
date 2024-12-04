@@ -48,7 +48,9 @@ func test_timer_end():
 	assert_eq(startHealth, _player.health, "Player took damage before timer ended, check monster")
 	_timer.time = 5.0
 	await wait_seconds(5)
-	Engine.time_scale = 0.1
+	Engine.time_scale = 0.5
 	gut.p(_player.health)
+	await wait_seconds(0.5)
 	assert_eq(0, _player.health, "Player didn't take max damage")
-	pause_before_teardown()
+	await wait_seconds(0.5)
+	Engine.time_scale = 1

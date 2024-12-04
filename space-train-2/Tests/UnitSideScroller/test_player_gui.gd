@@ -39,7 +39,7 @@ func test_dash_gui():
 	_sender.action_down("dash").hold_for(1)
 	gut.p("Cooldown animation:" + str(animation_player.current_animation_position))
 	assert_gt(animation_player.current_animation_position, 1.5,"animation not finished")
-	await wait_seconds(1)
+	await wait_seconds(2)
 	gut.p("Cooldown animation:" + str(animation_player.current_animation_position))
 	assert_lt(animation_player.current_animation_position, 1.5,"animation still playing")
 

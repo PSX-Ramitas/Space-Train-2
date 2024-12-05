@@ -1,11 +1,13 @@
 extends Node2D
 @onready var scan_area: Area2D = $Scan/ScanArea
 @onready var scan_anim: AnimatedSprite2D = $Scan/ScanAnim
+@onready var scan_sound: AudioStreamPlayer = $Scan/Scan
+
 @onready var shock_area: Area2D = $Shock/ShockArea
 @onready var shock_anim: AnimatedSprite2D = $Shock/ShockAnim
-@onready var cast_notif: AudioStreamPlayer = $CastNotif
 @onready var shock_sound: AudioStreamPlayer = $Shock/Shock
-@onready var scan_sound: AudioStreamPlayer = $Scan/Scan
+
+@onready var cast_notif: AudioStreamPlayer = $CastNotif
 
 func flip_sprites(flag: bool):
 	if PlayerData.castType == "neutral":
@@ -35,9 +37,11 @@ func _process(delta: float) -> void:
 	if PlayerData.castType != "neutral":
 		scan_area.monitoring = false
 		scan_anim.visible = false
+		
 	if PlayerData.castType != "electric":
 		shock_area.monitoring = false
 		shock_anim.visible = false
+		
 	if Input.is_action_just_pressed("cast_spell"):
 		if PlayerData.castType == "neutral":
 			scan_anim.play()
@@ -47,7 +51,7 @@ func _process(delta: float) -> void:
 			await scan_anim.animation_finished
 			scan_anim.visible = false
 			scan_area.monitoring = false
-			
+
 		if PlayerData.castType == "electric":
 			shock_anim.play()
 			shock_sound.play()
@@ -56,7 +60,6 @@ func _process(delta: float) -> void:
 			await shock_anim.animation_finished
 			shock_anim.visible = false
 			shock_area.monitoring = false
-			
 
 
 func _on_scan_area_entered(area: Area2D) -> void:

@@ -8,6 +8,7 @@ class_name PlayerHitbox
 
 @onready var inventory: Inventory = preload("res://inventory/playerinventory.tres")
 @onready var shield_timer: Timer = $"../ShieldTimer"
+@onready var inventory_gui: Control = $"../HUD/inventoryGui"
 
 signal healthChanged(isHeal: bool, amount: int)
 var is_alive
@@ -38,6 +39,7 @@ func take_damage(damageAmount: int):
 		print(new_health)
 		player_health_bar.set_health(new_health)
 		if new_health == 0:
+			inventory_gui.clear_inventory()
 			self.PROCESS_MODE_DISABLED
 			is_alive = false
 	else:
@@ -50,6 +52,7 @@ func take_damage(damageAmount: int):
 			print(new_health)
 			player_health_bar.set_health(new_health)
 			if new_health == 0:
+				inventory_gui.clear_inventory()
 				self.PROCESS_MODE_DISABLED
 				is_alive = false
 		# healthChanged.emit( false, damageAmount)

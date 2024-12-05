@@ -22,7 +22,7 @@ var boss_mechanics
 @onready var animations = $AnimatedSprite2D
 @onready var PlayerHitBox = get_parent().get_node("PlayerSS/PlayerHitbox")
 @onready var PlayerSwordArea = get_parent().get_node("PlayerSS/PlayerSwordArea")
-@onready var PlayerDetection = get_parent().get_node("PlayerSS/FuckingDetectThisAreaGodotYouBitch")
+@onready var PlayerDetection = get_parent().get_node("PlayerSS/BossDetection")
 @onready var player_node =null
 @onready var boss_sword_area: Area2D = $BossSwordArea
 

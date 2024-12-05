@@ -10,7 +10,7 @@ var attacks = ["attack", "attack_3", "attack_2"]
 @onready var BossSwordArea = get_node(".")
 @onready var animations = get_node("../AnimatedSprite2D")
 @onready var PlayerHitBox = get_node("../../PlayerSS/PlayerHitbox")
-@onready var Box = get_node("../../PlayerSS/FuckingDetectThisAreaGodotYouBitch")
+@onready var Box = get_node("../../PlayerSS/BossDetection")
 @onready var timer =get_node("../Attack_Timer")
 
 var attack_cooldown = 1.1

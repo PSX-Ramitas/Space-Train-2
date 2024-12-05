@@ -19,7 +19,7 @@ var boss_defeated: bool = false
 func _ready() -> void:
 	player_p_cam.limit_left = -400
 	player_p_cam.limit_top = -20
-	player_p_cam.limit_bottom = 760
+	player_p_cam.limit_bottom = 2000
 	player_p_cam.limit_right = 12540
 	transitions.play_transition("FadeIn")
 	tile_map.set_layer_enabled(0, false) #Disable arena gate

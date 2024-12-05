@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bwksfc2rao3al"]
+[gd_scene load_steps=19 format=3 uid="uid://bwksfc2rao3al"]
 
 [ext_resource type="Script" path="res://Entities/LevelObstacles/vine_shooter_body.gd" id="1_2ty4o"]
 [ext_resource type="PackedScene" uid="uid://cj8xfose28o1" path="res://UI/Health Bar/texture_health_bar.tscn" id="2_femkk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dp5i2tu222h3c" path="res://Entities/LevelObstacles/Obstacle_Assets/PlantAlternate_ShooterV2.png" id="3_sdltf"]
 [ext_resource type="PackedScene" uid="uid://c53eeswqgi1is" path="res://Entities/LevelObstacles/VineSpikeShot.tscn" id="5_m0ry5"]
 [ext_resource type="PackedScene" uid="uid://cdkvdxmwdibxj" path="res://Entities/LevelObstacles/VineSpikeShot_v2.tscn" id="6_8xphu"]
+[ext_resource type="AudioStream" uid="uid://d1dt1vkffa5vw" path="res://Sounds/SFX/SE_BTL_DEADE.wav" id="7_vo2vq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_53gfq"]
 radius = 14.0
@@ -192,6 +193,7 @@ height = 704.0
 
 [node name="VineShooterBody" type="Area2D"]
 script = ExtResource("1_2ty4o")
+max_health = 20
 
 [node name="VineShooterHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -13)
@@ -202,7 +204,7 @@ offset_left = -19.0
 offset_top = 1.0
 offset_right = 45.0
 offset_bottom = 24.0
-scale = Vector2(0.448872, 0.363552)
+scale = Vector2(0.488873, 0.603552)
 
 [node name="Floor_Detection_Area" type="Area2D" parent="."]
 
@@ -245,6 +247,11 @@ shape = SubResource("CapsuleShape2D_rynt5")
 
 [node name="VineSpikeShot_v2" parent="." instance=ExtResource("6_8xphu")]
 position = Vector2(-4, -22)
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vo2vq")
+volume_db = -17.0
+bus = &"SFX"
 
 [connection signal="healthChanged" from="." to="." method="_on_health_changed"]
 [connection signal="health_changed" from="." to="VineShooterAction" method="_on_vine_shooter_body_health_changed"]

@@ -6,7 +6,7 @@ extends VineHurtbox
 
 func _ready():
 	max_health = get_maxhealth()
-	set_health(70)
+	set_health(20)
 	print("VineHurtbox: Health set to ", get_health())
 
 	if get_healthbarNode():
@@ -25,8 +25,13 @@ func take_damage(damageAmount: int):
 		get_healthbarNode()._set_health(get_health())
 		emit_signal("health_changed", health)  # Notify health change
 	if health <= 0:
+		death_sound.play()
+		monitoring = false
+		monitorable = false
 		emit_signal("health_changed", 0)
 		print("VineHurtbox: Health is 0.")
+		await get_tree().create_timer(0.7).timeout
+		queue_free()
 		
 func heal_health(healAmount: int):
 	var tempHealth

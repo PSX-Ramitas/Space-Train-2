@@ -163,6 +163,46 @@ scale = Vector2(1.5, 1.5)
 z_index = 2
 position = Vector2(2832, 854)
 
+[node name="VineShooterBody3" parent="Enemies" instance=ExtResource("21_sbgpa")]
+z_index = 3
+position = Vector2(2598, 969)
+vines_damage = 12
+health = 0
+
+[node name="VineShooterBody4" parent="Enemies" instance=ExtResource("21_sbgpa")]
+z_index = 3
+position = Vector2(2909, 970)
+vines_damage = 12
+health = 0
+
+[node name="WhipperHurtBox" parent="Enemies" instance=ExtResource("22_2oox5")]
+z_index = 3
+position = Vector2(2654, 560)
+
+[node name="WhipperHurtBox5" parent="Enemies" instance=ExtResource("22_2oox5")]
+z_index = 3
+position = Vector2(4736, 963)
+
+[node name="VineShooterBody6" parent="Enemies" instance=ExtResource("21_sbgpa")]
+z_index = 3
+position = Vector2(8551, 1090)
+vines_damage = 12
+health = 0
+
+[node name="VineShooterBody9" parent="Enemies" instance=ExtResource("21_sbgpa")]
+z_index = 3
+position = Vector2(10321, -7)
+vines_damage = 12
+health = 0
+
+[node name="WhipperHurtBox6" parent="Enemies" instance=ExtResource("22_2oox5")]
+z_index = 3
+position = Vector2(8874, 264)
+
+[node name="WhipperHurtBox8" parent="Enemies" instance=ExtResource("22_2oox5")]
+z_index = 3
+position = Vector2(10350, 478)
+
 [node name="Spikes" type="Node" parent="."]
 
 [node name="TriggeredSpikes" parent="Spikes" instance=ExtResource("13_dft3v")]
@@ -245,60 +285,6 @@ texture_filter = 1
 position = Vector2(5943.22, 206.522)
 scale = Vector2(2, 2)
 texture = ExtResource("20_4qk8c")
-
-[node name="VineShooterBody" parent="." instance=ExtResource("21_sbgpa")]
-position = Vector2(1790, 608)
-
-[node name="VineShooterBody2" parent="." instance=ExtResource("21_sbgpa")]
-position = Vector2(2269, 605)
-
-[node name="VineShooterBody3" parent="." instance=ExtResource("21_sbgpa")]
-position = Vector2(2598, 969)
-
-[node name="VineShooterBody4" parent="." instance=ExtResource("21_sbgpa")]
-position = Vector2(2909, 970)
-
-[node name="VineShooterBody5" parent="." instance=ExtResource("21_sbgpa")]
-position = Vector2(3309, 932)
-
-[node name="WhipperHurtBox" parent="." instance=ExtResource("22_2oox5")]
-position = Vector2(2654, 560)
-
-[node name="WhipperHurtBox2" parent="." instance=ExtResource("22_2oox5")]
-position = Vector2(2569, 339)
-
-[node name="WhipperHurtBox3" parent="." instance=ExtResource("22_2oox5")]
-position = Vector2(719, 557)
-
-[node name="WhipperHurtBox4" parent="." instance=ExtResource("22_2oox5")]
-position = Vector2(1141, 555)
-
-[node name="WhipperHurtBox5" parent="." instance=ExtResource("22_2oox5")]
-position = Vector2(4736, 963)
-
-[node name="VineShooterBody6" parent="." instance=ExtResource("21_sbgpa")]
-position = Vector2(8431, 831)
-
-[node name="VineShooterBody7" parent="." instance=ExtResource("21_sbgpa")]
-position = Vector2(8748, 720)
-
-[node name="VineShooterBody8" parent="." instance=ExtResource("21_sbgpa")]
-position = Vector2(9190, 272)
-
-[node name="VineShooterBody9" parent="." instance=ExtResource("21_sbgpa")]
-position = Vector2(9919, 464)
-
-[node name="WhipperHurtBox6" parent="." instance=ExtResource("22_2oox5")]
-position = Vector2(8874, 264)
-
-[node name="WhipperHurtBox7" parent="." instance=ExtResource("22_2oox5")]
-position = Vector2(9523, 258)
-
-[node name="WhipperHurtBox8" parent="." instance=ExtResource("22_2oox5")]
-position = Vector2(10293, 481)
-
-[node name="WhipperHurtBox9" parent="." instance=ExtResource("22_2oox5")]
-position = Vector2(10623, 449)
 
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

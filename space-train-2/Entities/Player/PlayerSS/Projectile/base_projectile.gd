@@ -12,7 +12,7 @@ func _on_bullet_area_area_entered(area: Area2D) -> void:
 	if attacker is SpikesClass:
 		print("YES SPIKES",area.name)
 		return
-	elif attacker is not Player and area is EnemyHitbox:
+	elif attacker is not Player and (area is EnemyHitbox or area is VineHurtbox):
 			area.take_damage(damage)
 			print("area.name that took damage: ", area.name)
 			queue_free()

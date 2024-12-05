@@ -77,7 +77,7 @@ func _on_scan_area_entered(area: Area2D) -> void:
 
 
 func _on_shock_area_entered(area: Area2D) -> void:
-	if area is EnemyHitbox and shock_anim.is_playing():
+	if (area is EnemyHitbox or area is VineHurtbox) and shock_anim.is_playing():
 		area.take_damage(100)
 	else:
 		var victim = area.get_parent()

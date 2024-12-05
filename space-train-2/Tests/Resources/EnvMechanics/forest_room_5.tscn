@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cf675ehvborw" path="res://Main_Areas/killzone.tscn" id="14_krkmr"]
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="14_skgto"]
 [ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="16_c2jkm"]
-[ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="16_oy6au"]
+[ext_resource type="AudioStream" uid="uid://bya8fbiuiul26" path="res://Sounds/Music/Forest of Civilization.mp3" id="17_60akr"]
 [ext_resource type="PackedScene" uid="uid://4bkd8i6ris7r" path="res://Main_Areas/Spaceship/NPC/LostGuy/LostNPC.tscn" id="17_km444"]
 [ext_resource type="Texture2D" uid="uid://bffo5c21n1ikp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Bright Blue/7 sky1.png" id="19_da2ac"]
 [ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="20_qjetj"]
@@ -210,7 +210,7 @@ label_settings = ExtResource("16_c2jkm")
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_oy6au")
+stream = ExtResource("17_60akr")
 volume_db = -20.0
 bus = &"Music"
 

@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="8_8bcdc"]
 [ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="8_82rom"]
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="9_jhj0d"]
-[ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="10_ey5gd"]
 [ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="10_nq0lh"]
+[ext_resource type="AudioStream" uid="uid://bya8fbiuiul26" path="res://Sounds/Music/Forest of Civilization.mp3" id="11_gxepn"]
 [ext_resource type="Texture2D" uid="uid://bffo5c21n1ikp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Bright Blue/7 sky1.png" id="12_pqnxa"]
 [ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="13_s63hj"]
 
@@ -548,7 +548,7 @@ text = "Defeat all the Enemies!"
 label_settings = ExtResource("10_nq0lh")
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_ey5gd")
+stream = ExtResource("11_gxepn")
 volume_db = -20.0
 bus = &"Music"
 

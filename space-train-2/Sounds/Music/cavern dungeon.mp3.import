@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcc016bqf48op"
+path="res://.godot/imported/cavern dungeon.mp3-008f4db8b45cbb5bf6fb33a161351c30.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/cavern dungeon.mp3"
+dest_files=["res://.godot/imported/cavern dungeon.mp3-008f4db8b45cbb5bf6fb33a161351c30.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

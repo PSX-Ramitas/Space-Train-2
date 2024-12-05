@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dd2kroxx8wc1v"]
+[gd_scene load_steps=24 format=3 uid="uid://dd2kroxx8wc1v"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/forest_room_6.gd" id="1_w2t6o"]
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="2_qv2rj"]
@@ -20,6 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://bb4wogvq3ofkb" path="res://Sounds/SFX/crowd_small_chil_ec049202_9klCwI6.mp3" id="18_6yhk2"]
 [ext_resource type="Texture2D" uid="uid://bffo5c21n1ikp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Bright Blue/7 sky1.png" id="19_o3n7v"]
 [ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="20_t48v6"]
+[ext_resource type="PackedScene" uid="uid://d3vymx6v3011v" path="res://Entities/LevelObstacles/vineWhipper.tscn" id="21_c0pep"]
+[ext_resource type="PackedScene" uid="uid://bwksfc2rao3al" path="res://Entities/LevelObstacles/VineShooterBody.tscn" id="22_vn140"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snrbd"]
 
@@ -66,7 +68,7 @@ repeat_times = 15
 
 [node name="Near" type="Sprite2D" parent="Parallax/Parallax2D3"]
 texture_filter = 1
-position = Vector2(1565, 324)
+position = Vector2(1552, 323.667)
 scale = Vector2(1.6575, 1.6575)
 texture = ExtResource("3_va4i6")
 
@@ -271,6 +273,63 @@ texture_filter = 1
 position = Vector2(5943.22, 129.13)
 scale = Vector2(2, 2)
 texture = ExtResource("20_t48v6")
+
+[node name="WhipperHurtBox" parent="." instance=ExtResource("21_c0pep")]
+position = Vector2(1241, 443)
+
+[node name="WhipperHurtBox2" parent="." instance=ExtResource("21_c0pep")]
+position = Vector2(748, 588)
+
+[node name="VineShooterBody" parent="." instance=ExtResource("22_vn140")]
+position = Vector2(568, 604)
+
+[node name="WhipperHurtBox3" parent="." instance=ExtResource("21_c0pep")]
+position = Vector2(1981, 374)
+
+[node name="WhipperHurtBox4" parent="." instance=ExtResource("21_c0pep")]
+position = Vector2(2701, 556)
+
+[node name="WhipperHurtBox5" parent="." instance=ExtResource("21_c0pep")]
+position = Vector2(3667, 701)
+
+[node name="VineShooterBody2" parent="." instance=ExtResource("22_vn140")]
+position = Vector2(3879, 714)
+
+[node name="VineShooterBody3" parent="." instance=ExtResource("22_vn140")]
+position = Vector2(4298, 715)
+
+[node name="VineShooterBody4" parent="." instance=ExtResource("22_vn140")]
+position = Vector2(1620, 454)
+
+[node name="WhipperHurtBox6" parent="." instance=ExtResource("21_c0pep")]
+position = Vector2(7240, 374)
+
+[node name="WhipperHurtBox7" parent="." instance=ExtResource("21_c0pep")]
+position = Vector2(7645, 305)
+
+[node name="VineShooterBody6" parent="." instance=ExtResource("22_vn140")]
+position = Vector2(7862, 789)
+
+[node name="VineShooterBody7" parent="." instance=ExtResource("22_vn140")]
+position = Vector2(8320, 791)
+
+[node name="VineShooterBody8" parent="." instance=ExtResource("22_vn140")]
+position = Vector2(8188, 789)
+
+[node name="VineShooterBody9" parent="." instance=ExtResource("22_vn140")]
+position = Vector2(7990, 790)
+
+[node name="WhipperHurtBox8" parent="." instance=ExtResource("21_c0pep")]
+position = Vector2(9131, 337)
+
+[node name="VineShooterBody10" parent="." instance=ExtResource("22_vn140")]
+position = Vector2(11648, 709)
+
+[node name="VineShooterBody11" parent="." instance=ExtResource("22_vn140")]
+position = Vector2(11868, 712)
+
+[node name="WhipperHurtBox9" parent="." instance=ExtResource("21_c0pep")]
+position = Vector2(12240, 334)
 
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

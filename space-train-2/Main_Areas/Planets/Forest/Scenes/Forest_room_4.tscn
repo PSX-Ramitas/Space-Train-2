@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://doh85ymgcyiob"]
+[gd_scene load_steps=20 format=4 uid="uid://doh85ymgcyiob"]
 
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="1_885h2"]
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/Scenes/forest_room_4.gd" id="1_djfim"]
@@ -16,6 +16,7 @@
 [ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="13_yghmj"]
 [ext_resource type="Texture2D" uid="uid://bffo5c21n1ikp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Bright Blue/7 sky1.png" id="15_eqxx7"]
 [ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="16_w1iaw"]
+[ext_resource type="PackedScene" uid="uid://d3vymx6v3011v" path="res://Entities/LevelObstacles/vineWhipper.tscn" id="17_yu6b8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xhn7"]
 texture = ExtResource("3_a55yr")
@@ -529,64 +530,64 @@ position = Vector2(1546, 470)
 [node name="Spikes" type="Node2D" parent="."]
 
 [node name="AnimateSpikes" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2438, 460)
+position = Vector2(2448, 470)
 
 [node name="AnimateSpikes27" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2697, 461)
+position = Vector2(2697, 469)
 
 [node name="AnimateSpikes28" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2715, 461)
+position = Vector2(2751, 470)
 
 [node name="AnimateSpikes29" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2769, 460)
+position = Vector2(2770, 470)
 
 [node name="AnimateSpikes30" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2787, 460)
+position = Vector2(2789, 470)
 
 [node name="AnimateSpikes31" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2805, 460)
+position = Vector2(2805, 471)
 
 [node name="AnimateSpikes32" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2823, 460)
+position = Vector2(2823, 471)
 
 [node name="AnimateSpikes4" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2512, 460)
+position = Vector2(2484, 469)
 
 [node name="AnimateSpikes6" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2530, 460)
+position = Vector2(2519, 469)
 
 [node name="AnimateSpikes7" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2548, 460)
+position = Vector2(2717, 470)
 
 [node name="AnimateSpikes10" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2605, 461)
+position = Vector2(2591, 468)
 
 [node name="AnimateSpikes11" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2623, 461)
+position = Vector2(2679, 470)
 
 [node name="AnimateSpikes12" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2641, 461)
+position = Vector2(2660, 469)
 
 [node name="AnimateSpikes13" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2438, 460)
+position = Vector2(2447, 469)
 
 [node name="AnimateSpikes17" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2512, 460)
+position = Vector2(2466, 469)
 
 [node name="AnimateSpikes18" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2530, 460)
+position = Vector2(2502, 469)
 
 [node name="AnimateSpikes19" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2548, 460)
+position = Vector2(2537, 469)
 
 [node name="AnimateSpikes22" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2605, 461)
+position = Vector2(2608, 469)
 
 [node name="AnimateSpikes23" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2623, 461)
+position = Vector2(2625, 469)
 
 [node name="AnimateSpikes24" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2641, 461)
+position = Vector2(2643, 469)
 
 [node name="transitionScreen" parent="." instance=ExtResource("8_e2ll3")]
 visible = false
@@ -649,6 +650,12 @@ texture_filter = 1
 position = Vector2(5943.22, 118.696)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("16_w1iaw")
+
+[node name="WhipperHurtBox" parent="." instance=ExtResource("17_yu6b8")]
+position = Vector2(787, 227)
+
+[node name="WhipperHurtBox2" parent="." instance=ExtResource("17_yu6b8")]
+position = Vector2(1649, 288)
 
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

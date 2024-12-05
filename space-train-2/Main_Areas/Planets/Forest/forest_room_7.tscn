@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1ydrv1snp6tt"]
+[gd_scene load_steps=22 format=3 uid="uid://b1ydrv1snp6tt"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/forest_room_7.gd" id="1_o5opn"]
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="2_yqj37"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://bffo5c21n1ikp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Bright Blue/7 sky1.png" id="17_gxaqw"]
 [ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="18_ykq8s"]
 [ext_resource type="PackedScene" uid="uid://rsncuri81354" path="res://Collectables/speed.tscn" id="19_0c26p"]
+[ext_resource type="PackedScene" uid="uid://d3vymx6v3011v" path="res://Entities/LevelObstacles/vineWhipper.tscn" id="20_sc34a"]
+[ext_resource type="PackedScene" uid="uid://bwksfc2rao3al" path="res://Entities/LevelObstacles/VineShooterBody.tscn" id="21_ttnkn"]
 
 [node name="Forest_Room_7" type="Node2D"]
 texture_filter = 1
@@ -240,7 +242,7 @@ repeat_times = 15
 
 [node name="Near" type="Sprite2D" parent="Parallax/Parallax2D3"]
 texture_filter = 1
-position = Vector2(1565, 324)
+position = Vector2(1561.33, 245)
 scale = Vector2(1.6575, 1.6575)
 texture = ExtResource("3_op67l")
 
@@ -249,6 +251,75 @@ position = Vector2(210, 581)
 
 [node name="speed2" parent="." instance=ExtResource("19_0c26p")]
 position = Vector2(377, 582)
+
+[node name="WhipperHurtBox" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(1242, 448)
+
+[node name="VineShooterBody" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(584, 605)
+
+[node name="VineShooterBody2" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(745, 605)
+
+[node name="WhipperHurtBox2" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(1631, 446)
+
+[node name="WhipperHurtBox3" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(2111, 374)
+
+[node name="WhipperHurtBox4" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(3674, 701)
+
+[node name="WhipperHurtBox5" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(2705, 554)
+
+[node name="WhipperHurtBox6" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(4719, 738)
+
+[node name="WhipperHurtBox7" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(4851, 667)
+
+[node name="VineShooterBody3" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(4368, 713)
+
+[node name="VineShooterBody4" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(7334, 829)
+
+[node name="VineShooterBody5" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(7604, 789)
+
+[node name="VineShooterBody6" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(7866, 789)
+
+[node name="VineShooterBody7" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(8315, 790)
+
+[node name="VineShooterBody8" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(8181, 790)
+
+[node name="VineShooterBody9" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(7976, 789)
+
+[node name="WhipperHurtBox8" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(9132, 336)
+
+[node name="WhipperHurtBox9" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(9954, 300)
+
+[node name="WhipperHurtBox10" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(10994, 300)
+
+[node name="VineShooterBody10" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(11652, 714)
+
+[node name="VineShooterBody11" parent="." instance=ExtResource("21_ttnkn")]
+position = Vector2(11860, 714)
+
+[node name="WhipperHurtBox11" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(12422, 589)
+
+[node name="WhipperHurtBox12" parent="." instance=ExtResource("20_sc34a")]
+position = Vector2(12224, 334)
 
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

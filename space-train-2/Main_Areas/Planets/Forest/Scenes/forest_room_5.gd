@@ -7,11 +7,14 @@ extends Node
 @onready var lost_guy: CharacterBody2D = $LostGuy
 
 var levelFinished: bool
+var lostGuyExists: bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if TrainNPCs.lostGuyInteracted == true:
+		lostGuyExists = false
 		lost_guy.queue_free()
 	elif TrainNPCs.lostGuyInteracted == false:
+		lostGuyExists = true
 		lost_guy.queue_redraw()
 	level_music.play()
 	camera.limit_left = -150
@@ -37,6 +40,6 @@ func _on_transition_screen_body_entered(body: Node2D) -> void:
 
 func _on_transition_finished() -> void:
 	if levelFinished == true:
-		if lost_guy.interacted:
+		if lostGuyExists and lost_guy.interacted:
 			TrainNPCs.lostGuyInteracted = true
 		LevelManager.loadLevel()

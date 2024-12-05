@@ -18,7 +18,7 @@ var player
 var windupTimer = .6667
 var can_shoot = true
 var projectile_dir: Vector2
-var gun_offset = Vector2(-5,14)
+var gun_offset = Vector2(-3,14)
 var upward_gun_offset = Vector2(0,-20)
 #General Animation Functions---------------------------------------------------------------------
 func active_ShooterVines():
@@ -123,7 +123,7 @@ func _on_vine_shooter_body_health_changed(new_health: int) -> void:
 
 func _on_floor_detection_area_entered(area: Area2D) -> void:
 	if area is PlayerHitbox:
-		_sprite_orientation(direction)
+		#_sprite_orientation(direction)
 		print("The Direction of the player is at:", direction)
 		active_ShooterVines()
 		is_player_inside = true #Player is inside
@@ -156,12 +156,15 @@ func _on_floor_detection_CHAR_BODY_entered(body: Node2D) -> void:
 		#position of vine
 		var tempdir = position.direction_to(vine_shooter)*125#to make value bigger and less prone to floating error
 		#position of player
+		print("This is tempdir of vine shooter", tempdir)
 		direction =  position.direction_to(player.global_position)*125#to make value bigger and less prone to floating error
 		#see which side of the vines player lies on
+		print("This is player of vine shooter", direction)
 		direction.x = direction.x - tempdir.x
 		#set it equal to one bc all we care about is the sign
 		direction.x = abs(direction.x) /direction.x # flip direction when turning
 		print("final value of direction after abs division:", direction.x)
+		_sprite_orientation(direction)
 
 
 func _on_shooting_timer_timeout() -> void:

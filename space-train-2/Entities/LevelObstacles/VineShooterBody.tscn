@@ -229,6 +229,7 @@ frame = 43
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VineShooterAction"]
 position = Vector2(-4, -13)
 shape = SubResource("CapsuleShape2D_0sd0o")
+disabled = true
 
 [node name="ShootingTimer" type="Timer" parent="VineShooterAction"]
 

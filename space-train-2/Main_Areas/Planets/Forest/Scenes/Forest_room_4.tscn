@@ -530,64 +530,64 @@ position = Vector2(1546, 470)
 [node name="Spikes" type="Node2D" parent="."]
 
 [node name="AnimateSpikes" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2438, 460)
+position = Vector2(2448, 470)
 
 [node name="AnimateSpikes27" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2697, 461)
+position = Vector2(2697, 469)
 
 [node name="AnimateSpikes28" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2715, 461)
+position = Vector2(2751, 470)
 
 [node name="AnimateSpikes29" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2769, 460)
+position = Vector2(2770, 470)
 
 [node name="AnimateSpikes30" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2787, 460)
+position = Vector2(2789, 470)
 
 [node name="AnimateSpikes31" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2805, 460)
+position = Vector2(2805, 471)
 
 [node name="AnimateSpikes32" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2823, 460)
+position = Vector2(2823, 471)
 
 [node name="AnimateSpikes4" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2512, 460)
+position = Vector2(2484, 469)
 
 [node name="AnimateSpikes6" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2530, 460)
+position = Vector2(2519, 469)
 
 [node name="AnimateSpikes7" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2548, 460)
+position = Vector2(2717, 470)
 
 [node name="AnimateSpikes10" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2605, 461)
+position = Vector2(2591, 468)
 
 [node name="AnimateSpikes11" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2623, 461)
+position = Vector2(2679, 470)
 
 [node name="AnimateSpikes12" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2641, 461)
+position = Vector2(2660, 469)
 
 [node name="AnimateSpikes13" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2438, 460)
+position = Vector2(2447, 469)
 
 [node name="AnimateSpikes17" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2512, 460)
+position = Vector2(2466, 469)
 
 [node name="AnimateSpikes18" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2530, 460)
+position = Vector2(2502, 469)
 
 [node name="AnimateSpikes19" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2548, 460)
+position = Vector2(2537, 469)
 
 [node name="AnimateSpikes22" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2605, 461)
+position = Vector2(2608, 469)
 
 [node name="AnimateSpikes23" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2623, 461)
+position = Vector2(2625, 469)
 
 [node name="AnimateSpikes24" parent="Spikes" instance=ExtResource("5_ockol")]
-position = Vector2(2641, 461)
+position = Vector2(2643, 469)
 
 [node name="transitionScreen" parent="." instance=ExtResource("8_e2ll3")]
 visible = false

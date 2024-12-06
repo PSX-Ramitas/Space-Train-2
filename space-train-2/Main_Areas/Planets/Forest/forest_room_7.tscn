@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1ydrv1snp6tt"]
+[gd_scene load_steps=21 format=3 uid="uid://b1ydrv1snp6tt"]
 
 [ext_resource type="Script" path="res://Main_Areas/Planets/Forest/forest_room_7.gd" id="1_o5opn"]
 [ext_resource type="Texture2D" uid="uid://cmvta8b80dkjq" path="res://Main_Areas/Planets/Forest/Assets/BG_2.png" id="2_yqj37"]
@@ -7,9 +7,9 @@
 [ext_resource type="TileSet" uid="uid://chvpi5yuykc0i" path="res://Main_Areas/Planets/Forest/ForestTileset.tres" id="5_auer1"]
 [ext_resource type="PackedScene" uid="uid://cyhs8teinbtt1" path="res://Main_Areas/Planets/transition_area.tscn" id="6_rhanf"]
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="7_rcoxi"]
+[ext_resource type="AudioStream" uid="uid://bya8fbiuiul26" path="res://Sounds/Music/Forest of Civilization.mp3" id="8_7rd1c"]
 [ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="9_ldicu"]
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="9_nfpm2"]
-[ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="10_aitwa"]
 [ext_resource type="PackedScene" uid="uid://cf675ehvborw" path="res://Main_Areas/killzone.tscn" id="11_5o2ff"]
 [ext_resource type="PackedScene" uid="uid://dd67h2umvkaaf" path="res://Entities/Monsters/Forest/Snail/Snail.tscn" id="12_2hw0e"]
 [ext_resource type="PackedScene" uid="uid://d1gbrlw0d6k6b" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.tscn" id="13_uaaye"]
@@ -18,7 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://dfhtb56c4ftla" path="res://Entities/Monsters/Forest/Bee/Bee.tscn" id="16_s1mcw"]
 [ext_resource type="Texture2D" uid="uid://bffo5c21n1ikp" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Bright Blue/7 sky1.png" id="17_gxaqw"]
 [ext_resource type="Texture2D" uid="uid://bn3i4ru3u64nq" path="res://Main_Areas/Planets/Forest/Scenes/BossArena/Sprites/Field of Gears/Murky Green/6 BG gears2.png" id="18_ykq8s"]
-[ext_resource type="PackedScene" uid="uid://rsncuri81354" path="res://Collectables/speed.tscn" id="19_0c26p"]
+[ext_resource type="PackedScene" uid="uid://d3vymx6v3011v" path="res://Entities/LevelObstacles/vineWhipper.tscn" id="20_sc34a"]
+[ext_resource type="PackedScene" uid="uid://bwksfc2rao3al" path="res://Entities/LevelObstacles/VineShooterBody.tscn" id="21_ttnkn"]
 
 [node name="Forest_Room_7" type="Node2D"]
 texture_filter = 1
@@ -81,7 +82,7 @@ label_settings = ExtResource("9_ldicu")
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_aitwa")
+stream = ExtResource("8_7rd1c")
 volume_db = -20.0
 bus = &"Music"
 
@@ -176,6 +177,42 @@ position = Vector2(10698, 449)
 [node name="Boar3" parent="Enemies" instance=ExtResource("15_wvd58")]
 position = Vector2(12452, 318)
 
+[node name="WhipperHurtBox2" parent="Enemies" instance=ExtResource("20_sc34a")]
+z_index = 3
+position = Vector2(1631, 446)
+
+[node name="WhipperHurtBox3" parent="Enemies" instance=ExtResource("20_sc34a")]
+z_index = 3
+position = Vector2(2111, 374)
+
+[node name="WhipperHurtBox5" parent="Enemies" instance=ExtResource("20_sc34a")]
+z_index = 3
+position = Vector2(3309, 555)
+
+[node name="VineShooterBody3" parent="Enemies" instance=ExtResource("21_ttnkn")]
+z_index = 3
+position = Vector2(4621, 761)
+
+[node name="VineShooterBody7" parent="Enemies" instance=ExtResource("21_ttnkn")]
+z_index = 3
+position = Vector2(8248, 796)
+
+[node name="VineShooterBody9" parent="Enemies" instance=ExtResource("21_ttnkn")]
+z_index = 3
+position = Vector2(7912, 793)
+
+[node name="WhipperHurtBox8" parent="Enemies" instance=ExtResource("20_sc34a")]
+z_index = 3
+position = Vector2(9132, 336)
+
+[node name="VineShooterBody10" parent="Enemies" instance=ExtResource("21_ttnkn")]
+z_index = 3
+position = Vector2(11652, 714)
+
+[node name="VineShooterBody11" parent="Enemies" instance=ExtResource("21_ttnkn")]
+z_index = 3
+position = Vector2(11860, 714)
+
 [node name="ParallaxSky" type="Parallax2D" parent="."]
 z_index = -12
 scale = Vector2(4.55733, 2.29768)
@@ -240,15 +277,9 @@ repeat_times = 15
 
 [node name="Near" type="Sprite2D" parent="Parallax/Parallax2D3"]
 texture_filter = 1
-position = Vector2(1565, 324)
+position = Vector2(1561.33, 245)
 scale = Vector2(1.6575, 1.6575)
 texture = ExtResource("3_op67l")
-
-[node name="speed" parent="." instance=ExtResource("19_0c26p")]
-position = Vector2(210, 581)
-
-[node name="speed2" parent="." instance=ExtResource("19_0c26p")]
-position = Vector2(377, 582)
 
 [connection signal="body_entered" from="transitionScreen" to="." method="_on_transition_screen_body_entered"]
 [connection signal="anim_finished" from="CanvasLayer/TransitionAnim" to="." method="_on_transition_finished"]

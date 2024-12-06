@@ -1,5 +1,6 @@
 extends VineFamilyClass
 class_name VineHurtbox
+@onready var death_sound: AudioStreamPlayer = $DeathSound
 
 
 signal healthChanged(isHeal : bool, amount : int) 
@@ -26,8 +27,13 @@ func take_damage(damageAmount: int):
 		get_healthbarNode()._set_health(get_health())
 		emit_signal("health_changed", health)  # Notify health change
 	if health <= 0:
+		death_sound.play()
+		monitoring = false
+		monitorable = false
 		emit_signal("health_changed", 0)
 		print("VineHurtbox: Health is 0.")
+		await get_tree().create_timer(0.7).timeout
+		queue_free()
 		
 func heal_health(healAmount: int):
 	var tempHealth

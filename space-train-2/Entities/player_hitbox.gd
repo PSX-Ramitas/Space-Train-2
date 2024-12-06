@@ -40,7 +40,8 @@ func take_damage(damageAmount: int):
 		player_health_bar.set_health(new_health)
 		if new_health == 0:
 			inventory_gui.clear_inventory()
-			self.PROCESS_MODE_DISABLED
+			self.monitoring = false
+			self.monitorable = false
 			is_alive = false
 	else:
 		if is_alive and !PlayerData.is_hurt and !dash_used:
@@ -53,7 +54,8 @@ func take_damage(damageAmount: int):
 			player_health_bar.set_health(new_health)
 			if new_health == 0:
 				inventory_gui.clear_inventory()
-				self.PROCESS_MODE_DISABLED
+				self.monitoring = false
+				self.monitorable = false
 				is_alive = false
 		# healthChanged.emit( false, damageAmount)
 

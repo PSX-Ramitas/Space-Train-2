@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cyhs8teinbtt1" path="res://Main_Areas/Planets/transition_area.tscn" id="5_mblgu"]
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="6_i6rjw"]
 [ext_resource type="PackedScene" uid="uid://dd2jhuyir2ikt" path="res://UI/mission.tscn" id="7_wn840"]
-[ext_resource type="AudioStream" uid="uid://dqvri781jhv7m" path="res://Sounds/Music/2-05 Radiance - For Foliage Furnace Boss Act.mp3" id="8_akkpy"]
 [ext_resource type="PackedScene" uid="uid://xepqp6ejccew" path="res://UI/Timer/timer.tscn" id="8_syumc"]
 [ext_resource type="LabelSettings" uid="uid://cooif7s218rxq" path="res://Fonts/dialogue.tres" id="10_lfws0"]
+[ext_resource type="AudioStream" uid="uid://bya8fbiuiul26" path="res://Sounds/Music/Forest of Civilization.mp3" id="11_7taq6"]
 [ext_resource type="PackedScene" uid="uid://cf675ehvborw" path="res://Main_Areas/killzone.tscn" id="11_ftve6"]
 [ext_resource type="PackedScene" uid="uid://dd67h2umvkaaf" path="res://Entities/Monsters/Forest/Snail/Snail.tscn" id="12_8cwow"]
 [ext_resource type="PackedScene" uid="uid://d1gbrlw0d6k6b" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.tscn" id="13_mdtxm"]
@@ -140,7 +140,7 @@ label_settings = ExtResource("10_lfws0")
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_akkpy")
+stream = ExtResource("11_7taq6")
 volume_db = -20.0
 bus = &"Music"
 

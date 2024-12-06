@@ -17,9 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://7i1uvkstawwl" path="res://UI/Transition/transition_anim.tscn" id="15_bogoq"]
 [ext_resource type="PackedScene" uid="uid://cf675ehvborw" path="res://Main_Areas/killzone.tscn" id="16_m20uu"]
 [ext_resource type="PackedScene" uid="uid://citu8occwl0xr" path="res://Entities/Monsters/Tomas_enemy/Boss/Sheriff/Boss.tscn" id="17_gvei1"]
-[ext_resource type="AudioStream" uid="uid://dk44eobw5pt5n" path="res://Sounds/Music/6-01. Lost Woods - Lomei Labyrinth.mp3" id="18_dfnb7"]
 [ext_resource type="AudioStream" uid="uid://dhyxkqvrfk6n6" path="res://Sounds/Music/18. Boss Clear Fanfare.mp3" id="18_ysaip"]
 [ext_resource type="AudioStream" uid="uid://ckqqg2b87rx3g" path="res://Sounds/Music/37 Middle Boss Battle.mp3" id="19_saelr"]
+[ext_resource type="AudioStream" uid="uid://dcc016bqf48op" path="res://Sounds/Music/cavern dungeon.mp3" id="19_waucg"]
 [ext_resource type="PackedScene" uid="uid://hb82744trdpu" path="res://Entities/Monsters/Forest/Boar/Boar.tscn" id="21_423qh"]
 [ext_resource type="PackedScene" uid="uid://d1gbrlw0d6k6b" path="res://Entities/Monsters/Tomas_enemy/Bot Wheel/botWheel.tscn" id="22_rexhc"]
 [ext_resource type="PackedScene" uid="uid://c07t1k3q6u62" path="res://Entities/Monsters/Tomas_enemy/Enemy.tscn" id="23_foxf7"]
@@ -808,7 +808,7 @@ volume_db = -22.0
 bus = &"Music"
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("18_dfnb7")
+stream = ExtResource("19_waucg")
 volume_db = -24.0
 bus = &"Music"
 
